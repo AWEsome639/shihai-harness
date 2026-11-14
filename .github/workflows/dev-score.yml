@@ -35,6 +35,7 @@ jobs:
           MODEL_RELAY_MODEL: ${{ secrets.MODEL_NAME }}
           MODEL_RELAY_KEY: ${{ secrets.MODEL_API_KEY }}
         run: |
+          echo "target_len=${#MODEL_RELAY_TARGET} name_len=${#MODEL_RELAY_MODEL} key_len=${#MODEL_RELAY_KEY}"
           nohup python entry/ci/model_relay.py > /tmp/relay.log 2>&1 &
           ok=0
           for i in $(seq 1 30); do sleep 1; curl -sf http://127.0.0.1:4100/v1/models >/dev/null && { ok=1; break; }; done
