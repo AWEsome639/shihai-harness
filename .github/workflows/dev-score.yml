@@ -71,6 +71,12 @@ jobs:
             echo "== $f"; head -c 4000 "$f"; echo; done
           echo "--- deliverables ---"
           find "${{ github.workspace }}/out" -path '*/deliverables/*' -o -path '*/output/*' 2>/dev/null | head -20
+          echo "--- agent dir ---"
+          find "${{ github.workspace }}/out" -path '*/agent/*' -type f 2>/dev/null | head -20
+          echo "--- artifact logs ---"
+          find "${{ github.workspace }}/out" -name '*.log' -o -name '*.jsonl' 2>/dev/null | grep -E 'agent|artifacts|logs' | head -10
+          for f in $(find "${{ github.workspace }}/out" -name '*.log' -o -name '*.jsonl' 2>/dev/null | grep -E 'agent|artifacts' | head -3); do
+            echo "== $f"; tail -c 3000 "$f"; echo; done
           echo "--- capture.json ---"
           head -c 3000 $(find "${{ github.workspace }}/out" -name 'capture.json' 2>/dev/null | head -1) 2>/dev/null || echo none
           echo "--- final message (head) ---"
