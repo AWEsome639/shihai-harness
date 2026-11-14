@@ -52,6 +52,12 @@ class Handler(BaseHTTPRequestHandler):
         except Exception:
             pass
         path = self.path
+        try:
+            with open("/tmp/relay_req.log", "a") as _f:
+                _f.write(f"{self.command} {self.path} -> {TARGET}{path}\n")
+                _f.flush()
+        except Exception:
+            pass
         print(f"REQ {self.command} {self.path} -> {TARGET}{path}", flush=True)
         # TARGET may already end with /v1; the client always sends /v1/...
         if TARGET.endswith("/v1") and path.startswith("/v1"):
