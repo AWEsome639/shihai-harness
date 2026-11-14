@@ -56,9 +56,9 @@ jobs:
       - name: run dev set
         env:
           PYTHONPATH: ${{ github.workspace }}/kitrepo
-          MODEL_PROXY_URL: http://127.0.0.1:4100/v1
+          MODEL_PROXY_URL: http://172.17.0.1:4100/v1
           MODEL_PROXY_KEY: relay
-          NO_PROXY: 127.0.0.1,localhost
+          NO_PROXY: 127.0.0.1,localhost,172.17.0.1
         run: |
           cd kitrepo
           python eval/run.py "${{ github.workspace }}/entry" \
