@@ -1,7 +1,7 @@
 # `shihai-harness` — technical narrative
 
 **Repository:** `https://github.com/AWEsome639/shihai-harness`
-**Commit:** `b5b1ef625361edf386f6420ee1d18ab96f223f2b`
+**Commit:** `154ce3529f89ad601e79ba30a1217830b2a9b19c`
 
 ## 1. The entry
 
@@ -34,7 +34,7 @@ The harness never calls `/models` and never guesses a window. On a context-full 
 
 ### 3.3 Deadline clamping
 
-`limits.agent_timeout_sec` is 21,600 s and the evaluator can cancel a run, so the deadline is enforced in five places: a `finish_margin` of 180 s (a quarter of a short task's budget); a loop-top check that stops opening tool turns below it and asks for the summary; every stream wrapped in `wait_for(left − reserve)`, keeping streamed text as `final_message` when the cut lands; backoff waits that stop before the margin instead of sleeping through it; and `bash` capped at `min(exec_timeout_sec, left − finish_margin)`, so no command eats the wrap-up window. The summary call gets `left − max(5 s, time_share(left, 30))`. Files on disk are graded even if the run fails, so each deliverable is written early.
+`limits.agent_timeout_sec` is 21,600 s and the evaluator can cancel a run, so the deadline is clamped in five places: a 180 s `finish_margin`; a loop-top check that stops opening tool turns below it; every stream wrapped in `wait_for(left − reserve)`, keeping streamed text as `final_message`; backoff waits that stop before the margin; and `bash` capped at `min(exec_timeout_sec, left − finish_margin)`. The summary call gets `left − max(5 s, time_share(left, 30))`. Files on disk are graded even if the run fails, so each deliverable is written early.
 
 ## 4. The self-check loop
 
@@ -109,8 +109,9 @@ cost, because reading a drawing set and re-reading a failed check are both "step
 Left, steps per task, 22 to 160, mode at 60–70 with a long right tail. Right, tool calls against steps: tightly
 coupled, which is what a harness without a separate planner looks like.
 
-The dominant failure this cycle is environmental, not difficulty. The evaluator rejects
-`network_mode='no-network'` under the Docker provider, so the graded pass never reaches scoring and every run records
-`score 0.0, complete False`. The harness itself completes: 29 of 29 tasks reach a `final_message`, and 28 of 29
-artifact folders clear the kit's review. Closing that gap — everything runs, nothing is scored — is the one item that
-must land before a hidden-set run means anything.
+The failure was in the pipe, not the reasoning. Early passes scored 0.0 while all 29 tasks finished.
+The agent never issued a successful model call: the model name selects the wire protocol. Once fixed, it
+ran - 77 calls, a 54 kB memo - and still scored zero: it existed, but no claim could be scored alone.
+One change - each conclusion as its own checkable sentence - moved it from 0.0 to **0.529**.
+A second dev task, three-dimensional routing, stayed at zero: a clash checker drove hard
+clashes from 36 to 0, but connectivity still failed.
