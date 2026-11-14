@@ -71,6 +71,12 @@ jobs:
             echo "== $f"; head -c 4000 "$f"; echo; done
           echo "--- deliverables ---"
           find "${{ github.workspace }}/out" -path '*/deliverables/*' -o -path '*/output/*' 2>/dev/null | head -20
+          echo "--- capture.json ---"
+          head -c 3000 $(find "${{ github.workspace }}/out" -name 'capture.json' 2>/dev/null | head -1) 2>/dev/null || echo none
+          echo "--- final message (head) ---"
+          head -c 2500 $(find "${{ github.workspace }}/out" -name 'final_message.md' 2>/dev/null | head -1) 2>/dev/null || echo none
+          echo "--- workspace tree ---"
+          find "${{ github.workspace }}/out" -maxdepth 6 -type d 2>/dev/null | head -30
           echo "--- agent egress ---"
           tail -6 $(find "${{ github.workspace }}/out" -name 'egress.log' 2>/dev/null | head -1) 2>/dev/null || echo none
       - uses: actions/upload-artifact@v4
