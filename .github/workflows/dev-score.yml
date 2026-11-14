@@ -54,6 +54,16 @@ jobs:
             --out "${{ github.workspace }}/out" || true
           echo "--- results ---"
           cat "${{ github.workspace }}/out/results.json" 2>/dev/null || echo none
+          echo "--- verifier tree ---"
+          find "${{ github.workspace }}/out" -path '*verifier*' -type f 2>/dev/null | head -20
+          echo "--- grade json ---"
+          for f in $(find "${{ github.workspace }}/out" -name 'grade*.json' 2>/dev/null | head -3); do
+            echo "== $f"; head -c 5000 "$f"; echo; done
+          echo "--- deliverables ---"
+          find "${{ github.workspace }}/out" -path '*deliverable*' -o -path '*output*' -type f 2>/dev/null | head -20
+          echo "--- judge egress ---"
+          for f in $(find "${{ github.workspace }}/out" -name 'egress.log' 2>/dev/null | head -2); do
+            echo "== $f"; tail -8 "$f"; done
           echo "--- verifier files ---"
           find "${{ github.workspace }}/out" -path '*/verifier/*' -type f 2>/dev/null | head -20
           echo "--- grade.json ---"
