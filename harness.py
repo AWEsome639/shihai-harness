@@ -85,9 +85,6 @@ NOTE = (
     " Run `python3 {workdir}/tools/clash_check.py <model.ifc>` on any model you"
     " produce; it exits non-zero when bounded boxes overlap by more than 2 mm."
     " Iterate on the model until it reports HARD CLASHES: 0, not merely a lower count."
-    "\nA connectivity checker is at {workdir}/tools/connectivity_check.py."
-    " Run `python3 {workdir}/tools/connectivity_check.py <model.ifc>` and iterate"
-    " until it reports ROWS UNDER-COVERED: 0."
     "\n\nWhen you are done, reply with a short summary of what you delivered and"
     " where you put it."
 )
@@ -260,11 +257,11 @@ async def solve(session: taskbridge.Session) -> str:
   Raises:
     RuntimeError: If Pi exits before the model produces any assistant reply.
   """
-  tools_dir = pathlib.Path(__file__).with_name("tools")
-  for helper in sorted(tools_dir.glob("*.py")) if tools_dir.is_dir() else ():
+  tool_src = pathlib.Path(__file__).with_name("tools") / "clash_check.py"
+  if tool_src.is_file():
     try:
       await session.write_file(
-          f"{session.workdir}/tools/{helper.name}", helper.read_text()
+          f"{session.workdir}/tools/clash_check.py", tool_src.read_text()
       )
     except Exception:  # a missing helper must not fail the run
       pass
