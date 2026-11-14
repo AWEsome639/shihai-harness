@@ -65,10 +65,15 @@ UNKNOWN_MODEL = {"input": ["text"], "contextWindow": 128000, "maxTokens": 16384}
 NOTE = (
     "You are working on an engineering task. Your tools act on the task's Linux"
     " container, whose working directory is {workdir}; it has no internet"
-    " access. Read the whole instruction and the files it points to, put every"
-    " deliverable exactly where and in the format the instruction asks, and"
-    " check what you wrote. When you are done, reply with a short summary of"
-    " what you delivered and where."
+    " access. Read the whole instruction and the files it points to."
+    "\n\nDeliverables are FILES, not prose. If the instruction names a directory"
+    " (for example `output/`), create that directory and write every deliverable"
+    " into it as a real file, in the format the instruction asks for. Your final"
+    " reply is not a deliverable and is not graded as one - a memo, report, or"
+    " answer that exists only in your reply scores zero. Before you finish, list"
+    " the output directory and confirm each required file is there and non-empty."
+    "\n\nWhen you are done, reply with a short summary of what you delivered and"
+    " where you put it."
 )
 
 
