@@ -67,6 +67,9 @@ jobs:
             --out "${{ github.workspace }}/out" || true
           echo "--- results ---"
           cat "${{ github.workspace }}/out/results.json" 2>/dev/null || echo none
+          echo "--- verifier contents ---"
+          for f in $(find "${{ github.workspace }}/out" -path '*/verifier/*' -type f 2>/dev/null | head -8); do
+            echo "== $f"; head -c 1500 "$f"; echo; done
           echo "--- verifier tree ---"
           find "${{ github.workspace }}/out" -path '*verifier*' -type f 2>/dev/null | head -20
           echo "--- grade json ---"
