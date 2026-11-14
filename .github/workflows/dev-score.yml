@@ -84,6 +84,8 @@ jobs:
             echo "== $f"; head -c 4000 "$f"; echo; done
           echo "--- deliverables ---"
           find "${{ github.workspace }}/out" -path '*/deliverables/*' -o -path '*/output/*' 2>/dev/null | head -20
+          echo "--- relay requests ---"
+          cat /tmp/relay_req.log 2>/dev/null | head -10 || echo "no requests reached the relay"
           echo "--- harness log ---"
           tail -c 4000 $(find "${{ github.workspace }}" -path '*/agent/my-harness.txt' 2>/dev/null | head -1) 2>/dev/null || echo none
           echo "--- serve log ---"
