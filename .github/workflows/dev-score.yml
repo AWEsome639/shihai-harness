@@ -53,6 +53,10 @@ jobs:
           ss -lntp 2>/dev/null | grep 4100 || netstat -lnt 2>/dev/null | grep 4100 || echo "no listener info"
           echo "--- relay log so far ---"
           cat /tmp/relay.log 2>/dev/null || echo none
+      - name: force an openai-format model for this dev run
+        run: |
+          sed -i 's|google-cloud/claude-opus-5-5|google-cloud/gpt-oss-120b|' "${{ github.workspace }}/entry/submission.yaml"
+          grep model_api "${{ github.workspace }}/entry/submission.yaml" || true
       - name: run dev set
         env:
           PYTHONPATH: ${{ github.workspace }}/kitrepo
