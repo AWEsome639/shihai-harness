@@ -84,6 +84,7 @@ NOTE = (
     "\n\nA clash checker is pre-installed at {workdir}/tools/clash_check.py."
     " Run `python3 {workdir}/tools/clash_check.py <model.ifc>` on any model you"
     " produce; it exits non-zero when bounded boxes overlap by more than 2 mm."
+    " Iterate on the model until it reports HARD CLASHES: 0, not merely a lower count."
     "\n\nWhen you are done, reply with a short summary of what you delivered and"
     " where you put it."
 )
