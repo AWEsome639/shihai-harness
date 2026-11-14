@@ -80,7 +80,9 @@ NOTE = (
     " criteria - every numeric threshold, every gate, every 'must' - and check the"
     " deliverable against each one. If the workspace has a validator, checker, or"
     " scoring script, run it. Do not declare the work done until every gate you can"
-    " test passes; a model that is merely valid but violates a stated gate scores zero."
+    " test passes. If a stated gate has no ready-made checker, WRITE one and run it -"
+    " a clash count, a connectivity walk, a unit check - because a model that is"
+    " merely valid but violates a stated gate scores zero."
     "\n\nWhen you are done, reply with a short summary of what you delivered and"
     " where you put it."
 )
