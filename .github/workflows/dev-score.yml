@@ -1,0 +1,78 @@
+name: dev-score
+on:
+  workflow_dispatch:
+    inputs:
+      tasks:
+        description: 'comma-separated task ids'
+        default: 'fire-test-validation-memo'
+      trials:
+        default: '1'
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: entry
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: google-research/ple
+          path: kitrepo
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyyaml python-dotenv websockets
+      - name: install harbor
+        run: |
+          pip install uv
+          uv tool install harbor==0.20.0 --with websockets
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: start model relay
+        env:
+          MODEL_RELAY_TARGET: ${{ secrets.MODEL_BASE_URL }}
+          MODEL_RELAY_MODEL: ${{ secrets.MODEL_NAME }}
+          MODEL_RELAY_KEY: ${{ secrets.MODEL_API_KEY }}
+        run: |
+          nohup python entry/ci/model_relay.py > /tmp/relay.log 2>&1 &
+          ok=0
+          for i in $(seq 1 30); do sleep 1; curl -sf http://127.0.0.1:4100/v1/models >/dev/null && { ok=1; break; }; done
+          cat /tmp/relay.log
+          test "$ok" = 1 || { echo 'relay did not start'; exit 1; }
+      - name: run dev set
+        env:
+          PYTHONPATH: ${{ github.workspace }}/kitrepo
+          MODEL_PROXY_URL: http://127.0.0.1:4100/v1
+          MODEL_PROXY_KEY: relay
+          NO_PROXY: 127.0.0.1,localhost
+        run: |
+          cd kitrepo
+          python eval/run.py "${{ github.workspace }}/entry" \
+            --tasks-dir "${{ github.workspace }}/entry/data/tasks" \
+            --tasks "${{ inputs.tasks }}" --trials "${{ inputs.trials }}" \
+            --out "${{ github.workspace }}/out" || true
+          echo "--- results ---"
+          cat "${{ github.workspace }}/out/results.json" 2>/dev/null || echo none
+          echo "--- verifier files ---"
+          find "${{ github.workspace }}/out" -path '*/verifier/*' -type f 2>/dev/null | head -20
+          echo "--- grade.json ---"
+          for f in $(find "${{ github.workspace }}/out" -name 'grade*.json' 2>/dev/null | head -3); do
+            echo "== $f"; head -c 4000 "$f"; echo; done
+          echo "--- deliverables ---"
+          find "${{ github.workspace }}/out" -path '*/deliverables/*' -o -path '*/output/*' 2>/dev/null | head -20
+          echo "--- agent egress ---"
+          tail -6 $(find "${{ github.workspace }}/out" -name 'egress.log' 2>/dev/null | head -1) 2>/dev/null || echo none
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results
+          path: |
+            out/results.json
+            out/attempt1/jobs/dev/job.log
+            out/attempt1/jobs/dev/*/exception.txt
+            out/attempt1/jobs/dev/*/verifier/**
+            out/attempt1/jobs/dev/*/deliverables/**
+            out/attempt1/jobs/dev/*/agent/**
+            out/attempt1/jobs/dev/*/artifacts/**
+          if-no-files-found: warn
