@@ -72,6 +72,13 @@ NOTE = (
     " reply is not a deliverable and is not graded as one - a memo, report, or"
     " answer that exists only in your reply scores zero. Before you finish, list"
     " the output directory and confirm each required file is there and non-empty."
+    "\n\nWrite for a reviewer who scores each claim separately. Every conclusion you"
+    " reach must appear in the deliverable as its own plain, checkable sentence - not"
+    " implied, not buried in a paragraph, and not only in your reply. State the"
+    " magnitude, the direction, and what it rules in or out."
+    "\n\nBefore you finish, re-read the instruction and, for each question it asks,"
+    " confirm the deliverable contains an explicit sentence that answers it. If any"
+    " question is unanswered or only implied, fix the document first."
     "\n\nWhen you are done, reply with a short summary of what you delivered and"
     " where you put it."
 )
