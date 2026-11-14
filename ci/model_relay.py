@@ -52,6 +52,7 @@ class Handler(BaseHTTPRequestHandler):
         except Exception:
             pass
         path = self.path
+        print(f"REQ {self.command} {self.path} -> {TARGET}{path}", flush=True)
         # TARGET may already end with /v1; the client always sends /v1/...
         if TARGET.endswith("/v1") and path.startswith("/v1"):
             path = path[3:]
