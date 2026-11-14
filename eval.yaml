@@ -1,0 +1,10 @@
+name: Physical-Engineering’s Last Exam
+description: Physical-Engineering’s Last Exam evaluates AI agents on realistic engineering work across
+  structural, civil, electrical, and mechanical engineering. Each task runs in an isolated Harbor container
+  with the project's files, and a separate verifier grades the deliverables using automated checks, an
+  expert rubric judged by Claude Opus 5.5, or both. A model's score is its mean reward over the dev tasks.
+evaluation_framework: harbor
+tasks:
+- id: overall-score
+  config: default
+  split: dev

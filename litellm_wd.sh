@@ -1,0 +1,13 @@
+#!/bin/bash
+if curl -s --noproxy '*' -m 30 -X POST http://127.0.0.1:4000/v1/chat/completions \
+   -H "Content-Type: application/json" -H "Authorization: Bearer localdev" \
+   -d '{"model":"claude-opus-5-5","messages":[{"role":"user","content":"ok"}],"max_tokens":4}' \
+   2>/dev/null | grep -q '"content"'; then exit 0; fi
+pkill -f "litellm --config" 2>/dev/null; sleep 2
+cd /Users/a0000/.dsh/work/ple || exit 1
+env -u http_proxy -u https_proxy -u HTTP_PROXY -u HTTPS_PROXY -u no_proxy -u NO_PROXY \
+    MODEL_PROXY_KEY=localdev \
+    LITELLM_LOCAL_MODEL_COST_MAP=True \
+    nohup uv run --no-project --python 3.11 --with 'litellm[proxy]==1.90.0' litellm \
+    --config proxy-config.yaml --host 0.0.0.0 --port 4000 >> /tmp/litellm_t.log 2>&1 &
+echo "$(date '+%F %T') 已重启 LiteLLM" >> /tmp/litellm_wd.log

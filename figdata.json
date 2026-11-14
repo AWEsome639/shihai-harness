@@ -1,0 +1,234 @@
+[
+ {
+  "task": "backfeed-energization-reply",
+  "steps": 69,
+  "agent": 68,
+  "tools": 76,
+  "est_in": 98651,
+  "final_msg": true
+ },
+ {
+  "task": "cooling-water-flush-plan",
+  "steps": 111,
+  "agent": 110,
+  "tools": 123,
+  "est_in": 89732,
+  "final_msg": true
+ },
+ {
+  "task": "data-center-site-model",
+  "steps": 39,
+  "agent": 38,
+  "tools": 37,
+  "est_in": 40135,
+  "final_msg": true
+ },
+ {
+  "task": "data-hall-device-takeoff",
+  "steps": 151,
+  "agent": 150,
+  "tools": 180,
+  "est_in": 67405,
+  "final_msg": true
+ },
+ {
+  "task": "data-hall-mep-routing-offset",
+  "steps": 160,
+  "agent": 159,
+  "tools": 158,
+  "est_in": 419544,
+  "final_msg": true
+ },
+ {
+  "task": "data-hall-mep-routing",
+  "steps": 124,
+  "agent": 123,
+  "tools": 122,
+  "est_in": 309930,
+  "final_msg": true
+ },
+ {
+  "task": "division-26-specifications",
+  "steps": 137,
+  "agent": 136,
+  "tools": 140,
+  "est_in": 251054,
+  "final_msg": true
+ },
+ {
+  "task": "emergency-spillway-check",
+  "steps": 68,
+  "agent": 67,
+  "tools": 84,
+  "est_in": 134995,
+  "final_msg": true
+ },
+ {
+  "task": "engineers-estimate-check",
+  "steps": 39,
+  "agent": 38,
+  "tools": 46,
+  "est_in": 101302,
+  "final_msg": true
+ },
+ {
+  "task": "eor-review-corrections",
+  "steps": 125,
+  "agent": 124,
+  "tools": 127,
+  "est_in": 197480,
+  "final_msg": true
+ },
+ {
+  "task": "fill-compaction-acceptance",
+  "steps": 58,
+  "agent": 57,
+  "tools": 73,
+  "est_in": 94296,
+  "final_msg": true
+ },
+ {
+  "task": "fire-solve-convergence",
+  "steps": 65,
+  "agent": 64,
+  "tools": 85,
+  "est_in": 119440,
+  "final_msg": true
+ },
+ {
+  "task": "fire-test-validation-memo",
+  "steps": 65,
+  "agent": 64,
+  "tools": 82,
+  "est_in": 105656,
+  "final_msg": true
+ },
+ {
+  "task": "footing-settlement-verification",
+  "steps": 66,
+  "agent": 65,
+  "tools": 78,
+  "est_in": 124702,
+  "final_msg": true
+ },
+ {
+  "task": "foundation-strategy",
+  "steps": 73,
+  "agent": 72,
+  "tools": 78,
+  "est_in": 139119,
+  "final_msg": true
+ },
+ {
+  "task": "frame-extension-method",
+  "steps": 81,
+  "agent": 80,
+  "tools": 94,
+  "est_in": 58720,
+  "final_msg": true
+ },
+ {
+  "task": "heat-rejection-life-cycle-cost",
+  "steps": 115,
+  "agent": 114,
+  "tools": 119,
+  "est_in": 161976,
+  "final_msg": true
+ },
+ {
+  "task": "landscape-sheet-revision",
+  "steps": 60,
+  "agent": 59,
+  "tools": 72,
+  "est_in": 167704,
+  "final_msg": true
+ },
+ {
+  "task": "les-mesh-resolution",
+  "steps": 41,
+  "agent": 40,
+  "tools": 53,
+  "est_in": 85702,
+  "final_msg": true
+ },
+ {
+  "task": "lv-cable-sizing",
+  "steps": 76,
+  "agent": 75,
+  "tools": 78,
+  "est_in": 95475,
+  "final_msg": true
+ },
+ {
+  "task": "mv-conveyance-study",
+  "steps": 90,
+  "agent": 89,
+  "tools": 91,
+  "est_in": 148659,
+  "final_msg": true
+ },
+ {
+  "task": "permission-to-operate-memo",
+  "steps": 90,
+  "agent": 89,
+  "tools": 101,
+  "est_in": 116017,
+  "final_msg": true
+ },
+ {
+  "task": "pre-application-capacity-response",
+  "steps": 91,
+  "agent": 90,
+  "tools": 113,
+  "est_in": 136500,
+  "final_msg": true
+ },
+ {
+  "task": "roof-deck-design",
+  "steps": 97,
+  "agent": 96,
+  "tools": 97,
+  "est_in": 117893,
+  "final_msg": true
+ },
+ {
+  "task": "seismic-diaphragm-shear",
+  "steps": 94,
+  "agent": 93,
+  "tools": 94,
+  "est_in": 96512,
+  "final_msg": true
+ },
+ {
+  "task": "shoring-design-verification",
+  "steps": 69,
+  "agent": 68,
+  "tools": 82,
+  "est_in": 175446,
+  "final_msg": true
+ },
+ {
+  "task": "solar-supplemental-review",
+  "steps": 54,
+  "agent": 53,
+  "tools": 70,
+  "est_in": 61970,
+  "final_msg": true
+ },
+ {
+  "task": "solar-witness-test-package",
+  "steps": 22,
+  "agent": 21,
+  "tools": 23,
+  "est_in": 46939,
+  "final_msg": true
+ },
+ {
+  "task": "wind-diaphragm-shear",
+  "steps": 111,
+  "agent": 110,
+  "tools": 115,
+  "est_in": 72969,
+  "final_msg": true
+ }
+]

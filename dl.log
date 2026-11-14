@@ -1,0 +1,190 @@
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/config/examples/govinfo_ecfr_manifest.yaml
+Rate limited. Waiting 19.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/__init__.py
+Rate limited. Waiting 19.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/config/reference_config.yaml
+Rate limited. Waiting 19.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/checkpoint.py
+Rate limited. Waiting 19.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/cli.py
+Rate limited. Waiting 19.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/crawler/__init__.py
+Rate limited. Waiting 19.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/crawler/crawler.py
+Rate limited. Waiting 19.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fill-compaction-acceptance/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/crawler/downloader.py
+Rate limited. Waiting 18.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/EmptyState.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/DynamicSelect.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/ErrorDisplay.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/ExecuteButton.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/FileBase64Input.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/ModelCard.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/LoginButton.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/fire-solve-convergence/environment/tools/mcp_servers/mail/packages/mercor-mcp-shared/ui_generator/templates/user-api-tool-bench/components/ui/ModelDetail.tsx
+Rate limited. Waiting 60.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/framework.py
+No local file found. Retrying..
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/pipeline.py
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/sources.py
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/interfaces.py
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/stats.py
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/utils.py
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/pyproject.toml
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/footing-settlement-verification/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/pyrightconfig.json
+Rate limited. Waiting 65.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/csv_endpoints.py
+Rate limited. Waiting 49.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/detect_ui_drift.py
+No local file found. Retrying..
+Rate limited. Waiting 49.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/generate_openapi.py
+Rate limited. Waiting 49.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/generate_server_docs.py
+Rate limited. Waiting 48.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/generate_schema_sql.py
+Rate limited. Waiting 48.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/import_csv.py
+Rate limited. Waiting 48.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/logging_config.py
+Rate limited. Waiting 48.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/les-mesh-resolution/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/mcp_scripts/make-milestones
+Rate limited. Waiting 48.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mail/smoke_test/test_agent.py
+Rate limited. Waiting 36.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mail/uv.lock
+Rate limited. Waiting 36.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mysql/README.md
+Rate limited. Waiting 36.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mail/smoke_test/uv.lock
+Rate limited. Waiting 36.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mysql/mcp_servers/mysql_server/main.py
+Rate limited. Waiting 36.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mysql/mcp_servers/mysql_server/middleware/logging.py
+Rate limited. Waiting 36.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mysql/mcp_servers/mysql_server/middleware/__init__.py
+Rate limited. Waiting 36.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/permission-to-operate-memo/environment/tools/mcp_servers/mysql/mcp_servers/mysql_server/middleware/validation_error_sanitizer.py
+Rate limited. Waiting 35.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/10_drawings/structural/S-201_Roof_Framing_Plan_REV2.dxf
+Rate limited. Waiting 55.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/20_geotech/GEO-2019-118_Parcel_4B_SUPERSEDED.pdf
+Rate limited. Waiting 54.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/20_geotech/GEO-2026-071_Geotechnical_Building_B.pdf
+Rate limited. Waiting 54.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/20_survey/CDDC-SV-2026-041_Scan_Control_Report.pdf
+Rate limited. Waiting 54.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/20_survey/CP_control_points.csv
+Rate limited. Waiting 54.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/30_seismic/DAP-2_Diaphragm_Analysis_Protocol_REV1.pdf
+Rate limited. Waiting 53.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/30_seismic/PR-07_Peer_Review_Comment_7.pdf
+Rate limited. Waiting 53.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/seismic-diaphragm-shear/environment/filesystem/final_batch4__structural_task6_seismic_diaphragm_shear__blind/project/30_seismic/SDC-02_Structural_Design_Criteria_REV2.pdf
+Rate limited. Waiting 53.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/helpers/workday_help_field_check.py
+No local file found. Retrying..
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp.json
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/calendar_v2/.dockerignore
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/calendar_v2/README.md
+Rate limited. Waiting 66.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/calendar_v2/mcp_servers/calendar_server/main.py
+Rate limited. Waiting 65.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/calendar_v2/mcp_servers/calendar_server/middleware/injected_errors.py
+Rate limited. Waiting 64.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/calendar_v2/mcp_servers/calendar_server/middleware/logging.py
+Rate limited. Waiting 63.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/calendar_v2/mcp_servers/calendar_server/middleware/validation_error_sanitizer.py
+Rate limited. Waiting 63.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/auth_server/users.json
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/auth_server/utils/decorators.py
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/db_server/db/session.py
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/db_server/db/models.py
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/db_server/middleware/__init__.py
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/db_server/main.py
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/db_server/models.py
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-supplemental-review/environment/tools/mcp_servers/wiki_js_mcp/mcp_servers/db_server/pyrightconfig.json
+Rate limited. Waiting 78.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/extractors.py
+Rate limited. Waiting 87.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/pipeline.py
+Rate limited. Waiting 87.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/interfaces.py
+Rate limited. Waiting 87.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/sources.py
+Rate limited. Waiting 87.0s before retry [Retry 1/5].
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting GET https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/stats.py
+Rate limited. Waiting 87.0s before retry [Retry 1/5].
+No local file found. Retrying..
+No local file found. Retrying..
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/data_ingestion/utils.py
+Rate limited. Waiting 86.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/pyproject.toml
+Rate limited. Waiting 86.0s before retry [Retry 1/5].
+HTTP Error 429 thrown while requesting HEAD https://huggingface.co/datasets/google/physical-engineerings-last-exam/resolve/b3857a3fea39a695e18f845d4a88f29442e96e75/tasks/solar-witness-test-package/environment/tools/mcp_servers/pdfs/packages/mercor-mcp-shared/packages/data_ingestion/pyrightconfig.json
+Rate limited. Waiting 86.0s before retry [Retry 1/5].
+path=/Users/a0000/.dsh/work/ple/data

@@ -1,0 +1,635 @@
+{
+  "source": "canonical task export",
+  "eval_config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+  "eval_config_name": "Model Final Output",
+  "eval_defn_id": "output_llm_weighted",
+  "eval_config_values": {},
+  "default_judge_id": "judge_32b01b0b714b43f780366e4909db7793",
+  "criteria": [
+    {
+      "verifier_id": "ver_161bd9e104b7455baa2b6081c80137f8",
+      "verifier_index": 0,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the displacement common to both thermal-transmission criteria arises from a bias in the through-wall physics shared by both heat paths.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_4ef968d0687b490a977a666f5563de00",
+      "verifier_index": 1,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the lag appearing on the field-mean path rules out the steel-tie path as the sole source of the error.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_045b00ac2b7f44a68a28219c72e60089",
+      "verifier_index": 2,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the corrective scope is limited to the through-wall physics shared by both heat paths.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_4969d2e577684f23bfe8e7cee4ec7a3d",
+      "verifier_index": 3,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the larger spread between the governing point and the mean in the simulation is attributable to an under-predicted field mean.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_ce949aace45e4c7b92844ee873494809",
+      "verifier_index": 4,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the inherited bias is non-conservative.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_7bd8a78ca9484754b9c94dbe1fe33bf3",
+      "verifier_index": 5,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States, in the client-facing paragraph, that the certified 1-hour fire-resistance rating is unaffected by this finding.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_9b8256b017134bbfbad81c75239199e0",
+      "verifier_index": 6,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the agreement in criterion separation leaves the absolute accuracy of both heat paths undetermined.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_987beab7fd9a448fb15371a12b98a381",
+      "verifier_index": 7,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the field-mean path in the companion simulation lags the certified test by 13 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 4,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_bf36f5a33de64bcbacba6e5b918b8cb9",
+      "verifier_index": 8,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the corrective scope includes the exposed-face boundary condition.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_38269390b4284c9895c6aaf90fa7c91a",
+      "verifier_index": 9,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the corrective scope includes radiative exchange across the cavity.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_954181483c7e4bb4ade20dd37fefb3fa",
+      "verifier_index": 10,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the corrective scope includes the elevated-temperature bulk properties of the concrete.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Major",
+        "numerical_weight": 7,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_69eaf848214b40f2984260dd5832d406",
+      "verifier_index": 11,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the Phase 1 wildfire cases will predict unexposed-face temperatures lower than the assembly will actually reach under that exposure.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_2c98106a582c44f1b4cd40dffe632258",
+      "verifier_index": 12,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the restriction applies to every Phase 1 wildfire thermal result, including those already computed and those planned.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_e95d339a1fa444b8919aba0dbaa87f14",
+      "verifier_index": 13,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that model fidelity remains unestablished by this exercise.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_cc469af0217e46e289f997e29c1f6a0b",
+      "verifier_index": 14,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that only the certifying fire-protection professional engineer of record may act on a revised endurance value.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 6,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_a71508714d1344e0814a361522144145",
+      "verifier_index": 15,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the single-point path in the companion simulation lags the certified test by 13 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_75be0aaa761f461e84649a3da99bb579",
+      "verifier_index": 16,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that a future wildfire-relevant validation would report a model error.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_eaa77c8593c849f8ab711b93dd833bbc",
+      "verifier_index": 17,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the experimental value D adopted for the validation is 118 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_200831b34ba44b248689e6be7df14991",
+      "verifier_index": 18,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the model error is E = +13 min, with the positive sign retained.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_5308222a1efd4488939d4a3266b898a2",
+      "verifier_index": 19,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the acceptance criterion is 11.8 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_8e72460e9e89400b8a2275e3d2ccd721",
+      "verifier_index": 20,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the simulation prediction S is 131 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_48b5322e1a2e4f099a32b2932810f822",
+      "verifier_index": 21,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the average unexposed-face criterion in the companion simulation is crossed at 176 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_63acf09acb0747d1acae1f1238213838",
+      "verifier_index": 22,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the companion simulation is present on the file server only as results output.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_0d4d85afc5c94171b5619db74162b953",
+      "verifier_index": 23,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that no peer review checklist item is closed by the memorandum and that items 2, 3, 4, 5, 7, 9 and 10 remain open.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Critical",
+        "numerical_weight": 10,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_236f322c02c845f3ac4b5f945772c853",
+      "verifier_index": 24,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the wall assembly in the companion simulation is the assembly covered by the fire-resistance certification, supported by a parameter-by-parameter comparison against the certified geometry covering leaf thickness, cavity width and contents, overall thickness, aggregate, and the tie material, gauge, spacing and embedment.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 4,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_b96c023f3e2c461481d88894b32cda25",
+      "verifier_index": 25,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the validation uncertainty is u_val = +/-9 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_f502e47ac9624af99edc3222aefd5d1b",
+      "verifier_index": 26,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the absolute model error of 13 min exceeds the validation uncertainty.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_493f43395a844335a8f1a99823e43bb8",
+      "verifier_index": 27,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the absolute model error of 13 min exceeds the acceptance criterion.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_2d60f80472154b90b1976fd43ad25adc",
+      "verifier_index": 28,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the validation outcome for the companion simulation against the certified test is a failure.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_1f9e3d5fb7e643b0a17a5ae0ca00df2e",
+      "verifier_index": 29,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the largest simulation prediction that would have met the acceptance criterion is 129.8 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_da8011d49aaa4fae9313c7b9a80d7de1",
+      "verifier_index": 30,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the prediction recorded in the Section 7 stub of the Phase 1 draft report stands.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_71c98a32f374414386ab95c73fe14950",
+      "verifier_index": 31,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "Includes the stamp language: CFD thermal analysis only. Fire-resistance rating certified separately by others.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_e3056f4eed464d34824f8e1235a3c6f1",
+      "verifier_index": 32,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the memorandum retains the certified endurance as the experimental value in preference to the client-transmitted revision of 129 min.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_cdfa7f6b9cba4247990616f9d2599eb6",
+      "verifier_index": 33,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that a substantiated 129 min endurance would exceed the 120 min threshold for the 2-hour rung.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_701c6b85cc4d46c290faf135be424dbf",
+      "verifier_index": 34,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that a future wildfire-relevant validation would report a validation uncertainty alongside that error.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_eb812dfcc76a40638f1ab2560f364d47",
+      "verifier_index": 35,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that a future wildfire-relevant validation would compare that error against the firm acceptance criterion.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_ed6667137b9b464ea060fa9ec5ae5e16",
+      "verifier_index": 36,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the experimental value is taken from the certified third-party test report of record.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_15af1817488c4415a56598966b43ac3d",
+      "verifier_index": 37,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the documented run record required by the validation procedure is absent from the file server.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 6,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_744752999e704b3bb3989d87650efd60",
+      "verifier_index": 38,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that no run identifier is available to cite for the companion simulation.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Major",
+        "numerical_weight": 8,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_b1f0386e169a4a89b0a3e7dc02d4450b",
+      "verifier_index": 39,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that the separation between the two thermal-transmission criteria is 45 min in the certified test and 45 min in the companion simulation.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_3cc58db973a749caa7ccf740277a9b6a",
+      "verifier_index": 40,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that at governance the nine-point mean rise is approximately 96 degC in the certified test and approximately 90 degC in the companion simulation.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_386062e7b1d34e728d8d26083523005a",
+      "verifier_index": 41,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States that at governance the governing point stands approximately 85 degC above the mean in the certified test and approximately 91 degC above the mean in the companion simulation.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_a7fef759cb7c499abcb9260f55389ba9",
+      "verifier_index": 42,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States whether the corrective work identified in the memorandum has been started.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_26cbbba4ed5f4f43b602f6a29dd2feea",
+      "verifier_index": 43,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States the acceptance criterion and the largest passing prediction to one decimal place rather than rounding either to a whole minute.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_183cc5da43a34a6d8dc6ab81991a1aa2",
+      "verifier_index": 44,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "States the two criterion crossing times for the companion simulation as whole minutes rather than carrying their interpolated decimal values.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_ac21f7bd623d4575b4f862109156ff1e",
+      "verifier_index": 45,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "Includes the unit alongside every time and temperature value reported in the validation rollup.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_88b1a8f0686745d1bf732dbdbbb79ea2",
+      "verifier_index": 46,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "Includes one readable Word (.docx) validation memorandum file.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_196c5332ff934110a6795bd1401abe75",
+      "verifier_index": 47,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "Includes a short client-facing paragraph suitable to send Bianca on 10/10/2025.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    }
+  ],
+  "usage_note": ""
+}

@@ -1,0 +1,55 @@
+==> Downloading Homebrew API data
+✔︎ JSON API packages.arm64_golden_gate.jws.json
+==> Downloading bottle manifests
+✔︎ Bottle Manifest qemu (11.1.3)
+==> Would install 1 formula:
+qemu 11.1.3
+==> Would install 7 dependencies for qemu:
+capstone  5.0.9
+libyaml   0.2.5
+dtc       1.8.1
+libslirp  4.9.7
+libssh    0.12.2_1
+snappy    1.3.1
+vde       2.3.3
+==> Fetching downloads for: qemu
+✔︎ Bottle Manifest capstone (5.0.9)
+✔︎ Bottle Manifest libyaml (0.2.5)
+✔︎ Bottle Manifest dtc (1.8.1)
+✔︎ Bottle Manifest libslirp (4.9.7)
+✔︎ Bottle Manifest snappy (1.3.1)
+✔︎ Bottle Manifest libssh (0.12.2_1)
+✔︎ Bottle Manifest vde (2.3.3)
+✔︎ Bottle libyaml (0.2.5)
+✔︎ Bottle dtc (1.8.1)
+✔︎ Bottle libslirp (4.9.7)
+✔︎ Bottle libssh (0.12.2_1)
+✔︎ Bottle snappy (1.3.1)
+✔︎ Bottle capstone (5.0.9)
+✔︎ Bottle vde (2.3.3)
+✔︎ Bottle qemu (11.1.3)
+==> Installing dependencies for qemu: capstone, libyaml, dtc, libslirp, libssh, snappy and vde
+==> Installing qemu dependency: capstone (5.0.9)
+==> Pouring capstone--5.0.9.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/capstone/5.0.9: 31 files, 23.4MB
+==> Installing qemu dependency: libyaml (0.2.5)
+==> Pouring libyaml--0.2.5.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libyaml/0.2.5: 11 files, 342KB
+==> Installing qemu dependency: dtc (1.8.1)
+==> Pouring dtc--1.8.1.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/dtc/1.8.1: 19 files, 591.2KB
+==> Installing qemu dependency: libslirp (4.9.7)
+==> Pouring libslirp--4.9.7.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libslirp/4.9.7: 13 files, 434.7KB
+==> Installing qemu dependency: libssh (0.12.2_1)
+==> Pouring libssh--0.12.2_1.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/libssh/0.12.2_1: 25 files, 1.7MB
+==> Installing qemu dependency: snappy (1.3.1)
+==> Pouring snappy--1.3.1.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/snappy/1.3.1: 20 files, 173.4KB
+==> Installing qemu dependency: vde (2.3.3)
+==> Pouring vde--2.3.3.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/vde/2.3.3: 67 files, 1.2MB
+==> Installing qemu
+==> Pouring qemu--11.1.3.arm64_golden_gate.bottle.tar.gz
+🍺  /opt/homebrew/Cellar/qemu/11.1.3: 170 files, 729.2MB

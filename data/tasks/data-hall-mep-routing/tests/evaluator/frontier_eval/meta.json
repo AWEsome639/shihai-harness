@@ -1,0 +1,84 @@
+{
+  "world_id": "dc_model__hall_seed000_d000__mep_routing",
+  "variant": "mep_routing",
+  "instance": "hall_seed000_d000",
+  "seed": 0,
+  "difficulty": 0.0,
+  "difficulty_level": 0,
+  "candidate_destination": "output/solution.py",
+  "model_destination": "output/model.ifc",
+  "stub_sha256": "413c29067cc8329aff6ac8371c025657a5d8c6e3679e5d6bbfd9eb3203ffa963",
+  "l_opt_mm": 260601.59999999998,
+  "sheets": [
+    "A-101",
+    "A-301",
+    "A-601",
+    "A-602",
+    "M-101",
+    "E-101",
+    "F-101"
+  ],
+  "element_kinds": [
+    "rack",
+    "crah",
+    "pdu",
+    "raised_floor",
+    "containment",
+    "column",
+    "sprinkler",
+    "cable_tray",
+    "busway",
+    "chw_pipe"
+  ],
+  "graded_thresholds": {
+    "CLEAR_HEIGHT": {
+      "value": 2600.0,
+      "unit": "mm",
+      "ref": "TIA-942 5.3.4.3 / TIA-942-B-2017 6.4.2.4"
+    },
+    "SPRINKLER_CLEARANCE": {
+      "value": 460.0,
+      "unit": "mm",
+      "ref": "TIA-942 5.3.4.3 / TIA-942-B-2017 6.4.2.4 + Annex C"
+    },
+    "SPRINKLER_OBSTRUCTION_OFFSET_MAX": {
+      "value": 610.0,
+      "unit": "mm",
+      "ref": "NFPA 13 (2019, 2022) 10.2.7.2.1.3"
+    },
+    "OBSTRUCTION_WIDTH_NEEDING_SPRINKLER": {
+      "value": 1200.0,
+      "unit": "mm",
+      "ref": "NFPA 13 (2019, 2022) 9.5.5.3.1 / 10.2.7.4.2"
+    },
+    "TRAY_STACK_HEADROOM": {
+      "value": 300.0,
+      "unit": "mm",
+      "ref": "ANSI/TIA-569-B, cited in ANSI/TIA-942 7.3.2"
+    },
+    "TRAY_BELOW_TILE": {
+      "value": 20.0,
+      "unit": "mm",
+      "ref": "TIA-942-B-2017 8.6.2"
+    },
+    "DEDICATED_ELECTRICAL_SPACE": {
+      "value": 1800.0,
+      "unit": "mm",
+      "ref": "NFPA 70 (NEC) 110.26(E)(1)(a)"
+    },
+    "POWER_TELECOM_SEPARATION": {
+      "value": 300.0,
+      "unit": "mm",
+      "ref": "ANSI/TIA-942 7.3.1 Table 2"
+    },
+    "CHW_INSULATION_THICKNESS": {
+      "value": 25.4,
+      "unit": "mm",
+      "ref": "ASHRAE 90.1 Table 6.8.3"
+    }
+  },
+  "recovery_tolerance_mm": 150,
+  "env_name": "dcmodel",
+  "script_timeout_s": 300,
+  "timeout_s": 900
+}

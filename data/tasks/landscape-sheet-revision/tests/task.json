@@ -1,0 +1,242 @@
+{
+  "task_id": "task",
+  "task_name": "Phase 3 landscape revision ahead of the 11/30 resubmittal",
+  "world_id": "world",
+  "prompt": "Garrett wants the L-4 street tree revision worked into the landscape sheets and the package back to Yeoman for the 11/30 resubmittal. Check it against the current landscape sheets and the resubmittal tracker, then tell me whether we can commit to that date on this revision and what has to happen first. One memo to Callaway for my signature, dated 10/31/2026.",
+  "verifiers": [
+    {
+      "verifier_id": "ver_73aa8d86564345b4bf59d1f41a0c6841",
+      "verifier_index": 0,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that Condition 14 of the TM-22-500041 approval letter dated 03/14/2022 governs whether the revision may proceed to staff-level action.",
+        "criterion_type": "Extraction",
+        "severity_level": "Major",
+        "numerical_weight": 7,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_033cda2d5eb8419a8d99ec24b579f0ad",
+      "verifier_index": 1,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that Condition 14 covers landscape and streetscape treatments in common areas.",
+        "criterion_type": "Extraction",
+        "severity_level": "Major",
+        "numerical_weight": 5,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_db8751c94a8049e48db5ba77f1fe2fb4",
+      "verifier_index": 2,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that the street tree revision falls within the scope of Condition 14.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Major",
+        "numerical_weight": 8,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_724cd6dabc384c4db0acc5d40da55a25",
+      "verifier_index": 3,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that the streetscape planting area is common area owned by the homeowners association.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_40270265e4064a18b49e8b4af0a8dcdc",
+      "verifier_index": 4,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that no significant-change determination has been issued for this revision.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Major",
+        "numerical_weight": 6,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_143ee82553e349519e5e2b2d1b27a446",
+      "verifier_index": 5,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that Clark County Comprehensive Planning is the party that makes the significant-change determination.",
+        "criterion_type": "Extraction",
+        "severity_level": "Major",
+        "numerical_weight": 6,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_f2191a9e1d154865b53f37e570cb8c01",
+      "verifier_index": 6,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that applications for an Enterprise Town Advisory Board meeting are due 21 days before the meeting.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 4,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_5b3c3f5f37334bd3bf7f087ca5eeaf47",
+      "verifier_index": 7,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that the application window for the 11/18/2026 Enterprise Town Advisory Board meeting closed on 10/28/2026.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Major",
+        "numerical_weight": 7,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_249c4b646cf1428ca397b9516e6eadc5",
+      "verifier_index": 8,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that 12/16/2026 is the next available Enterprise Town Advisory Board meeting.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_3c433e4251214d4faaa015be4d7cad62",
+      "verifier_index": 9,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that Town Advisory Board action is a recommendation forwarded to the Planning Commission.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_c62176fac73342f58e1bc45368df3e65",
+      "verifier_index": 10,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that design review must occur before staff-level action on the resubmittal.",
+        "criterion_type": "Extraction",
+        "severity_level": "Major",
+        "numerical_weight": 5,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_ea41dacead65494ab87fa2ea5f061757",
+      "verifier_index": 11,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that the 11/30/2026 resubmittal date cannot be committed until Comprehensive Planning issues the significant-change determination.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Major",
+        "numerical_weight": 10,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": true
+      }
+    },
+    {
+      "verifier_id": "ver_2b00bfdc49cb4abb9e3efad025e49328",
+      "verifier_index": 12,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that obtaining Comprehensive Planning's written determination is the immediate next action.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 3,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_a849bb61a10e43c18d9a2502c1eb64c2",
+      "verifier_index": 13,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that the number of street trees shown on the current landscape sheets equals 58.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_f3ca69d51dde47608c7171ff7837d38c",
+      "verifier_index": 14,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that the number of street trees required by the one-per-twenty-linear-feet standard equals 208.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 1,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_b632da9783214a3f912b5a948ad59002",
+      "verifier_index": 15,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The response states that the revised planting plan required by comment L-4 must be sealed by the landscape architect of record.",
+        "criterion_type": "Reasoning",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "All output (modified files and final message in console)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_86b8f28b55484f4abdee3fefee4d6a81",
+      "verifier_index": 16,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "Includes one readable memo document.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    },
+    {
+      "verifier_id": "ver_b54d80815e8e4758a8db18fd47b95049",
+      "verifier_index": 17,
+      "config_id": "6a78e9f3-fd33-4d74-b753-f3981cce21ca",
+      "config_input": {
+        "criteria": "The delivered memo is addressed to Callaway and dated 10/31/2026.",
+        "criterion_type": "Extraction",
+        "severity_level": "Minor",
+        "numerical_weight": 2,
+        "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+        "is_primary_objective": false
+      }
+    }
+  ]
+}

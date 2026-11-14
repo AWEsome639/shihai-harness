@@ -1,0 +1,19 @@
+# 官方榜单（ple-bench.com，56 道隐藏测试任务）：
+#   claude-opus-5-5 → 0.483（全场最高，claude-code 原生 harness）
+#   gemini-4-argon  → 0.406
+#   gemini-3.8-flash→ 0.275
+#   glm-5.2         → 0.250
+#   gemini-3.1-pro  → 0.138
+#   gpt-oss-120b    → 0.038
+#   gemma-4-26b     → 0.042
+#   llama-4-maverick→ 0.007
+# 选最强的那个：模型选择本身造成 69 倍差距。
+name: shihai-harness
+model_api: google-cloud/claude-opus-5-5
+install: >-
+  uv venv --python 3.12 /opt/harness/venv
+  && uv pip install --python /opt/harness/venv/bin/python -r {src}/requirements.txt
+serve: /opt/harness/venv/bin/python {src}/serve.py
+env:
+  # Claude 窗口大，压缩阈值放到 150k
+  COMPACT_AT_TOKENS: "150000"

@@ -1,0 +1,10 @@
+[PASS] submission.yaml: shihai-harness: google-cloud/claude-opus-5-5, egress none
+[PASS] files: 14 files
+[PASS] build: bundle 115 MiB, reused: files, install and builder unchanged since the last build (--rebuild to build anyway); image plebench-serve:568d6da78d9411f8
+[PASS] model: Claude Opus 5.5 answered in 1.3 s through the egress proxy
+[PASS] listen: websocket accepted 15 s after start
+[PASS] smoke: hello.txt written, done in 7 s with 1 request(s), 2150 in / 66 out tokens; final message 'done'
+[PASS] mcp: mcp.txt written, done in 11 s with 5 request(s), 3486 in / 91 out tokens; final message 'done'
+[WARN] artifacts: no artifacts/ yet: `uv run python eval/run.py /Users/a0000/.dsh/work/ple/my-harness` writes it
+
+the stages that ran pass, but a submission also holds the harness's dev-set artifacts: run `uv run python eval/run.py <entry>`, which writes artifacts/ into the entry, then commit it with the harness (docs/artifacts.md) (logs in /Users/a0000/.cache/plebench/shihai-harness)

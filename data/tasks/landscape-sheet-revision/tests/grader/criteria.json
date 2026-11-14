@@ -1,0 +1,171 @@
+{
+  "_derived": "The task's rubric, in the grader's criteria shape.",
+  "_source": "verifiers[]",
+  "task_id": "task",
+  "score_key": "passed_score",
+  "family": "weighted_rubric",
+  "criteria": [
+    {
+      "index": 0,
+      "criteria": "The response states that Condition 14 of the TM-22-500041 approval letter dated 03/14/2022 governs whether the revision may proceed to staff-level action.",
+      "criterion_type": "Extraction",
+      "severity_level": "Major",
+      "numerical_weight": 7,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 1,
+      "criteria": "The response states that Condition 14 covers landscape and streetscape treatments in common areas.",
+      "criterion_type": "Extraction",
+      "severity_level": "Major",
+      "numerical_weight": 5,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 2,
+      "criteria": "The response states that the street tree revision falls within the scope of Condition 14.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Major",
+      "numerical_weight": 8,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 3,
+      "criteria": "The response states that the streetscape planting area is common area owned by the homeowners association.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 4,
+      "criteria": "The response states that no significant-change determination has been issued for this revision.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Major",
+      "numerical_weight": 6,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 5,
+      "criteria": "The response states that Clark County Comprehensive Planning is the party that makes the significant-change determination.",
+      "criterion_type": "Extraction",
+      "severity_level": "Major",
+      "numerical_weight": 6,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 6,
+      "criteria": "The response states that applications for an Enterprise Town Advisory Board meeting are due 21 days before the meeting.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 4,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 7,
+      "criteria": "The response states that the application window for the 11/18/2026 Enterprise Town Advisory Board meeting closed on 10/28/2026.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Major",
+      "numerical_weight": 7,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 8,
+      "criteria": "The response states that 12/16/2026 is the next available Enterprise Town Advisory Board meeting.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 9,
+      "criteria": "The response states that Town Advisory Board action is a recommendation forwarded to the Planning Commission.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 10,
+      "criteria": "The response states that design review must occur before staff-level action on the resubmittal.",
+      "criterion_type": "Extraction",
+      "severity_level": "Major",
+      "numerical_weight": 5,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 11,
+      "criteria": "The response states that the 11/30/2026 resubmittal date cannot be committed until Comprehensive Planning issues the significant-change determination.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Major",
+      "numerical_weight": 10,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 12,
+      "criteria": "The response states that obtaining Comprehensive Planning's written determination is the immediate next action.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 13,
+      "criteria": "The response states that the number of street trees shown on the current landscape sheets equals 58.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 14,
+      "criteria": "The response states that the number of street trees required by the one-per-twenty-linear-feet standard equals 208.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 15,
+      "criteria": "The response states that the revised planting plan required by comment L-4 must be sealed by the landscape architect of record.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "All output (modified files and final message in console)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 16,
+      "criteria": "Includes one readable memo document.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 17,
+      "criteria": "The delivered memo is addressed to Callaway and dated 10/31/2026.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    }
+  ]
+}

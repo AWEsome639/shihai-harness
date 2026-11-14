@@ -1,0 +1,441 @@
+{
+  "_derived": "The task's rubric, in the grader's criteria shape.",
+  "_source": "verifiers[]",
+  "task_id": "task",
+  "score_key": "passed_score",
+  "family": "weighted_rubric",
+  "criteria": [
+    {
+      "index": 0,
+      "criteria": "States that the displacement common to both thermal-transmission criteria arises from a bias in the through-wall physics shared by both heat paths.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 1,
+      "criteria": "States that the lag appearing on the field-mean path rules out the steel-tie path as the sole source of the error.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 2,
+      "criteria": "States that the corrective scope is limited to the through-wall physics shared by both heat paths.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 3,
+      "criteria": "States that the larger spread between the governing point and the mean in the simulation is attributable to an under-predicted field mean.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 4,
+      "criteria": "States that the inherited bias is non-conservative.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 5,
+      "criteria": "States, in the client-facing paragraph, that the certified 1-hour fire-resistance rating is unaffected by this finding.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 6,
+      "criteria": "States that the agreement in criterion separation leaves the absolute accuracy of both heat paths undetermined.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 7,
+      "criteria": "States that the field-mean path in the companion simulation lags the certified test by 13 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 4,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 8,
+      "criteria": "States that the corrective scope includes the exposed-face boundary condition.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 9,
+      "criteria": "States that the corrective scope includes radiative exchange across the cavity.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 10,
+      "criteria": "States that the corrective scope includes the elevated-temperature bulk properties of the concrete.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Major",
+      "numerical_weight": 7,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 11,
+      "criteria": "States that the Phase 1 wildfire cases will predict unexposed-face temperatures lower than the assembly will actually reach under that exposure.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 12,
+      "criteria": "States that the restriction applies to every Phase 1 wildfire thermal result, including those already computed and those planned.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 13,
+      "criteria": "States that model fidelity remains unestablished by this exercise.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 14,
+      "criteria": "States that only the certifying fire-protection professional engineer of record may act on a revised endurance value.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 6,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 15,
+      "criteria": "States that the single-point path in the companion simulation lags the certified test by 13 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 16,
+      "criteria": "States that a future wildfire-relevant validation would report a model error.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 17,
+      "criteria": "States that the experimental value D adopted for the validation is 118 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 18,
+      "criteria": "States that the model error is E = +13 min, with the positive sign retained.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 19,
+      "criteria": "States that the acceptance criterion is 11.8 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 20,
+      "criteria": "States that the simulation prediction S is 131 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 21,
+      "criteria": "States that the average unexposed-face criterion in the companion simulation is crossed at 176 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 22,
+      "criteria": "States that the companion simulation is present on the file server only as results output.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 23,
+      "criteria": "States that no peer review checklist item is closed by the memorandum and that items 2, 3, 4, 5, 7, 9 and 10 remain open.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Critical",
+      "numerical_weight": 10,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 24,
+      "criteria": "States that the wall assembly in the companion simulation is the assembly covered by the fire-resistance certification, supported by a parameter-by-parameter comparison against the certified geometry covering leaf thickness, cavity width and contents, overall thickness, aggregate, and the tie material, gauge, spacing and embedment.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 4,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 25,
+      "criteria": "States that the validation uncertainty is u_val = +/-9 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 26,
+      "criteria": "States that the absolute model error of 13 min exceeds the validation uncertainty.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 27,
+      "criteria": "States that the absolute model error of 13 min exceeds the acceptance criterion.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 28,
+      "criteria": "States that the validation outcome for the companion simulation against the certified test is a failure.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 29,
+      "criteria": "States that the largest simulation prediction that would have met the acceptance criterion is 129.8 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 30,
+      "criteria": "States that the prediction recorded in the Section 7 stub of the Phase 1 draft report stands.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 31,
+      "criteria": "Includes the stamp language: CFD thermal analysis only. Fire-resistance rating certified separately by others.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 32,
+      "criteria": "States that the memorandum retains the certified endurance as the experimental value in preference to the client-transmitted revision of 129 min.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 33,
+      "criteria": "States that a substantiated 129 min endurance would exceed the 120 min threshold for the 2-hour rung.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 34,
+      "criteria": "States that a future wildfire-relevant validation would report a validation uncertainty alongside that error.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 35,
+      "criteria": "States that a future wildfire-relevant validation would compare that error against the firm acceptance criterion.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 36,
+      "criteria": "States that the experimental value is taken from the certified third-party test report of record.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 37,
+      "criteria": "States that the documented run record required by the validation procedure is absent from the file server.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 6,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 38,
+      "criteria": "States that no run identifier is available to cite for the companion simulation.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Major",
+      "numerical_weight": 8,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": true
+    },
+    {
+      "index": 39,
+      "criteria": "States that the separation between the two thermal-transmission criteria is 45 min in the certified test and 45 min in the companion simulation.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 40,
+      "criteria": "States that at governance the nine-point mean rise is approximately 96 degC in the certified test and approximately 90 degC in the companion simulation.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 41,
+      "criteria": "States that at governance the governing point stands approximately 85 degC above the mean in the certified test and approximately 91 degC above the mean in the companion simulation.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 42,
+      "criteria": "States whether the corrective work identified in the memorandum has been started.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 3,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 43,
+      "criteria": "States the acceptance criterion and the largest passing prediction to one decimal place rather than rounding either to a whole minute.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 44,
+      "criteria": "States the two criterion crossing times for the companion simulation as whole minutes rather than carrying their interpolated decimal values.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 45,
+      "criteria": "Includes the unit alongside every time and temperature value reported in the validation rollup.",
+      "criterion_type": "Reasoning",
+      "severity_level": "Minor",
+      "numerical_weight": 1,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 46,
+      "criteria": "Includes one readable Word (.docx) validation memorandum file.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    },
+    {
+      "index": 47,
+      "criteria": "Includes a short client-facing paragraph suitable to send Bianca on 10/10/2025.",
+      "criterion_type": "Extraction",
+      "severity_level": "Minor",
+      "numerical_weight": 2,
+      "expected_file_type": "Word Documents (.docx, .doc, .odt)",
+      "is_primary_objective": false
+    }
+  ]
+}
