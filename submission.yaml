@@ -13,7 +13,7 @@
 # limitations under the License.
 
 name: my-harness
-model_api: google-cloud/gpt-oss-120b
+model_api: google-cloud/claude-opus-5-5
 install: >-
   npm ci --prefix {src} --no-fund --no-audit
   && uv venv --python 3.12 /opt/harness/venv
