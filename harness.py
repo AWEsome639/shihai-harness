@@ -83,6 +83,9 @@ NOTE = (
     " test passes. If a stated gate has no ready-made checker, WRITE one and run it -"
     " a clash count, a connectivity walk, a unit check - because a model that is"
     " merely valid but violates a stated gate scores zero."
+    "\n\nA clash checker is pre-installed at {workdir}/tools/clash_check.py."
+    " Run `python3 {workdir}/tools/clash_check.py <model.ifc>` on any model you"
+    " produce; it exits non-zero when bounded boxes overlap by more than 2 mm."
     "\n\nWhen you are done, reply with a short summary of what you delivered and"
     " where you put it."
 )
@@ -255,6 +258,15 @@ async def solve(session: taskbridge.Session) -> str:
   Raises:
     RuntimeError: If Pi exits before the model produces any assistant reply.
   """
+  tool_src = pathlib.Path(__file__).with_name("tools") / "clash_check.py"
+  if tool_src.is_file():
+    try:
+      await session.write_file(
+          f"{session.workdir}/tools/clash_check.py", tool_src.read_text()
+      )
+    except Exception:  # a missing helper must not fail the run
+      pass
+
   with tempfile.TemporaryDirectory(
       prefix="pi-",
       dir=os.environ.get("HOME") or None,
