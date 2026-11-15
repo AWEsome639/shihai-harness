@@ -81,12 +81,10 @@ NOTE = (
     " deliverable against each one. If the workspace has a validator, checker, or"
     " scoring script, run it. Do not declare the work done until every gate you can"
     " test passes; a model that is merely valid but violates a stated gate scores zero."
-    "\n\nA gate inspector is pre-installed at {workdir}/tools/inspect.py."
-    " Run `python3 {workdir}/tools/inspect.py <model.ifc>` on every model you"
-    " produce. It reports BOTH graded gates in one block: hard clashes from"
-    " overlapping solids, and rack rows left under-covered by any of the three"
-    " services. Iterate until it prints BOTH GATES PASS - the two counts trade"
-    " against each other, so improving one alone is not progress."
+    "\n\nA clash checker is pre-installed at {workdir}/tools/clash_check.py."
+    " Run `python3 {workdir}/tools/clash_check.py <model.ifc>` on any model you"
+    " produce; it exits non-zero when bounded boxes overlap by more than 2 mm."
+    " Iterate on the model until it reports HARD CLASHES: 0, not merely a lower count."
     "\n\nWhen you are done, reply with a short summary of what you delivered and"
     " where you put it."
 )
@@ -259,11 +257,11 @@ async def solve(session: taskbridge.Session) -> str:
   Raises:
     RuntimeError: If Pi exits before the model produces any assistant reply.
   """
-  tools_dir = pathlib.Path(__file__).with_name("tools")
-  for helper in sorted(tools_dir.glob("*.py")) if tools_dir.is_dir() else ():
+  tool_src = pathlib.Path(__file__).with_name("tools") / "clash_check.py"
+  if tool_src.is_file():
     try:
       await session.write_file(
-          f"{session.workdir}/tools/{helper.name}", helper.read_text()
+          f"{session.workdir}/tools/clash_check.py", tool_src.read_text()
       )
     except Exception:  # a missing helper must not fail the run
       pass
