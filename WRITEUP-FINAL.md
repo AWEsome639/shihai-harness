@@ -111,7 +111,7 @@ coupled, which is what a harness without a separate planner looks like.
 
 The failure was in the pipe, not the reasoning. Early passes scored 0.0 while all 29 tasks finished.
 The agent never issued a successful model call: the model name selects the wire protocol. Once fixed, it
-ran - 77 calls, a 54 kB memo - and still scored zero: it existed, but no claim could be scored alone.
-One change - each conclusion as its own checkable sentence - moved it from 0.0 to **0.529**.
-A second dev task, three-dimensional routing, stayed at zero: a clash checker drove hard
-clashes from 36 to 0, but connectivity still failed.
+ran - 77 calls, a 54 kB memo - and still scored zero: no claim could be scored alone.
+One change - each conclusion as its own checkable sentence - moved it from 0.0 to **0.529** on the dev-proxy model.
+A second dev task, three-dimensional routing, stayed at zero: our clash checker took its count from
+36 to 0, yet the official scorer found three, and connectivity failed.
