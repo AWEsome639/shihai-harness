@@ -85,6 +85,10 @@ NOTE = (
     " Run `python3 {workdir}/tools/clash_check.py <model.ifc>` on any model you"
     " produce; it exits non-zero when bounded boxes overlap by more than 2 mm."
     " Iterate on the model until it reports HARD CLASHES: 0, not merely a lower count."
+    "\nA gate in the instruction usually has several independent legs, and passing"
+    " one is not passing the gate. Split each gate into its separate conditions,"
+    " check them one by one, and say in your summary which you could test and which"
+    " you could not - a leg you cannot test is not a leg that passes."
     "\n\nWhen you are done, reply with a short summary of what you delivered and"
     " where you put it."
 )
