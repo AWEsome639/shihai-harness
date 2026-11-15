@@ -1,0 +1,839 @@
+﻿2026-11-15T16:46:23.7412301Z Current runner version: '2.338.2'
+2026-11-15T16:46:23.7437968Z ##[group]Runner Image Provisioner
+2026-11-15T16:46:23.7438917Z Hosted Compute Agent
+2026-11-15T16:46:23.7439433Z Version: 20261103.629
+2026-11-15T16:46:23.7439998Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-15T16:46:23.7440741Z Build Date: 2026-11-03T17:26:59Z
+2026-11-15T16:46:23.7441352Z Worker ID: {1a0d72fd-e88c-487b-82b1-68979123491e}
+2026-11-15T16:46:23.7442084Z Region: centralus
+2026-11-15T16:46:23.7442612Z Cloud: Azure
+2026-11-15T16:46:23.7443072Z ##[endgroup]
+2026-11-15T16:46:23.7444601Z ##[group]Operating System
+2026-11-15T16:46:23.7445225Z Ubuntu
+2026-11-15T16:46:23.7445735Z 26.04.1
+2026-11-15T16:46:23.7446197Z LTS
+2026-11-15T16:46:23.7446902Z ##[endgroup]
+2026-11-15T16:46:23.7447481Z ##[group]Runner Image
+2026-11-15T16:46:23.7448084Z Image: ubuntu-26.04
+2026-11-15T16:46:23.7448632Z Version: 20261111.196.1
+2026-11-15T16:46:23.7449777Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-15T16:46:23.7451233Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-15T16:46:23.7452125Z ##[endgroup]
+2026-11-15T16:46:23.7453266Z ##[group]GITHUB_TOKEN Permissions
+2026-11-15T16:46:23.7455694Z Contents: read
+2026-11-15T16:46:23.7456220Z Metadata: read
+2026-11-15T16:46:23.7456754Z Packages: read
+2026-11-15T16:46:23.7457310Z ##[endgroup]
+2026-11-15T16:46:23.7459293Z Secret source: Actions
+2026-11-15T16:46:23.7460199Z Cache mode: write
+2026-11-15T16:46:23.7460867Z Prepare workflow directory
+2026-11-15T16:46:23.7918964Z Prepare all required actions
+2026-11-15T16:46:23.7965402Z Getting action download info
+2026-11-15T16:46:24.0665405Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-15T16:46:24.2046534Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-15T16:46:24.3060966Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-15T16:46:24.5797728Z Complete job name: score
+2026-11-15T16:46:24.6353344Z ##[group]Run actions/checkout@v4
+2026-11-15T16:46:24.6353826Z with:
+2026-11-15T16:46:24.6354099Z   path: entry
+2026-11-15T16:46:24.6354501Z   fetch-depth: 0
+2026-11-15T16:46:24.6354791Z   repository: AWEsome639/shihai-harness
+2026-11-15T16:46:24.6357036Z   token: ***
+2026-11-15T16:46:24.6357300Z   ssh-strict: true
+2026-11-15T16:46:24.6357574Z   ssh-user: git
+2026-11-15T16:46:24.6357877Z   persist-credentials: true
+2026-11-15T16:46:24.6358200Z   clean: true
+2026-11-15T16:46:24.6358488Z   sparse-checkout-cone-mode: true
+2026-11-15T16:46:24.6358830Z   fetch-tags: false
+2026-11-15T16:46:24.6359260Z   show-progress: true
+2026-11-15T16:46:24.6359671Z   lfs: false
+2026-11-15T16:46:24.6359962Z   submodules: false
+2026-11-15T16:46:24.6360303Z   set-safe-directory: true
+2026-11-15T16:46:24.6360628Z   allow-unsafe-pr-checkout: false
+2026-11-15T16:46:24.6361053Z ##[endgroup]
+2026-11-15T16:46:24.8992974Z Syncing repository: AWEsome639/shihai-harness
+2026-11-15T16:46:24.9059483Z ##[group]Getting Git version info
+2026-11-15T16:46:24.9061450Z Working directory is '/home/runner/work/shihai-harness/shihai-harness/entry'
+2026-11-15T16:46:24.9063894Z [command]/usr/bin/git version
+2026-11-15T16:46:24.9065196Z git version 2.56.1
+2026-11-15T16:46:24.9068945Z ##[endgroup]
+2026-11-15T16:46:24.9075043Z Temporarily overriding HOME='/home/runner/work/_temp/13a88f24-bb76-4f26-98ee-c21b2ad63b75' before making global git config changes
+2026-11-15T16:46:24.9078119Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T16:46:24.9080714Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/entry
+2026-11-15T16:46:24.9084700Z ##[group]Initializing the repository
+2026-11-15T16:46:24.9086445Z [command]/usr/bin/git init /home/runner/work/shihai-harness/shihai-harness/entry
+2026-11-15T16:46:24.9088632Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-15T16:46:24.9090808Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-15T16:46:24.9092698Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-15T16:46:24.9094323Z hint: call:
+2026-11-15T16:46:24.9095054Z hint:
+2026-11-15T16:46:24.9095933Z hint: 	git config --global init.defaultBranch <name>
+2026-11-15T16:46:24.9097238Z hint:
+2026-11-15T16:46:24.9098306Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-15T16:46:24.9100854Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-15T16:46:24.9112776Z hint:
+2026-11-15T16:46:24.9118848Z hint: 	git branch -m <name>
+2026-11-15T16:46:24.9119756Z hint:
+2026-11-15T16:46:24.9120957Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-15T16:46:24.9123602Z Initialized empty Git repository in /home/runner/work/shihai-harness/shihai-harness/entry/.git/
+2026-11-15T16:46:24.9142771Z [command]/usr/bin/git remote add origin https://github.com/AWEsome639/shihai-harness
+2026-11-15T16:46:24.9199783Z ##[endgroup]
+2026-11-15T16:46:24.9201077Z ##[group]Disabling automatic garbage collection
+2026-11-15T16:46:24.9202370Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-15T16:46:24.9283236Z ##[endgroup]
+2026-11-15T16:46:24.9284722Z ##[group]Setting up auth
+2026-11-15T16:46:24.9286086Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T16:46:24.9335075Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T16:46:25.0116949Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T16:46:25.0122467Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T16:46:25.0187163Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T16:46:25.0217081Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T16:46:25.0448101Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-15T16:46:25.0487713Z ##[endgroup]
+2026-11-15T16:46:25.0489481Z ##[group]Fetching the repository
+2026-11-15T16:46:25.0496766Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-11-15T16:46:25.9403894Z From https://github.com/AWEsome639/shihai-harness
+2026-11-15T16:46:25.9412726Z  * [new branch]      main       -> origin/main
+2026-11-15T16:46:25.9415891Z [command]/usr/bin/git branch --list --remote origin/main
+2026-11-15T16:46:25.9430534Z   origin/main
+2026-11-15T16:46:25.9515855Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-11-15T16:46:25.9517424Z 1b7ae38d131f82db90b4a18fdaedd47349fa1164
+2026-11-15T16:46:25.9520254Z ##[endgroup]
+2026-11-15T16:46:25.9534801Z ##[group]Determining the checkout info
+2026-11-15T16:46:25.9535918Z ##[endgroup]
+2026-11-15T16:46:25.9536700Z [command]/usr/bin/git sparse-checkout disable
+2026-11-15T16:46:25.9546376Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-15T16:46:25.9590442Z ##[group]Checking out the ref
+2026-11-15T16:46:25.9592313Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-15T16:46:26.0686380Z Switched to a new branch 'main'
+2026-11-15T16:46:26.0705380Z branch 'main' set up to track 'origin/main'.
+2026-11-15T16:46:26.0745338Z ##[endgroup]
+2026-11-15T16:46:26.0805008Z [command]/usr/bin/git log -1 --format=%H
+2026-11-15T16:46:26.0806280Z 1b7ae38d131f82db90b4a18fdaedd47349fa1164
+2026-11-15T16:46:26.1042332Z ##[group]Run actions/checkout@v4
+2026-11-15T16:46:26.1042866Z with:
+2026-11-15T16:46:26.1043350Z   repository: google-research/ple
+2026-11-15T16:46:26.1043858Z   path: kitrepo
+2026-11-15T16:46:26.1045881Z   token: ***
+2026-11-15T16:46:26.1046355Z   ssh-strict: true
+2026-11-15T16:46:26.1046848Z   ssh-user: git
+2026-11-15T16:46:26.1047330Z   persist-credentials: true
+2026-11-15T16:46:26.1047820Z   clean: true
+2026-11-15T16:46:26.1048302Z   sparse-checkout-cone-mode: true
+2026-11-15T16:46:26.1048828Z   fetch-depth: 1
+2026-11-15T16:46:26.1049327Z   fetch-tags: false
+2026-11-15T16:46:26.1049855Z   show-progress: true
+2026-11-15T16:46:26.1050340Z   lfs: false
+2026-11-15T16:46:26.1050807Z   submodules: false
+2026-11-15T16:46:26.1051316Z   set-safe-directory: true
+2026-11-15T16:46:26.1051846Z   allow-unsafe-pr-checkout: false
+2026-11-15T16:46:26.1052375Z ##[endgroup]
+2026-11-15T16:46:26.1661636Z Syncing repository: google-research/ple
+2026-11-15T16:46:26.1669188Z ##[group]Getting Git version info
+2026-11-15T16:46:26.1684337Z Working directory is '/home/runner/work/shihai-harness/shihai-harness/kitrepo'
+2026-11-15T16:46:26.1716583Z [command]/usr/bin/git version
+2026-11-15T16:46:26.1773607Z git version 2.56.1
+2026-11-15T16:46:26.1828116Z ##[endgroup]
+2026-11-15T16:46:26.1843305Z Temporarily overriding HOME='/home/runner/work/_temp/8f539dfe-e772-4a2a-bf39-eb2041355b1e' before making global git config changes
+2026-11-15T16:46:26.1860967Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T16:46:26.1868485Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T16:46:26.1916145Z ##[group]Initializing the repository
+2026-11-15T16:46:26.1917539Z [command]/usr/bin/git init /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T16:46:26.1978705Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-15T16:46:26.1985477Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-15T16:46:26.2005190Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-15T16:46:26.2022558Z hint: call:
+2026-11-15T16:46:26.2023575Z hint:
+2026-11-15T16:46:26.2024716Z hint: 	git config --global init.defaultBranch <name>
+2026-11-15T16:46:26.2025752Z hint:
+2026-11-15T16:46:26.2026736Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-15T16:46:26.2028012Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-15T16:46:26.2029058Z hint:
+2026-11-15T16:46:26.2029917Z hint: 	git branch -m <name>
+2026-11-15T16:46:26.2030824Z hint:
+2026-11-15T16:46:26.2051623Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-15T16:46:26.2056153Z Initialized empty Git repository in /home/runner/work/shihai-harness/shihai-harness/kitrepo/.git/
+2026-11-15T16:46:26.2059184Z [command]/usr/bin/git remote add origin https://github.com/google-research/ple
+2026-11-15T16:46:26.2061858Z ##[endgroup]
+2026-11-15T16:46:26.2063201Z ##[group]Disabling automatic garbage collection
+2026-11-15T16:46:26.2064397Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-15T16:46:26.2098479Z ##[endgroup]
+2026-11-15T16:46:26.2099847Z ##[group]Setting up auth
+2026-11-15T16:46:26.2100947Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T16:46:26.2159271Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T16:46:26.2583023Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T16:46:26.2613532Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T16:46:26.2905798Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T16:46:26.2955660Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T16:46:26.3242534Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-15T16:46:26.3280247Z ##[endgroup]
+2026-11-15T16:46:26.3281857Z ##[group]Determining the default branch
+2026-11-15T16:46:26.3283082Z Retrieving the default branch name
+2026-11-15T16:46:26.7365610Z Default branch 'main'
+2026-11-15T16:46:26.7393231Z ##[endgroup]
+2026-11-15T16:46:26.7426564Z ##[group]Fetching the repository
+2026-11-15T16:46:26.7444882Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+2026-11-15T16:46:27.4800055Z From https://github.com/google-research/ple
+2026-11-15T16:46:27.4800740Z  * [new branch]      main       -> origin/main
+2026-11-15T16:46:27.4811629Z ##[endgroup]
+2026-11-15T16:46:27.4812131Z ##[group]Determining the checkout info
+2026-11-15T16:46:27.4812681Z ##[endgroup]
+2026-11-15T16:46:27.4813064Z [command]/usr/bin/git sparse-checkout disable
+2026-11-15T16:46:27.4969170Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-15T16:46:27.5065131Z ##[group]Checking out the ref
+2026-11-15T16:46:27.5074656Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-15T16:46:27.5331657Z Switched to a new branch 'main'
+2026-11-15T16:46:27.5332318Z branch 'main' set up to track 'origin/main'.
+2026-11-15T16:46:27.5339381Z ##[endgroup]
+2026-11-15T16:46:27.5379839Z [command]/usr/bin/git log -1 --format=%H
+2026-11-15T16:46:27.5406957Z 8320f0402fdca9f42476607f72bcfd5271cd50c9
+2026-11-15T16:46:27.5881619Z ##[group]Run actions/setup-python@v5
+2026-11-15T16:46:27.5881782Z with:
+2026-11-15T16:46:27.5881904Z   python-version: 3.12
+2026-11-15T16:46:27.5882037Z   check-latest: false
+2026-11-15T16:46:27.5883220Z   token: ***
+2026-11-15T16:46:27.5883347Z   update-environment: true
+2026-11-15T16:46:27.5883484Z   allow-prereleases: false
+2026-11-15T16:46:27.5883615Z   freethreaded: false
+2026-11-15T16:46:27.5883744Z ##[endgroup]
+2026-11-15T16:46:27.6902259Z ##[group]Installed versions
+2026-11-15T16:46:27.6991924Z (node:2184) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-15T16:46:27.6992666Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-15T16:46:27.6993055Z Successfully set up CPython (3.12.16)
+2026-11-15T16:46:27.6994629Z ##[endgroup]
+2026-11-15T16:46:27.7426713Z ##[group]Run pip install pyyaml python-dotenv websockets
+2026-11-15T16:46:27.7427044Z [36;1mpip install pyyaml python-dotenv websockets[0m
+2026-11-15T16:46:27.7484319Z shell: /usr/bin/bash -e {0}
+2026-11-15T16:46:27.7484510Z env:
+2026-11-15T16:46:27.7484711Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:27.7485017Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T16:46:27.7485259Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:27.7485478Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:27.7485885Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:27.7486200Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T16:46:27.7486410Z ##[endgroup]
+2026-11-15T16:46:28.8511329Z Collecting pyyaml
+2026-11-15T16:46:28.9115078Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-11-15T16:46:28.9325725Z Collecting python-dotenv
+2026-11-15T16:46:28.9439773Z   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+2026-11-15T16:46:29.0497415Z Collecting websockets
+2026-11-15T16:46:29.0599394Z   Downloading websockets-17.4-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+2026-11-15T16:46:29.0729599Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-11-15T16:46:29.1175950Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 26.4 MB/s  0:00:00
+2026-11-15T16:46:29.1280941Z Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+2026-11-15T16:46:29.1449030Z Downloading websockets-17.4-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (226 kB)
+2026-11-15T16:46:29.1910834Z Installing collected packages: websockets, pyyaml, python-dotenv
+2026-11-15T16:46:29.3124868Z 
+2026-11-15T16:46:29.3125583Z Successfully installed python-dotenv-1.2.4 pyyaml-6.0.3 websockets-17.4
+2026-11-15T16:46:29.3562060Z ##[group]Run pip install uv
+2026-11-15T16:46:29.3562261Z [36;1mpip install uv[0m
+2026-11-15T16:46:29.3562436Z [36;1muv tool install harbor==0.20.0 --with websockets[0m
+2026-11-15T16:46:29.3562633Z [36;1mecho "$HOME/.local/bin" >> $GITHUB_PATH[0m
+2026-11-15T16:46:29.3603115Z shell: /usr/bin/bash -e {0}
+2026-11-15T16:46:29.3603256Z env:
+2026-11-15T16:46:29.3603412Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:29.3603656Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T16:46:29.3603896Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:29.3604110Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:29.3604645Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:29.3604867Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T16:46:29.3605051Z ##[endgroup]
+2026-11-15T16:46:29.8371191Z Collecting uv
+2026-11-15T16:46:29.8923945Z   Downloading uv-0.13.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+2026-11-15T16:46:29.9094830Z Downloading uv-0.13.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.4 MB)
+2026-11-15T16:46:30.1975945Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.4/17.4 MB 67.3 MB/s  0:00:00
+2026-11-15T16:46:30.2223513Z Installing collected packages: uv
+2026-11-15T16:46:30.3539536Z Successfully installed uv-0.13.8
+2026-11-15T16:46:31.2909945Z Resolved 91 packages in 851ms
+2026-11-15T16:46:31.3519941Z Downloading litellm (39.2MiB)
+2026-11-15T16:46:31.3520621Z Downloading pydantic-core (2.2MiB)
+2026-11-15T16:46:31.3521449Z Downloading pygments (1.2MiB)
+2026-11-15T16:46:31.3523149Z Downloading hf-xet (4.1MiB)
+2026-11-15T16:46:31.3526128Z Downloading botocore (15.6MiB)
+2026-11-15T16:46:31.3529370Z Downloading tokenizers (3.2MiB)
+2026-11-15T16:46:31.3533948Z Downloading aiohttp (1.8MiB)
+2026-11-15T16:46:31.3541185Z Downloading openai (2.3MiB)
+2026-11-15T16:46:31.3546269Z Downloading tiktoken (1.1MiB)
+2026-11-15T16:46:31.3552137Z Downloading harbor (1.7MiB)
+2026-11-15T16:46:31.3556759Z Downloading cryptography (4.5MiB)
+2026-11-15T16:46:31.5659836Z  Downloaded tiktoken
+2026-11-15T16:46:31.5806369Z  Downloaded pygments
+2026-11-15T16:46:31.5993484Z  Downloaded harbor
+2026-11-15T16:46:31.6023116Z  Downloaded aiohttp
+2026-11-15T16:46:31.6149310Z  Downloaded pydantic-core
+2026-11-15T16:46:31.6569360Z  Downloaded tokenizers
+2026-11-15T16:46:31.6692310Z  Downloaded hf-xet
+2026-11-15T16:46:31.6715105Z  Downloaded openai
+2026-11-15T16:46:31.6723396Z  Downloaded cryptography
+2026-11-15T16:46:31.8003373Z  Downloaded botocore
+2026-11-15T16:46:32.3480320Z  Downloaded litellm
+2026-11-15T16:46:32.4321140Z Prepared 91 packages in 1.13s
+2026-11-15T16:46:32.6388054Z Installed 91 packages in 204ms
+2026-11-15T16:46:32.6395093Z  + aiohappyeyeballs==2.7.1
+2026-11-15T16:46:32.6395587Z  + aiohttp==3.14.5
+2026-11-15T16:46:32.6395944Z  + aiosignal==1.4.0
+2026-11-15T16:46:32.6396253Z  + annotated-doc==0.0.6
+2026-11-15T16:46:32.6396606Z  + annotated-types==0.8.0
+2026-11-15T16:46:32.6396932Z  + anyio==4.16.0
+2026-11-15T16:46:32.6397227Z  + attrs==26.1.0
+2026-11-15T16:46:32.6397520Z  + boto3==1.44.3
+2026-11-15T16:46:32.6397911Z  + botocore==1.44.3
+2026-11-15T16:46:32.6398199Z  + certifi==2026.10.23
+2026-11-15T16:46:32.6398779Z  + cffi==2.1.1
+2026-11-15T16:46:32.6399093Z  + charset-normalizer==3.5.2
+2026-11-15T16:46:32.6399419Z  + click==8.5.1
+2026-11-15T16:46:32.6399722Z  + cryptography==50.0.2
+2026-11-15T16:46:32.6404676Z  + deprecation==2.1.0
+2026-11-15T16:46:32.6406844Z  + dirhash==0.5.0
+2026-11-15T16:46:32.6407249Z  + fastapi==0.163.1
+2026-11-15T16:46:32.6407688Z  + fastuuid==0.14.0
+2026-11-15T16:46:32.6408016Z  + filelock==4.2.10
+2026-11-15T16:46:32.6408467Z  + frozenlist==1.8.0
+2026-11-15T16:46:32.6408978Z  + fsspec==2026.9.0
+2026-11-15T16:46:32.6409381Z  + h11==0.16.0
+2026-11-15T16:46:32.6409693Z  + h2==4.4.1
+2026-11-15T16:46:32.6410003Z  + harbor==0.20.0
+2026-11-15T16:46:32.6410328Z  + hf-xet==1.8.0
+2026-11-15T16:46:32.6410943Z  + hpack==4.2.0
+2026-11-15T16:46:32.6411267Z  + httpcore==1.0.9
+2026-11-15T16:46:32.6411587Z  + httpcore2==2.16.0
+2026-11-15T16:46:32.6411913Z  + httpx==0.28.1
+2026-11-15T16:46:32.6412221Z  + httpx2==2.16.0
+2026-11-15T16:46:32.6412547Z  + huggingface-hub==1.33.0
+2026-11-15T16:46:32.6412898Z  + hyperframe==6.1.0
+2026-11-15T16:46:32.6413217Z  + idna==3.20
+2026-11-15T16:46:32.6413550Z  + importlib-metadata==8.9.0
+2026-11-15T16:46:32.6413900Z  + jinja2==3.1.6
+2026-11-15T16:46:32.6414336Z  + jiter==0.19.0
+2026-11-15T16:46:32.6414698Z  + jmespath==1.1.0
+2026-11-15T16:46:32.6415023Z  + jsonschema==4.26.0
+2026-11-15T16:46:32.6415373Z  + jsonschema-specifications==2025.9.1
+2026-11-15T16:46:32.6415742Z  + litellm==1.109.1
+2026-11-15T16:46:32.6416091Z  + markdown-it-py==4.3.0
+2026-11-15T16:46:32.6416443Z  + markupsafe==3.0.4
+2026-11-15T16:46:32.6416775Z  + mdurl==0.1.2
+2026-11-15T16:46:32.6417103Z  + multidict==7.2.1
+2026-11-15T16:46:32.6417418Z  + openai==3.51.0
+2026-11-15T16:46:32.6417751Z  + opentelemetry-api==1.45.2
+2026-11-15T16:46:32.6418107Z  + packaging==26.3
+2026-11-15T16:46:32.6418413Z  + pathspec==1.1.1
+2026-11-15T16:46:32.6418735Z  + platformdirs==4.14.5
+2026-11-15T16:46:32.6419073Z  + postgrest==2.34.1
+2026-11-15T16:46:32.6419389Z  + propcache==0.5.4
+2026-11-15T16:46:32.6419703Z  + pycparser==3.12
+2026-11-15T16:46:32.6420021Z  + pydantic==2.14.3
+2026-11-15T16:46:32.6420341Z  + pydantic-core==2.50.4
+2026-11-15T16:46:32.6420691Z  + pydantic-settings==2.16.3
+2026-11-15T16:46:32.6421037Z  + pygments==2.21.0
+2026-11-15T16:46:32.6421355Z  + pyjwt==2.15.1
+2026-11-15T16:46:32.6421687Z  + python-dateutil==2.9.0.post0
+2026-11-15T16:46:32.6422049Z  + python-dotenv==1.2.4
+2026-11-15T16:46:32.6422380Z  + pyyaml==6.0.3
+2026-11-15T16:46:32.6422687Z  + realtime==2.34.1
+2026-11-15T16:46:32.6423015Z  + referencing==0.37.0
+2026-11-15T16:46:32.6423401Z  + regex==2026.11.9
+2026-11-15T16:46:32.6423722Z  + requests==2.34.2
+2026-11-15T16:46:32.6424369Z  + rich==15.0.0
+2026-11-15T16:46:32.6424765Z  + rpds-py==2026.9.1
+2026-11-15T16:46:32.6425092Z  + s3transfer==0.19.3
+2026-11-15T16:46:32.6425421Z  + scantree==0.0.4
+2026-11-15T16:46:32.6425738Z  + shellingham==1.5.4
+2026-11-15T16:46:32.6426061Z  + shortuuid==1.0.13
+2026-11-15T16:46:32.6426385Z  + six==1.17.0
+2026-11-15T16:46:32.6426694Z  + sniffio==1.3.1
+2026-11-15T16:46:32.6427011Z  + starlette==1.10.0
+2026-11-15T16:46:32.6427337Z  + storage3==2.34.1
+2026-11-15T16:46:32.6427643Z  + supabase==2.34.1
+2026-11-15T16:46:32.6427948Z  + supabase-auth==2.34.1
+2026-11-15T16:46:32.6428290Z  + supabase-functions==2.34.1
+2026-11-15T16:46:32.6428626Z  + tenacity==9.2.1
+2026-11-15T16:46:32.6428931Z  + tiktoken==0.14.0
+2026-11-15T16:46:32.6429405Z  + tokenizers==0.23.3
+2026-11-15T16:46:32.6432096Z  + toml==0.10.2
+2026-11-15T16:46:32.6432451Z  + tqdm==4.70.1
+2026-11-15T16:46:32.6432765Z  + truststore==0.10.5
+2026-11-15T16:46:32.6433066Z  + typer==0.29.1
+2026-11-15T16:46:32.6433378Z  + typing-extensions==4.16.0
+2026-11-15T16:46:32.6433727Z  + typing-inspection==0.4.5
+2026-11-15T16:46:32.6434061Z  + urllib3==2.8.0
+2026-11-15T16:46:32.6434496Z  + uvicorn==0.54.0
+2026-11-15T16:46:32.6434793Z  + websockets==15.0.1
+2026-11-15T16:46:32.6435084Z  + yarl==1.25.1
+2026-11-15T16:46:32.6439147Z  + zipp==4.1.2
+2026-11-15T16:46:32.6454782Z Installed 3 executables: harbor, hb, hr
+2026-11-15T16:46:32.6567911Z ##[group]Run echo "target_len=${#MODEL_RELAY_TARGET} name_len=${#MODEL_RELAY_MODEL} key_len=${#MODEL_RELAY_KEY}"
+2026-11-15T16:46:32.6568616Z [36;1mecho "target_len=${#MODEL_RELAY_TARGET} name_len=${#MODEL_RELAY_MODEL} key_len=${#MODEL_RELAY_KEY}"[0m
+2026-11-15T16:46:32.6568964Z [36;1mnohup python entry/ci/model_relay.py > /tmp/relay.log 2>&1 &[0m
+2026-11-15T16:46:32.6569172Z [36;1mok=0[0m
+2026-11-15T16:46:32.6569432Z [36;1mfor i in $(seq 1 30); do sleep 1; curl -sf http://127.0.0.1:4100/v1/models >/dev/null && { ok=1; break; }; done[0m
+2026-11-15T16:46:32.6569703Z [36;1mcat /tmp/relay.log[0m
+2026-11-15T16:46:32.6569885Z [36;1mtest "$ok" = 1 || { echo 'relay did not start'; exit 1; }[0m
+2026-11-15T16:46:32.6611137Z shell: /usr/bin/bash -e {0}
+2026-11-15T16:46:32.6611283Z env:
+2026-11-15T16:46:32.6611441Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:32.6611678Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T16:46:32.6611961Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:32.6612172Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:32.6612378Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:32.6612592Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T16:46:32.6613049Z   MODEL_RELAY_TARGET: ***
+2026-11-15T16:46:32.6613202Z   MODEL_RELAY_MODEL: ***
+2026-11-15T16:46:32.6613366Z   MODEL_RELAY_KEY: ***
+2026-11-15T16:46:32.6613493Z ##[endgroup]
+2026-11-15T16:46:32.6672518Z target_len=27 name_len=13 key_len=35
+2026-11-15T16:46:33.6865738Z relay on :4100 -> *** (model ***)
+2026-11-15T16:46:33.6896046Z ##[group]Run echo "--- host can reach the relay? ---"
+2026-11-15T16:46:33.6896426Z [36;1mecho "--- host can reach the relay? ---"[0m
+2026-11-15T16:46:33.6896843Z [36;1mcurl -s -o /dev/null -w "127.0.0.1:4100 -> %{http_code}\n" http://127.0.0.1:4100/v1/models || true[0m
+2026-11-15T16:46:33.6897333Z [36;1mip -4 addr show docker0 2>/dev/null | grep inet || echo "no docker0"[0m
+2026-11-15T16:46:33.6897794Z [36;1mfor ip in $(ip -4 -o addr show docker0 2>/dev/null | awk '{print $4}' | cut -d/ -f1); do[0m
+2026-11-15T16:46:33.6898279Z [36;1m  curl -s -o /dev/null -w "$ip:4100 -> %{http_code}\n" "http://$ip:4100/v1/models" || true[0m
+2026-11-15T16:46:33.6898630Z [36;1mdone[0m
+2026-11-15T16:46:33.6898974Z [36;1mcurl -s -o /dev/null -w "172.17.0.1:4100 -> %{http_code}\n" http://172.17.0.1:4100/v1/models || true[0m
+2026-11-15T16:46:33.6899528Z [36;1mss -lntp 2>/dev/null | grep 4100 || netstat -lnt 2>/dev/null | grep 4100 || echo "no listener info"[0m
+2026-11-15T16:46:33.6899989Z [36;1mecho "--- relay log so far ---"[0m
+2026-11-15T16:46:33.6900269Z [36;1mcat /tmp/relay.log 2>/dev/null || echo none[0m
+2026-11-15T16:46:33.6954873Z shell: /usr/bin/bash -e {0}
+2026-11-15T16:46:33.6955111Z env:
+2026-11-15T16:46:33.6955364Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.6955776Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T16:46:33.6956154Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.6956491Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.6956834Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.6957185Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T16:46:33.6957475Z ##[endgroup]
+2026-11-15T16:46:33.7033954Z --- host can reach the relay? ---
+2026-11-15T16:46:33.7114150Z 127.0.0.1:4100 -> 200
+2026-11-15T16:46:33.7143528Z     inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+2026-11-15T16:46:33.7273664Z 172.17.0.1:4100 -> 200
+2026-11-15T16:46:33.7331025Z 172.17.0.1:4100 -> 200
+2026-11-15T16:46:33.7839388Z LISTEN 0      5            0.0.0.0:4100      0.0.0.0:*    users:(("python",pid=2307,fd=3))
+2026-11-15T16:46:33.7842178Z --- relay log so far ---
+2026-11-15T16:46:33.7865924Z relay on :4100 -> *** (model ***)
+2026-11-15T16:46:33.7913971Z ##[group]Run sed -i 's|google-cloud/claude-opus-5-5|google-cloud/gpt-oss-120b|' "/home/runner/work/shihai-harness/shihai-harness/entry/submission.yaml"
+2026-11-15T16:46:33.7914878Z [36;1msed -i 's|google-cloud/claude-opus-5-5|google-cloud/gpt-oss-120b|' "/home/runner/work/shihai-harness/shihai-harness/entry/submission.yaml"[0m
+2026-11-15T16:46:33.7915321Z [36;1mgrep model_api "/home/runner/work/shihai-harness/shihai-harness/entry/submission.yaml" || true[0m
+2026-11-15T16:46:33.7956166Z shell: /usr/bin/bash -e {0}
+2026-11-15T16:46:33.7956307Z env:
+2026-11-15T16:46:33.7956469Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.7956715Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T16:46:33.7956951Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.7957169Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.7957408Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.7957628Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T16:46:33.7957812Z ##[endgroup]
+2026-11-15T16:46:33.8043375Z model_api: google-cloud/gpt-oss-120b
+2026-11-15T16:46:33.8070254Z ##[group]Run cd kitrepo
+2026-11-15T16:46:33.8070442Z [36;1mcd kitrepo[0m
+2026-11-15T16:46:33.8070653Z [36;1mpython eval/run.py "/home/runner/work/shihai-harness/shihai-harness/entry" \[0m
+2026-11-15T16:46:33.8070993Z [36;1m  --tasks-dir "/home/runner/work/shihai-harness/shihai-harness/entry/data/tasks" \[0m
+2026-11-15T16:46:33.8071264Z [36;1m  --tasks "data-hall-mep-routing" --trials "1" \[0m
+2026-11-15T16:46:33.8071505Z [36;1m  --out "/home/runner/work/shihai-harness/shihai-harness/out" || true[0m
+2026-11-15T16:46:33.8071719Z [36;1mecho "--- results ---"[0m
+2026-11-15T16:46:33.8071969Z [36;1mcat "/home/runner/work/shihai-harness/shihai-harness/out/results.json" 2>/dev/null || echo none[0m
+2026-11-15T16:46:33.8072242Z [36;1mecho "--- verifier contents ---"[0m
+2026-11-15T16:46:33.8072555Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -path '*/verifier/*' -type f 2>/dev/null | head -8); do[0m
+2026-11-15T16:46:33.8072918Z [36;1m  echo "== $f"; head -c 1500 "$f"; echo; done[0m
+2026-11-15T16:46:33.8073098Z [36;1mecho "--- verifier tree ---"[0m
+2026-11-15T16:46:33.8073375Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*verifier*' -type f 2>/dev/null | head -20[0m
+2026-11-15T16:46:33.8073657Z [36;1mecho "--- grade json ---"[0m
+2026-11-15T16:46:33.8073938Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'grade*.json' 2>/dev/null | head -3); do[0m
+2026-11-15T16:46:33.8074467Z [36;1m  echo "== $f"; head -c 5000 "$f"; echo; done[0m
+2026-11-15T16:46:33.8074645Z [36;1mecho "--- deliverables ---"[0m
+2026-11-15T16:46:33.8074953Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*deliverable*' -o -path '*output*' -type f 2>/dev/null | head -20[0m
+2026-11-15T16:46:33.8075274Z [36;1mecho "--- judge egress ---"[0m
+2026-11-15T16:46:33.8075559Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'egress.log' 2>/dev/null | head -2); do[0m
+2026-11-15T16:46:33.8075846Z [36;1m  echo "== $f"; tail -8 "$f"; done[0m
+2026-11-15T16:46:33.8076008Z [36;1mecho "--- verifier files ---"[0m
+2026-11-15T16:46:33.8076288Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*/verifier/*' -type f 2>/dev/null | head -20[0m
+2026-11-15T16:46:33.8076566Z [36;1mecho "--- grade.json ---"[0m
+2026-11-15T16:46:33.8076835Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'grade*.json' 2>/dev/null | head -3); do[0m
+2026-11-15T16:46:33.8077135Z [36;1m  echo "== $f"; head -c 4000 "$f"; echo; done[0m
+2026-11-15T16:46:33.8077304Z [36;1mecho "--- deliverables ---"[0m
+2026-11-15T16:46:33.8077602Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*/deliverables/*' -o -path '*/output/*' 2>/dev/null | head -20[0m
+2026-11-15T16:46:33.8078051Z [36;1mecho "--- relay requests ---"[0m
+2026-11-15T16:46:33.8078285Z [36;1mcat /tmp/relay_req.log 2>/dev/null | head -10 || echo "no requests reached the relay"[0m
+2026-11-15T16:46:33.8078515Z [36;1mecho "--- harness log ---"[0m
+2026-11-15T16:46:33.8078842Z [36;1mtail -c 4000 $(find "/home/runner/work/shihai-harness/shihai-harness" -path '*/agent/my-harness.txt' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T16:46:33.8079178Z [36;1mecho "--- serve log ---"[0m
+2026-11-15T16:46:33.8079488Z [36;1mtail -c 1500 $(find "/home/runner/work/shihai-harness/shihai-harness" -path '*/agent/serve.log' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T16:46:33.8079814Z [36;1mecho "--- capture.json ---"[0m
+2026-11-15T16:46:33.8080124Z [36;1mhead -c 3000 $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'capture.json' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T16:46:33.8080460Z [36;1mecho "--- final message (head) ---"[0m
+2026-11-15T16:46:33.8080905Z [36;1mhead -c 2500 $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'final_message.md' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T16:46:33.8081238Z [36;1mecho "--- workspace tree ---"[0m
+2026-11-15T16:46:33.8081503Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -maxdepth 6 -type d 2>/dev/null | head -30[0m
+2026-11-15T16:46:33.8081770Z [36;1mecho "--- agent egress ---"[0m
+2026-11-15T16:46:33.8082070Z [36;1mtail -6 $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'egress.log' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T16:46:33.8121853Z shell: /usr/bin/bash -e {0}
+2026-11-15T16:46:33.8121996Z env:
+2026-11-15T16:46:33.8122157Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.8122393Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T16:46:33.8122621Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.8122842Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.8123054Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T16:46:33.8123267Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T16:46:33.8123504Z   PYTHONPATH: /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T16:46:33.8123732Z   MODEL_PROXY_URL: http://172.17.0.1:4100/v1
+2026-11-15T16:46:33.8123893Z   MODEL_PROXY_KEY: relay
+2026-11-15T16:46:33.8124038Z   NO_PROXY: 127.0.0.1,localhost,172.17.0.1
+2026-11-15T16:46:33.8124329Z ##[endgroup]
+2026-11-15T16:46:34.6423548Z building my-harness ...
+2026-11-15T16:48:17.8164282Z building data-hall-mep-routing's image, which its verifier starts from (up to 60 min) ...
+2026-11-15T16:48:42.2063921Z attempt 1: 1 task(s), 1 at a time; Harbor writes /home/runner/work/shihai-harness/shihai-harness/out/attempt1/harbor.log (tail -f it to follow)
+2026-11-15T17:27:11.2350656Z 
+2026-11-15T17:27:11.2351446Z task                   score  status
+2026-11-15T17:27:11.2351978Z data-hall-mep-routing  0.000  ok (2271 s)
+2026-11-15T17:27:11.2352359Z 
+2026-11-15T17:27:11.2352650Z my-harness (google-cloud/gpt-oss-120b): 0.000 over 1 task(s)
+2026-11-15T17:27:11.2353197Z results: /home/runner/work/shihai-harness/shihai-harness/out/results.json
+2026-11-15T17:27:11.2353596Z 
+2026-11-15T17:27:11.2353951Z artifacts: 1 task(s) in /home/runner/work/shihai-harness/shihai-harness/out/artifacts
+2026-11-15T17:27:11.2355014Z   /home/runner/work/shihai-harness/shihai-harness/entry/artifacts: replaced data-hall-mep-routing
+2026-11-15T17:27:11.2355956Z   note: the harness had uncommitted changes when the run started; commit exactly those files, or the server sees a different harness than the one that made these artifacts
+2026-11-15T17:27:11.2356718Z artifacts/: 27 of 29 dev tasks usable, 2 empty
+2026-11-15T17:27:11.2357192Z   empty    data-hall-mep-routing  (0 file(s), 3.8 MiB)
+2026-11-15T17:27:11.2357781Z            refused: nothing this task's grader reads: no file under files/ (its grader does not read final_message.md)
+2026-11-15T17:27:11.2358881Z   ok       fire-test-validation-memo  (1 file(s), 0.6 MiB)
+2026-11-15T17:27:11.2359647Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2360566Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2361232Z   ok       data-hall-mep-routing-offset  (1 file(s), 4.2 MiB)
+2026-11-15T17:27:11.2361952Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2362920Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2363636Z   ok       eor-review-corrections  (1 file(s), 1.0 MiB)
+2026-11-15T17:27:11.2365013Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2376354Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2378590Z   empty    foundation-strategy  (0 file(s), 0.6 MiB)
+2026-11-15T17:27:11.2379180Z            refused: nothing this task's grader reads: no file under files/ (its grader does not read final_message.md)
+2026-11-15T17:27:11.2380023Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2380892Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2381520Z   ok       landscape-sheet-revision  (1 file(s), 0.8 MiB)
+2026-11-15T17:27:11.2382213Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2383066Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2383681Z   ok       data-center-site-model  (1 file(s), 0.3 MiB)
+2026-11-15T17:27:11.2384459Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2385382Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2385983Z   ok       engineers-estimate-check  (1 file(s), 0.5 MiB)
+2026-11-15T17:27:11.2386656Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2387542Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2388174Z   ok       footing-settlement-verification  (2 file(s), 0.6 MiB)
+2026-11-15T17:27:11.2388887Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2389765Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2390396Z   ok       solar-supplemental-review  (1 file(s), 0.4 MiB)
+2026-11-15T17:27:11.2391111Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2392374Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2393018Z   ok       solar-witness-test-package  (0 file(s), 0.2 MiB)
+2026-11-15T17:27:11.2393738Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2394721Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2395333Z   ok       frame-extension-method  (1 file(s), 0.5 MiB)
+2026-11-15T17:27:11.2396009Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2396880Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2397487Z   ok       fire-solve-convergence  (2 file(s), 0.7 MiB)
+2026-11-15T17:27:11.2398313Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2399172Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2399841Z   ok       les-mesh-resolution  (1 file(s), 0.5 MiB)
+2026-11-15T17:27:11.2400517Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2401369Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2401975Z   ok       mv-conveyance-study  (1 file(s), 0.8 MiB)
+2026-11-15T17:27:11.2402743Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2403600Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2404303Z   ok       data-hall-device-takeoff  (1 file(s), 0.4 MiB)
+2026-11-15T17:27:11.2405039Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2405892Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2406507Z   ok       division-26-specifications  (1 file(s), 1.5 MiB)
+2026-11-15T17:27:11.2407201Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2408077Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2408700Z   ok       heat-rejection-life-cycle-cost  (1 file(s), 1.0 MiB)
+2026-11-15T17:27:11.2409391Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2410252Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2410867Z   ok       cooling-water-flush-plan  (1 file(s), 0.6 MiB)
+2026-11-15T17:27:11.2411559Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2412734Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2413402Z   ok       wind-diaphragm-shear  (1 file(s), 0.7 MiB)
+2026-11-15T17:27:11.2414126Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2415143Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2415763Z   ok       seismic-diaphragm-shear  (1 file(s), 0.6 MiB)
+2026-11-15T17:27:11.2416462Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2417358Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2418043Z   ok       roof-deck-design  (1 file(s), 0.7 MiB)
+2026-11-15T17:27:11.2418891Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2419793Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2420432Z   ok       fill-compaction-acceptance  (3 file(s), 0.5 MiB)
+2026-11-15T17:27:11.2421151Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2422052Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2422687Z   ok       shoring-design-verification  (3 file(s), 0.9 MiB)
+2026-11-15T17:27:11.2423373Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2424309Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2424934Z   ok       emergency-spillway-check  (1 file(s), 0.7 MiB)
+2026-11-15T17:27:11.2425584Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2426461Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2427104Z   ok       pre-application-capacity-response  (3 file(s), 0.9 MiB)
+2026-11-15T17:27:11.2427868Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2428832Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2429478Z   ok       permission-to-operate-memo  (3 file(s), 0.8 MiB)
+2026-11-15T17:27:11.2430203Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2431083Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2431710Z   ok       backfeed-energization-reply  (3 file(s), 0.6 MiB)
+2026-11-15T17:27:11.2432407Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2439450Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2440105Z   ok       lv-cable-sizing  (1 file(s), 0.6 MiB)
+2026-11-15T17:27:11.2440825Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T17:27:11.2441740Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T17:27:11.2442928Z commit them with the harness, though data-hall-mep-routing would count 0 on the server (see above): git -C /home/runner/work/shihai-harness/shihai-harness/entry add -A && git -C /home/runner/work/shihai-harness/shihai-harness/entry commit -m 'dev artifacts'
+2026-11-15T17:27:11.2575058Z --- results ---
+2026-11-15T17:27:11.2601252Z {
+2026-11-15T17:27:11.2601648Z   "submission": "my-harness",
+2026-11-15T17:27:11.2602148Z   "model": "google-cloud/gpt-oss-120b",
+2026-11-15T17:27:11.2602601Z   "score": 0.0,
+2026-11-15T17:27:11.2602927Z   "complete": true,
+2026-11-15T17:27:11.2603247Z   "unmeasured": [],
+2026-11-15T17:27:11.2604499Z   "judge_model": "claude-opus-5-5",
+2026-11-15T17:27:11.2604981Z   "date": "2026-11-15T17:27:11Z",
+2026-11-15T17:27:11.2605426Z   "submission_dir": "/home/runner/work/shihai-harness/shihai-harness/entry",
+2026-11-15T17:27:11.2605888Z   "model_base_url": null,
+2026-11-15T17:27:11.2606236Z   "no_export": false,
+2026-11-15T17:27:11.2606673Z   "tasks_dir": "/home/runner/work/shihai-harness/shihai-harness/entry/data/tasks",
+2026-11-15T17:27:11.2607150Z   "tasks": [
+2026-11-15T17:27:11.2607507Z     {
+2026-11-15T17:27:11.2608008Z       "id": "data-hall-mep-routing",
+2026-11-15T17:27:11.2608373Z       "score": 0.0,
+2026-11-15T17:27:11.2608699Z       "reward": 0.0,
+2026-11-15T17:27:11.2609027Z       "measured": true,
+2026-11-15T17:27:11.2609356Z       "status": "ok",
+2026-11-15T17:27:11.2609698Z       "kind": "ok",
+2026-11-15T17:27:11.2610019Z       "seconds": 2271,
+2026-11-15T17:27:11.2610421Z       "trial": "attempt1/jobs/dev/data-hall-mep-routing__izBdnSE",
+2026-11-15T17:27:11.2610881Z       "tokens": {
+2026-11-15T17:27:11.2611214Z         "input": 57218414,
+2026-11-15T17:27:11.2611569Z         "cache": 56424192,
+2026-11-15T17:27:11.2611916Z         "output": 184723
+2026-11-15T17:27:11.2612243Z       },
+2026-11-15T17:27:11.2612541Z       "graded_by": "",
+2026-11-15T17:27:11.2612877Z       "artifact": "",
+2026-11-15T17:27:11.2613201Z       "claimed": null
+2026-11-15T17:27:11.2613517Z     }
+2026-11-15T17:27:11.2613814Z   ]
+2026-11-15T17:27:11.2614395Z }--- verifier contents ---
+2026-11-15T17:27:11.2655117Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/test-stdout.txt
+2026-11-15T17:27:11.2680458Z 
+2026-11-15T17:27:11.2681303Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/metrics.json
+2026-11-15T17:27:11.2700545Z {
+2026-11-15T17:27:11.2700775Z   "combined_score": 0.0,
+2026-11-15T17:27:11.2701000Z   "valid": 0.0,
+2026-11-15T17:27:11.2701223Z   "exec_status": "ERR_NO_SUBMISSION",
+2026-11-15T17:27:11.2701489Z   "reason": "submission stub was never replaced"
+2026-11-15T17:27:11.2707655Z }
+2026-11-15T17:27:11.2708270Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/artifacts.json
+2026-11-15T17:27:11.2726230Z {
+2026-11-15T17:27:11.2726560Z   "report": {},
+2026-11-15T17:27:11.2726977Z   "task": "dc_model__hall_seed000_d000__mep_routing"
+2026-11-15T17:27:11.2732260Z }
+2026-11-15T17:27:11.2732900Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/eval.stderr.txt
+2026-11-15T17:27:11.2756255Z 
+2026-11-15T17:27:11.2756840Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/eval.stdout.txt
+2026-11-15T17:27:11.2774896Z {
+2026-11-15T17:27:11.2775235Z   "combined_score": 0.0,
+2026-11-15T17:27:11.2775600Z   "valid": 0.0,
+2026-11-15T17:27:11.2775984Z   "exec_status": "ERR_NO_SUBMISSION",
+2026-11-15T17:27:11.2776421Z   "reason": "submission stub was never replaced"
+2026-11-15T17:27:11.2776831Z }{
+2026-11-15T17:27:11.2777145Z   "combined_score": 0.0,
+2026-11-15T17:27:11.2777497Z   "valid": 0.0,
+2026-11-15T17:27:11.2777842Z   "exec_status": "ERR_NO_SUBMISSION",
+2026-11-15T17:27:11.2778248Z   "reason": "submission stub was never replaced"
+2026-11-15T17:27:11.2778639Z }
+2026-11-15T17:27:11.2781021Z evaluator exit: 0
+2026-11-15T17:27:11.2781317Z 
+2026-11-15T17:27:11.2781788Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/reward.json
+2026-11-15T17:27:11.2799461Z {"reward": 0.0}
+2026-11-15T17:27:11.2804920Z 
+2026-11-15T17:27:11.2805326Z --- verifier tree ---
+2026-11-15T17:27:11.2831505Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/test-stdout.txt
+2026-11-15T17:27:11.2832830Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/metrics.json
+2026-11-15T17:27:11.2833837Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/artifacts.json
+2026-11-15T17:27:11.2835236Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/eval.stderr.txt
+2026-11-15T17:27:11.2838209Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/eval.stdout.txt
+2026-11-15T17:27:11.2839133Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/reward.json
+2026-11-15T17:27:11.2839791Z --- grade json ---
+2026-11-15T17:27:11.2870840Z --- deliverables ---
+2026-11-15T17:27:11.2897208Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/environment/filesystem/dc_model__hall_seed000_d000__mep_routing/output/solution.py
+2026-11-15T17:27:11.2898472Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/artifacts/app/files/dc_model__hall_seed000_d000__mep_routing/output/solution.py
+2026-11-15T17:27:11.2899559Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/deliverables
+2026-11-15T17:27:11.2900483Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/deliverables/final_message.md
+2026-11-15T17:27:11.2903393Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/deliverables/capture.json
+2026-11-15T17:27:11.2904120Z --- judge egress ---
+2026-11-15T17:27:11.2939794Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/agent/egress.log
+2026-11-15T17:27:11.2964596Z {"t": 1794763107.874, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 97107, "bytes_down": 43882}
+2026-11-15T17:27:11.2965503Z {"t": 1794763279.688, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T17:27:11.2966381Z {"t": 1794763284.949, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 103063, "bytes_down": 12881}
+2026-11-15T17:27:11.2967095Z {"t": 1794763497.675, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 174365695, "bytes_down": 27701605}
+2026-11-15T17:27:11.2967905Z {"t": 1794763498.247, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T17:27:11.2984959Z {"t": 1794763538.696, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T17:27:11.2994947Z {"t": 1794763544.811, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 105056, "bytes_down": 53085}
+2026-11-15T17:27:11.2996021Z {"t": 1794763600.938, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 12556849, "bytes_down": 2973277}
+2026-11-15T17:27:11.2996613Z --- verifier files ---
+2026-11-15T17:27:11.2997215Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/test-stdout.txt
+2026-11-15T17:27:11.3000393Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/metrics.json
+2026-11-15T17:27:11.3001329Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/artifacts.json
+2026-11-15T17:27:11.3002258Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/eval.stderr.txt
+2026-11-15T17:27:11.3003138Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/eval.stdout.txt
+2026-11-15T17:27:11.3004014Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier/reward.json
+2026-11-15T17:27:11.3005258Z --- grade.json ---
+2026-11-15T17:27:11.3036658Z --- deliverables ---
+2026-11-15T17:27:11.3066870Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/environment/filesystem/dc_model__hall_seed000_d000__mep_routing/output/solution.py
+2026-11-15T17:27:11.3068142Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/artifacts/app/files/dc_model__hall_seed000_d000__mep_routing/output/solution.py
+2026-11-15T17:27:11.3069172Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/deliverables/final_message.md
+2026-11-15T17:27:11.3070170Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/deliverables/capture.json
+2026-11-15T17:27:11.3070971Z --- relay requests ---
+2026-11-15T17:27:11.3099547Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3100427Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3100983Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3101479Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3102187Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3102728Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3103160Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3103606Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3104124Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3104763Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T17:27:11.3105154Z --- harness log ---
+2026-11-15T17:27:11.3189002Z ('#' if r[y,x]<100 else ('*' if r[y,x]<180 else ('.' if r[y,x]>245 else '+')) for x in range(150,452)))\n\"", "timeout_sec": 600} -> 'exit_code=0\n 140 ###..........................................................................................................................................................................................................+.............................................................................' (0.2s)
+2026-11-15T17:27:11.3190408Z done after 854 request(s)
+2026-11-15T17:27:11.3190811Z serve status=completed
+2026-11-15T17:27:11.3191235Z serve stop condition: done
+2026-11-15T17:27:11.3204483Z {"type": "result", "result": "I have not produced a model. I reached the end of a working budget while still inside drawing interpretation, and writing a route now would mean guessing the numbers the gates are measured against \u2014 which the task explicitly says is worse than delivering nothing.\n\n## What is actually in the workspace\n\n`/app/files/dc_model__hall_seed000_d000__mep_routing/output/solution.py` is still the original raising stub. It does not build an IFC file, so `tools/clash_check.py` cannot be run on anything I produced: there is no `model.ifc`, no `HARD CLASHES` count, no connectivity chain, no coverage fraction.\n\n## What I did establish, and can defend\n\n- No image library is needed and I did not need one: all seven PNGs decode with `zlib` + `numpy` alone into `work/*.npy` (RGBA, `1100\u00d71600\u00d74`). `work/A101rgb.npy` is the decoded A-101 in RGB.\n- **All seven sheets share one drawing viewport**: ink bounding box `x150\u20131377, y78\u20131019`. Left border triple-rule at x147\u2013152, right border at x1355, top frame y77, bottom frame y1022\u20131027. Those are read from the decoded pixels, not assumed.\n- **The column grid is the reliable geometry on A-101**: plan grid verticals at x 350, 369, 463, 523, 586, 660, 730, 818, 866, 978, 1074, 1355; left wall inner face x152, right wall x1355. Long horizontal rules at y194/241\u2013243/258/280\u2013281/297\u2013298/312\u2013314/329/417\u2013419/449/592/781\u2013782/994. The plan therefore occupies roughly 1203 px across; no dimension string on any sheet decodes, so **the px\u2192mm scale is still unfixed** \u2014 that is the single biggest blocker and it is why I have no row spans to report.\n- **A-601/A-602 schedule structure**: a real ruled table, not text blocks. A-601 has a full-width dark data band at y304\u2013306, cell rules at x600/740/818 and y417\u2013419/449; A-602's cells run x460\u2013790 with identical y rules. Cell contents are glyphs I could see but not transcribe reliably.\n- **M-101 and E-101 service-entry symbol located**: the entry occurs at the *same* pixel block on both sheets, a framed symbol at roughly `x1083\u20131115, y181\u2013227` (E-101 also shows busway blocks at `x1146\u20131177`). That is the best evidence for the entry I have, but I have not completed the cross-check against the border dimensions and the A-101 plan, so per the instruction I am recording it as **ENTRY_UNKNOWN** rather than inventing a coordinate.\n\n## What is unfinished\n\n1. px\u2192mm scale calibration (no dimension string decoded; A-301 section lines not tied to a stated level).\n2. Rack row count and cabinets-per-row straight off A-601/A-602 \u2014 without this, any coverage figure would be measured over rows I invented.\n3. CRAH/PDU footprints from M-101/E-101 colour masks (located in pixel terms, not yet converted).\n4. A-301 elevations for the three services, and hence the 2600 mm headroom and 460 mm sprinkler-deflector checks.\n\nEverything downstream \u2014 routing, connectivity chain, clash count \u2014 depends on 1\u20134, so every gate would currently be a guess. The correct call is `ENTRY_UNKNOWN` and stop, which is where the deliverable stands.\n\nIf you want me to continue, the highest-value next step is decoding the A-301 section datum and the A-601 cabinet-dimension cells (both are ruled tables with recoverable glyphs), because those two readings fix the scale and the row schedule, and everything else follows from them."}
+2026-11-15T17:27:11.3215414Z --- serve log ---
+2026-11-15T17:27:11.3291351Z listening on 8765
+2026-11-15T17:27:11.3296094Z --- capture.json ---
+2026-11-15T17:27:11.3350557Z {
+2026-11-15T17:27:11.3350932Z  "files": {},
+2026-11-15T17:27:11.3351332Z  "deleted": [],
+2026-11-15T17:27:11.3351671Z  "skipped": [],
+2026-11-15T17:27:11.3351983Z  "baseline": true,
+2026-11-15T17:27:11.3352275Z  "note": null,
+2026-11-15T17:27:11.3352573Z  "error": null
+2026-11-15T17:27:11.3352865Z }
+2026-11-15T17:27:11.3356848Z --- final message (head) ---
+2026-11-15T17:27:11.3420591Z I have not produced a model. I reached the end of a working budget while still inside drawing interpretation, and writing a route now would mean guessing the numbers the gates are measured against — which the task explicitly says is worse than delivering nothing.
+2026-11-15T17:27:11.3421616Z 
+2026-11-15T17:27:11.3421903Z ## What is actually in the workspace
+2026-11-15T17:27:11.3422248Z 
+2026-11-15T17:27:11.3423103Z `/app/files/dc_model__hall_seed000_d000__mep_routing/output/solution.py` is still the original raising stub. It does not build an IFC file, so `tools/clash_check.py` cannot be run on anything I produced: there is no `model.ifc`, no `HARD CLASHES` count, no connectivity chain, no coverage fraction.
+2026-11-15T17:27:11.3444131Z 
+2026-11-15T17:27:11.3453945Z ## What I did establish, and can defend
+2026-11-15T17:27:11.3454660Z 
+2026-11-15T17:27:11.3456178Z - No image library is needed and I did not need one: all seven PNGs decode with `zlib` + `numpy` alone into `work/*.npy` (RGBA, `1100×1600×4`). `work/A101rgb.npy` is the decoded A-101 in RGB.
+2026-11-15T17:27:11.3458039Z - **All seven sheets share one drawing viewport**: ink bounding box `x150–1377, y78–1019`. Left border triple-rule at x147–152, right border at x1355, top frame y77, bottom frame y1022–1027. Those are read from the decoded pixels, not assumed.
+2026-11-15T17:27:11.3461753Z - **The column grid is the reliable geometry on A-101**: plan grid verticals at x 350, 369, 463, 523, 586, 660, 730, 818, 866, 978, 1074, 1355; left wall inner face x152, right wall x1355. Long horizontal rules at y194/241–243/258/280–281/297–298/312–314/329/417–419/449/592/781–782/994. The plan therefore occupies roughly 1203 px across; no dimension string on any sheet decodes, so **the px→mm scale is still unfixed** — that is the single biggest blocker and it is why I have no row spans to report.
+2026-11-15T17:27:11.3465230Z - **A-601/A-602 schedule structure**: a real ruled table, not text blocks. A-601 has a full-width dark data band at y304–306, cell rules at x600/740/818 and y417–419/449; A-602's cells run x460–790 with identical y rules. Cell contents are glyphs I could see but not transcribe reliably.
+2026-11-15T17:27:11.3468405Z - **M-101 and E-101 service-entry symbol located**: the entry occurs at the *same* pixel block on both sheets, a framed symbol at roughly `x1083–1115, y181–227` (E-101 also shows busway blocks at `x1146–1177`). That is the best evidence for the entry I have, but I have not completed the cross-check against the border dimensions and the A-101 plan, so per the instruction I am recording it as **ENTRY_UNKNOWN** rather than inventing a coordinate.
+2026-11-15T17:27:11.3470214Z 
+2026-11-15T17:27:11.3470451Z ## What is unfinished
+2026-11-15T17:27:11.3470745Z 
+2026-11-15T17:27:11.3471313Z 1. px→mm scale calibration (no dimension string decoded; A-301 section lines not tied to a stated level).
+2026-11-15T17:27:11.3472013Z 2. Rack --- workspace tree ---
+2026-11-15T17:27:11.3472444Z /home/runner/work/shihai-harness/shihai-harness/out
+2026-11-15T17:27:11.3472998Z /home/runner/work/shihai-harness/shihai-harness/out/tasks
+2026-11-15T17:27:11.3473597Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing
+2026-11-15T17:27:11.3474618Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/tests
+2026-11-15T17:27:11.3475314Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/tests/evaluator
+2026-11-15T17:27:11.3476087Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/tests/evaluator/frontier_eval
+2026-11-15T17:27:11.3476937Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/tests/evaluator/frontier_eval/reference
+2026-11-15T17:27:11.3477850Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/tests/evaluator/frontier_eval/dc_model
+2026-11-15T17:27:11.3478707Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/tests/canary
+2026-11-15T17:27:11.3479596Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/environment
+2026-11-15T17:27:11.3480353Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/environment/filesystem
+2026-11-15T17:27:11.3481330Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/environment/filesystem/dc_model__hall_seed000_d000__mep_routing
+2026-11-15T17:27:11.3482429Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/environment/filesystem/dc_model__hall_seed000_d000__mep_routing/input
+2026-11-15T17:27:11.3483927Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/data-hall-mep-routing/environment/filesystem/dc_model__hall_seed000_d000__mep_routing/output
+2026-11-15T17:27:11.3484925Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts
+2026-11-15T17:27:11.3485499Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/data-hall-mep-routing
+2026-11-15T17:27:11.3486093Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1
+2026-11-15T17:27:11.3486606Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs
+2026-11-15T17:27:11.3487146Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev
+2026-11-15T17:27:11.3487820Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE
+2026-11-15T17:27:11.3488610Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/agent
+2026-11-15T17:27:11.3489426Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/verifier
+2026-11-15T17:27:11.3490527Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/artifacts
+2026-11-15T17:27:11.3491418Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/artifacts/logs
+2026-11-15T17:27:11.3492283Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/artifacts/app
+2026-11-15T17:27:11.3493150Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/data-hall-mep-routing__izBdnSE/deliverables
+2026-11-15T17:27:11.3493770Z --- agent egress ---
+2026-11-15T17:27:11.3528317Z {"t": 1794763284.949, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 103063, "bytes_down": 12881}
+2026-11-15T17:27:11.3529030Z {"t": 1794763497.675, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 174365695, "bytes_down": 27701605}
+2026-11-15T17:27:11.3529861Z {"t": 1794763498.247, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T17:27:11.3530748Z {"t": 1794763538.696, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T17:27:11.3531516Z {"t": 1794763544.811, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 105056, "bytes_down": 53085}
+2026-11-15T17:27:11.3532177Z {"t": 1794763600.938, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 12556849, "bytes_down": 2973277}
+2026-11-15T17:27:11.3574137Z ##[group]Run actions/upload-artifact@v4
+2026-11-15T17:27:11.3574672Z with:
+2026-11-15T17:27:11.3574854Z   name: results
+2026-11-15T17:27:11.3575359Z   path: out/results.json
+out/attempt1/jobs/dev/job.log
+out/attempt1/jobs/dev/*/exception.txt
+out/attempt1/jobs/dev/*/verifier/**
+out/attempt1/jobs/dev/*/deliverables/**
+out/attempt1/jobs/dev/*/agent/**
+out/attempt1/jobs/dev/*/artifacts/**
+
+2026-11-15T17:27:11.3575867Z   if-no-files-found: warn
+2026-11-15T17:27:11.3576011Z   compression-level: 6
+2026-11-15T17:27:11.3576144Z   overwrite: false
+2026-11-15T17:27:11.3576275Z   include-hidden-files: false
+2026-11-15T17:27:11.3576420Z env:
+2026-11-15T17:27:11.3576574Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T17:27:11.3576826Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T17:27:11.3577072Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T17:27:11.3577330Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T17:27:11.3577560Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T17:27:11.3577784Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T17:27:11.3577982Z ##[endgroup]
+2026-11-15T17:27:11.4875354Z (node:45910) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-15T17:27:11.4903902Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-15T17:27:11.5216094Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-15T17:27:11.5217801Z The least common ancestor is /home/runner/work/shihai-harness/shihai-harness/out. This will be the root directory of the artifact
+2026-11-15T17:27:11.5218699Z With the provided path, there will be 16 files uploaded
+2026-11-15T17:27:11.5219568Z Artifact name is valid!
+2026-11-15T17:27:11.5220088Z Root directory input is valid!
+2026-11-15T17:27:11.7757774Z Beginning upload of artifact content to blob storage
+2026-11-15T17:27:11.8789191Z (node:45910) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-15T17:27:12.2065283Z Uploaded bytes 481269
+2026-11-15T17:27:12.2530855Z Finished uploading artifact content to blob storage!
+2026-11-15T17:27:12.2531729Z SHA256 digest of uploaded artifact zip is 9b09aec581acdd3c25fefe5f75999161cac862728f664f7a89b5296cabb2da3f
+2026-11-15T17:27:12.2532341Z Finalizing artifact upload
+2026-11-15T17:27:12.5896120Z Artifact results.zip successfully finalized. Artifact ID 14172630451
+2026-11-15T17:27:12.5896701Z Artifact results has been successfully uploaded! Final size is 481269 bytes. Artifact ID is 14172630451
+2026-11-15T17:27:12.5897378Z Artifact download URL: https://github.com/AWEsome639/shihai-harness/actions/runs/43737339981/artifacts/14172630451
+2026-11-15T17:27:12.6060886Z Post job cleanup.
+2026-11-15T17:27:12.6909748Z (node:45922) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-15T17:27:12.6910806Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-15T17:27:12.7111007Z Post job cleanup.
+2026-11-15T17:27:12.7765287Z [command]/usr/bin/git version
+2026-11-15T17:27:12.7805157Z git version 2.56.1
+2026-11-15T17:27:12.7905872Z Temporarily overriding HOME='/home/runner/work/_temp/07951e5b-7776-43ce-b004-788c7133c17d' before making global git config changes
+2026-11-15T17:27:12.7918329Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T17:27:12.7919042Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T17:27:12.7920366Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T17:27:12.7974470Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T17:27:12.8660855Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T17:27:12.8703861Z http.https://github.com/.extraheader
+2026-11-15T17:27:12.8765271Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-15T17:27:12.8822824Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T17:27:12.9085844Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T17:27:12.9119288Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T17:27:12.9570244Z Post job cleanup.
+2026-11-15T17:27:13.0226786Z [command]/usr/bin/git version
+2026-11-15T17:27:13.0285911Z git version 2.56.1
+2026-11-15T17:27:13.0397770Z Temporarily overriding HOME='/home/runner/work/_temp/7797c3b4-f883-4e99-992d-3a20f5a9ef7e' before making global git config changes
+2026-11-15T17:27:13.0400750Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T17:27:13.0404791Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/entry
+2026-11-15T17:27:13.0472832Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T17:27:13.0586406Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T17:27:13.0987061Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T17:27:13.0998983Z http.https://github.com/.extraheader
+2026-11-15T17:27:13.1040108Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-15T17:27:13.1056259Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T17:27:13.1311717Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T17:27:13.1338037Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T17:27:13.1709943Z Cleaning up orphan processes
+2026-11-15T17:27:13.1885560Z Terminate orphan process: pid (2307) (python)
+2026-11-15T17:27:13.1978711Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

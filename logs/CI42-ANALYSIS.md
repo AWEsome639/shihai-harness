@@ -63,3 +63,21 @@ PASS  G3a tray coverage == 1.0      PASS  G3a busway coverage==1…
 4. 行数一律从 A-601 来：打印读到的行数、每行机柜数、每行 y 跨度；总数 ≠ 128 或按**图上**跨度算的覆盖率任一行 < 0.8 就判失败——自己摆的行上量出来的 1.0 不算数。
 5. 没有 PIL/tesseract 不等于读不了图：用 `zlib + numpy` 解 1600×1100 PNG（8-bit RGB），把入口符号那一小块打成 ASCII 掩码，对照边框尺寸核坐标；**不许拿「OCR 不可能」当假设的许可证**。
 6. 报告里每个门量都标来源：写「读自哪张图的哪块裁剪」或 `assumed`；出现 `assumed` 的门就是未验证，直接写「该门未验证」，**不许算进 16/16**。
+
+---
+
+## 附：主代理独立核实（2026-11-16 00:47）
+
+**`data/tasks/data-hall-mep-routing/instruction.md` 原文（逐字）：**
+
+> Inputs（under `input/` — seven PNG drawing sheets, nothing else）
+> They behave like a real drawing set: positions on the plan, sizes in the schedule, elevations
+> only in the section callout. **No JSON side-channel, no coordinate dump. Reconcile them yourself
+> (read them as images).**
+
+> Route three overhead services **from the entries marked on M-101/E-101**
+
+**⇒ 结论：入口只标在图上，任务明确声明「无坐标 dump」。**
+**⇒ 此前 `harness.py` 的 NOTE 写 "The service entry is a stated coordinate" 是**事实错误**，
+   正是它诱导 agent 编出 `east-wall entry at x=35500`。**
+**⇒ 已在 `1b7ae38` 修正。**
