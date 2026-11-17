@@ -1,0 +1,8 @@
+{
+ "cost_bound": 167227.5600000004,
+ "cell_cost_total": 159867.5600000004,
+ "setup_min": 7360.0,
+ "n_cells": 1172,
+ "infeasible_cells": [],
+ "n_combinations": 80
+}

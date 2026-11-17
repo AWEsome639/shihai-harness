@@ -1,0 +1,68 @@
+DC-2 Helena Data Centre - Building A
+Sandalwood Marlow Structural Engineers, PLLC
+Project No. DC2-2026-014
+
+MODEL TRANSMITTAL NOTE - DC2-A-STR ROOF STRUCTURE MODEL, REVISION C
+File: DC2-A-STR_Roof_Structure_Model_RevC.ifc          Issued: 2026-07-31
+Schema: IFC4 (ISO-10303-21 physical file, ReferenceView_V1.2)
+
+1.  UNITS
+    The model is authored in MILLIMETRES.  IfcUnitAssignment declares LENGTHUNIT = MILLI METRE,
+    AREAUNIT = MILLI SQUARE_METRE, VOLUMEUNIT = MILLI CUBIC_METRE and MASSUNIT = KILO GRAM.
+    Every project drawing, schedule and calculation is inch-pound, so lengths read out of this
+    model must be divided by 304.8 to obtain feet (1 ft = 304.8 mm, 1 in = 25.4 mm).
+    Rooftop unit operating weights are published in this model in KILOGRAMS; they were converted
+    from the pounds given in the mechanical equipment schedule at 1 lb = 0.45359237 kg.
+
+2.  COORDINATE ORIGIN AND AXIS CONVENTION
+    The model origin is the intersection of grid 1 and grid A, at finished floor.
+      model +X  = project grid x, east, grids 1 -> 9 at 30 ft centres
+      model +Y  = project grid y, north, grids A -> G at 30 ft centres
+      model +Z  = up, measured from finished floor; z = 0 is finished floor
+    The building footprint is 240 ft (x) by 180 ft (y).  The single IfcBuildingStorey is named
+    ROOF and is placed at Elevation = 9753.6 mm, i.e. 32 ft above finished floor (top of
+    steel at the main roof).  Every roof element is placed relative to that storey, so a local z of
+    0.0 in an element placement is the roof datum and positive local z is above the roof surface.
+    IfcSite and IfcBuilding placements are the identity; there is no rotation to true north other
+    than the TrueNorth direction carried by the geometric representation context.
+
+3.  WHAT IS MODELLED
+    - IfcGrid "DC2-A ROOF GRID": U axes 1 through 9, V axes A through G, with their labels.
+    - IfcColumn at every grid intersection, finished floor to roof (63 columns).
+    - IfcBeam for every 26K9 joist: one beam per joist line per 30 ft bay, joist lines at
+      6 ft centres in x, spanning in y between the joist girders (246 beams).
+    - IfcBeam for every 36G 5N 15.0K joist girder: one beam per 30 ft bay along grids A through G
+      (56 beams).
+    - IfcMember for the braced-frame diagonals, two per braced bay, tagged BF-X1 ... BF-Y4
+      (16 members).  Each braced frame carries Pset_BracedFrame with its wall line, bay and
+      published roof-level stiffness.
+    - IfcWall (PredefinedType PARAPET) for the four parapet runs, 3.5 ft above the roof.
+    - IfcSlab (PredefinedType ROOF) for the roof deck area, voided by one IfcOpeningElement per
+      framed roof opening (RO-1, RO-2, RO-3).
+    - IfcBuildingElementProxy for every rooftop obstruction: the equipment enclosure MEP-PH-1, the
+      equipment screen walls SCR-N and SCR-E, and rooftop units RTU-1, RTU-2, RTU-3, RTU-4, RTU-5, RTU-6, RTU-7, RTU-8, RTU-9, RTU-10, RTU-11, RTU-12.  Each carries its tag in
+      Name and an IfcPropertySet "Pset_RoofObstruction" with HeightAboveRoof (mm); the rooftop units
+      also carry OperatingWeight (kg).
+    All bodies are real IfcExtrudedAreaSolid geometry over IfcRectangleProfileDef or
+    IfcArbitraryClosedProfileDef, placed with IfcLocalPlacement, so plan extents and heights can be
+    read out of the geometry and not only out of the property sets.
+
+4.  WHAT IS NOT MODELLED
+    - The roof deck is shown as ONE slab of nominal 1.5 in thickness representing the
+      1-1/2 in wide rib (Type B) deck profile.  Deck gage, deck zoning, support fastener patterns,
+      sidelap connectors and the deck panel layout are NOT in this model and are not implied by it.
+    - Roofing membrane, cover board, insulation, flashings and the roof slope to drain.
+    - Joist bridging, joist seats, connection plates, welds and bolts; joists and girders are
+      modelled as prismatic envelopes of their nominal depth with their designation carried in
+      Name, ObjectType and Tag.
+    - Section sizes used only as modelling envelopes: columns 12 in square, braced-frame
+      diagonals 6 in square, parapet 8 in thick, equipment screen wall 8 in
+      thick, enclosure louvred screen walls 10 in thick.  These are envelopes for
+      coordination, not the fabricated sections; the steel schedule governs.
+    - Mechanical, electrical and plumbing services, ductwork and piping.
+
+5.  STATUS
+    This is Revision C of the roof structure coordination model and it is issued for
+    construction coordination.  WHERE THIS MODEL AND THE TWO-DIMENSIONAL DRAWINGS DIFFER, THIS MODEL
+    GOVERNS.  In particular the SCR-N and SCR-E equipment screen wall was relocated after A-201 Rev B: the
+    position carried here is the current one.  Report any discrepancy to Sandalwood Marlow Structural Engineers, PLLC before fabrication.
