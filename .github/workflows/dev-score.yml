@@ -58,12 +58,19 @@ jobs:
           cat /tmp/relay.log 2>/dev/null || echo none
       - name: fit the task resources to this runner
         run: |
-          # Seventeen of the twenty-nine dev tasks declare cpus = 4 and 8-12 GB,
-          # and this runner has two cores: dockerd refuses `--cpus 4` and the
-          # container never starts, so those tasks scored a structural zero that
-          # says nothing about the harness. Rewrite the declared resources to what
-          # the runner can give, and print every file touched so the dev-proxy
-          # caveat is auditable.
+          # Two separate frictions, both measured on this runner.
+          #
+          # 1. Resources. Seventeen of the twenty-nine dev tasks declare cpus = 4
+          #    with 8-12 GB; this runner has two cores, so dockerd refuses the
+          #    request and the environment never starts. wind-diaphragm-shear died
+          #    with 'range of CPUs is from 0.01 to 2.00' and scored a structural
+          #    zero that says nothing about the harness.
+          #
+          # 2. Budget. The same task allows the agent 1,800 s and the verifier
+          #    4,800 s, so one task can occupy ~2 h. That is the shipped budget and
+          #    we do not dispute it, but a dev loop cannot wait two hours per
+          #    question. Cut both here and say so, so nobody mistakes a short
+          #    budget for a full one.
           python - <<'PY'
           import pathlib, re
           root = pathlib.Path("${{ github.workspace }}/entry/data/tasks")
@@ -72,6 +79,9 @@ jobs:
               text = toml.read_text(encoding="utf-8")
               new = re.sub(r"^cpus\s*=\s*\d+", "cpus = 2", text, flags=re.M)
               new = re.sub(r"^memory_mb\s*=\s*\d+", "memory_mb = 4096", new, flags=re.M)
+              # [verifier] timeout_sec (80 min) and [agent] timeout_sec (30 min)
+              new = re.sub(r"^timeout_sec\s*=\s*4800(\.0)?", "timeout_sec = 900", new, flags=re.M)
+              new = re.sub(r"^timeout_sec\s*=\s*1800(\.0)?", "timeout_sec = 900", new, flags=re.M)
               if new != text:
                   toml.write_text(new, encoding="utf-8")
                   touched.append(toml.parent.name)
