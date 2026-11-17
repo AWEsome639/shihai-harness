@@ -6,6 +6,9 @@ on:
         description: 'comma-separated task ids'
         default: 'fire-test-validation-memo'
       trials:
+      model:
+        description: 'override relay model (blank = MODEL_NAME secret)'
+        default: ''
         default: '1'
 jobs:
   score:
@@ -32,7 +35,7 @@ jobs:
       - name: start model relay
         env:
           MODEL_RELAY_TARGET: ${{ secrets.MODEL_BASE_URL }}
-          MODEL_RELAY_MODEL: ${{ secrets.MODEL_NAME }}
+          MODEL_RELAY_MODEL: ${{ inputs.model || secrets.MODEL_NAME }}
           MODEL_RELAY_KEY: ${{ secrets.MODEL_API_KEY }}
         run: |
           echo "target_len=${#MODEL_RELAY_TARGET} name_len=${#MODEL_RELAY_MODEL} key_len=${#MODEL_RELAY_KEY}"
