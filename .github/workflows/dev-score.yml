@@ -95,7 +95,7 @@ jobs:
           cd kitrepo
           python eval/run.py "${{ github.workspace }}/entry" \
             --tasks-dir "${{ github.workspace }}/entry/data/tasks" \
-            --tasks "${{ inputs.tasks }}" --trials "${{ inputs.trials }}" \
+            --tasks "${{ inputs.tasks }}" --trials "${{ inputs.trials }}" --attempts 1 \
             --out "${{ github.workspace }}/out" || true
           echo "--- results ---"
           cat "${{ github.workspace }}/out/results.json" 2>/dev/null || echo none
