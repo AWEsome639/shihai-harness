@@ -72,6 +72,10 @@ jobs:
               text = toml.read_text(encoding="utf-8")
               new = re.sub(r"^cpus\s*=\s*\d+", "cpus = 2", text, flags=re.M)
               new = re.sub(r"^memory_mb\s*=\s*\d+", "memory_mb = 4096", new, flags=re.M)
+              # the shipped budget is agent 1,800 s + verifier 4,800 s = ~2 h per
+              # question; a dev loop cannot wait that out, so cut both here
+              new = re.sub(r"^timeout_sec\s*=\s*4800(\.0)?", "timeout_sec = 900", new, flags=re.M)
+              new = re.sub(r"^timeout_sec\s*=\s*1800(\.0)?", "timeout_sec = 900", new, flags=re.M)
               if new != text:
                   toml.write_text(new, encoding="utf-8")
                   touched.append(toml.parent.name)
