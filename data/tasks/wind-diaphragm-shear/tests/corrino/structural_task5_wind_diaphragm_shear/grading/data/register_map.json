@@ -1,0 +1,1121 @@
+{
+ "requirements": [
+  {
+   "id": "R001",
+   "family": "G1_FOOTPRINT",
+   "tier": "hard",
+   "document": "A-101 Roof Plan Rev C",
+   "clause": "note 1",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "as-built",
+    "as-builts",
+    "generator yard",
+    "generator yards",
+    "notch",
+    "notchs"
+   ]
+  },
+  {
+   "id": "R002",
+   "family": "G1_FOOTPRINT",
+   "tier": "hard",
+   "document": "NDDC-A2 Federated Model 2026",
+   "clause": "Pset_RoofCommon",
+   "value": 28.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "deck",
+    "decks",
+    "roof",
+    "roofs",
+    "slab",
+    "slabs"
+   ]
+  },
+  {
+   "id": "R003",
+   "family": "G2_PARAPET_HEIGHT",
+   "tier": "hard",
+   "document": "SR-2026-118 Roof Line Scan Report",
+   "clause": "5.2",
+   "value": 36.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "screen",
+    "screens",
+    "top of panel",
+    "top of panels"
+   ]
+  },
+  {
+   "id": "R004",
+   "family": "G2_PARAPET_HEIGHT",
+   "tier": "hard",
+   "document": "NDDC-A2 Federated Model 2026",
+   "clause": "Pset_PrecastPanel",
+   "value": 10972.8,
+   "units": "mm",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "elevation",
+    "elevations",
+    "panel",
+    "panels",
+    "top",
+    "tops"
+   ]
+  },
+  {
+   "id": "R005",
+   "family": "G3_PIERS",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "5.4",
+   "value": 2.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "leg",
+    "legs",
+    "neglect",
+    "neglects"
+   ]
+  },
+  {
+   "id": "R006",
+   "family": "G3_PIERS",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "5.5",
+   "value": 1.2,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "cantilever",
+    "cantilevers",
+    "pier",
+    "piers",
+    "stiffness"
+   ]
+  },
+  {
+   "id": "R007",
+   "family": "G4_ZONE_ASSIGN",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "7.1",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "deck type",
+    "deck types",
+    "one deck type",
+    "one deck types",
+    "zone",
+    "zones"
+   ]
+  },
+  {
+   "id": "R008",
+   "family": "G4_ZONE_ASSIGN",
+   "tier": "hard",
+   "document": "S-201 Roof Framing Plan Rev C",
+   "clause": "4",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "deck",
+    "decks",
+    "zone",
+    "zones"
+   ]
+  },
+  {
+   "id": "R009",
+   "family": "G5_TYPE_CAP",
+   "tier": "hard",
+   "document": "OBD-NDDC-A2",
+   "clause": "4.6",
+   "value": 4.0,
+   "units": "types",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "deck type",
+    "deck types",
+    "distinct",
+    "distincts",
+    "standardisation",
+    "standardisations"
+   ]
+  },
+  {
+   "id": "R010",
+   "family": "G6_CATALOGUE",
+   "tier": "hard",
+   "document": "CDS-B36 Diaphragm Design Manual",
+   "clause": "Table 3",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "catalogue",
+    "catalogues",
+    "deck",
+    "decks",
+    "shear",
+    "shears"
+   ]
+  },
+  {
+   "id": "R011",
+   "family": "G6_CATALOGUE",
+   "tier": "hard",
+   "document": "KRS-CH Chord and Collector Schedule",
+   "clause": "Table 1",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "chord",
+    "chords",
+    "collector",
+    "collectors",
+    "section",
+    "sections"
+   ]
+  },
+  {
+   "id": "R012",
+   "family": "G7_CHORD_ASSIGN",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "10.1",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "chord",
+    "chords",
+    "collector",
+    "collectors",
+    "full length",
+    "full lengths"
+   ]
+  },
+  {
+   "id": "R013",
+   "family": "G7_CHORD_ASSIGN",
+   "tier": "hard",
+   "document": "S-201 Roof Framing Plan Rev C",
+   "clause": "5",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "boundaries",
+    "boundary",
+    "boundarys",
+    "chord",
+    "chord line",
+    "chord lines",
+    "chords"
+   ]
+  },
+  {
+   "id": "R014",
+   "family": "G8_SPAN_FACTOR",
+   "tier": "hard",
+   "document": "CDS-B36 Diaphragm Design Manual",
+   "clause": "note 4",
+   "value": 1.15,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "adjust",
+    "adjusts",
+    "deck span",
+    "deck spans",
+    "stiffness"
+   ]
+  },
+  {
+   "id": "R015",
+   "family": "G8_SPAN_FACTOR",
+   "tier": "hard",
+   "document": "SJ-201 Joist and Girder Schedule",
+   "clause": "note 2",
+   "value": 4.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "deck span",
+    "deck spans",
+    "joist",
+    "joists",
+    "mechanical",
+    "mechanicals"
+   ]
+  },
+  {
+   "id": "R016",
+   "family": "G9_ASD_CAPACITY",
+   "tier": "hard",
+   "document": "CDS-B36 Diaphragm Design Manual",
+   "clause": "note 2",
+   "value": 2.35,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "allowable stress",
+    "omega",
+    "omegas",
+    "safety factor",
+    "safety factors"
+   ]
+  },
+  {
+   "id": "R017",
+   "family": "G10_CAP",
+   "tier": "hard",
+   "document": "OBD-NDDC-A2",
+   "clause": "4.7",
+   "value": 310000.0,
+   "units": "USD",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "cap",
+    "caps",
+    "installed cost",
+    "installed costs"
+   ]
+  },
+  {
+   "id": "R018",
+   "family": "G10_CAP",
+   "tier": "hard",
+   "document": "OBD-NDDC-A2",
+   "clause": "4.7",
+   "value": 2.85,
+   "units": "USD/lb",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "chord steel",
+    "chord steels",
+    "pound",
+    "pounds"
+   ]
+  },
+  {
+   "id": "R019",
+   "family": "G11_EMBED_SPACING",
+   "tier": "hard",
+   "document": "KRS-CN Connection Vendor Data",
+   "clause": "2.3",
+   "value": 8.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "center",
+    "centers",
+    "centre",
+    "centres",
+    "embed",
+    "embeds",
+    "spacing",
+    "spacings"
+   ]
+  },
+  {
+   "id": "R020",
+   "family": "G12_DXF",
+   "tier": "soft",
+   "document": "Spec 01 33 00",
+   "clause": "1.7",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "drawing",
+    "drawings",
+    "dxf",
+    "dxfs",
+    "layer",
+    "layers"
+   ]
+  },
+  {
+   "id": "R021",
+   "family": "G13_PDF",
+   "tier": "soft",
+   "document": "Spec 01 33 00",
+   "clause": "1.6",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "calculation",
+    "calculations",
+    "pdf",
+    "pdfs",
+    "portrait",
+    "portraits"
+   ]
+  },
+  {
+   "id": "R022",
+   "family": "G13_PDF",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "11.1",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "8-1/2",
+    "8-1/2s",
+    "calculation package",
+    "calculation packages",
+    "sheet",
+    "sheets"
+   ]
+  },
+  {
+   "id": "R023",
+   "family": "G14_SCHEDULE",
+   "tier": "soft",
+   "document": "Spec 01 33 00",
+   "clause": "1.5",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "heading",
+    "headings",
+    "placeholder",
+    "placeholders",
+    "schedule",
+    "schedules"
+   ]
+  },
+  {
+   "id": "R024",
+   "family": "G15_GCI",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "9.7",
+   "value": 5.0,
+   "units": "%",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "convergence",
+    "convergences",
+    "mesh",
+    "meshs",
+    "refinement",
+    "refinements"
+   ]
+  },
+  {
+   "id": "R025",
+   "family": "F1_DECK_CAPACITY",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "7.2",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "capacities",
+    "capacity",
+    "capacitys",
+    "exceed",
+    "exceeds",
+    "unit shear",
+    "unit shears"
+   ]
+  },
+  {
+   "id": "R026",
+   "family": "F2_CHORD_CAPACITY",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "10.2",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "allowable",
+    "allowables",
+    "chord force",
+    "chord forces",
+    "tension",
+    "tensions"
+   ]
+  },
+  {
+   "id": "R027",
+   "family": "F3_COLLECTOR_CAPACITY",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "10.3",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "collector",
+    "collectors",
+    "drag",
+    "drags",
+    "opening",
+    "openings",
+    "re-entrant",
+    "re-entrants"
+   ]
+  },
+  {
+   "id": "R028",
+   "family": "F4_PIER_BASE",
+   "tier": "hard",
+   "document": "KRS-CN Connection Vendor Data",
+   "clause": "3.1",
+   "value": 1.4,
+   "units": "kips/ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "base",
+    "base connection",
+    "base connections",
+    "bases",
+    "per foot",
+    "per foots"
+   ]
+  },
+  {
+   "id": "R029",
+   "family": "F5_EMBED_CAPACITY",
+   "tier": "hard",
+   "document": "KRS-CN Connection Vendor Data",
+   "clause": "2.1",
+   "value": 4.2,
+   "units": "kips",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "develops",
+    "embed",
+    "embeds",
+    "in-plane shear",
+    "in-plane shears"
+   ]
+  },
+  {
+   "id": "R030",
+   "family": "F6_OVERTURNING",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "5.8",
+   "value": 0.6,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "overturning",
+    "overturnings",
+    "resisting",
+    "resistings",
+    "stabilities",
+    "stability",
+    "stabilitys"
+   ]
+  },
+  {
+   "id": "R031",
+   "family": "F6_OVERTURNING",
+   "tier": "hard",
+   "document": "KRS-CN Connection Vendor Data",
+   "clause": "4.2",
+   "value": 88.0,
+   "units": "kips",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "assemblies",
+    "assembly",
+    "assemblys",
+    "tie-down",
+    "tie-downs",
+    "uplift",
+    "uplifts"
+   ]
+  },
+  {
+   "id": "R032",
+   "family": "F7_DIAPH_DRIFT",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "8.2",
+   "value": 0.55,
+   "units": "in",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "deflection",
+    "deflections",
+    "diaphragm",
+    "diaphragms",
+    "supports"
+   ]
+  },
+  {
+   "id": "R033",
+   "family": "F7_DIAPH_DRIFT",
+   "tier": "hard",
+   "document": "OBD-NDDC-A2",
+   "clause": "4.4",
+   "value": 0.55,
+   "units": "in",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "connection detail",
+    "connection details",
+    "deflection",
+    "deflections",
+    "diaphragm",
+    "diaphragms"
+   ]
+  },
+  {
+   "id": "R034",
+   "family": "F8_PIER_DRIFT",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "8.3",
+   "value": 400.0,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "drift",
+    "drifts",
+    "pier drift",
+    "pier drifts"
+   ]
+  },
+  {
+   "id": "R035",
+   "family": "F9_SHEAR_AGREE",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "9.6",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "element",
+    "elements",
+    "station",
+    "stations",
+    "unit shear",
+    "unit shears"
+   ]
+  },
+  {
+   "id": "R036",
+   "family": "F10_REACT_AGREE",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "9.4",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "node",
+    "nodes",
+    "pier",
+    "piers",
+    "spring",
+    "springs"
+   ]
+  },
+  {
+   "id": "R037",
+   "family": "F11_LINELOAD_AGREE",
+   "tier": "hard",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "6.4",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "lever",
+    "levers",
+    "parapet",
+    "parapets",
+    "roof deck",
+    "roof decks"
+   ]
+  },
+  {
+   "id": "R038",
+   "family": "F11_LINELOAD_AGREE",
+   "tier": "hard",
+   "document": "WT-2026-07 Boundary Layer Wind Study",
+   "clause": "6.3",
+   "value": 1.5,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "gcpn",
+    "gcpns",
+    "net",
+    "nets",
+    "parapet",
+    "parapets"
+   ]
+  },
+  {
+   "id": "R039",
+   "family": "F12_CHORD_AGREE",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "9.3",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "bar",
+    "bars",
+    "chord",
+    "chords",
+    "collector",
+    "collectors"
+   ]
+  },
+  {
+   "id": "R040",
+   "family": "F13_DRIFT_AGREE",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "11.3",
+   "value": 7.5,
+   "units": "%",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "agree",
+    "agrees",
+    "re-run",
+    "re-runs",
+    "tolerance",
+    "tolerances"
+   ]
+  },
+  {
+   "id": "R041",
+   "family": "D1_GOVERNING",
+   "tier": "soft",
+   "document": "Spec 01 33 00",
+   "clause": "1.6",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "governing",
+    "governings",
+    "scenario",
+    "scenarios",
+    "wall line",
+    "wall lines"
+   ]
+  },
+  {
+   "id": "R042",
+   "family": "D2_KZT",
+   "tier": "soft",
+   "document": "TS-2026-02 Topographic Wind Study",
+   "clause": "4",
+   "value": 1.19,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "kzt",
+    "kzts",
+    "topographic",
+    "topographics"
+   ]
+  },
+  {
+   "id": "R043",
+   "family": "D2_KZT",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "4.3",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "kzt",
+    "kzts",
+    "superseded",
+    "supersededs",
+    "topographic",
+    "topographics"
+   ]
+  },
+  {
+   "id": "R044",
+   "family": "D3_KE",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "4.4",
+   "value": 3.62e-05,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "ground elevation",
+    "ground elevations",
+    "ke",
+    "kes"
+   ]
+  },
+  {
+   "id": "R045",
+   "family": "D3_KE",
+   "tier": "soft",
+   "document": "ALTA-2025-77 Site Survey",
+   "clause": "1",
+   "value": 3940.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "benchmark",
+    "benchmarks",
+    "elevation",
+    "elevations",
+    "finished floor",
+    "finished floors"
+   ]
+  },
+  {
+   "id": "R046",
+   "family": "D4_QH",
+   "tier": "soft",
+   "document": "NDDC-AHJ-014 AHJ Letter",
+   "clause": "2",
+   "value": 115.0,
+   "units": "mph",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "basic",
+    "basics",
+    "gust",
+    "gusts",
+    "wind speed",
+    "wind speeds"
+   ]
+  },
+  {
+   "id": "R047",
+   "family": "D4_QH",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "4.2",
+   "value": 0.00256,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "q",
+    "qs",
+    "velocity pressure",
+    "velocity pressures"
+   ]
+  },
+  {
+   "id": "R048",
+   "family": "D5_SCREEN",
+   "tier": "soft",
+   "document": "A-301 Exterior Elevations Rev C",
+   "clause": "note 2",
+   "value": 31.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "screen",
+    "screens",
+    "top of panel",
+    "top of panels"
+   ]
+  },
+  {
+   "id": "R049",
+   "family": "D6_ASBUILT_DOOR",
+   "tier": "soft",
+   "document": "PC-S02 Precast Panel Elevations Rev 2",
+   "clause": "note 4",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "federated",
+    "federateds",
+    "field cut",
+    "field cuts",
+    "field-cut",
+    "field-cuts",
+    "verifies",
+    "verify",
+    "verifys"
+   ]
+  },
+  {
+   "id": "R050",
+   "family": "D7_ASD",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "3.3",
+   "value": 0.6,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "0.6w",
+    "0.6ws",
+    "allowable stress",
+    "asd",
+    "asds"
+   ]
+  },
+  {
+   "id": "R051",
+   "family": "D8_MODEL",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "9",
+   "value": null,
+   "units": "",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "rigid",
+    "rigids",
+    "semi-rigid",
+    "semi-rigids",
+    "tributaries",
+    "tributary",
+    "tributarys"
+   ]
+  },
+  {
+   "id": "R052",
+   "family": "D8_MODEL",
+   "tier": "soft",
+   "document": "EOR-NDDC-A2-S01",
+   "clause": "9.1",
+   "value": 5.0,
+   "units": "ft",
+   "equivalents": [],
+   "printed": [],
+   "keywords": [
+    "level",
+    "levels",
+    "mesh",
+    "meshs",
+    "structured",
+    "structureds"
+   ]
+  }
+ ],
+ "document_aliases": {
+  "EOR-NDDC-A2-S01": "EOR-NDDC-A2-S01",
+  "EOR-NDDC-A2-S01 Structural Design Criteria": "EOR-NDDC-A2-S01",
+  "Structural Design Criteria Roof Diaphragm": "EOR-NDDC-A2-S01",
+  "EOR NDDC A2 S01 Rev 2": "EOR-NDDC-A2-S01",
+  "Structural Design Criteria Rev 2": "EOR-NDDC-A2-S01",
+  "design criteria": "EOR-NDDC-A2-S01",
+  "CDS-B36 Diaphragm Design Manual": "CDS-B36 Diaphragm Design Manual",
+  "CDS-B36": "CDS-B36 Diaphragm Design Manual",
+  "CDS B36 Diaphragm Design Manual": "CDS-B36 Diaphragm Design Manual",
+  "Cascade Deck Systems CDS-B36": "CDS-B36 Diaphragm Design Manual",
+  "deck manufacturer catalogue": "CDS-B36 Diaphragm Design Manual",
+  "KRS-CH Chord and Collector Schedule": "KRS-CH Chord and Collector Schedule",
+  "KRS-CH": "KRS-CH Chord and Collector Schedule",
+  "Chord and Collector Schedule": "KRS-CH Chord and Collector Schedule",
+  "KRS-CN Connection Vendor Data": "KRS-CN Connection Vendor Data",
+  "KRS-CN": "KRS-CN Connection Vendor Data",
+  "Connection Vendor Data": "KRS-CN Connection Vendor Data",
+  "OBD-NDDC-A2": "OBD-NDDC-A2",
+  "OBD NDDC A2": "OBD-NDDC-A2",
+  "Owner's Basis of Design": "OBD-NDDC-A2",
+  "Owners Basis of Design": "OBD-NDDC-A2",
+  "Spec 01 33 00": "Spec 01 33 00",
+  "Section 01 33 00": "Spec 01 33 00",
+  "Spec 013300": "Spec 01 33 00",
+  "Submittal Procedures": "Spec 01 33 00",
+  "S-201 Roof Framing Plan Rev C": "S-201 Roof Framing Plan Rev C",
+  "S-201": "S-201 Roof Framing Plan Rev C",
+  "S-201 Roof Framing Plan": "S-201 Roof Framing Plan Rev C",
+  "Roof Framing Plan Rev C": "S-201 Roof Framing Plan Rev C",
+  "SJ-201 Joist and Girder Schedule": "SJ-201 Joist and Girder Schedule",
+  "SJ-201": "SJ-201 Joist and Girder Schedule",
+  "Joist and Girder Schedule": "SJ-201 Joist and Girder Schedule",
+  "A-101 Roof Plan Rev C": "A-101 Roof Plan Rev C",
+  "A-101 Roof Plan": "A-101 Roof Plan Rev C",
+  "A-101 Rev C": "A-101 Roof Plan Rev C",
+  "A-101": "A-101 Roof Plan Rev C",
+  "A-301 Exterior Elevations Rev C": "A-301 Exterior Elevations Rev C",
+  "A-301 Exterior Elevations": "A-301 Exterior Elevations Rev C",
+  "A-301 Rev C": "A-301 Exterior Elevations Rev C",
+  "A-301": "A-301 Exterior Elevations Rev C",
+  "PC-S02 Precast Panel Elevations Rev 2": "PC-S02 Precast Panel Elevations Rev 2",
+  "PC-S02 Precast Panel Elevations": "PC-S02 Precast Panel Elevations Rev 2",
+  "PC-S02 Rev 2": "PC-S02 Precast Panel Elevations Rev 2",
+  "PC-S02": "PC-S02 Precast Panel Elevations Rev 2",
+  "NDDC-A2 Federated Model 2026": "NDDC-A2 Federated Model 2026",
+  "Federated Model": "NDDC-A2 Federated Model 2026",
+  "NDDC-A2 Federated Model": "NDDC-A2 Federated Model 2026",
+  "as-built federated model": "NDDC-A2 Federated Model 2026",
+  "IFC model": "NDDC-A2 Federated Model 2026",
+  "NDDC-A2_Federated_Model_2026": "NDDC-A2 Federated Model 2026",
+  "SR-2026-118 Roof Line Scan Report": "SR-2026-118 Roof Line Scan Report",
+  "SR-2026-118": "SR-2026-118 Roof Line Scan Report",
+  "Roof Line Scan Report": "SR-2026-118 Roof Line Scan Report",
+  "WT-2026-07 Boundary Layer Wind Study": "WT-2026-07 Boundary Layer Wind Study",
+  "WT-2026-07": "WT-2026-07 Boundary Layer Wind Study",
+  "Boundary Layer Wind Study": "WT-2026-07 Boundary Layer Wind Study",
+  "wind study": "WT-2026-07 Boundary Layer Wind Study",
+  "TS-2026-02 Topographic Wind Study": "TS-2026-02 Topographic Wind Study",
+  "TS-2026-02": "TS-2026-02 Topographic Wind Study",
+  "Topographic Wind Study": "TS-2026-02 Topographic Wind Study",
+  "ALTA-2025-77 Site Survey": "ALTA-2025-77 Site Survey",
+  "ALTA-2025-77": "ALTA-2025-77 Site Survey",
+  "Site Survey": "ALTA-2025-77 Site Survey",
+  "NDDC-AHJ-014 AHJ Letter": "NDDC-AHJ-014 AHJ Letter",
+  "NDDC-AHJ-014": "NDDC-AHJ-014 AHJ Letter",
+  "AHJ Letter": "NDDC-AHJ-014 AHJ Letter",
+  "Authority Having Jurisdiction letter": "NDDC-AHJ-014 AHJ Letter",
+  "UFC 3-301-01": "UFC 3-301-01",
+  "UFC 3-301-01 Structural Engineering": "UFC 3-301-01",
+  "Diaphragm Design Manual": "CDS-B36 Diaphragm Design Manual",
+  "Structural Design Criteria": "EOR-NDDC-A2-S01",
+  "Design Criteria Rev 2": "EOR-NDDC-A2-S01",
+  "Section 01 33 00 Submittal Procedures": "Spec 01 33 00",
+  "Owner's Basis of Design extract": "OBD-NDDC-A2",
+  "Basis of Design": "OBD-NDDC-A2",
+  "Roof Framing Plan": "S-201 Roof Framing Plan Rev C",
+  "Exterior Elevations": "A-301 Exterior Elevations Rev C",
+  "Roof Plan": "A-101 Roof Plan Rev C",
+  "Precast Panel Elevations": "PC-S02 Precast Panel Elevations Rev 2",
+  "Roof Line Scan and Parapet Verification": "SR-2026-118 Roof Line Scan Report",
+  "ALTA / NSPS Land Title and Topographic Survey": "ALTA-2025-77 Site Survey",
+  "Land Title": "ALTA-2025-77 Site Survey",
+  "Authority Having Jurisdiction Letter": "NDDC-AHJ-014 AHJ Letter",
+  "Federated Model 2026": "NDDC-A2 Federated Model 2026",
+  "as-built model": "NDDC-A2 Federated Model 2026",
+  "PC-S01 Precast Panel Schedule 2024": "PC-S01 Precast Panel Schedule 2024",
+  "PC-S01 Precast Panel Schedule": "PC-S01 Precast Panel Schedule 2024",
+  "Precast Panel Schedule 2024": "PC-S01 Precast Panel Schedule 2024",
+  "Precast Panel Schedule": "PC-S01 Precast Panel Schedule 2024",
+  "PC-S01": "PC-S01 Precast Panel Schedule 2024",
+  "T-204 Document Transmittal": "T-204 Document Transmittal",
+  "T-204": "T-204 Document Transmittal",
+  "Document Transmittal": "T-204 Document Transmittal",
+  "29 CFR 1926.704": "29 CFR 1926.704",
+  "1926.704": "29 CFR 1926.704",
+  "29 CFR 1926.757": "29 CFR 1926.757",
+  "1926.757": "29 CFR 1926.757",
+  "Roof_Line_Scan_2026-08-14.ply": "Roof Line Scan 2026-08-14",
+  "Roof_Line_Scan_2026-08-14": "Roof Line Scan 2026-08-14",
+  "roof line scan point cloud": "Roof Line Scan 2026-08-14",
+  "Scan Control Targets": "Scan Control Targets",
+  "Scan_Control_Targets.csv": "Scan Control Targets",
+  "WT-2026-07 Cp by azimuth": "WT-2026-07 Cp data file",
+  "WT-2026-07_Cp_by_azimuth.csv": "WT-2026-07 Cp data file",
+  "A-101 Roof Plan Rev C key plan": "A-101 Roof Plan Rev C"
+ },
+ "distractor_documents": [
+  "A-101 Roof Plan Rev A",
+  "EOR-NDDC-A2-S01 Rev 0",
+  "HallB Lateral Study 2023",
+  "PC-S02 Precast Panel Elevations Rev 1"
+ ],
+ "distractor_aliases": {
+  "EOR-NDDC-A2-S01 Rev 0": [
+   "eor nddc a2 s01 rev 0",
+   "design criteria rev 0",
+   "structural design criteria rev 0",
+   "criteria revision 0"
+  ],
+  "A-101 Roof Plan Rev A": [
+   "a 101 roof plan rev a",
+   "a 101 rev a",
+   "a101 rev a",
+   "roof plan rev a",
+   "a 101 roof plan reva"
+  ],
+  "PC-S02 Precast Panel Elevations Rev 1": [
+   "pc s02 precast panel elevations rev 1",
+   "pc s02 rev 1",
+   "panel elevations rev 1"
+  ],
+  "HallB Lateral Study 2023": [
+   "hall b lateral study",
+   "hallb lateral study",
+   "building a1 lateral study",
+   "hall b study"
+  ]
+ },
+ "precision_floor": 0.6,
+ "row_cap": 150,
+ "max_clauses": 3,
+ "max_numbers": 8
+}

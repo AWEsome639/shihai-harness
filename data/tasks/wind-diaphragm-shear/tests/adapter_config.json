@@ -1,0 +1,10 @@
+{
+  "task_folder": "structural_task5_wind_diaphragm_shear",
+  "grader": "/tests/corrino/structural_task5_wind_diaphragm_shear/grading/verification/run_grade.py",
+  "candidate_paths": [
+    "/filesystem/final_batch4__structural_task5_wind_diaphragm_shear__blind/output/submission.zip",
+    "/filesystem/filesystem/final_batch4__structural_task5_wind_diaphragm_shear__blind/output/submission.zip"
+  ],
+  "valid_optional": true,
+  "timeout_seconds": 3500
+}

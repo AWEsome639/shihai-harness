@@ -1,0 +1,27 @@
+{
+ "bound": 171415.15,
+ "bound_seed": 20260923,
+ "floor_margin": 0.85,
+ "samples": 60,
+ "seed": 771103,
+ "feasible_samples": 45,
+ "samples_cheaper_than_the_bound": [],
+ "worst_demand_drop_below_the_floor_pct": {
+  "Z11": 0.0,
+  "Z12": 0.0,
+  "Z13": 0.0,
+  "Z21": 0.0,
+  "Z22": 0.0,
+  "Z23": 0.0,
+  "Z31": 0.0,
+  "Z32": 0.0,
+  "Z33": 0.0,
+  "Z41": 0.0,
+  "Z42": 0.0,
+  "Z43": 0.0
+ },
+ "zones_where_a_sample_went_below_a_BINDING_floor": {},
+ "zones_where_a_sample_went_below_a_non_binding_floor": {},
+ "zones_whose_bound_pick_is_not_the_cheapest_deck": [],
+ "verdict": "bound holds on every sample"
+}

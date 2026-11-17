@@ -24,3 +24,4 @@ proxy-config.yaml
 
 # CI artifact downloads (600 KB of task output, not part of the entry)
 ci_artifact/
+!data/tasks/wind-diaphragm-shear/
