@@ -56,6 +56,27 @@ jobs:
           ss -lntp 2>/dev/null | grep 4100 || netstat -lnt 2>/dev/null | grep 4100 || echo "no listener info"
           echo "--- relay log so far ---"
           cat /tmp/relay.log 2>/dev/null || echo none
+      - name: fit the task resources to this runner
+        run: |
+          # Seventeen of the twenty-nine dev tasks declare cpus = 4 and 8-12 GB,
+          # and this runner has two cores: dockerd refuses `--cpus 4` and the
+          # container never starts, so those tasks scored a structural zero that
+          # says nothing about the harness. Rewrite the declared resources to what
+          # the runner can give, and print every file touched so the dev-proxy
+          # caveat is auditable.
+          python - <<'PY'
+          import pathlib, re
+          root = pathlib.Path("${{ github.workspace }}/entry/data/tasks")
+          touched = []
+          for toml in root.glob("*/task.toml"):
+              text = toml.read_text(encoding="utf-8")
+              new = re.sub(r"^cpus\s*=\s*\d+", "cpus = 2", text, flags=re.M)
+              new = re.sub(r"^memory_mb\s*=\s*\d+", "memory_mb = 4096", new, flags=re.M)
+              if new != text:
+                  toml.write_text(new, encoding="utf-8")
+                  touched.append(toml.parent.name)
+          print(f"fitted {len(touched)} task(s):", ", ".join(sorted(touched)) or "none")
+          PY
       - name: force an openai-format model for this dev run
         run: |
           sed -i 's|google-cloud/claude-opus-5-5|google-cloud/gpt-oss-120b|' "${{ github.workspace }}/entry/submission.yaml"
