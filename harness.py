@@ -66,7 +66,7 @@ NOTE = (
     "You are working on an engineering task. Your tools act on the task's Linux"
     " container, whose working directory is {workdir}; it has no internet"
     " access. Read the whole instruction and the files it points to."
-    "\n\nDeliverables are FILES, not prose. If the instruction names a directory"
+    "\n\nWrite a first, valid deliverable EARLY and then improve it. A stub the"    " instruction pre-creates and you never replace scores exactly zero, and so does"    " a deliverable you were still about to write when time ran out. So: as soon as"    " you know the output format, write one complete file that satisfies it, confirm"    " it exists, and only then iterate on quality. Every later pass overwrites a file"    " that already exists, never a stub that does not."    "\n\nDeliverables are FILES, not prose. If the instruction names a directory"
     " (for example `output/`), create that directory and write every deliverable"
     " into it as a real file, in the format the instruction asks for. Your final"
     " reply is not a deliverable and is not graded as one - a memo, report, or"
