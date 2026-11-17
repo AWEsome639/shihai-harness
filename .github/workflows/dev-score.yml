@@ -6,10 +6,10 @@ on:
         description: 'comma-separated task ids'
         default: 'fire-test-validation-memo'
       trials:
+        default: '1'
       model:
         description: 'override relay model (blank = MODEL_NAME secret)'
         default: ''
-        default: '1'
 jobs:
   score:
     runs-on: ubuntu-latest
