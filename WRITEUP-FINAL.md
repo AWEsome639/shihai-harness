@@ -111,9 +111,10 @@ Three consequences: layout cannot be assumed, so the model lists the workdir bef
 ## 6. Fair play
 
 Beyond that, the harness never reads its own `artifacts/`, calls no host but the model endpoint, and
-`model_api` matches the model actually called. Logs hold tool names, counts, timings and gate findings — never
-instructions, file contents read back, or model messages; G0 records a count, not the paths. Nothing is written outside
-the task container except the in-memory conversation.
+`model_api` matches the model actually called. Logs hold tool names, counts, timings, and for each failing gate the deliverable path and
+the check name - `selfcheck: 3 deliverable(s), 2 defect(s)` followed by the gate, path
+and detail of each. They never hold instructions, file contents, or model messages, and
+the container-side probe returns facts about a path, not text from it.
 
 ## 7. Limitations
 
