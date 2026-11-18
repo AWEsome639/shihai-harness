@@ -6,6 +6,10 @@ on:
         description: 'comma-separated task ids'
         default: 'fire-test-validation-memo'
       trials:
+        description: 'max concurrent Harbor trials'
+        default: '1'
+      attempts:
+        description: 'repeat each task this many times (for variance)'
         default: '1'
       model:
         description: 'override relay model (blank = MODEL_NAME secret)'
@@ -95,7 +99,7 @@ jobs:
           cd kitrepo
           python eval/run.py "${{ github.workspace }}/entry" \
             --tasks-dir "${{ github.workspace }}/entry/data/tasks" \
-            --tasks "${{ inputs.tasks }}" --trials "${{ inputs.trials }}" --attempts 1 \
+            --tasks "${{ inputs.tasks }}" --trials "${{ inputs.trials }}" --attempts "${{ inputs.attempts }}" \
             --out "${{ github.workspace }}/out" || true
           echo "--- results ---"
           cat "${{ github.workspace }}/out/results.json" 2>/dev/null || echo none
