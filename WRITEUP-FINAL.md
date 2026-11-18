@@ -139,10 +139,9 @@ coupled, which is what a harness without a separate planner looks like.
 
 The failure was in the pipe, not the reasoning. Early passes scored 0.0 while all 29
 tasks finished: the agent never issued a successful model call, because the model name
-selects the wire protocol. Once fixed, a run made 77 calls and a 54 kB memo and still
-scored zero, since no claim could be scored alone. One change - each conclusion as its
+selects the wire protocol. Once fixed, a run made 77 calls, a 54 kB memo, and still
+scored zero: no claim could be scored alone. One change - each conclusion as its
 own checkable sentence - scored 0.529 on the dev-proxy model once; four later runs scored
 0.0, so that is one sample rather than a result, and its log is not here. Routing stayed
 at zero throughout: our clash checker took its count from 36 to 0, the official scorer
-still found three, and connectivity failed. Both are why the gates check shapes, never
-scores.
+still found three, and connectivity failed. That is why the gates check shapes, not scores.
