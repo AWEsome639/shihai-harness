@@ -84,13 +84,21 @@ the answer still returned.
 
 ### 4.4 Wiring status
 
-`SELFCHECK` is off by default, so the dev A/B costs one environment variable rather than two code paths. When it is on, a
-fatal finding is rendered by `feedback()` into the fixed payload shape, appended as a plain user message, and the work
-loop runs once more, re-checks, and stops. Six guards bound it: at most `MAX_SELFCHECK_ROUNDS` (2); only `fatal` re-feeds,
-so `note` and `fix` never restart the model; a repeated defect signature stops the loop; it does not start when the
-remaining budget is under twice the finish margin; a raised or timed-out check returns the answer untouched; and with the
-flag unset the path is identical to a harness without it. Fourteen assertions over a stubbed agent exercise the loop; whether a real model repairs a real deliverable from this
-text is untested.
+The audit runs once, after the agent's final message and before `done`. It builds the
+contract from the instruction, runs one probe in the task container, and logs a summary
+line - `selfcheck: N deliverable(s), M defect(s)` - with one line per failing gate. Three
+properties are measured rather than asserted: the audit is wrapped so that an exception,
+a timeout or a missing contract cannot change the score (it is logged as `selfcheck:
+skipped (...)`), the run's own answer is already captured before the audit starts, and a
+task whose instruction names only `output/` gets that directory counted rather than
+being forced through a file gate it cannot satisfy.
+
+What this does **not** do is feed a defect back to the model for another round. The
+earlier re-feed design - `SELFCHECK` flag, bounded rounds, `feedback()` payload - is not
+in the graded code; the audit reports, it does not steer. Saying so is cheaper than a
+reviewer discovering it.
+
+
 
 ## 5. What the tasks look like
 
