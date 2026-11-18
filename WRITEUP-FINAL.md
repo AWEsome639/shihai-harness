@@ -121,7 +121,8 @@ They never hold instructions, file contents, or model messages.
 - **G3 reads a `.docx` by its body text and a `.pdf` by its header and trailer**, not by
   layout: a document whose text is there but whose formatting is broken still passes.
 - **Two of 29 contracts carry only a directory.** For `fire-test-validation-memo` and `landscape-sheet-revision` the card declares `/app/files` and the statement says to save the answer under `output/`; G0 keeps a non-required directory entry, so the gates can note it but not check inside.
-- **The re-feed is untested against a real model**: 14 stub assertions pass, but no run has shown a model repairing a deliverable from the text.
+- **No re-feed exists**: the audit writes its findings to the run log, and nothing sends
+  them back to the model for another round.
 
 ## 8. Figures 2 and 3
 
