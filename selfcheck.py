@@ -220,7 +220,43 @@ MEMBER_CAP = 20
 _KINDS = {
     ".csv": "csv", ".json": "json", ".xlsx": "xlsx", ".xlsm": "xlsx",
     ".zip": "zip", ".py": "py", ".ifc": "ifc", ".md": "text", ".txt": "text",
+    ".docx": "docx", ".pdf": "pdf",
 }
+
+
+def _analyze_docx(path, spec):
+  """A .docx is a zip whose word/document.xml holds the body text."""
+  out = {"checks": [], "violations": []}
+  try:
+    with zipfile.ZipFile(path) as z:
+      names = z.namelist()
+      body = "word/document.xml" in names
+      size = z.getinfo("word/document.xml").file_size if body else 0
+  except Exception as exc:
+    out["checks"].append(_ck("docx_zip", "fail", "not a zip container: %r" % (exc,)))
+    return out
+  out["checks"].append(_ck("docx_zip", "ok", "%d part(s)" % len(names)))
+  out["checks"].append(_ck("docx_body", "ok" if body and size > 0 else "fail",
+                           "word/document.xml present" if body else
+                           "word/document.xml missing"))
+  return out
+
+
+def _analyze_pdf(path, spec):
+  """A .pdf starts with %PDF- and ends with an %%EOF marker."""
+  out = {"checks": [], "violations": []}
+  try:
+    data, truncated = _read(path, TEXT_CAP)
+  except OSError as exc:
+    out["checks"].append(_ck("pdf_open", "fail", "unreadable: %r" % (exc,)))
+    return out
+  ok_head = data[:5] == b"%PDF-"
+  ok_tail = b"%%EOF" in data[-2048:]
+  out["checks"].append(_ck("pdf_header", "ok" if ok_head else "fail",
+                           "header %r" % data[:5]))
+  out["checks"].append(_ck("pdf_trailer", "ok" if ok_tail else "fail",
+                           "%%EOF found" if ok_tail else "%%EOF missing"))
+  return out
 
 
 def _stat(path):
