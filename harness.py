@@ -326,6 +326,54 @@ class Run:
       await self.on_event(event)
 
 
+def _audit(session, loop, final_message):
+  """Builds the contract from the instruction and runs the four gates.
+
+  Returns `(contract, defects)`; `defects` is a list of defect dicts, or `None`
+  when the probe could not run at all.
+  """
+  import contract as _contract
+  import selfcheck as _selfcheck
+
+  def run_sync(cmd):
+    """Runs one shell command in the container for the synchronous probe."""
+    future = asyncio.run_coroutine_threadsafe(
+        session.exec(cmd, timeout_sec=120), loop
+    )
+    result = future.result(timeout=180)
+    return int(result.get("exit_code") or 0), str(result.get("output") or "")
+
+  spec = _contract.extract(session.instruction)
+  return spec, _selfcheck.selfcheck(
+      run_sync, spec, final_message=final_message
+  )
+
+
+def _log_audit(spec, defects):
+  """Prints one line per gate, so a run log says what the audit found."""
+  if defects is None:
+    print("selfcheck: probe unavailable", flush=True)
+    return
+  deliverables = (spec or {}).get("deliverables") or []
+  print(
+      f"selfcheck: {len(deliverables)} deliverable(s), {len(defects)} defect(s)",
+      flush=True,
+  )
+  for defect in defects[:20]:
+    if not isinstance(defect, dict):
+      print(f"  {defect}", flush=True)
+      continue
+    print(
+        "  gate {} {} {}: {}".format(
+            defect.get("gate"),
+            defect.get("path"),
+            defect.get("status"),
+            str(defect.get("detail"))[:160],
+        ),
+        flush=True,
+    )
+
+
 async def solve(session: taskbridge.Session) -> str:
   """Runs Pi on a single task and returns the final response.
 
@@ -412,4 +460,14 @@ async def solve(session: taskbridge.Session) -> str:
         f"pi exited with {done.code} before the model answered:"
         f" {done.stderr[-2000:]}"
     )
-  return session.final_message or "(pi stopped without a final message)"
+  final = session.final_message or "(pi stopped without a final message)"
+  # Post-run audit: the four gates the narrative names. Costs one container
+  # round trip of shell and cannot fail the task - a missing deliverable is
+  # reported in the log, never raised, so the answer is always returned.
+  try:
+    loop = asyncio.get_running_loop()
+    spec, defects = await asyncio.to_thread(_audit, session, loop, final)
+    _log_audit(spec, defects)
+  except Exception as exc:  # an audit problem must never lose the answer
+    print(f"selfcheck: skipped ({exc!r})", flush=True)
+  return final
