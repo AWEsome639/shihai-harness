@@ -1,0 +1,1246 @@
+﻿2026-11-15T18:48:04.4063026Z Current runner version: '2.338.2'
+2026-11-15T18:48:04.4177147Z ##[group]Runner Image Provisioner
+2026-11-15T18:48:04.4180171Z Hosted Compute Agent
+2026-11-15T18:48:04.4183293Z Version: 20261103.629
+2026-11-15T18:48:04.4189728Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+2026-11-15T18:48:04.4199589Z Build Date: 2026-11-03T17:26:59Z
+2026-11-15T18:48:04.4200998Z Worker ID: {16fe1ebf-fdee-4f63-ac4d-0c81f64af379}
+2026-11-15T18:48:04.4211292Z Region: eastus
+2026-11-15T18:48:04.4212514Z Cloud: Azure
+2026-11-15T18:48:04.4213523Z ##[endgroup]
+2026-11-15T18:48:04.4216631Z ##[group]Operating System
+2026-11-15T18:48:04.4217824Z Ubuntu
+2026-11-15T18:48:04.4218769Z 26.04.1
+2026-11-15T18:48:04.4219882Z LTS
+2026-11-15T18:48:04.4220939Z ##[endgroup]
+2026-11-15T18:48:04.4222137Z ##[group]Runner Image
+2026-11-15T18:48:04.4246732Z Image: ubuntu-26.04
+2026-11-15T18:48:04.4247963Z Version: 20261111.196.1
+2026-11-15T18:48:04.4250395Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+2026-11-15T18:48:04.4253329Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+2026-11-15T18:48:04.4255322Z ##[endgroup]
+2026-11-15T18:48:04.4257761Z ##[group]GITHUB_TOKEN Permissions
+2026-11-15T18:48:04.4261044Z Contents: read
+2026-11-15T18:48:04.4262129Z Metadata: read
+2026-11-15T18:48:04.4263266Z Packages: read
+2026-11-15T18:48:04.4264413Z ##[endgroup]
+2026-11-15T18:48:04.4287857Z Secret source: Actions
+2026-11-15T18:48:04.4289586Z Cache mode: write
+2026-11-15T18:48:04.4290815Z Prepare workflow directory
+2026-11-15T18:48:04.5248204Z Prepare all required actions
+2026-11-15T18:48:04.5370617Z Getting action download info
+2026-11-15T18:48:04.7502747Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-11-15T18:48:04.9103872Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-11-15T18:48:04.9795181Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-11-15T18:48:05.1992360Z Complete job name: score
+2026-11-15T18:48:05.3018283Z ##[group]Run actions/checkout@v4
+2026-11-15T18:48:05.3019318Z with:
+2026-11-15T18:48:05.3019821Z   path: entry
+2026-11-15T18:48:05.3020459Z   fetch-depth: 0
+2026-11-15T18:48:05.3021041Z   repository: AWEsome639/shihai-harness
+2026-11-15T18:48:05.3029686Z   token: ***
+2026-11-15T18:48:05.3030703Z   ssh-strict: true
+2026-11-15T18:48:05.3031679Z   ssh-user: git
+2026-11-15T18:48:05.3032681Z   persist-credentials: true
+2026-11-15T18:48:05.3033743Z   clean: true
+2026-11-15T18:48:05.3034661Z   sparse-checkout-cone-mode: true
+2026-11-15T18:48:05.3035843Z   fetch-tags: false
+2026-11-15T18:48:05.3037106Z   show-progress: true
+2026-11-15T18:48:05.3038144Z   lfs: false
+2026-11-15T18:48:05.3039115Z   submodules: false
+2026-11-15T18:48:05.3040110Z   set-safe-directory: true
+2026-11-15T18:48:05.3041223Z   allow-unsafe-pr-checkout: false
+2026-11-15T18:48:05.3042728Z ##[endgroup]
+2026-11-15T18:48:05.7599753Z Syncing repository: AWEsome639/shihai-harness
+2026-11-15T18:48:05.7604146Z ##[group]Getting Git version info
+2026-11-15T18:48:05.7606874Z Working directory is '/home/runner/work/shihai-harness/shihai-harness/entry'
+2026-11-15T18:48:05.7610910Z [command]/usr/bin/git version
+2026-11-15T18:48:05.7612977Z git version 2.56.1
+2026-11-15T18:48:05.7622613Z ##[endgroup]
+2026-11-15T18:48:05.7634443Z Temporarily overriding HOME='/home/runner/work/_temp/2f99a125-bc73-47d5-8d82-2e0daf50df65' before making global git config changes
+2026-11-15T18:48:05.7641009Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T18:48:05.7646405Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/entry
+2026-11-15T18:48:05.7654072Z ##[group]Initializing the repository
+2026-11-15T18:48:05.7659213Z [command]/usr/bin/git init /home/runner/work/shihai-harness/shihai-harness/entry
+2026-11-15T18:48:05.7663377Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-15T18:48:05.7667854Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-15T18:48:05.7671667Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-15T18:48:05.7674716Z hint: call:
+2026-11-15T18:48:05.7706757Z hint:
+2026-11-15T18:48:05.7708969Z hint: 	git config --global init.defaultBranch <name>
+2026-11-15T18:48:05.7711527Z hint:
+2026-11-15T18:48:05.7714225Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-15T18:48:05.7718386Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-15T18:48:05.7721822Z hint:
+2026-11-15T18:48:05.7723664Z hint: 	git branch -m <name>
+2026-11-15T18:48:05.7725595Z hint:
+2026-11-15T18:48:05.7732176Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-15T18:48:05.7741379Z Initialized empty Git repository in /home/runner/work/shihai-harness/shihai-harness/entry/.git/
+2026-11-15T18:48:05.7747302Z [command]/usr/bin/git remote add origin https://github.com/AWEsome639/shihai-harness
+2026-11-15T18:48:05.7753613Z ##[endgroup]
+2026-11-15T18:48:05.7759883Z ##[group]Disabling automatic garbage collection
+2026-11-15T18:48:05.7762662Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-15T18:48:05.7768513Z ##[endgroup]
+2026-11-15T18:48:05.7771257Z ##[group]Setting up auth
+2026-11-15T18:48:05.7774036Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T18:48:05.7820040Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T18:48:05.8294481Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T18:48:05.8340989Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T18:48:05.8646694Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T18:48:05.8690822Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T18:48:05.8994916Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-15T18:48:05.9042810Z ##[endgroup]
+2026-11-15T18:48:05.9047336Z ##[group]Fetching the repository
+2026-11-15T18:48:05.9057071Z [command]/usr/bin/git -c protocol.version=2 fetch --prune --no-recurse-submodules origin +refs/heads/*:refs/remotes/origin/* +refs/tags/*:refs/tags/*
+2026-11-15T18:48:06.6511113Z From https://github.com/AWEsome639/shihai-harness
+2026-11-15T18:48:06.6511985Z  * [new branch]      main       -> origin/main
+2026-11-15T18:48:06.6513116Z [command]/usr/bin/git branch --list --remote origin/main
+2026-11-15T18:48:06.6513555Z   origin/main
+2026-11-15T18:48:06.6517462Z [command]/usr/bin/git rev-parse refs/remotes/origin/main
+2026-11-15T18:48:06.6546284Z 641c3c1bb3a5e7370ae3c486435f3234900dac39
+2026-11-15T18:48:06.6672049Z ##[endgroup]
+2026-11-15T18:48:06.6673756Z ##[group]Determining the checkout info
+2026-11-15T18:48:06.6675120Z ##[endgroup]
+2026-11-15T18:48:06.6676940Z [command]/usr/bin/git sparse-checkout disable
+2026-11-15T18:48:06.6680667Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-15T18:48:06.6701714Z ##[group]Checking out the ref
+2026-11-15T18:48:06.6706765Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-15T18:48:06.8152534Z Switched to a new branch 'main'
+2026-11-15T18:48:06.8167322Z branch 'main' set up to track 'origin/main'.
+2026-11-15T18:48:06.8172342Z ##[endgroup]
+2026-11-15T18:48:06.8229533Z [command]/usr/bin/git log -1 --format=%H
+2026-11-15T18:48:06.8267250Z 641c3c1bb3a5e7370ae3c486435f3234900dac39
+2026-11-15T18:48:06.8580003Z ##[group]Run actions/checkout@v4
+2026-11-15T18:48:06.8580384Z with:
+2026-11-15T18:48:06.8580679Z   repository: google-research/ple
+2026-11-15T18:48:06.8581011Z   path: kitrepo
+2026-11-15T18:48:06.8583464Z   token: ***
+2026-11-15T18:48:06.8583744Z   ssh-strict: true
+2026-11-15T18:48:06.8584024Z   ssh-user: git
+2026-11-15T18:48:06.8584315Z   persist-credentials: true
+2026-11-15T18:48:06.8584625Z   clean: true
+2026-11-15T18:48:06.8584912Z   sparse-checkout-cone-mode: true
+2026-11-15T18:48:06.8585245Z   fetch-depth: 1
+2026-11-15T18:48:06.8585524Z   fetch-tags: false
+2026-11-15T18:48:06.8585805Z   show-progress: true
+2026-11-15T18:48:06.8586232Z   lfs: false
+2026-11-15T18:48:06.8586500Z   submodules: false
+2026-11-15T18:48:06.8586784Z   set-safe-directory: true
+2026-11-15T18:48:06.8587111Z   allow-unsafe-pr-checkout: false
+2026-11-15T18:48:06.8587439Z ##[endgroup]
+2026-11-15T18:48:06.9584066Z Syncing repository: google-research/ple
+2026-11-15T18:48:06.9586344Z ##[group]Getting Git version info
+2026-11-15T18:48:06.9588024Z Working directory is '/home/runner/work/shihai-harness/shihai-harness/kitrepo'
+2026-11-15T18:48:06.9658259Z [command]/usr/bin/git version
+2026-11-15T18:48:06.9720325Z git version 2.56.1
+2026-11-15T18:48:06.9791945Z ##[endgroup]
+2026-11-15T18:48:06.9795411Z Temporarily overriding HOME='/home/runner/work/_temp/7016f076-ce94-44a5-9627-85a9fefb4fcd' before making global git config changes
+2026-11-15T18:48:06.9797437Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T18:48:06.9798973Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T18:48:06.9839650Z ##[group]Initializing the repository
+2026-11-15T18:48:06.9850824Z [command]/usr/bin/git init /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T18:48:06.9956384Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-11-15T18:48:06.9977626Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-11-15T18:48:06.9980695Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-11-15T18:48:06.9982032Z hint: call:
+2026-11-15T18:48:06.9982861Z hint:
+2026-11-15T18:48:06.9983787Z hint: 	git config --global init.defaultBranch <name>
+2026-11-15T18:48:06.9984838Z hint:
+2026-11-15T18:48:06.9986356Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-11-15T18:48:06.9988253Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-11-15T18:48:06.9989575Z hint:
+2026-11-15T18:48:06.9990377Z hint: 	git branch -m <name>
+2026-11-15T18:48:06.9991355Z hint:
+2026-11-15T18:48:06.9992689Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-11-15T18:48:06.9994675Z Initialized empty Git repository in /home/runner/work/shihai-harness/shihai-harness/kitrepo/.git/
+2026-11-15T18:48:06.9998557Z [command]/usr/bin/git remote add origin https://github.com/google-research/ple
+2026-11-15T18:48:07.0037662Z ##[endgroup]
+2026-11-15T18:48:07.0039064Z ##[group]Disabling automatic garbage collection
+2026-11-15T18:48:07.0048503Z [command]/usr/bin/git config --local gc.auto 0
+2026-11-15T18:48:07.0157708Z ##[endgroup]
+2026-11-15T18:48:07.0178901Z ##[group]Setting up auth
+2026-11-15T18:48:07.0200195Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T18:48:07.0254037Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T18:48:07.0717759Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T18:48:07.0814217Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T18:48:07.1202538Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T18:48:07.1300427Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T18:48:07.1842910Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-11-15T18:48:07.1937710Z ##[endgroup]
+2026-11-15T18:48:07.1946669Z ##[group]Determining the default branch
+2026-11-15T18:48:07.1968823Z Retrieving the default branch name
+2026-11-15T18:48:07.5393646Z Default branch 'main'
+2026-11-15T18:48:07.5416573Z ##[endgroup]
+2026-11-15T18:48:07.5419749Z ##[group]Fetching the repository
+2026-11-15T18:48:07.5421330Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/main:refs/remotes/origin/main
+2026-11-15T18:48:07.9687078Z From https://github.com/google-research/ple
+2026-11-15T18:48:07.9688472Z  * [new branch]      main       -> origin/main
+2026-11-15T18:48:07.9693752Z ##[endgroup]
+2026-11-15T18:48:07.9694733Z ##[group]Determining the checkout info
+2026-11-15T18:48:07.9697060Z ##[endgroup]
+2026-11-15T18:48:07.9716469Z [command]/usr/bin/git sparse-checkout disable
+2026-11-15T18:48:07.9761408Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-11-15T18:48:07.9797471Z ##[group]Checking out the ref
+2026-11-15T18:48:07.9801656Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-11-15T18:48:07.9958753Z Switched to a new branch 'main'
+2026-11-15T18:48:07.9964498Z branch 'main' set up to track 'origin/main'.
+2026-11-15T18:48:07.9976817Z ##[endgroup]
+2026-11-15T18:48:08.0018158Z [command]/usr/bin/git log -1 --format=%H
+2026-11-15T18:48:08.0051217Z 8320f0402fdca9f42476607f72bcfd5271cd50c9
+2026-11-15T18:48:08.0355769Z ##[group]Run actions/setup-python@v5
+2026-11-15T18:48:08.0356363Z with:
+2026-11-15T18:48:08.0356624Z   python-version: 3.12
+2026-11-15T18:48:08.0356898Z   check-latest: false
+2026-11-15T18:48:08.0359184Z   token: ***
+2026-11-15T18:48:08.0359425Z   update-environment: true
+2026-11-15T18:48:08.0359690Z   allow-prereleases: false
+2026-11-15T18:48:08.0359940Z   freethreaded: false
+2026-11-15T18:48:08.0360190Z ##[endgroup]
+2026-11-15T18:48:08.1845967Z ##[group]Installed versions
+2026-11-15T18:48:08.1981666Z (node:2291) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-15T18:48:08.1983548Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-15T18:48:08.1984347Z Successfully set up CPython (3.12.16)
+2026-11-15T18:48:08.1986243Z ##[endgroup]
+2026-11-15T18:48:08.2234642Z ##[group]Run pip install pyyaml python-dotenv websockets
+2026-11-15T18:48:08.2235430Z [36;1mpip install pyyaml python-dotenv websockets[0m
+2026-11-15T18:48:08.2350461Z shell: /usr/bin/bash -e {0}
+2026-11-15T18:48:08.2350963Z env:
+2026-11-15T18:48:08.2351433Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:08.2354342Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T18:48:08.2357075Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:08.2357830Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:08.2358574Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:08.2359308Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T18:48:08.2359923Z ##[endgroup]
+2026-11-15T18:48:09.2214859Z Collecting pyyaml
+2026-11-15T18:48:09.2944290Z   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2026-11-15T18:48:09.3287341Z Collecting python-dotenv
+2026-11-15T18:48:09.3467821Z   Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+2026-11-15T18:48:09.5343748Z Collecting websockets
+2026-11-15T18:48:09.5540623Z   Downloading websockets-17.4-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.3 kB)
+2026-11-15T18:48:09.5765360Z Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+2026-11-15T18:48:09.6444032Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 23.3 MB/s  0:00:00
+2026-11-15T18:48:09.6631203Z Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+2026-11-15T18:48:09.6834957Z Downloading websockets-17.4-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (226 kB)
+2026-11-15T18:48:09.7495896Z Installing collected packages: websockets, pyyaml, python-dotenv
+2026-11-15T18:48:09.9637564Z 
+2026-11-15T18:48:09.9649427Z Successfully installed python-dotenv-1.2.4 pyyaml-6.0.3 websockets-17.4
+2026-11-15T18:48:10.0167560Z ##[group]Run pip install uv
+2026-11-15T18:48:10.0167942Z [36;1mpip install uv[0m
+2026-11-15T18:48:10.0168290Z [36;1muv tool install harbor==0.20.0 --with websockets[0m
+2026-11-15T18:48:10.0168687Z [36;1mecho "$HOME/.local/bin" >> $GITHUB_PATH[0m
+2026-11-15T18:48:10.0218613Z shell: /usr/bin/bash -e {0}
+2026-11-15T18:48:10.0218896Z env:
+2026-11-15T18:48:10.0219194Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:10.0219692Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T18:48:10.0220178Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:10.0220590Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:10.0221003Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:10.0221423Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T18:48:10.0221772Z ##[endgroup]
+2026-11-15T18:48:10.7801338Z Collecting uv
+2026-11-15T18:48:10.8178587Z   Downloading uv-0.13.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+2026-11-15T18:48:10.8317177Z Downloading uv-0.13.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.4 MB)
+2026-11-15T18:48:10.9342278Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.4/17.4 MB 215.4 MB/s  0:00:00
+2026-11-15T18:48:10.9769837Z Installing collected packages: uv
+2026-11-15T18:48:11.1559961Z Successfully installed uv-0.13.8
+2026-11-15T18:48:12.3326779Z Resolved 91 packages in 1.05s
+2026-11-15T18:48:12.3788297Z Downloading botocore (15.6MiB)
+2026-11-15T18:48:12.3789234Z Downloading cryptography (4.5MiB)
+2026-11-15T18:48:12.3790101Z Downloading openai (2.3MiB)
+2026-11-15T18:48:12.3791147Z Downloading pydantic-core (2.2MiB)
+2026-11-15T18:48:12.3791872Z Downloading aiohttp (1.8MiB)
+2026-11-15T18:48:12.3792619Z Downloading pygments (1.2MiB)
+2026-11-15T18:48:12.3955775Z Downloading tiktoken (1.1MiB)
+2026-11-15T18:48:12.3961700Z Downloading hf-xet (4.1MiB)
+2026-11-15T18:48:12.3968709Z Downloading litellm (39.2MiB)
+2026-11-15T18:48:12.3972358Z Downloading tokenizers (3.2MiB)
+2026-11-15T18:48:12.3978484Z Downloading harbor (1.7MiB)
+2026-11-15T18:48:12.7243372Z  Downloaded tiktoken
+2026-11-15T18:48:12.7244686Z  Downloaded pygments
+2026-11-15T18:48:12.7647599Z  Downloaded harbor
+2026-11-15T18:48:12.7661368Z  Downloaded aiohttp
+2026-11-15T18:48:12.7897059Z  Downloaded pydantic-core
+2026-11-15T18:48:12.8458664Z  Downloaded tokenizers
+2026-11-15T18:48:12.8687049Z  Downloaded hf-xet
+2026-11-15T18:48:12.8841956Z  Downloaded openai
+2026-11-15T18:48:12.8914128Z  Downloaded cryptography
+2026-11-15T18:48:13.0355672Z  Downloaded botocore
+2026-11-15T18:48:13.3580260Z  Downloaded litellm
+2026-11-15T18:48:13.3583868Z Prepared 91 packages in 1.02s
+2026-11-15T18:48:13.5901404Z Installed 91 packages in 231ms
+2026-11-15T18:48:13.5919709Z  + aiohappyeyeballs==2.7.1
+2026-11-15T18:48:13.5920509Z  + aiohttp==3.14.5
+2026-11-15T18:48:13.5921498Z  + aiosignal==1.4.0
+2026-11-15T18:48:13.5922191Z  + annotated-doc==0.0.6
+2026-11-15T18:48:13.5929962Z  + annotated-types==0.8.0
+2026-11-15T18:48:13.5931877Z  + anyio==4.16.0
+2026-11-15T18:48:13.5933108Z  + attrs==26.1.0
+2026-11-15T18:48:13.5933704Z  + boto3==1.44.3
+2026-11-15T18:48:13.5934584Z  + botocore==1.44.3
+2026-11-15T18:48:13.5935330Z  + certifi==2026.10.23
+2026-11-15T18:48:13.5936891Z  + cffi==2.1.1
+2026-11-15T18:48:13.5937672Z  + charset-normalizer==3.5.2
+2026-11-15T18:48:13.5938693Z  + click==8.5.1
+2026-11-15T18:48:13.5939368Z  + cryptography==50.0.2
+2026-11-15T18:48:13.5940399Z  + deprecation==2.1.0
+2026-11-15T18:48:13.5941176Z  + dirhash==0.5.0
+2026-11-15T18:48:13.5942127Z  + fastapi==0.163.1
+2026-11-15T18:48:13.5942864Z  + fastuuid==0.14.0
+2026-11-15T18:48:13.5952973Z  + filelock==4.2.10
+2026-11-15T18:48:13.5953680Z  + frozenlist==1.8.0
+2026-11-15T18:48:13.5954676Z  + fsspec==2026.9.0
+2026-11-15T18:48:13.5955345Z  + h11==0.16.0
+2026-11-15T18:48:13.5956435Z  + h2==4.4.1
+2026-11-15T18:48:13.5957157Z  + harbor==0.20.0
+2026-11-15T18:48:13.5958148Z  + hf-xet==1.8.0
+2026-11-15T18:48:13.5959232Z  + hpack==4.2.0
+2026-11-15T18:48:13.5960294Z  + httpcore==1.0.9
+2026-11-15T18:48:13.5961080Z  + httpcore2==2.16.0
+2026-11-15T18:48:13.5965276Z  + httpx==0.28.1
+2026-11-15T18:48:13.5988557Z  + httpx2==2.16.0
+2026-11-15T18:48:13.5988992Z  + huggingface-hub==1.33.0
+2026-11-15T18:48:13.5989460Z  + hyperframe==6.1.0
+2026-11-15T18:48:13.5989841Z  + idna==3.20
+2026-11-15T18:48:13.5990358Z  + importlib-metadata==8.9.0
+2026-11-15T18:48:13.5990764Z  + jinja2==3.1.6
+2026-11-15T18:48:13.5991115Z  + jiter==0.19.0
+2026-11-15T18:48:13.5991482Z  + jmespath==1.1.0
+2026-11-15T18:48:13.5991872Z  + jsonschema==4.26.0
+2026-11-15T18:48:13.5992294Z  + jsonschema-specifications==2025.9.1
+2026-11-15T18:48:13.5992783Z  + litellm==1.109.1
+2026-11-15T18:48:13.5993159Z  + markdown-it-py==4.3.0
+2026-11-15T18:48:13.5993565Z  + markupsafe==3.0.4
+2026-11-15T18:48:13.5993978Z  + mdurl==0.1.2
+2026-11-15T18:48:13.5994378Z  + multidict==7.2.1
+2026-11-15T18:48:13.5994775Z  + openai==3.51.0
+2026-11-15T18:48:13.5995280Z  + opentelemetry-api==1.45.2
+2026-11-15T18:48:13.5995732Z  + packaging==26.3
+2026-11-15T18:48:13.6006459Z  + pathspec==1.1.1
+2026-11-15T18:48:13.6006889Z  + platformdirs==4.14.5
+2026-11-15T18:48:13.6007274Z  + postgrest==2.34.1
+2026-11-15T18:48:13.6007639Z  + propcache==0.5.4
+2026-11-15T18:48:13.6008005Z  + pycparser==3.12
+2026-11-15T18:48:13.6008368Z  + pydantic==2.14.3
+2026-11-15T18:48:13.6008759Z  + pydantic-core==2.50.4
+2026-11-15T18:48:13.6009184Z  + pydantic-settings==2.16.3
+2026-11-15T18:48:13.6009614Z  + pygments==2.21.0
+2026-11-15T18:48:13.6009988Z  + pyjwt==2.15.1
+2026-11-15T18:48:13.6010383Z  + python-dateutil==2.9.0.post0
+2026-11-15T18:48:13.6010843Z  + python-dotenv==1.2.4
+2026-11-15T18:48:13.6011239Z  + pyyaml==6.0.3
+2026-11-15T18:48:13.6011601Z  + realtime==2.34.1
+2026-11-15T18:48:13.6011973Z  + referencing==0.37.0
+2026-11-15T18:48:13.6012358Z  + regex==2026.11.15
+2026-11-15T18:48:13.6012726Z  + requests==2.34.2
+2026-11-15T18:48:13.6013192Z  + rich==15.0.0
+2026-11-15T18:48:13.6013607Z  + rpds-py==2026.9.1
+2026-11-15T18:48:13.6013994Z  + s3transfer==0.19.3
+2026-11-15T18:48:13.6014350Z  + scantree==0.0.4
+2026-11-15T18:48:13.6014716Z  + shellingham==1.5.4
+2026-11-15T18:48:13.6015210Z  + shortuuid==1.0.13
+2026-11-15T18:48:13.6015585Z  + six==1.17.0
+2026-11-15T18:48:13.6015951Z  + sniffio==1.3.1
+2026-11-15T18:48:13.6016461Z  + starlette==1.10.0
+2026-11-15T18:48:13.6016882Z  + storage3==2.34.1
+2026-11-15T18:48:13.6017265Z  + supabase==2.34.1
+2026-11-15T18:48:13.6017640Z  + supabase-auth==2.34.1
+2026-11-15T18:48:13.6018084Z  + supabase-functions==2.34.1
+2026-11-15T18:48:13.6018518Z  + tenacity==9.2.1
+2026-11-15T18:48:13.6018884Z  + tiktoken==0.14.0
+2026-11-15T18:48:13.6019344Z  + tokenizers==0.23.3
+2026-11-15T18:48:13.6019719Z  + toml==0.10.2
+2026-11-15T18:48:13.6020067Z  + tqdm==4.70.1
+2026-11-15T18:48:13.6020417Z  + truststore==0.10.5
+2026-11-15T18:48:13.6020783Z  + typer==0.29.1
+2026-11-15T18:48:13.6021168Z  + typing-extensions==4.16.0
+2026-11-15T18:48:13.6021624Z  + typing-inspection==0.4.5
+2026-11-15T18:48:13.6022052Z  + urllib3==2.8.0
+2026-11-15T18:48:13.6022408Z  + uvicorn==0.54.0
+2026-11-15T18:48:13.6022771Z  + websockets==15.0.1
+2026-11-15T18:48:13.6023135Z  + yarl==1.25.1
+2026-11-15T18:48:13.6023480Z  + zipp==4.1.2
+2026-11-15T18:48:13.6023860Z Installed 3 executables: harbor, hb, hr
+2026-11-15T18:48:13.6155825Z ##[group]Run echo "target_len=${#MODEL_RELAY_TARGET} name_len=${#MODEL_RELAY_MODEL} key_len=${#MODEL_RELAY_KEY}"
+2026-11-15T18:48:13.6157493Z [36;1mecho "target_len=${#MODEL_RELAY_TARGET} name_len=${#MODEL_RELAY_MODEL} key_len=${#MODEL_RELAY_KEY}"[0m
+2026-11-15T18:48:13.6158122Z [36;1mnohup python entry/ci/model_relay.py > /tmp/relay.log 2>&1 &[0m
+2026-11-15T18:48:13.6158513Z [36;1mok=0[0m
+2026-11-15T18:48:13.6158988Z [36;1mfor i in $(seq 1 30); do sleep 1; curl -sf http://127.0.0.1:4100/v1/models >/dev/null && { ok=1; break; }; done[0m
+2026-11-15T18:48:13.6159557Z [36;1mcat /tmp/relay.log[0m
+2026-11-15T18:48:13.6159905Z [36;1mtest "$ok" = 1 || { echo 'relay did not start'; exit 1; }[0m
+2026-11-15T18:48:13.6210187Z shell: /usr/bin/bash -e {0}
+2026-11-15T18:48:13.6210482Z env:
+2026-11-15T18:48:13.6210779Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:13.6211263Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T18:48:13.6211784Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:13.6212204Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:13.6212612Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:13.6213025Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T18:48:13.6213913Z   MODEL_RELAY_TARGET: ***
+2026-11-15T18:48:13.6214222Z   MODEL_RELAY_MODEL: ***
+2026-11-15T18:48:13.6214524Z   MODEL_RELAY_KEY: ***
+2026-11-15T18:48:13.6214760Z ##[endgroup]
+2026-11-15T18:48:13.6307095Z target_len=27 name_len=13 key_len=35
+2026-11-15T18:48:14.6516976Z relay on :4100 -> *** (model ***)
+2026-11-15T18:48:14.6571082Z ##[group]Run echo "--- host can reach the relay? ---"
+2026-11-15T18:48:14.6571893Z [36;1mecho "--- host can reach the relay? ---"[0m
+2026-11-15T18:48:14.6572820Z [36;1mcurl -s -o /dev/null -w "127.0.0.1:4100 -> %{http_code}\n" http://127.0.0.1:4100/v1/models || true[0m
+2026-11-15T18:48:14.6573905Z [36;1mip -4 addr show docker0 2>/dev/null | grep inet || echo "no docker0"[0m
+2026-11-15T18:48:14.6574904Z [36;1mfor ip in $(ip -4 -o addr show docker0 2>/dev/null | awk '{print $4}' | cut -d/ -f1); do[0m
+2026-11-15T18:48:14.6576001Z [36;1m  curl -s -o /dev/null -w "$ip:4100 -> %{http_code}\n" "http://$ip:4100/v1/models" || true[0m
+2026-11-15T18:48:14.6577015Z [36;1mdone[0m
+2026-11-15T18:48:14.6577742Z [36;1mcurl -s -o /dev/null -w "172.17.0.1:4100 -> %{http_code}\n" http://172.17.0.1:4100/v1/models || true[0m
+2026-11-15T18:48:14.6578940Z [36;1mss -lntp 2>/dev/null | grep 4100 || netstat -lnt 2>/dev/null | grep 4100 || echo "no listener info"[0m
+2026-11-15T18:48:14.6579867Z [36;1mecho "--- relay log so far ---"[0m
+2026-11-15T18:48:14.6580467Z [36;1mcat /tmp/relay.log 2>/dev/null || echo none[0m
+2026-11-15T18:48:14.6644738Z shell: /usr/bin/bash -e {0}
+2026-11-15T18:48:14.6645031Z env:
+2026-11-15T18:48:14.6645330Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.6645832Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T18:48:14.6646587Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.6647029Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.6647445Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.6647874Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T18:48:14.6648225Z ##[endgroup]
+2026-11-15T18:48:14.6764591Z --- host can reach the relay? ---
+2026-11-15T18:48:14.6846737Z 127.0.0.1:4100 -> 200
+2026-11-15T18:48:14.6896792Z     inet 172.17.0.1/16 brd 172.17.255.255 scope global docker0
+2026-11-15T18:48:14.7077310Z 172.17.0.1:4100 -> 200
+2026-11-15T18:48:14.7183125Z 172.17.0.1:4100 -> 200
+2026-11-15T18:48:14.7519500Z LISTEN 0      5            0.0.0.0:4100      0.0.0.0:*    users:(("python",pid=2414,fd=3))
+2026-11-15T18:48:14.7527492Z --- relay log so far ---
+2026-11-15T18:48:14.7552989Z relay on :4100 -> *** (model ***)
+2026-11-15T18:48:14.7636507Z ##[group]Run sed -i 's|google-cloud/claude-opus-5-5|google-cloud/gpt-oss-120b|' "/home/runner/work/shihai-harness/shihai-harness/entry/submission.yaml"
+2026-11-15T18:48:14.7637688Z [36;1msed -i 's|google-cloud/claude-opus-5-5|google-cloud/gpt-oss-120b|' "/home/runner/work/shihai-harness/shihai-harness/entry/submission.yaml"[0m
+2026-11-15T18:48:14.7638592Z [36;1mgrep model_api "/home/runner/work/shihai-harness/shihai-harness/entry/submission.yaml" || true[0m
+2026-11-15T18:48:14.7688511Z shell: /usr/bin/bash -e {0}
+2026-11-15T18:48:14.7688791Z env:
+2026-11-15T18:48:14.7689097Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7689579Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T18:48:14.7690040Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7690473Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7690920Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7691351Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T18:48:14.7691700Z ##[endgroup]
+2026-11-15T18:48:14.7800433Z model_api: google-cloud/gpt-oss-120b
+2026-11-15T18:48:14.7847463Z ##[group]Run cd kitrepo
+2026-11-15T18:48:14.7847917Z [36;1mcd kitrepo[0m
+2026-11-15T18:48:14.7848322Z [36;1mpython eval/run.py "/home/runner/work/shihai-harness/shihai-harness/entry" \[0m
+2026-11-15T18:48:14.7848959Z [36;1m  --tasks-dir "/home/runner/work/shihai-harness/shihai-harness/entry/data/tasks" \[0m
+2026-11-15T18:48:14.7849491Z [36;1m  --tasks "landscape-sheet-revision" --trials "1" \[0m
+2026-11-15T18:48:14.7850261Z [36;1m  --out "/home/runner/work/shihai-harness/shihai-harness/out" || true[0m
+2026-11-15T18:48:14.7850681Z [36;1mecho "--- results ---"[0m
+2026-11-15T18:48:14.7851183Z [36;1mcat "/home/runner/work/shihai-harness/shihai-harness/out/results.json" 2>/dev/null || echo none[0m
+2026-11-15T18:48:14.7851713Z [36;1mecho "--- verifier contents ---"[0m
+2026-11-15T18:48:14.7852324Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -path '*/verifier/*' -type f 2>/dev/null | head -8); do[0m
+2026-11-15T18:48:14.7852996Z [36;1m  echo "== $f"; head -c 1500 "$f"; echo; done[0m
+2026-11-15T18:48:14.7853338Z [36;1mecho "--- verifier tree ---"[0m
+2026-11-15T18:48:14.7853901Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*verifier*' -type f 2>/dev/null | head -20[0m
+2026-11-15T18:48:14.7854461Z [36;1mecho "--- grade json ---"[0m
+2026-11-15T18:48:14.7855014Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'grade*.json' 2>/dev/null | head -3); do[0m
+2026-11-15T18:48:14.7855626Z [36;1m  echo "== $f"; head -c 5000 "$f"; echo; done[0m
+2026-11-15T18:48:14.7855971Z [36;1mecho "--- deliverables ---"[0m
+2026-11-15T18:48:14.7856840Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*deliverable*' -o -path '*output*' -type f 2>/dev/null | head -20[0m
+2026-11-15T18:48:14.7857501Z [36;1mecho "--- judge egress ---"[0m
+2026-11-15T18:48:14.7858071Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'egress.log' 2>/dev/null | head -2); do[0m
+2026-11-15T18:48:14.7858641Z [36;1m  echo "== $f"; tail -8 "$f"; done[0m
+2026-11-15T18:48:14.7858955Z [36;1mecho "--- verifier files ---"[0m
+2026-11-15T18:48:14.7859513Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*/verifier/*' -type f 2>/dev/null | head -20[0m
+2026-11-15T18:48:14.7860086Z [36;1mecho "--- grade.json ---"[0m
+2026-11-15T18:48:14.7860638Z [36;1mfor f in $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'grade*.json' 2>/dev/null | head -3); do[0m
+2026-11-15T18:48:14.7861234Z [36;1m  echo "== $f"; head -c 4000 "$f"; echo; done[0m
+2026-11-15T18:48:14.7861559Z [36;1mecho "--- deliverables ---"[0m
+2026-11-15T18:48:14.7862160Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -path '*/deliverables/*' -o -path '*/output/*' 2>/dev/null | head -20[0m
+2026-11-15T18:48:14.7863509Z [36;1mecho "--- relay requests ---"[0m
+2026-11-15T18:48:14.7864214Z [36;1mcat /tmp/relay_req.log 2>/dev/null | head -10 || echo "no requests reached the relay"[0m
+2026-11-15T18:48:14.7864965Z [36;1mecho "--- harness log ---"[0m
+2026-11-15T18:48:14.7866485Z [36;1mtail -c 4000 $(find "/home/runner/work/shihai-harness/shihai-harness" -path '*/agent/my-harness.txt' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T18:48:14.7867733Z [36;1mecho "--- serve log ---"[0m
+2026-11-15T18:48:14.7868860Z [36;1mtail -c 1500 $(find "/home/runner/work/shihai-harness/shihai-harness" -path '*/agent/serve.log' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T18:48:14.7870063Z [36;1mecho "--- capture.json ---"[0m
+2026-11-15T18:48:14.7871235Z [36;1mhead -c 3000 $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'capture.json' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T18:48:14.7872444Z [36;1mecho "--- final message (head) ---"[0m
+2026-11-15T18:48:14.7873885Z [36;1mhead -c 2500 $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'final_message.md' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T18:48:14.7875070Z [36;1mecho "--- workspace tree ---"[0m
+2026-11-15T18:48:14.7875701Z [36;1mfind "/home/runner/work/shihai-harness/shihai-harness/out" -maxdepth 6 -type d 2>/dev/null | head -30[0m
+2026-11-15T18:48:14.7876525Z [36;1mecho "--- agent egress ---"[0m
+2026-11-15T18:48:14.7877156Z [36;1mtail -6 $(find "/home/runner/work/shihai-harness/shihai-harness/out" -name 'egress.log' 2>/dev/null | head -1) 2>/dev/null || echo none[0m
+2026-11-15T18:48:14.7927073Z shell: /usr/bin/bash -e {0}
+2026-11-15T18:48:14.7927356Z env:
+2026-11-15T18:48:14.7927647Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7928130Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T18:48:14.7928585Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7929001Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7929416Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:48:14.7929835Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T18:48:14.7930278Z   PYTHONPATH: /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T18:48:14.7930713Z   MODEL_PROXY_URL: http://172.17.0.1:4100/v1
+2026-11-15T18:48:14.7931026Z   MODEL_PROXY_KEY: relay
+2026-11-15T18:48:14.7931287Z   NO_PROXY: 127.0.0.1,localhost,172.17.0.1
+2026-11-15T18:48:14.7931575Z ##[endgroup]
+2026-11-15T18:48:15.1752399Z rubric and checks-judge tasks are judged by claude-opus-5-5 at http://172.17.0.1:4100/v1 (JUDGE_* to change)
+2026-11-15T18:48:16.0305323Z building my-harness ...
+2026-11-15T18:50:12.4352569Z building landscape-sheet-revision's image, which its verifier starts from (up to 60 min) ...
+2026-11-15T18:51:16.5541004Z attempt 1: 1 task(s), 1 at a time; Harbor writes /home/runner/work/shihai-harness/shihai-harness/out/attempt1/harbor.log (tail -f it to follow)
+2026-11-15T18:56:34.4111786Z 
+2026-11-15T18:56:34.4112409Z task                      score  status
+2026-11-15T18:56:34.4113123Z landscape-sheet-revision  0.727  ok (260 s)
+2026-11-15T18:56:34.4113567Z 
+2026-11-15T18:56:34.4113937Z my-harness (google-cloud/gpt-oss-120b): 0.727 over 1 task(s)
+2026-11-15T18:56:34.4114817Z results: /home/runner/work/shihai-harness/shihai-harness/out/results.json
+2026-11-15T18:56:34.4115430Z 
+2026-11-15T18:56:34.4115914Z artifacts: 1 task(s) in /home/runner/work/shihai-harness/shihai-harness/out/artifacts
+2026-11-15T18:56:34.4117740Z   /home/runner/work/shihai-harness/shihai-harness/entry/artifacts: replaced landscape-sheet-revision
+2026-11-15T18:56:34.4119609Z   note: the harness had uncommitted changes when the run started; commit exactly those files, or the server sees a different harness than the one that made these artifacts
+2026-11-15T18:56:34.4120962Z artifacts/: 28 of 29 dev tasks usable, 1 empty
+2026-11-15T18:56:34.4122127Z   ok       data-hall-mep-routing  (1 file(s), 3.2 MiB)
+2026-11-15T18:56:34.4123411Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4125009Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4126257Z   ok       fire-test-validation-memo  (1 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4127489Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4129073Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4130166Z   ok       data-hall-mep-routing-offset  (1 file(s), 4.2 MiB)
+2026-11-15T18:56:34.4131393Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4133206Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4134265Z   ok       eor-review-corrections  (1 file(s), 1.0 MiB)
+2026-11-15T18:56:34.4135438Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4137301Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4138350Z   empty    foundation-strategy  (0 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4139350Z            refused: nothing this task's grader reads: no file under files/ (its grader does not read final_message.md)
+2026-11-15T18:56:34.4140869Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4142425Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4143474Z   ok       landscape-sheet-revision  (5 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4144128Z   ok       data-center-site-model  (1 file(s), 0.3 MiB)
+2026-11-15T18:56:34.4145337Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4147024Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4148068Z   ok       engineers-estimate-check  (1 file(s), 0.5 MiB)
+2026-11-15T18:56:34.4149310Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4151006Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4152264Z   ok       footing-settlement-verification  (2 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4153602Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4155302Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4156684Z   ok       solar-supplemental-review  (1 file(s), 0.4 MiB)
+2026-11-15T18:56:34.4157993Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4159973Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4161251Z   ok       solar-witness-test-package  (0 file(s), 0.2 MiB)
+2026-11-15T18:56:34.4162588Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4164340Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4165493Z   ok       frame-extension-method  (1 file(s), 0.5 MiB)
+2026-11-15T18:56:34.4166825Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4168364Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4169550Z   ok       fire-solve-convergence  (2 file(s), 0.7 MiB)
+2026-11-15T18:56:34.4171204Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4173026Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4174207Z   ok       les-mesh-resolution  (1 file(s), 0.5 MiB)
+2026-11-15T18:56:34.4175557Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4177605Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4178807Z   ok       mv-conveyance-study  (1 file(s), 0.8 MiB)
+2026-11-15T18:56:34.4180172Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4181984Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4183213Z   ok       data-hall-device-takeoff  (1 file(s), 0.4 MiB)
+2026-11-15T18:56:34.4184612Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4186593Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4187829Z   ok       division-26-specifications  (1 file(s), 1.5 MiB)
+2026-11-15T18:56:34.4189229Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4191078Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4192240Z   ok       heat-rejection-life-cycle-cost  (1 file(s), 1.0 MiB)
+2026-11-15T18:56:34.4193616Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4195368Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4196534Z   ok       cooling-water-flush-plan  (1 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4198192Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4200248Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4201504Z   ok       wind-diaphragm-shear  (1 file(s), 0.7 MiB)
+2026-11-15T18:56:34.4202829Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4204471Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4205610Z   ok       seismic-diaphragm-shear  (1 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4207114Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4208899Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4210094Z   ok       roof-deck-design  (1 file(s), 0.7 MiB)
+2026-11-15T18:56:34.4213701Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4219492Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4220723Z   ok       fill-compaction-acceptance  (3 file(s), 0.5 MiB)
+2026-11-15T18:56:34.4222095Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4223839Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4225008Z   ok       shoring-design-verification  (3 file(s), 0.9 MiB)
+2026-11-15T18:56:34.4226584Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4228507Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4229684Z   ok       emergency-spillway-check  (1 file(s), 0.7 MiB)
+2026-11-15T18:56:34.4231007Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4232777Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4234010Z   ok       pre-application-capacity-response  (3 file(s), 0.9 MiB)
+2026-11-15T18:56:34.4235393Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4237423Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4238666Z   ok       permission-to-operate-memo  (3 file(s), 0.8 MiB)
+2026-11-15T18:56:34.4240029Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4241821Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4243077Z   ok       backfeed-energization-reply  (3 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4244484Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4247042Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4248296Z   ok       lv-cable-sizing  (1 file(s), 0.6 MiB)
+2026-11-15T18:56:34.4249666Z            warning: made with another version of the dev set: run this task again (`eval/run.py --tasks <id>`) with the competition repository's current eval/dev_set.yaml
+2026-11-15T18:56:34.4251513Z            warning: made by an earlier version of the harness than the one submitted: run this task again (`eval/run.py --tasks <id>`)
+2026-11-15T18:56:34.4253367Z commit them with the harness: git -C /home/runner/work/shihai-harness/shihai-harness/entry add -A && git -C /home/runner/work/shihai-harness/shihai-harness/entry commit -m 'dev artifacts'
+2026-11-15T18:56:34.4347169Z --- results ---
+2026-11-15T18:56:34.4375312Z {
+2026-11-15T18:56:34.4375912Z   "submission": "my-harness",
+2026-11-15T18:56:34.4377158Z   "model": "google-cloud/gpt-oss-120b",
+2026-11-15T18:56:34.4377920Z   "score": 0.727273,
+2026-11-15T18:56:34.4378484Z   "complete": true,
+2026-11-15T18:56:34.4379055Z   "unmeasured": [],
+2026-11-15T18:56:34.4379720Z   "judge_model": "claude-opus-5-5",
+2026-11-15T18:56:34.4380784Z   "date": "2026-11-15T18:56:33Z",
+2026-11-15T18:56:34.4381694Z   "submission_dir": "/home/runner/work/shihai-harness/shihai-harness/entry",
+2026-11-15T18:56:34.4382588Z   "model_base_url": null,
+2026-11-15T18:56:34.4383204Z   "no_export": false,
+2026-11-15T18:56:34.4384039Z   "tasks_dir": "/home/runner/work/shihai-harness/shihai-harness/entry/data/tasks",
+2026-11-15T18:56:34.4384961Z   "tasks": [
+2026-11-15T18:56:34.4385499Z     {
+2026-11-15T18:56:34.4386251Z       "id": "landscape-sheet-revision",
+2026-11-15T18:56:34.4387037Z       "score": 0.727273,
+2026-11-15T18:56:34.4387649Z       "reward": 0.727273,
+2026-11-15T18:56:34.4388249Z       "measured": true,
+2026-11-15T18:56:34.4388823Z       "status": "ok",
+2026-11-15T18:56:34.4389428Z       "kind": "ok",
+2026-11-15T18:56:34.4389958Z       "seconds": 260,
+2026-11-15T18:56:34.4390655Z       "trial": "attempt1/jobs/dev/landscape-sheet-revision__STnSyaR",
+2026-11-15T18:56:34.4391488Z       "tokens": {
+2026-11-15T18:56:34.4392077Z         "input": 3439093,
+2026-11-15T18:56:34.4392697Z         "cache": 3328000,
+2026-11-15T18:56:34.4393413Z         "output": 39131
+2026-11-15T18:56:34.4394011Z       },
+2026-11-15T18:56:34.4394587Z       "graded_by": "",
+2026-11-15T18:56:34.4395227Z       "artifact": "",
+2026-11-15T18:56:34.4395833Z       "claimed": null
+2026-11-15T18:56:34.4396604Z     }
+2026-11-15T18:56:34.4397120Z   ]
+2026-11-15T18:56:34.4397724Z }--- verifier contents ---
+2026-11-15T18:56:34.4444642Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.log
+2026-11-15T18:56:34.4468417Z {
+2026-11-15T18:56:34.4468944Z   "task_id": "task",
+2026-11-15T18:56:34.4469601Z   "judge_model": "claude-opus-5-5-judge",
+2026-11-15T18:56:34.4470325Z   "judge_backend": "openai",
+2026-11-15T18:56:34.4471093Z   "grading_method": "portable_weighted_rubric_equivalent",
+2026-11-15T18:56:34.4471927Z   "rubric_source": "verifiers[]",
+2026-11-15T18:56:34.4472647Z   "family": "weighted_rubric",
+2026-11-15T18:56:34.4473507Z   "score_key": "passed_score",
+2026-11-15T18:56:34.4474507Z   "score": 0.7272727272727273,
+2026-11-15T18:56:34.4475164Z   "passed_score": 0.7272727272727273,
+2026-11-15T18:56:34.4475856Z   "combined_score": 0.7272727272727273,
+2026-11-15T18:56:34.4476825Z   "weighted_points": 56.0,
+2026-11-15T18:56:34.4477499Z   "possible_weighted_points": 77.0,
+2026-11-15T18:56:34.4478218Z   "truncated": false,
+2026-11-15T18:56:34.4478901Z   "answer_truncated": false,
+2026-11-15T18:56:34.4479610Z   "candidate_chars": 88235,
+2026-11-15T18:56:34.4480289Z   "primary_score": 0.7272727272727273,
+2026-11-15T18:56:34.4481016Z   "reward": 0.7272727272727273,
+2026-11-15T18:56:34.4481967Z   "candidate": "output/ contract collection (6 file(s), world diffed in the container)"
+2026-11-15T18:56:34.4483270Z }
+2026-11-15T18:56:34.4483704Z 
+2026-11-15T18:56:34.4484676Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/test-stdout.txt
+2026-11-15T18:56:34.4505761Z 
+2026-11-15T18:56:34.4506894Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.json
+2026-11-15T18:56:34.4527648Z {
+2026-11-15T18:56:34.4528195Z   "task_id": "task",
+2026-11-15T18:56:34.4528842Z   "judge_model": "claude-opus-5-5-judge",
+2026-11-15T18:56:34.4529582Z   "judge_backend": "openai",
+2026-11-15T18:56:34.4530330Z   "grading_method": "portable_weighted_rubric_equivalent",
+2026-11-15T18:56:34.4531806Z   "rubric_source": "verifiers[]",
+2026-11-15T18:56:34.4534956Z   "family": "weighted_rubric",
+2026-11-15T18:56:34.4535882Z   "score_key": "passed_score",
+2026-11-15T18:56:34.4536851Z   "score": 0.7272727272727273,
+2026-11-15T18:56:34.4537512Z   "passed_score": 0.7272727272727273,
+2026-11-15T18:56:34.4538213Z   "combined_score": 0.7272727272727273,
+2026-11-15T18:56:34.4539005Z   "weighted_points": 56.0,
+2026-11-15T18:56:34.4539657Z   "possible_weighted_points": 77.0,
+2026-11-15T18:56:34.4540323Z   "grades": [
+2026-11-15T18:56:34.4541113Z     {
+2026-11-15T18:56:34.4541673Z       "index": 0,
+2026-11-15T18:56:34.4542230Z       "score": 0,
+2026-11-15T18:56:34.4542816Z       "passed": false,
+2026-11-15T18:56:34.4548239Z       "evidence": "Memo s.5 G7: 'Obtain a written Condition 14 determination from Comprehensive Planning on whether this landscape change is a \"significant change\" requiring TAB and Planning Commission design review.' Memo s.5 also: 'Condition 14 of the tentative map conditions of approval makes any significant change... subject to design review...' Workbook A7 cites 'TM-22-500041 Conditions of Approval 03/14/2022, Condition 14.' No statement identifies Condition 14 as the provision that 'governs whether the revision may proceed to staff-level action' as the controlling gate — G7 is framed as a determination request, not as the governing condition.",
+2026-11-15T18:56:34.4554077Z       "reason": "Condition 14 is cited and its text quoted, but the artifacts do not state that Condition 14 governs whether the revision may proceed to staff-level action; the memo treats it as one of eight gates rather than the governing provision for staff-level action.",
+2026-11-15T18:56:34.4556547Z       "weight": 7.0,
+2026-11-15T18:56:34.4557193Z       "credited_fraction": 0.0
+2026-11-15T18:56:34.4557822Z     },
+2026-11-15T18:56:34.4558390Z   
+2026-11-15T18:56:34.4559797Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.4563501Z %PDF-1.7
+2026-11-15T18:56:34.4564101Z %äüöß
+2026-11-15T18:56:34.4564587Z 2 0 obj
+2026-11-15T18:56:34.4565098Z <</Length 3 0 R/Filter/FlateDecode>>
+2026-11-15T18:56:34.4565713Z stream
+2026-11-15T18:56:34.4568635Z x��][�#�q~�_!�o����t9Jb���!�כ��8�b '�>$�M�[_��O	��:Rw5�ź�+�:��߾�p���/?��O���_���A�Q���M���at�8���럿��o�������?��o���������?������?��t���߯����������0t�a�_:�p��_~�+}2�ʄ�r�7��.�ѫ���������3�f��)^}9�pK�hO��_C�\�%�Q�_�3�շt���_������/?n3�!S�?������Ww���&��k{z��څ�����Ɠ
+2026-11-15T18:56:34.4570682Z �
+2026-11-15T18:56:34.4571177Z ?
+2026-11-15T18:56:34.4573972Z �QǱ��%�r!*���ցB��~����÷C��(��hc���t�H��8���h�9������dgr��F3]&�R�e���O�7C k���5pv�>�;��c�0>���q��<s��]K�A�_nh�q*���	39��gΪ89I*|_MY�MdU?�3\�g!I�nk���ݶ,l�a�f4�V��8]M��q8����h�)i���GgðH��s�~^����͏d~�CO�ׇ~rG5?���{�'W�k����-��|5�xQ��x����f�`]Rk��7R_�īZ��ђ��h��s�O;��	��Eј���t�=����ФK��)���>B?8�����Y3�-����,�����j��3T��_Z��p4���(��褄GH�?v�!O���HHXC8��Q<f
+2026-11-15T18:56:34.4576972Z �h�t�	��������24E�pt̠���%�E&��["�D��j��ڎ��5�V��z$�j�Ǟ�ـ�{�e�
+2026-11-15T18:56:34.4578050Z �����G0���K�x�����G���5�@�7>�)5�͚�YZC�<�����x�O� -@�
+2026-11-15T18:56:34.4578898Z B���sR� y!i������^'� $
+2026-11-15T18:56:34.4580020Z �8�!]���=IC�$� �l�R&��H?|R3��ŏ�U1-�!�/�"��#c�9�?�=o�衆jk��|�PG��dG\���'K#W��v���y®y�V�Sj�0�}��B�6J����F�
+2026-11-15T18:56:34.4581456Z ��cqϷff�#���8�-c�!��z�	�c�LTy�
+2026-11-15T18:56:34.4582153Z r�ƛް3�����Z��p-a�V.
+2026-11-15T18:56:34.4583035Z ��f�G^M�9�ӗ��]r��o�{AT��[=q2�B@���j���䣇�nmwd"��#�D�RmR5ԉ��S��|`
+2026-11-15T18:56:34.4583914Z E�2!�ޗ5��*uo�27	��T-�R�Τ�
+2026-11-15T18:56:34.4584536Z 7���(
+2026-11-15T18:56:34.4585366Z U%�P�1��3T*�JL��P��D݇�s}����0Խ�nY#�&U�.�>�f�ֆJB�\A�d��fNP�mC(w�ǘ.3PU���@��$
+2026-11-15T18:56:34.4586520Z ��4b����im����U0��K\��V�tV�j
+2026-11-15T18:56:34.4587661Z �%K��Y����T��E8��2����gv�\��	'�͵�b�u�8�u��/�m�ZJ���n+���H����R-!�TKHy+��fS-!ݭTKHz#ՒQ�R-D���r5�9O�,�'���8�
+2026-11-15T18:56:34.4588542Z 
+2026-11-15T18:56:34.4589658Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.4597693Z ACCEPTANCE-CRITERIA CHECKLIST — DSR Phase 3 / L-4 revision package (dated 10/31/2026)
+2026-11-15T18:56:34.4598593Z 
+2026-11-15T18:56:34.4599321Z Every "must" in the request, turned into a test, and tested against a source outside this
+2026-11-15T18:56:34.4600897Z package wherever possible. Where a leg cannot be tested from the artifacts in the workspace,
+2026-11-15T18:56:34.4602195Z it is labelled CANNOT TEST and is not counted as passing.
+2026-11-15T18:56:34.4603212Z 
+2026-11-15T18:56:34.4603762Z ===========================================================================================
+2026-11-15T18:56:34.4604581Z A. DELIVERABLE GATES
+2026-11-15T18:56:34.4605241Z ===========================================================================================
+2026-11-15T18:56:34.4606378Z A1. One memo to Callaway.                                    PASS
+2026-11-15T18:56:34.4607456Z     File: Memo_Callaway_L4_Resubmittal_2026-10-31.md (+ .pdf, same text).
+2026-11-15T18:56:34.4608722Z     A single memorandum, one addressee (Mr. Garrett Nokes, Callaway Land Partners),
+2026-11-15T18:56:34.4609822Z     no second memo and no memo to anyone else.
+2026-11-15T18:56:34.4610426Z 
+2026-11-15T18:56:34.4611010Z A2. For the user's signature.                                PASS - flagged, not assumed
+2026-11-15T18:56:34.4612258Z     Header line "FOR SIGNATURE:" states the memo is issued for information and decision,
+2026-11-15T18:56:34.4613501Z     is written in the form the user requested for their signature, and that Section 7
+2026-11-15T18:56:34.4614662Z     requires the user's authorization before work proceeds. The FROM block is
+2026-11-15T18:56:34.4615835Z     Max Braddock, Project Manager, Sundial Engineering & Survey, which is the sending
+2026-11-15T18:56:34.4617274Z     party whose signature the memo is prepared for. Whether the user personally signs
+2026-11-15T18:56:34.4618275Z     it cannot be tested here - CANNOT TEST.
+2026-11-15T18:56:34.4618830Z 
+2026-11-15T18:56:34.4619272Z A3. Dated 10/31/2026.                                        PASS
+2026-11-15T18:56:34.4620244Z     DATE field is "October 31, 2026". Also mirrored in both output 
+2026-11-15T18:56:34.4622026Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/FINAL_MESSAGE.md
+2026-11-15T18:56:34.4631005Z # Agent's final message
+2026-11-15T18:56:34.4631440Z 
+2026-11-15T18:56:34.4631868Z Delivered. Everything is in `/app/files/output/`.
+2026-11-15T18:56:34.4632465Z 
+2026-11-15T18:56:34.4632771Z **Files**
+2026-11-15T18:56:34.4634122Z - `Memo_Callaway_L4_Resubmittal_2026-10-31.md` / `.pdf` — the memo to Garrett (Callaway), dated 10/31/2026, 9 pages, prepared for your signature
+2026-11-15T18:56:34.4635788Z - `DSR_Ph3_L4_Analysis_2026-10-31.xlsx` — 7-tab backing workbook
+2026-11-15T18:56:34.4637730Z - `ACCEPTANCE_CHECKLIST.md` — every gate tested, marked read / assumed / cannot-test
+2026-11-15T18:56:34.4638574Z 
+2026-11-15T18:56:34.4638988Z **The answer: do not commit to 11/30 on this revision.**
+2026-11-15T18:56:34.4639585Z 
+2026-11-15T18:56:34.4642282Z The 150-tree deficit is a redesign, not a redline. 4,160 lf ÷ 20 = 208 required against 58 shown — Windmill 128 vs 34, interior collector 59 vs 16, Rainbow 21 vs 8. That drives a redrawn L-2 plan, a reworked L-1 schedule, a new shade exhibit (CP-PW-GM-2025-04 §3/§6, 30% at 15-yr canopy), and a reissued irrigation worksheet.
+2026-11-15T18:56:34.4644513Z 
+2026-11-15T18:56:34.4648279Z **Two findings that are worse than the tree count.** First, counsel's turf position fails: WRC-2024-07 §2 says the single-family carve-out is lot-based and expressly rejects the zoning argument, so the 18,400 sf Parcel A lawn is AB 356 turf with a 12/31/2026 deadline and ~$52,440 of conversion exposure. Second, Phase 3 runs on the *successive*-map clock, not the title officer's 03/14/2028 runway — recordation of Phases 1&2 on 12/23/2024 means the map must be presented by **12/23/2026**.
+2026-11-15T18:56:34.4651398Z 
+2026-11-15T18:56:34.4652512Z That makes 12/18 negative float: 11/30 + 20 business days = 12/28, five days late. The last complete resubmittal that still fits is **11/25/2026**, with zero margin.
+2026-11-15T18:56:34.4653784Z 
+2026-11-15T18:56:34.4654403Z **What must happen first** — eight gates, six blocking. G
+2026-11-15T18:56:34.4655976Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/changed/tools/clash_check.py
+2026-11-15T18:56:34.4664687Z #!/usr/bin/env python3
+2026-11-15T18:56:34.4665482Z """Clash check for an IFC model: report axis-aligned bounding-box overlaps.
+2026-11-15T18:56:34.4666485Z 
+2026-11-15T18:56:34.4667089Z Usage:  python3 clash_check.py <model.ifc> [--tolerance-mm 2] [--limit 40]
+2026-11-15T18:56:34.4667802Z 
+2026-11-15T18:56:34.4668380Z A "hard clash" is two distinct elements whose axis-aligned bounding boxes overlap
+2026-11-15T18:56:34.4669603Z by more than the tolerance on all three axes.  Bounding boxes are conservative -
+2026-11-15T18:56:34.4671332Z a reported pair still needs a look - but a clean report is strong evidence that
+2026-11-15T18:56:34.4672319Z there is no hard clash at all.
+2026-11-15T18:56:34.4672793Z 
+2026-11-15T18:56:34.4673351Z Runs with ifcopenshell only (no numpy, no network).  Exit code 1 when clashes are
+2026-11-15T18:56:34.4674339Z found so a shell caller can gate on it.
+2026-11-15T18:56:34.4675041Z """
+2026-11-15T18:56:34.4675687Z import sys
+2026-11-15T18:56:34.4676253Z 
+2026-11-15T18:56:34.4676585Z try:
+2026-11-15T18:56:34.4677161Z     import ifcopenshell
+2026-11-15T18:56:34.4677840Z     import ifcopenshell.geom
+2026-11-15T18:56:34.4678527Z except ImportError:
+2026-11-15T18:56:34.4679319Z     sys.exit("ifcopenshell is not importable in this environment")
+2026-11-15T18:56:34.4680040Z 
+2026-11-15T18:56:34.4680223Z 
+2026-11-15T18:56:34.4680599Z def boxes(path, tolerance):
+2026-11-15T18:56:34.4681258Z     f = ifcopenshell.open(path)
+2026-11-15T18:56:34.4681966Z     settings = ifcopenshell.geom.settings()
+2026-11-15T18:56:34.4682764Z     settings.set(settings.USE_WORLD_COORDS, True)
+2026-11-15T18:56:34.4683544Z     out = []
+2026-11-15T18:56:34.4684404Z     for el in f.by_type("IfcProduct"):
+2026-11-15T18:56:34.4685151Z         if not getattr(el, "Representation", None):
+2026-11-15T18:56:34.4685879Z             continue
+2026-11-15T18:56:34.4686779Z         try:
+2026-11-15T18:56:34.4687472Z             shape = ifcopenshell.geom.create_shape(settings, el)
+2026-11-15T18:56:34.4688285Z         except Exception:
+2026-11-15T18:56:34.4688905Z             continue
+2026-11-15T18:56:34.4689511Z         verts = shape.geometry.verts
+2026-11-15T18:56:34.4690152Z         if not verts:
+2026-11-15T18:56:34.4690703Z             continue
+2026-11-15T18:56:34.4691473Z         xs, ys, zs = verts[0::3], verts[1::3], verts[2::3]
+2026-11-15T18:56:34.4692255Z         lo = (min(xs), min(ys), min(zs))
+2026-11-15T18:56:34.4692965Z         hi = (max(xs), max(ys), max(zs))
+2026-11-15T18:56:34.4693687Z         if all(hi[i] - lo[i] >= 0 for i in range(3)):
+2026-11-15T18:56:34.4694611Z             out.append((el.GlobalId, el.is_a(), lo, hi))
+2026-11-15T18:56:34.4695411Z     return out
+2026-11-15T18:56:34.4695841Z 
+2026-11-15T18:56:34.4696023Z 
+2026-11-15T18:56:34.4696580Z def overlap
+2026-11-15T18:56:34.4698253Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.4699957Z SUNDIAL ENGINEERING & SURVEY
+2026-11-15T18:56:34.4700708Z 4720 South Rainbow Boulevard, Suite 210, Las Vegas, NV 89103
+2026-11-15T18:56:34.4701734Z (702) 555-0142 · NV Certificate of Authority No. C-3874
+2026-11-15T18:56:34.4702310Z 
+2026-11-15T18:56:34.4702616Z MEMORANDUM
+2026-11-15T18:56:34.4702982Z 
+2026-11-15T18:56:34.4703546Z TO:      Mr. Garrett Nokes, Vice President — Land Development
+2026-11-15T18:56:34.4704401Z          Callaway Land Partners, LLC
+2026-11-15T18:56:34.4705291Z          8880 W. Sunset Road, Suite 400, Las Vegas, NV 89148
+2026-11-15T18:56:34.4706383Z 
+2026-11-15T18:56:34.4707047Z FROM:    Max Braddock, Project Manager — Sundial Engineering & Survey
+2026-11-15T18:56:34.4707843Z 
+2026-11-15T18:56:34.4708347Z CC:      Adrienne Vogel, Esq. — Vogel & Marsh LLP
+2026-11-15T18:56:34.4709233Z          Bea Cortland, PLA — Ocotillo Landscape Studio
+2026-11-15T18:56:34.4710187Z          Priya Sarwal, EIT — Sundial Engineering & Survey
+2026-11-15T18:56:34.4710769Z 
+2026-11-15T18:56:34.4711082Z DATE:    October 31, 2026
+2026-11-15T18:56:34.4711536Z 
+2026-11-15T18:56:34.4712226Z RE:      Desert Sage Ranch Phase 3 — L-4 street tree revision; whether the 11/30/2026
+2026-11-15T18:56:34.4713556Z          resubmittal and the 12/18/2026 recordation date can be committed on this revision,
+2026-11-15T18:56:34.4714861Z          and what has to happen first
+2026-11-15T18:56:34.4715802Z          TM-22-500041 · IP-26-100288 · FM-26-100290
+2026-11-15T18:56:34.4716618Z 
+2026-11-15T18:56:34.4717254Z FOR SIGNATURE: No. This memo is issued for your information and decision. It is written in
+2026-11-15T18:56:34.4718533Z the form you requested for your signature if you choose to send it to Callaway in your own
+2026-11-15T18:56:34.4719790Z name; as issued it is a Sundial memorandum to you. The recommendation in Section 7 requires
+2026-11-15T18:56:34.4720869Z your authorization before any work proceeds.
+2026-11-15T18:56:34.4721460Z 
+2026-11-15T18:56:34.4721980Z ===========================================================================================
+2026-11-15T18:56:34.4722649Z 
+2026-11-15T18:56:34.4722989Z 1. BOTTOM LINE
+2026-11-15T18:56:34.4723421Z 
+2026-11-15T18:56:34.4724129Z We cannot commit to the 11/30/2026 resubmittal date on this revision as it currently stands.
+2026-11-15T18:56:34.4724991Z 
+2026-11-15T18:56:34.4725632Z The reason is not the date. It is that the L-4 street tree item is not a clerical redline and
+2026-11-15T18:56:34.4726963Z cannot be made in
+2026-11-15T18:56:34.4727606Z --- verifier tree ---
+2026-11-15T18:56:34.4760157Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/tests/verifier_config.json
+2026-11-15T18:56:34.4763375Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.log
+2026-11-15T18:56:34.4765369Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/test-stdout.txt
+2026-11-15T18:56:34.4775098Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.json
+2026-11-15T18:56:34.4787570Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.4807466Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.4809390Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/FINAL_MESSAGE.md
+2026-11-15T18:56:34.4811307Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/changed/tools/clash_check.py
+2026-11-15T18:56:34.4818162Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.4820330Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.4821412Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/task.json
+2026-11-15T18:56:34.4822539Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/reward.json
+2026-11-15T18:56:34.4823597Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.4824748Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.4825788Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/FINAL_MESSAGE.md
+2026-11-15T18:56:34.4830163Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/changed/tools/clash_check.py
+2026-11-15T18:56:34.4832218Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.4834494Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.4835807Z --- grade json ---
+2026-11-15T18:56:34.4837071Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.json
+2026-11-15T18:56:34.4853614Z {
+2026-11-15T18:56:34.4854168Z   "task_id": "task",
+2026-11-15T18:56:34.4854774Z   "judge_model": "claude-opus-5-5-judge",
+2026-11-15T18:56:34.4876816Z   "judge_backend": "openai",
+2026-11-15T18:56:34.4892584Z   "grading_method": "portable_weighted_rubric_equivalent",
+2026-11-15T18:56:34.4896662Z   "rubric_source": "verifiers[]",
+2026-11-15T18:56:34.4897175Z   "family": "weighted_rubric",
+2026-11-15T18:56:34.4897637Z   "score_key": "passed_score",
+2026-11-15T18:56:34.4898078Z   "score": 0.7272727272727273,
+2026-11-15T18:56:34.4898529Z   "passed_score": 0.7272727272727273,
+2026-11-15T18:56:34.4899021Z   "combined_score": 0.7272727272727273,
+2026-11-15T18:56:34.4899511Z   "weighted_points": 56.0,
+2026-11-15T18:56:34.4899964Z   "possible_weighted_points": 77.0,
+2026-11-15T18:56:34.4900434Z   "grades": [
+2026-11-15T18:56:34.4900774Z     {
+2026-11-15T18:56:34.4901104Z       "index": 0,
+2026-11-15T18:56:34.4901792Z       "score": 0,
+2026-11-15T18:56:34.4902222Z       "passed": false,
+2026-11-15T18:56:34.4907592Z       "evidence": "Memo s.5 G7: 'Obtain a written Condition 14 determination from Comprehensive Planning on whether this landscape change is a \"significant change\" requiring TAB and Planning Commission design review.' Memo s.5 also: 'Condition 14 of the tentative map conditions of approval makes any significant change... subject to design review...' Workbook A7 cites 'TM-22-500041 Conditions of Approval 03/14/2022, Condition 14.' No statement identifies Condition 14 as the provision that 'governs whether the revision may proceed to staff-level action' as the controlling gate — G7 is framed as a determination request, not as the governing condition.",
+2026-11-15T18:56:34.4915182Z       "reason": "Condition 14 is cited and its text quoted, but the artifacts do not state that Condition 14 governs whether the revision may proceed to staff-level action; the memo treats it as one of eight gates rather than the governing provision for staff-level action.",
+2026-11-15T18:56:34.4917707Z       "weight": 7.0,
+2026-11-15T18:56:34.4918439Z       "credited_fraction": 0.0
+2026-11-15T18:56:34.4919098Z     },
+2026-11-15T18:56:34.4919911Z     {
+2026-11-15T18:56:34.4920507Z       "index": 1,
+2026-11-15T18:56:34.4921109Z       "score": 1,
+2026-11-15T18:56:34.4921692Z       "passed": true,
+2026-11-15T18:56:34.4924773Z       "evidence": "Memo s.5: 'Condition 14 of the tentative map conditions of approval makes any significant change to approved landscape and streetscape treatments in common areas subject to design review as a public hearing.' Workbook sheet7: 'Significant changes to common-area landscape require design review as a public hearing — TM-22-500041 Condition 14.'",
+2026-11-15T18:56:34.4928386Z       "reason": "Direct statement that Condition 14 covers landscape and streetscape treatments in common areas.",
+2026-11-15T18:56:34.4929611Z       "weight": 5.0,
+2026-11-15T18:56:34.4930289Z       "credited_fraction": 1.0
+2026-11-15T18:56:34.4930980Z     },
+2026-11-15T18:56:34.4931546Z     {
+2026-11-15T18:56:34.4932108Z       "index": 2,
+2026-11-15T18:56:34.4932684Z       "score": 1,
+2026-11-15T18:56:34.4933279Z       "passed": true,
+2026-11-15T18:56:34.4935016Z       "evidence": "Memo s.5: 'Adding 150 street trees and changing the park program is squarely within that language.' Workbook A7: 'Adding 150 street trees and changing the park program is on its face a significant change.'",
+2026-11-15T18:56:34.4937362Z       "reason": "Artifacts expressly place the street tree revision within Condition 14's scope.",
+2026-11-15T18:56:34.4938403Z       "weight": 8.0,
+2026-11-15T18:56:34.4939035Z       "credited_fraction": 1.0
+2026-11-15T18:56:34.4939666Z     },
+2026-11-15T18:56:34.4940264Z     {
+2026-11-15T18:56:34.4940818Z       "index": 3,
+2026-11-15T18:56:34.4941516Z       "score": 0,
+2026-11-15T18:56:34.4942153Z       "passed": false,
+2026-11-15T18:56:34.4944809Z       "evidence": "Memo s.3: 'The 18,400 sf of Parcel A turf lies outside the recorded boundary of any individually owned lot.' Workbook A4: 'The 18,400 sf of Parcel A park turf is HOA common area outside any individually owned lot.' No statement that the streetscape planting area is HOA-owned common area; HOA references concern Parcel A park lawn, not the streetscape frontage.",
+2026-11-15T18:56:34.4948561Z       "reason": "Artifacts establish Parcel A park turf as HOA common area, but nothing states the streetscape planting area (the L-4 subject) is HOA-owned common area.",
+2026-11-15T18:56:34.4950026Z       "weight": 3.0,
+2026-11-15T18:56:34.4950653Z       "credited_fraction": 0.0
+2026-11-15T18:56:34.4951303Z     },
+2026-11-15T18:56:34.4951909Z     {
+2026-11-15T18:56:34.4952458Z       "index": 4,
+2026-11-15T18:56:34.4953036Z       "score": 1,
+2026-11-15T18:56:34.4953624Z       "passed": true,
+2026-11-15T18:56:34.4955803Z       "evidence": "Memo s.5 G7: 'Obtain a written Condition 14 determination from Comprehensive Planning... OPEN — never asked.' Workbook sheet6 G7: 'OPEN - never asked.' Memo s.4.3: 'Odette's reply of 10/16/2026 declined to give a date by email.'",
+2026-11-15T18:56:34.4958897Z       "reason": "Artifacts state the Condition 14 determination has never been requested/issued.",
+2026-11-15T18:56:34.4959966Z       "weight": 6.0,
+2026-11-15T18:56:34.4960617Z       "credited_fraction": 1.0
+2026-11-15T18:56:34.4961305Z     },
+2026-11-15T18:56:34.4961834Z     {
+2026-11-15T18:56:34.4962379Z       "index": 5,
+2026-11-15T18:56:34.4962954Z       "score": 1,
+2026-11-15T18:56:34.4963553Z       "passed": true,
+2026-11-15T18:56:34.4965521Z       "evidence": "Memo s.5 G7: 'Obtain a written Condition 14 determination from Comprehensive Planning on whether this landscape change is a \"significant change\"...' Workbook sheet6 G7: 'Max Braddock with O. Marchetti' for Comprehensive Planning determination.",
+2026-11-15T18:56:34.4968523Z       "reason": "Artifacts identify Comprehensive Planning (O. Marchetti) as the party making the significant-change determination.",
+2026-11-15T18:56:34.4969814Z       "weight": 6.0,
+2026-11-15T18:56:34.4970443Z       "credited_fraction": 1.0
+2026-11-15T18:56:34.4971065Z     },
+2026-11-15T18:56:34.4971665Z     {
+2026-11-15T18:56:34.4972427Z       "index": 6,
+2026-11-15T18:56:34.4973033Z       "score": 0,
+2026-11-15T18:56:34.4973614Z       "passed": false,
+2026-11-15T18:56:34.4975625Z       "evidence": "Memo s.5 and workbook sheet2/row 12 reference TAB application deadline 10/28/2026 for 11/18/2026 meeting and 11/25/2026 for 12/16/2026 meeting, but nowhere state a 21-day lead rule. ACCEPTANCE_CHECKLIST B11 cites the calendar rows without stating the 21-day rule.",
+2026-11-15T18:56:34.4978450Z       "reason": "The 21-day application deadline rule is never stated in the artifacts; only specific application deadline dates are given.",
+2026-11-15T18:56:34.4979744Z       "weight": 4.0,
+2026-11-15T18:56:34.4980362Z       "credited_fraction": 0.0
+2026-11-15T18:56:34.4980993Z     },
+2026-11-15T18:56:34.4981522Z     {
+2026-11-15T18:56:34.4982065Z       "index": 7,
+2026-11-15T18:56:34.4982641Z       "score": 1,
+2026-11-15T18:56:34.4983211Z       "passed": true,
+2026-11-15T18:56:34.4984443Z       "evidence": "Memo s.5: 'the 11/18/2026 meeting had an application deadline of 10/28/2026 and an agenda posting deadline of 11/08/2026, both now passed.
+2026-11-15T18:56:34.4985766Z --- deliverables ---
+2026-11-15T18:56:34.4987356Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.4989530Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.4991666Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.4993845Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.4996504Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.4998844Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.5001735Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.5004195Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.5006610Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables
+2026-11-15T18:56:34.5008534Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/final_message.md
+2026-11-15T18:56:34.5010807Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/capture.json
+2026-11-15T18:56:34.5012687Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files
+2026-11-15T18:56:34.5014514Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app
+2026-11-15T18:56:34.5016678Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files
+2026-11-15T18:56:34.5018916Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output
+2026-11-15T18:56:34.5021303Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.5024086Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.5026817Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.5030138Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.5036452Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/tools
+2026-11-15T18:56:34.5037932Z --- judge egress ---
+2026-11-15T18:56:34.5039508Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/agent/egress.log
+2026-11-15T18:56:34.5041354Z {"t": 1794768769.245, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 2405773, "bytes_down": 3589627}
+2026-11-15T18:56:34.5042964Z {"t": 1794768776.159, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5044739Z {"t": 1794768780.029, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 345468, "bytes_down": 800425}
+2026-11-15T18:56:34.5046606Z {"t": 1794768906.202, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5048370Z {"t": 1794768910.201, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 9939326, "bytes_down": 6441164}
+2026-11-15T18:56:34.5050024Z {"t": 1794768910.346, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5051701Z {"t": 1794768913.715, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 114921, "bytes_down": 227065}
+2026-11-15T18:56:34.5053071Z {"t": 1794768944.957, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 929086, "bytes_down": 1818354}
+2026-11-15T18:56:34.5054732Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/logs/agent/egress.log
+2026-11-15T18:56:34.5067435Z {"t": 1794768769.245, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 2405773, "bytes_down": 3589627}
+2026-11-15T18:56:34.5069098Z {"t": 1794768776.159, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5070778Z {"t": 1794768780.029, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 345468, "bytes_down": 800425}
+2026-11-15T18:56:34.5073190Z {"t": 1794768906.202, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5075208Z {"t": 1794768910.201, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 9939326, "bytes_down": 6441164}
+2026-11-15T18:56:34.5077000Z {"t": 1794768910.346, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5078601Z {"t": 1794768913.715, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 114921, "bytes_down": 227065}
+2026-11-15T18:56:34.5079962Z {"t": 1794768944.957, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 929086, "bytes_down": 1818354}
+2026-11-15T18:56:34.5081160Z --- verifier files ---
+2026-11-15T18:56:34.5119496Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.log
+2026-11-15T18:56:34.5121435Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/test-stdout.txt
+2026-11-15T18:56:34.5126868Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.json
+2026-11-15T18:56:34.5129159Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.5131474Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.5133564Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/FINAL_MESSAGE.md
+2026-11-15T18:56:34.5135877Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/changed/tools/clash_check.py
+2026-11-15T18:56:34.5138565Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.5140980Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/submission/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.5143099Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/task.json
+2026-11-15T18:56:34.5144940Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/reward.json
+2026-11-15T18:56:34.5147366Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.5149755Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.5166415Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/FINAL_MESSAGE.md
+2026-11-15T18:56:34.5168644Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/changed/tools/clash_check.py
+2026-11-15T18:56:34.5170995Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.5175036Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/candidate/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.5177179Z --- grade.json ---
+2026-11-15T18:56:34.5203082Z == /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/verifier/grade.json
+2026-11-15T18:56:34.5227037Z {
+2026-11-15T18:56:34.5227802Z   "task_id": "task",
+2026-11-15T18:56:34.5228456Z   "judge_model": "claude-opus-5-5-judge",
+2026-11-15T18:56:34.5229214Z   "judge_backend": "openai",
+2026-11-15T18:56:34.5229956Z   "grading_method": "portable_weighted_rubric_equivalent",
+2026-11-15T18:56:34.5231072Z   "rubric_source": "verifiers[]",
+2026-11-15T18:56:34.5231795Z   "family": "weighted_rubric",
+2026-11-15T18:56:34.5232662Z   "score_key": "passed_score",
+2026-11-15T18:56:34.5233533Z   "score": 0.7272727272727273,
+2026-11-15T18:56:34.5234213Z   "passed_score": 0.7272727272727273,
+2026-11-15T18:56:34.5235218Z   "combined_score": 0.7272727272727273,
+2026-11-15T18:56:34.5235902Z   "weighted_points": 56.0,
+2026-11-15T18:56:34.5236812Z   "possible_weighted_points": 77.0,
+2026-11-15T18:56:34.5237476Z   "grades": [
+2026-11-15T18:56:34.5238021Z     {
+2026-11-15T18:56:34.5238492Z       "index": 0,
+2026-11-15T18:56:34.5239125Z       "score": 0,
+2026-11-15T18:56:34.5239680Z       "passed": false,
+2026-11-15T18:56:34.5245345Z       "evidence": "Memo s.5 G7: 'Obtain a written Condition 14 determination from Comprehensive Planning on whether this landscape change is a \"significant change\" requiring TAB and Planning Commission design review.' Memo s.5 also: 'Condition 14 of the tentative map conditions of approval makes any significant change... subject to design review...' Workbook A7 cites 'TM-22-500041 Conditions of Approval 03/14/2022, Condition 14.' No statement identifies Condition 14 as the provision that 'governs whether the revision may proceed to staff-level action' as the controlling gate — G7 is framed as a determination request, not as the governing condition.",
+2026-11-15T18:56:34.5252014Z       "reason": "Condition 14 is cited and its text quoted, but the artifacts do not state that Condition 14 governs whether the revision may proceed to staff-level action; the memo treats it as one of eight gates rather than the governing provision for staff-level action.",
+2026-11-15T18:56:34.5254166Z       "weight": 7.0,
+2026-11-15T18:56:34.5254816Z       "credited_fraction": 0.0
+2026-11-15T18:56:34.5255491Z     },
+2026-11-15T18:56:34.5256030Z     {
+2026-11-15T18:56:34.5256916Z       "index": 1,
+2026-11-15T18:56:34.5257470Z       "score": 1,
+2026-11-15T18:56:34.5258044Z       "passed": true,
+2026-11-15T18:56:34.5261077Z       "evidence": "Memo s.5: 'Condition 14 of the tentative map conditions of approval makes any significant change to approved landscape and streetscape treatments in common areas subject to design review as a public hearing.' Workbook sheet7: 'Significant changes to common-area landscape require design review as a public hearing — TM-22-500041 Condition 14.'",
+2026-11-15T18:56:34.5264126Z       "reason": "Direct statement that Condition 14 covers landscape and streetscape treatments in common areas.",
+2026-11-15T18:56:34.5265220Z       "weight": 5.0,
+2026-11-15T18:56:34.5265798Z       "credited_fraction": 1.0
+2026-11-15T18:56:34.5266589Z     },
+2026-11-15T18:56:34.5267143Z     {
+2026-11-15T18:56:34.5267672Z       "index": 2,
+2026-11-15T18:56:34.5268278Z       "score": 1,
+2026-11-15T18:56:34.5268871Z       "passed": true,
+2026-11-15T18:56:34.5270596Z       "evidence": "Memo s.5: 'Adding 150 street trees and changing the park program is squarely within that language.' Workbook A7: 'Adding 150 street trees and changing the park program is on its face a significant change.'",
+2026-11-15T18:56:34.5272717Z       "reason": "Artifacts expressly place the street tree revision within Condition 14's scope.",
+2026-11-15T18:56:34.5273729Z       "weight": 8.0,
+2026-11-15T18:56:34.5274317Z       "credited_fraction": 1.0
+2026-11-15T18:56:34.5274922Z     },
+2026-11-15T18:56:34.5275434Z     {
+2026-11-15T18:56:34.5275936Z       "index": 3,
+2026-11-15T18:56:34.5276756Z       "score": 0,
+2026-11-15T18:56:34.5277318Z       "passed": false,
+2026-11-15T18:56:34.5279983Z       "evidence": "Memo s.3: 'The 18,400 sf of Parcel A turf lies outside the recorded boundary of any individually owned lot.' Workbook A4: 'The 18,400 sf of Parcel A park turf is HOA common area outside any individually owned lot.' No statement that the streetscape planting area is HOA-owned common area; HOA references concern Parcel A park lawn, not the streetscape frontage.",
+2026-11-15T18:56:34.5284038Z       "reason": "Artifacts establish Parcel A park turf as HOA common area, but nothing states the streetscape planting area (the L-4 subject) is HOA-owned common area.",
+2026-11-15T18:56:34.5300033Z       "weight": 3.0,
+2026-11-15T18:56:34.5300646Z       "credited_fraction": 0.0
+2026-11-15T18:56:34.5301273Z     },
+2026-11-15T18:56:34.5301769Z     {
+2026-11-15T18:56:34.5302283Z       "index": 4,
+2026-11-15T18:56:34.5302840Z       "score": 1,
+2026-11-15T18:56:34.5303394Z       "passed": true,
+2026-11-15T18:56:34.5305536Z       "evidence": "Memo s.5 G7: 'Obtain a written Condition 14 determination from Comprehensive Planning... OPEN — never asked.' Workbook sheet6 G7: 'OPEN - never asked.' Memo s.4.3: 'Odette's reply of 10/16/2026 declined to give a date by email.'",
+2026-11-15T18:56:34.5307960Z       "reason": "Artifacts state the Condition 14 determination has never been requested/issued.",
+2026-11-15T18:56:34.5309003Z       "weight": 6.0,
+2026-11-15T18:56:34.5309643Z       "credited_fraction": 1.0
+2026-11-15T18:56:34.5310486Z     },
+2026-11-15T18:56:34.5311005Z     {
+2026-11-15T18:56:34.5311490Z       "index": 5,
+2026-11-15T18:56:34.5312022Z       "score": 1,
+2026-11-15T18:56:34.5312560Z       "passed": true,
+2026-11-15T18:56:34.5314281Z       "evidence": "Memo s.5 G7: 'Obtain a written Condition 14 determination from Comprehensive Planning on whether this landscape change is a \"significant change\"...' Workbook sheet6 G7: 'Max Braddock with O. Marchetti' for Compr
+2026-11-15T18:56:34.5316302Z --- deliverables ---
+2026-11-15T18:56:34.5317916Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.5320792Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.5322918Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.5325038Z /home/runner/work/shihai-harness/shihai-harness/out/artifacts/landscape-sheet-revision/files/app/files/output/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.5327690Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.5330137Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.5332543Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.5334958Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/artifacts/app/files/output/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.5337301Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/final_message.md
+2026-11-15T18:56:34.5339218Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/capture.json
+2026-11-15T18:56:34.5341144Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files
+2026-11-15T18:56:34.5343118Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app
+2026-11-15T18:56:34.5345079Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files
+2026-11-15T18:56:34.5347373Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output
+2026-11-15T18:56:34.5350007Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf
+2026-11-15T18:56:34.5352553Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/ACCEPTANCE_CHECKLIST.md
+2026-11-15T18:56:34.5354996Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.md
+2026-11-15T18:56:34.5357735Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/output/DSR_Ph3_L4_Analysis_2026-10-31.xlsx
+2026-11-15T18:56:34.5360005Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/tools
+2026-11-15T18:56:34.5362490Z /home/runner/work/shihai-harness/shihai-harness/out/attempt1/jobs/dev/landscape-sheet-revision__STnSyaR/deliverables/files/app/files/tools/clash_check.py
+2026-11-15T18:56:34.5364055Z --- relay requests ---
+2026-11-15T18:56:34.5378324Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5379368Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5380495Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5383051Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5384468Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5385536Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5386900Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5387965Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5388995Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5390027Z POST /v1/chat/completions -> ***/v1/chat/completions
+2026-11-15T18:56:34.5390949Z --- harness log ---
+2026-11-15T18:56:34.5505995Z ; do\n  hits=$(grep -c \"$pat\" Memo_Callaway_L4_Resubmittal_2026-10-31.md 2>/dev/null || true)\n  echo \"memo '$pat': $hits\"\ndone\npython3 -c \"\nimport openpyxl\nwb=openpyxl.load_workbook('DSR_Ph3_L4_Analysis_2026-10-31.xlsx')\nbad=[]\nfor ws in wb:\n  for row in ws.iter_rows():\n    for c -> "exit_code=0\n=== final consistency sweep on saved artifacts ===\nmemo '2.85 ac': 0\nmemo 'roughly 11/24': 0\nmemo '32 days after the 11/30': 0\nmemo 'down 13%': 0\nworkbook stale refs: NONE\ntabs: ['1 Bottom Line', '2 Map Clock', '3 L Comments', '4 Tree Math', '5 Irrigation', '6 Gates', '7 Provenance']\n" (0.4s)
+2026-11-15T18:56:34.5511108Z harness: pi: bash {"command": "cd /app/files && rm -rf build && ls -la output/ && echo && echo \"=== memo opens with ===\" && head -8 output/Memo_Callaway_L4_Resubmittal_2026-10-31.md"}
+2026-11-15T18:56:34.5515323Z exec {"command": "cd '/app/files' || exit 1\ncd /app/files && rm -rf build && ls -la output/ && echo && echo \"=== memo opens with ===\" && head -8 output/Memo_Callaway_L4_Resubmittal_2026-10-31.md", "timeout_sec": 600} -> 'exit_code=0\ntotal 300\ndrwxr-xr-x 2 root root   4096 Nov 15 18:55 .\ndrwxr-xr-x 1 root root   4096 Nov 15 18:55 ..\n-rw-r--r-- 1 root root  13018 Nov 15 18:55 ACCEPTANCE_CHECKLIST.md\n-rw-r--r-- 1 root root  23722 Nov 15 18:55 DSR_Ph3_L4_Analysis_2026-10-31.xlsx\n-rw-r--r-- 1 root root  22416 Nov 15 18:5' (0.1s)
+2026-11-15T18:56:34.5519116Z done after 56 request(s)
+2026-11-15T18:56:34.5519784Z serve status=completed
+2026-11-15T18:56:34.5520524Z serve stop condition: done
+2026-11-15T18:56:34.5536946Z {"type": "result", "result": "Delivered. Everything is in `/app/files/output/`.\n\n**Files**\n- `Memo_Callaway_L4_Resubmittal_2026-10-31.md` / `.pdf` \u2014 the memo to Garrett (Callaway), dated 10/31/2026, 9 pages, prepared for your signature\n- `DSR_Ph3_L4_Analysis_2026-10-31.xlsx` \u2014 7-tab backing workbook\n- `ACCEPTANCE_CHECKLIST.md` \u2014 every gate tested, marked read / assumed / cannot-test\n\n**The answer: do not commit to 11/30 on this revision.**\n\nThe 150-tree deficit is a redesign, not a redline. 4,160 lf \u00f7 20 = 208 required against 58 shown \u2014 Windmill 128 vs 34, interior collector 59 vs 16, Rainbow 21 vs 8. That drives a redrawn L-2 plan, a reworked L-1 schedule, a new shade exhibit (CP-PW-GM-2025-04 \u00a73/\u00a76, 30% at 15-yr canopy), and a reissued irrigation worksheet.\n\n**Two findings that are worse than the tree count.** First, counsel's turf position fails: WRC-2024-07 \u00a72 says the single-family carve-out is lot-based and expressly rejects the zoning argument, so the 18,400 sf Parcel A lawn is AB 356 turf with a 12/31/2026 deadline and ~$52,440 of conversion exposure. Second, Phase 3 runs on the *successive*-map clock, not the title officer's 03/14/2028 runway \u2014 recordation of Phases 1&2 on 12/23/2024 means the map must be presented by **12/23/2026**.\n\nThat makes 12/18 negative float: 11/30 + 20 business days = 12/28, five days late. The last complete resubmittal that still fits is **11/25/2026**, with zero margin.\n\n**What must happen first** \u2014 eight gates, six blocking. G1 counsel accepts the carve-out doesn't apply; G2 you pick playground-in or lawn-out (drives G3\u2013G5); G3 draw 208 trees; G4 shade exhibit; G5 reissue irrigation; G6 renew the CCWRD confirmation (expired 09/30); G7 written Condition 14 determination; G8 seal L-1\u2013L-4. G7 matters tactically: 11/18 TAB's application deadline passed 10/28, so if design review applies the next meeting is 12/16 \u2014 after the resubmittal.\n\n**Three numbers I corrected during the checklist pass:** latest submittal 11/24\u219211/25 (exact), converted demand 2.85/\"\u221213%\"\u21922.31/\"\u221230%\", and 32\u219231 days.\n\n**Six legs I could not test**, all named in the checklist: whether 4,160 lf ties to recorded geometry (it doesn't \u2014 2,640.00 ft on the exhibit, 1,711.78 ft recorded); whether 150 more pits clear the dry utility easement; SNWA alternative compliance; how Planning reads Condition 14; the $2.85/sf rate (quotes never furnished); and whether the County will accept a written response in lieu of a second cycle."}
+2026-11-15T18:56:34.5552445Z --- serve log ---
+2026-11-15T18:56:34.5646704Z listening on 8765
+2026-11-15T18:56:34.5651411Z --- capture.json ---
+2026-11-15T18:56:34.5723686Z {
+2026-11-15T18:56:34.5724266Z  "files": {
+2026-11-15T18:56:34.5724935Z   "app/files/output/ACCEPTANCE_CHECKLIST.md": {
+2026-11-15T18:56:34.5725713Z    "bytes": 13018,
+2026-11-15T18:56:34.5726524Z    "mode": "644"
+2026-11-15T18:56:34.5727069Z   },
+2026-11-15T18:56:34.5727771Z   "app/files/output/DSR_Ph3_L4_Analysis_2026-10-31.xlsx": {
+2026-11-15T18:56:34.5728601Z    "bytes": 23722,
+2026-11-15T18:56:34.5729270Z    "mode": "644"
+2026-11-15T18:56:34.5730040Z   },
+2026-11-15T18:56:34.5730730Z   "app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.md": {
+2026-11-15T18:56:34.5731584Z    "bytes": 22416,
+2026-11-15T18:56:34.5732158Z    "mode": "644"
+2026-11-15T18:56:34.5732696Z   },
+2026-11-15T18:56:34.5733408Z   "app/files/output/Memo_Callaway_L4_Resubmittal_2026-10-31.pdf": {
+2026-11-15T18:56:34.5734256Z    "bytes": 230619,
+2026-11-15T18:56:34.5734830Z    "mode": "644"
+2026-11-15T18:56:34.5735354Z   },
+2026-11-15T18:56:34.5735898Z   "app/files/tools/clash_check.py": {
+2026-11-15T18:56:34.5736855Z    "bytes": 2723,
+2026-11-15T18:56:34.5737431Z    "mode": "644"
+2026-11-15T18:56:34.5737927Z   }
+2026-11-15T18:56:34.5738422Z  },
+2026-11-15T18:56:34.5738915Z  "deleted": [],
+2026-11-15T18:56:34.5739465Z  "skipped": [],
+2026-11-15T18:56:34.5740060Z  "baseline": true,
+2026-11-15T18:56:34.5740668Z  "note": null,
+2026-11-15T18:56:34.5741300Z  "error": null
+2026-11-15T18:56:34.5741865Z }
+2026-11-15T18:56:34.5742494Z --- final message (head) ---
+2026-11-15T18:56:34.5806314Z Delivered. Everything is in `/app/files/output/`.
+2026-11-15T18:56:34.5806926Z 
+2026-11-15T18:56:34.5807266Z **Files**
+2026-11-15T18:56:34.5809284Z - `Memo_Callaway_L4_Resubmittal_2026-10-31.md` / `.pdf` — the memo to Garrett (Callaway), dated 10/31/2026, 9 pages, prepared for your signature
+2026-11-15T18:56:34.5811354Z - `DSR_Ph3_L4_Analysis_2026-10-31.xlsx` — 7-tab backing workbook
+2026-11-15T18:56:34.5812619Z - `ACCEPTANCE_CHECKLIST.md` — every gate tested, marked read / assumed / cannot-test
+2026-11-15T18:56:34.5813422Z 
+2026-11-15T18:56:34.5813875Z **The answer: do not commit to 11/30 on this revision.**
+2026-11-15T18:56:34.5814475Z 
+2026-11-15T18:56:34.5816975Z The 150-tree deficit is a redesign, not a redline. 4,160 lf ÷ 20 = 208 required against 58 shown — Windmill 128 vs 34, interior collector 59 vs 16, Rainbow 21 vs 8. That drives a redrawn L-2 plan, a reworked L-1 schedule, a new shade exhibit (CP-PW-GM-2025-04 §3/§6, 30% at 15-yr canopy), and a reissued irrigation worksheet.
+2026-11-15T18:56:34.5819355Z 
+2026-11-15T18:56:34.5823152Z **Two findings that are worse than the tree count.** First, counsel's turf position fails: WRC-2024-07 §2 says the single-family carve-out is lot-based and expressly rejects the zoning argument, so the 18,400 sf Parcel A lawn is AB 356 turf with a 12/31/2026 deadline and ~$52,440 of conversion exposure. Second, Phase 3 runs on the *successive*-map clock, not the title officer's 03/14/2028 runway — recordation of Phases 1&2 on 12/23/2024 means the map must be presented by **12/23/2026**.
+2026-11-15T18:56:34.5826635Z 
+2026-11-15T18:56:34.5827941Z That makes 12/18 negative float: 11/30 + 20 business days = 12/28, five days late. The last complete resubmittal that still fits is **11/25/2026**, with zero margin.
+2026-11-15T18:56:34.5829540Z 
+2026-11-15T18:56:34.5832963Z **What must happen first** — eight gates, six blocking. G1 counsel accepts the carve-out doesn't apply; G2 you pick playground-in or lawn-out (drives G3–G5); G3 draw 208 trees; G4 shade exhibit; G5 reissue irrigation; G6 renew the CCWRD confirmation (expired 09/30); G7 written Condition 14 determination; G8 seal L-1–L-4. G7 matters tactically: 11/18 TAB's application deadline passed 10/28, so if design review applies the next meeting is 12/16 — after the resubmittal.
+2026-11-15T18:56:34.5836483Z 
+2026-11-15T18:56:34.5837790Z **Three numbers I corrected during the checklist pass:** latest submittal 11/24→11/25 (exact), converted demand 2.85/"−13%"→2.31/"−30%", and 32→31 days.
+2026-11-15T18:56:34.5839024Z 
+2026-11-15T18:56:34.5842118Z **Six legs I could not test**, all named in the checklist: whether 4,160 lf ties to recorded geometry (it doesn't — 2,640.00 ft on the exhibit, 1,711.78 ft recorded); whether 150 more pits clear the dry utility easement; SNWA alternative compliance; how Planning reads Condition 14; the $2.85/sf rate (quotes never furnished); and whether the County will accept a written response in lieu of a second cycle.--- workspace tree ---
+2026-11-15T18:56:34.5861976Z /home/runner/work/shihai-harness/shihai-harness/out
+2026-11-15T18:56:34.5862892Z /home/runner/work/shihai-harness/shihai-harness/out/tasks
+2026-11-15T18:56:34.5864115Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision
+2026-11-15T18:56:34.5867238Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/tests
+2026-11-15T18:56:34.5868936Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/tests/grader
+2026-11-15T18:56:34.5870416Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/tests/grader/_vendor
+2026-11-15T18:56:34.5871874Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment
+2026-11-15T18:56:34.5873324Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem
+2026-11-15T18:56:34.5874964Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Reports-Studies
+2026-11-15T18:56:34.5876843Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Reference
+2026-11-15T18:56:34.5878999Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Reference/Title
+2026-11-15T18:56:34.5880818Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Correspondence
+2026-11-15T18:56:34.5882656Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Correspondence/Agency
+2026-11-15T18:56:34.5884512Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Correspondence/Client
+2026-11-15T18:56:34.5886538Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Cost Estimates
+2026-11-15T18:56:34.5888293Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem
+2026-11-15T18:56:34.5890138Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Reports-Studies
+2026-11-15T18:56:34.5892171Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Reference
+2026-11-15T18:56:34.5894320Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Correspondence
+2026-11-15T18:56:34.5896468Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Cost Estimates
+2026-11-15T18:56:34.5898446Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Health and Safety
+2026-11-15T18:56:34.5900359Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Tenders-Contracts
+2026-11-15T18:56:34.5902544Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Design-Drafting
+2026-11-15T18:56:34.5904476Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/filesystem/Meeting Notes
+2026-11-15T18:56:34.5906550Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Health and Safety
+2026-11-15T18:56:34.5908553Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Tenders-Contracts
+2026-11-15T18:56:34.5910354Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Design-Drafting
+2026-11-15T18:56:34.5912301Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Design-Drafting/Phase 2 As-Builts
+2026-11-15T18:56:34.5914292Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Design-Drafting/Landscape
+2026-11-15T18:56:34.5916663Z /home/runner/work/shihai-harness/shihai-harness/out/tasks/landscape-sheet-revision/environment/filesystem/Design-Drafting/Phase 3
+2026-11-15T18:56:34.5918074Z --- agent egress ---
+2026-11-15T18:56:34.5965781Z {"t": 1794768780.029, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 345468, "bytes_down": 800425}
+2026-11-15T18:56:34.5967744Z {"t": 1794768906.202, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5972008Z {"t": 1794768910.201, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 9939326, "bytes_down": 6441164}
+2026-11-15T18:56:34.5973726Z {"t": 1794768910.346, "kind": "allowed", "method": "CONNECT", "host": "172.17.0.1", "port": 4100, "address": "172.17.0.1", "reason": "the evaluator's model server"}
+2026-11-15T18:56:34.5975220Z {"t": 1794768913.715, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 114921, "bytes_down": 227065}
+2026-11-15T18:56:34.5976696Z {"t": 1794768944.957, "kind": "closed", "host": "172.17.0.1", "port": 4100, "bytes_up": 929086, "bytes_down": 1818354}
+2026-11-15T18:56:34.6032499Z ##[group]Run actions/upload-artifact@v4
+2026-11-15T18:56:34.6032821Z with:
+2026-11-15T18:56:34.6033030Z   name: results
+2026-11-15T18:56:34.6033929Z   path: out/results.json
+out/attempt1/jobs/dev/job.log
+out/attempt1/jobs/dev/*/exception.txt
+out/attempt1/jobs/dev/*/verifier/**
+out/attempt1/jobs/dev/*/deliverables/**
+out/attempt1/jobs/dev/*/agent/**
+out/attempt1/jobs/dev/*/artifacts/**
+
+2026-11-15T18:56:34.6034881Z   if-no-files-found: warn
+2026-11-15T18:56:34.6035143Z   compression-level: 6
+2026-11-15T18:56:34.6035380Z   overwrite: false
+2026-11-15T18:56:34.6035616Z   include-hidden-files: false
+2026-11-15T18:56:34.6036447Z env:
+2026-11-15T18:56:34.6036737Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:56:34.6037189Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib/pkgconfig
+2026-11-15T18:56:34.6037636Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:56:34.6038073Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:56:34.6038473Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.16/x64
+2026-11-15T18:56:34.6038880Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.16/x64/lib
+2026-11-15T18:56:34.6039226Z ##[endgroup]
+2026-11-15T18:56:34.8006316Z (node:15451) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-15T18:56:34.8008048Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-15T18:56:34.9073588Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-11-15T18:56:34.9075841Z The least common ancestor is /home/runner/work/shihai-harness/shihai-harness/out. This will be the root directory of the artifact
+2026-11-15T18:56:34.9077251Z With the provided path, there will be 152 files uploaded
+2026-11-15T18:56:34.9078369Z Artifact name is valid!
+2026-11-15T18:56:34.9078947Z Root directory input is valid!
+2026-11-15T18:56:35.1009124Z Beginning upload of artifact content to blob storage
+2026-11-15T18:56:35.4196935Z (node:15451) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-11-15T18:56:35.5173862Z Uploaded bytes 2610356
+2026-11-15T18:56:35.5357884Z Finished uploading artifact content to blob storage!
+2026-11-15T18:56:35.5359422Z SHA256 digest of uploaded artifact zip is a274266b6d4b7d8f71835c9ab46e9beeec56a49158b413c103d5d906d13de77d
+2026-11-15T18:56:35.5360826Z Finalizing artifact upload
+2026-11-15T18:56:35.8718994Z Artifact results.zip successfully finalized. Artifact ID 14175970557
+2026-11-15T18:56:35.8720432Z Artifact results has been successfully uploaded! Final size is 2610356 bytes. Artifact ID is 14175970557
+2026-11-15T18:56:35.8728711Z Artifact download URL: https://github.com/AWEsome639/shihai-harness/actions/runs/43748778483/artifacts/14175970557
+2026-11-15T18:56:35.8976405Z Post job cleanup.
+2026-11-15T18:56:36.0307548Z (node:15463) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-11-15T18:56:36.0309288Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-11-15T18:56:36.0601115Z Post job cleanup.
+2026-11-15T18:56:36.2117280Z [command]/usr/bin/git version
+2026-11-15T18:56:36.2227015Z git version 2.56.1
+2026-11-15T18:56:36.2386539Z Temporarily overriding HOME='/home/runner/work/_temp/24c1a090-afa8-4c93-8191-06cf8b03506b' before making global git config changes
+2026-11-15T18:56:36.2427154Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T18:56:36.2468992Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/kitrepo
+2026-11-15T18:56:36.2536866Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T18:56:36.2578308Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T18:56:36.2944344Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T18:56:36.2997197Z http.https://github.com/.extraheader
+2026-11-15T18:56:36.3018106Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-15T18:56:36.3127983Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T18:56:36.3499938Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T18:56:36.3545707Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T18:56:36.4063092Z Post job cleanup.
+2026-11-15T18:56:36.5067120Z [command]/usr/bin/git version
+2026-11-15T18:56:36.5147207Z git version 2.56.1
+2026-11-15T18:56:36.5217527Z Temporarily overriding HOME='/home/runner/work/_temp/807b9505-7016-437f-9915-76224183b597' before making global git config changes
+2026-11-15T18:56:36.5219250Z Adding repository directory to the temporary git global config as a safe directory
+2026-11-15T18:56:36.5220815Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/shihai-harness/shihai-harness/entry
+2026-11-15T18:56:36.5286685Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-11-15T18:56:36.5357929Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-11-15T18:56:36.5925467Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-11-15T18:56:36.5958515Z http.https://github.com/.extraheader
+2026-11-15T18:56:36.6042558Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-11-15T18:56:36.6063150Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-11-15T18:56:36.6971130Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-11-15T18:56:36.7035041Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-11-15T18:56:36.7684740Z Cleaning up orphan processes
+2026-11-15T18:56:36.7985649Z Terminate orphan process: pid (2414) (python)
+2026-11-15T18:56:36.8095036Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

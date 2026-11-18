@@ -1,0 +1,26 @@
+# Local files: the kit builds what git tracks plus the untracked files git does not ignore, so keep these out.
+# .env is committed on purpose (the competition reads it from your private repository): never list it here.
+.venv/
+__pycache__/
+*.pyc
+runs/
+node_modules/
+WRITEUP-DRAFT.md
+WRITEUP-TODO.md
+*.bak
+ple/
+# data/ 只放要跑的子集
+runs/
+data/tasks/*
+!data/tasks/fire-test-validation-memo/
+!data/tasks/data-hall-mep-routing/
+!data/tasks/landscape-sheet-revision/
+.github/
+
+# 绝不入库：含真实 API key 的运行时配置
+proxy-config.yaml
+.env
+**/.env
+
+# CI artifact downloads (600 KB of task output, not part of the entry)
+ci_artifact/
