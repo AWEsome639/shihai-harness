@@ -93,7 +93,7 @@ DEFAULT_BANNED_TOKENS = (
     "<fill in>",
 )
 SEVERITY_ORDER = ("fatal", "fix", "note")
-_GATES = ("G1", "G3", "G4", "G7")
+_GATES = ("G1", "G2", "G3", "G4", "G7")
 MAX_ITEMS = 12
 _HEREDOC = "SELFCHECK_PROBE_EOF"
 
@@ -108,6 +108,11 @@ RULE_G1 = (
 RULE_G3 = (
     "Every deliverable must be readable in the format the task statement"
     " names: existing is not enough, the bytes must parse."
+)
+RULE_G2 = (
+    "An archive is graded as a package: it must open, carry every member the"
+    " task statement names at its root, and contain nothing a grader would"
+    " refuse (absolute or parent paths, duplicate names, empty members)."
 )
 RULE_G4 = (
     "Enumerated columns may only use values from the closed vocabulary in the"
@@ -154,6 +159,30 @@ _CHECK_TEXT = {
         "a member of the archive cannot be read; rebuild the archive",
     ),
     "zip_member_encoding": (RULE_G3, "store archive members as UTF-8"),
+    "zip_members_missing": (
+        RULE_G2,
+        "put the named members back in the archive, at its root, and rebuild"
+        " it with zipfile after the last edit",
+    ),
+    "zip_member_not_at_root": (
+        RULE_G2,
+        "move the member to the archive root; a grader that reads"
+        " `name.xlsx` does not look inside a subdirectory",
+    ),
+    "zip_member_unsafe": (
+        RULE_G2,
+        "rebuild the archive without absolute or `..` member paths",
+    ),
+    "zip_member_duplicate": (
+        RULE_G2,
+        "keep one copy of each member; a duplicate name makes the read"
+        " ambiguous",
+    ),
+    "zip_member_empty": (
+        RULE_G2,
+        "write the member content before archiving; a 0-byte member carries"
+        " no answer",
+    ),
     "py_syntax": (
         RULE_G3,
         "fix the syntax error so the script runs as delivered",
@@ -376,11 +405,50 @@ def _analyze_xlsx(path, spec):
                          "%d sheets: %s" % (len(names), ", ".join(names[:8])))]}
 
 
+def _zip_member_checks(names, sizes, wanted):
+  """G2: the archive carries the named members, at its root, and is sane."""
+  checks = []
+  if wanted:
+    missing, nested = [], []
+    for member in wanted:
+      if member in names:
+        continue
+      at = [n for n in names if n.replace("\\", "/").endswith("/" + member)]
+      if at:
+        nested.append((member, at[0]))
+      else:
+        missing.append(member)
+    for member, at in nested:
+      checks.append(_ck("zip_member_not_at_root", "fail",
+                        "%s sits at %r, not at the archive root" % (member, at)))
+    if missing:
+      checks.append(_ck("zip_members_missing", "fail", "%d of %d required"
+                        " members absent: %s"
+                        % (len(missing), len(wanted), ", ".join(missing[:8]))))
+  bad = [n for n in names
+         if n.startswith("/") or ".." in n.replace("\\", "/").split("/")]
+  if bad:
+    checks.append(_ck("zip_member_unsafe", "fail",
+                      "absolute or parent path in the archive: %s"
+                      % ", ".join(bad[:4])))
+  dup = sorted(set(n for n in names if names.count(n) > 1))
+  if dup:
+    checks.append(_ck("zip_member_duplicate", "fix",
+                      "duplicate member names: %s" % ", ".join(dup[:4])))
+  empty = [n for n in names if sizes.get(n) == 0 and not n.endswith("/")][:5]
+  if empty:
+    checks.append(_ck("zip_member_empty", "fix",
+                      "empty member(s), so they carry no answer: %s"
+                      % ", ".join(empty)))
+  return checks
+
+
 def _analyze_zip(path, spec):
   checks, violations = [], []
   try:
     zf = zipfile.ZipFile(path)
     names = zf.namelist()
+    sizes = dict((i.filename, i.file_size) for i in zf.infolist())
   except (zipfile.BadZipFile, OSError) as exc:
     return {"checks": [_ck("zip_members", "fail", str(exc))]}
   if not names:
@@ -388,6 +456,8 @@ def _analyze_zip(path, spec):
                            "the archive lists no members")]}
   checks.append(_ck("zip_members", "ok",
                     "%d members: %s" % (len(names), ", ".join(names[:8]))))
+  wanted = [str(m) for m in ((spec.get("archives") or {}).get(path) or [])]
+  checks.extend(_zip_member_checks(names, sizes, wanted))
   for name in [n for n in names if n.lower().endswith(".csv")][:MEMBER_CAP]:
     try:
       raw = zf.read(name)[:TEXT_CAP]
@@ -992,6 +1062,13 @@ def selfcheck(
             )
         ],
         "violation_cap": 4,
+        "archives": {
+            _resolve(workdir, str(entry.get("path") or "")): [
+                str(member) for member in (entry.get("members") or [])
+            ]
+            for entry in (contract.get("archives") or [])
+            if isinstance(entry, Mapping) and entry.get("path")
+        },
     }
     encoded = _encode(spec)
     scan_result = _probe(run, "scan", encoded)
