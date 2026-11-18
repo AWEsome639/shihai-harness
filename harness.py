@@ -344,6 +344,14 @@ def _audit(session, loop, final_message):
     return int(result.get("exit_code") or 0), str(result.get("output") or "")
 
   spec = _contract.extract(session.instruction)
+  # Some instructions name a directory instead of a file ("save the files that make
+  # up your answer under `output/`"). The extractor only follows named paths, so
+  # synthesise that one deliverable rather than auditing nothing at all.
+  if not (spec or {}).get("deliverables") and "output/" in session.instruction:
+    spec = dict(spec or {})
+    spec["deliverables"] = [
+        {"path": "output/", "kind": "dir", "required": True}
+    ]
   return spec, _selfcheck.selfcheck(
       run_sync, spec, final_message=final_message
   )
