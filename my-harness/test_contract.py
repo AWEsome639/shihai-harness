@@ -40,6 +40,9 @@ if _ROOT not in sys.path:
 
 import contract
 
+assert contract.__file__.startswith(_ROOT), (
+    "expected the repository-root contract.py, loaded %s" % contract.__file__)
+
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CARDS = os.path.join(os.path.dirname(_HERE), "task_cards.jsonl")
 if not os.path.isfile(CARDS):
