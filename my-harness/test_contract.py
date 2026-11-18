@@ -30,6 +30,14 @@ import posixpath
 import sys
 import traceback
 
+
+# The graded harness lives at the repository root; `my-harness/` keeps copies of
+# these modules for the alternate entry point. Import the root one explicitly and
+# fail loudly otherwise - a stale copy once made "20/20 PASS" measure the wrong file.
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
+
 import contract
 
 _HERE = os.path.dirname(os.path.abspath(__file__))

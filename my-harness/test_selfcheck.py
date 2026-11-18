@@ -32,6 +32,14 @@ import tempfile
 import traceback
 import zipfile
 
+
+# The graded harness lives at the repository root; `my-harness/` keeps copies of
+# these modules for the alternate entry point. Import the root one explicitly and
+# fail loudly otherwise - a stale copy once made "20/20 PASS" measure the wrong file.
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
+
 import selfcheck
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -58,6 +66,9 @@ REAL_CSV = (
     + "/data/tasks/fire-solve-convergence/environment/files/Projects"
     "/CFDME-2025-041_Ocotillo_WUI/Data/site_met_avra_valley_2015-2024.csv"
 )
+
+assert selfcheck.__file__.startswith(_ROOT), (
+    "expected the repository-root selfcheck.py, loaded %s" % selfcheck.__file__)
 
 CASES = []
 
