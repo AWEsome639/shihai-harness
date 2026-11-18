@@ -102,7 +102,9 @@ reviewer discovering it.
 
 ## 5. What the tasks look like
 
-The 29 dev tasks are not one shape. The footprint per task directory runs from 34 to 3,180 files, of which `environment/` holds 7 to 3,162. The split is exact: 12 tasks declare MCP servers and ship no `filesystem/` at all — the container creates an empty `/filesystem` and the material lives in MCP-served applications — while the other 17 start with 6 to 124 project files. Grading differs: 14 rubric, 12 automated checks, 3 both; every task has a 360-minute limit.
+The 29 dev tasks are not one shape. The footprint per task directory runs from 34 to 3,180 files, of which `environment/` holds 7 to 3,162. The split is exact: 12 tasks declare MCP servers and ship no `filesystem/` at all — the container creates an empty `/filesystem` and the material lives in MCP-served applications — while the other 17 start with 6 to 124 project files. Budgets are not uniform either: `timeout_sec` is 1,800 s on 17 tasks, 4,800 on 8 and
+9,900 on 4, so a harness that assumes one budget will either cut a long task short or
+idle on a short one.
 
 Three consequences: layout cannot be assumed, so the model lists the workdir before working; the same four tools must serve file-first and app-first tasks, hence two-tier MCP discovery; and deliverable paths differ, hence a contract derived at run time.
 
