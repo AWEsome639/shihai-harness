@@ -347,14 +347,27 @@ def _audit(session, loop, final_message):
   # Some instructions name a directory instead of a file ("save the files that make
   # up your answer under `output/`"). The extractor only follows named paths, so
   # synthesise that one deliverable rather than auditing nothing at all.
-  if not (spec or {}).get("deliverables") and "output/" in session.instruction:
-    spec = dict(spec or {})
-    spec["deliverables"] = [
-        {"path": "output/", "kind": "dir", "required": True}
-    ]
-  return spec, _selfcheck.selfcheck(
+  # The gates need named files; a directory cannot satisfy G1 (a regular file is
+  # required). When the instruction only says "save your files under output/",
+  # check that directory for entries instead of pretending it is a deliverable.
+  dir_output = "output/" in session.instruction
+  defects = list(_selfcheck.selfcheck(
       run_sync, spec, final_message=final_message
-  )
+  ) or [])
+  if dir_output and not (spec or {}).get("deliverables"):
+    code, out = run_sync("ls -A output 2>/dev/null | wc -l")
+    try:
+      count = int(str(out).strip().split()[0])
+    except Exception:
+      count = -1
+    if count <= 0:  # only a problem when the directory is missing or empty
+      defects.append({
+          "gate": "G1",
+          "path": "output/",
+          "status": "fail",
+          "detail": f"output/ holds {count} entr(y|ies)",
+      })
+  return spec, defects
 
 
 def _log_audit(spec, defects):
