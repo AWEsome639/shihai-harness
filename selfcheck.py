@@ -236,9 +236,22 @@ def _analyze_docx(path, spec):
     out["checks"].append(_ck("docx_zip", "fail", "not a zip container: %r" % (exc,)))
     return out
   out["checks"].append(_ck("docx_zip", "ok", "%d part(s)" % len(names)))
-  out["checks"].append(_ck("docx_body", "ok" if body and size > 0 else "fail",
-                           "word/document.xml present" if body else
-                           "word/document.xml missing"))
+  if not body or size <= 0:
+    out["checks"].append(_ck("docx_body", "fail", "word/document.xml missing"))
+    return out
+  # A body part that carries no text is still an empty document to a grader.
+  text = ""
+  try:
+    with zipfile.ZipFile(path) as z:
+      xml = z.read("word/document.xml")[:TEXT_CAP].decode("utf-8", "replace")
+    text = re.sub(r"<[^>]+>", "", xml)
+    text = html.unescape(text)
+    words = len(re.findall(r"\w+", text))
+  except Exception:
+    words = -1
+  out["checks"].append(_ck("docx_body", "ok", "word/document.xml present"))
+  out["checks"].append(_ck("docx_text", "ok" if words > 0 else "fail",
+                           "%d word(s) of body text" % words))
   return out
 
 
