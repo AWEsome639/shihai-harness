@@ -19,14 +19,17 @@ Why no filesystem of its own: the harness container has a read-only root, 1 GB e
 
 ## 3. Context management
 
-### 3.1 Three levels, ordered by what they cost to lose
+### 3.1 Context is pi's job, not the harness's
 
-1. **Clip on arrival.** Every tool result is head/tail clipped at 30,000 characters; nothing larger enters the history.
-2. **Trim what has been read.** Once `prompt_tokens > compact_at()`, tool results older than the last 12 results and over 600 characters are cut to 400, with a note that the tool can be re-run. Results after the last assistant turn are unread and never touched: deleting them makes the model think a command printed nothing.
-3. **Summarise into notes.** If trimming is not enough, turns before the last six messages become one model-written note: requirements, what the files held, every file created or changed with path and state, the numbers and decisions, what remains. Skipped below ten messages; a failed summary keeps the history.
-4. **Last resort, unread results.** On a context-full error, unread results over 1,200 characters are clipped to an equal share of the remaining window, floor 600, or halved when the window is unknown.
-
-The 400 path uses that order: output tokens first, then read results, then unread ones.
+It is worth being precise here, because it is easy to claim credit for machinery that
+lives elsewhere. The vendored agent - pi, pinned in `package-lock.json` - owns the
+conversation: it clips tool output on arrival, compacts older turns when the window
+fills, and reports `compaction_start` on the event stream. This harness passes it an
+instruction, a working directory, a thinking level and a stop margin, and reads the
+event stream; it does not reimplement context management, and this writeup claims none
+of the trimming or summarising rules a reader might expect to find here. What the
+harness owns is what happens after the agent stops: the audit in section 4, run against
+the container and bounded so it cannot eat the answer it checks.
 
 ### 3.2 The window comes from the catalog, with a floor
 
