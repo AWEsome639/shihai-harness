@@ -44,16 +44,19 @@ Two rules shaped this loop. Deliverables dominate every score, and constraint-pl
 
 `contract.py` builds a contract before work starts: deliverables, archive members, closed value sets (`one of …`, `A|B|C`), named numeric columns. The task card's list is authoritative; prose adds the paths it lacks. Over the 29 dev statements it yields 73 deliverable entries, keeps every card entry, adds 16 from prose, and gives a concrete file path for 27 of 29. Nothing is guessed: an ambiguous path or vocabulary is omitted, since a wrong one would manufacture a false defect.
 
-### 4.2 Four gates, one probe
+### 4.2 Five gates, one probe
 
-`selfcheck.py` runs G1, G3, G4 and G7 against that contract, inside the task container:
+`selfcheck.py` runs G1, G2, G3, G4 and G7 against that contract, inside the task container:
 
 - **G1 existence and type.** Exact path, regular file (not a directory or symlink), 0 < size ≤ 95 MiB — each a zero-score shape.
+- **G2 the archive's member list.** For a `.zip`, a named member that is missing, nested in
+  a subdirectory, absolute, duplicated or empty fails; parsing one member is not enough.
 - **G3 the format parses.** CSV header and rows, JSON load, xlsx sheets, readable zip members, `ast.parse` for a script, `ISO-10303-21` for IFC, UTF-8 text; an HTML file named `.xlsx` fails.
 - **G4 vocabulary and placeholders.** Enumerated columns stay inside the statement's set; numeric columns carry no `TBD`, `TBA`, `NaN`, `Inf` or `<fill in>`.
 - **G7 delivery discipline.** The final message is non-empty and names every required deliverable.
 
-The container side is one probe program sent on stdin, run as `python3 -`: one `stat` call, one `scan` call, one JSON line back. It reads only the listed paths and returns facts, never contents, so a 90 MiB deliverable costs a few hundred bytes. It knows no task: extensions, vocabularies and placeholders come from the contract. Findings return as one list, at most 12 per round, `fatal` → `fix` → `note`, one `fatal` per round so the fix that matters is not buried, each naming the statement violated and one action.
+The container side is one probe program sent on stdin, run as `python3 -`: one `stat`, one
+`scan`, one JSON line back. It reads only the listed paths and returns facts, never contents.
 
 ### 4.3 What it deliberately does not do
 
@@ -90,7 +93,7 @@ the task container except the in-memory conversation.
 ## 7. Limitations
 
 - **The dev set ran; the artifacts are real.** All 29 dev tasks produced an `artifacts/` entry and a `final_message.md`; the kit's review accepts 28 of 29 (one task, `foundation-strategy`, delivers a deliverable its grader does not read). The dev *score* is not yet available: the evaluator rejects `network_mode='no-network'` under `EnvironmentType.DOCKER`, so the graded run stops before scoring. Cost and effort below are therefore measured from the trajectories, not from a reward signal.
-- **G2, G5, G6 unimplemented**: archive structure, arithmetic and cross-file joins, re-run determinism.
+- **G5, G6 unimplemented**: arithmetic and cross-file joins, re-run determinism.
 - **G3 has no `.docx` or `.pdf` reader**, and 14 of 29 tasks deliver a `.docx`; for those the gates cover existence, size and the final message only.
 - **Two of 29 contracts carry only a directory.** For `fire-test-validation-memo` and `landscape-sheet-revision` the card declares `/app/files` and the statement says to save the answer under `output/`; G0 keeps a non-required directory entry, so the gates can note it but not check inside.
 - **The re-feed is untested against a real model**: 14 stub assertions pass, but no run has shown a model repairing a deliverable from the text.
