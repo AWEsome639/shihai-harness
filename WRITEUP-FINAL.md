@@ -41,7 +41,12 @@ clamp below, which guarantees one final answer fits whatever the window does.
 
 ### 3.3 Deadline clamping
 
-`limits.agent_timeout_sec` is 21,600 s and the evaluator can cancel a run, so the deadline is clamped in five places: a 180 s `finish_margin`; a loop-top check that stops opening tool turns below it; every stream wrapped in `wait_for(left − reserve)`, keeping streamed text as `final_message`; backoff waits that stop before the margin; and `bash` capped at `min(exec_timeout_sec, left − finish_margin)`. The summary call gets `left − max(5 s, time_share(left, 30))`. Files on disk are graded even if the run fails, so each deliverable is written early.
+`limits.agent_timeout_sec` is 21,600 s and the evaluator can cancel a run, so the agent
+is stopped 90 s before that deadline rather than at it: `STOP_BEFORE_SEC` is handed to
+the pi session runner, which ends the subprocess with that margin still on the clock and
+returns whatever answer it had. The post-run audit is capped separately at 180 s, so the
+self-check can never consume the answer it is checking, and a failed audit is logged
+rather than raised. Two numbers, both in the code, rather than a clamp at every call.
 
 ## 4. The self-check loop
 
