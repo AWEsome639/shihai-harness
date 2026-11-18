@@ -5,7 +5,7 @@
 
 ## 1. The entry
 
-`shihai-harness` is a single-process Python 3.12 harness in four files: `serve.py` (1,973 lines), `taskbridge.py` (1,528, byte-identical to the organisers' `custom-openai` sample), `selfcheck.py` (1,099) and `contract.py` (805). It calls `google-cloud/claude-opus-5-5` through the OpenAI-compatible surface, marks `cache_control` on the system prompt and newest message, and pins `openai==3.26.1` / `websockets==15.0.1`. Four test scripts cover what needs no model: 45 checks (20 self-check cases, 7 contract cases, 8 wiring assertions, 10 G0 assertions), all passing here.
+`shihai-harness` is a single-process Python 3.12 harness in four files: `serve.py` (21 lines) opens the WebSocket and calls `harness.solve`; `harness.py` (473) is the prompt, solve loop and post-run audit; `taskbridge.py` (1,528, byte-identical to the organisers' `custom-openai` sample) transports it; `selfcheck.py` (1,099) and `contract.py` (805) are the gates. The agent is `pi`, installed from `package.json`; it calls `google-cloud/claude-opus-5-5` over the OpenAI-compatible surface, pinning `openai==3.26.1` / `websockets==15.0.1`.
 
 ## 2. Architecture: one WebSocket server, four primitives
 
