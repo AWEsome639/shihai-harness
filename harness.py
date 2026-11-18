@@ -408,6 +408,8 @@ def _log_audit(spec, defects):
     print("selfcheck: probe unavailable", flush=True)
     return
   deliverables = (spec or {}).get("deliverables") or []
+  for _d in deliverables:
+      print(f"contract: {_d.get('path')} kind={_d.get('kind')} required={_d.get('required')}", flush=True)
   print(
       f"selfcheck: {len(deliverables)} deliverable(s), {len(defects)} defect(s)",
       flush=True,
