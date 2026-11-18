@@ -94,8 +94,8 @@ the task container except the in-memory conversation.
 
 - **The dev set ran; the artifacts are real.** All 29 dev tasks produced an `artifacts/` entry and a `final_message.md`; the kit's review accepts 28 of 29 (one task, `foundation-strategy`, delivers a deliverable its grader does not read). The dev *score* is not yet available: the evaluator rejects `network_mode='no-network'` under `EnvironmentType.DOCKER`, so the graded run stops before scoring. Cost and effort below are therefore measured from the trajectories, not from a reward signal.
 - **G5, G6 unimplemented**: arithmetic and cross-file joins, re-run determinism.
-- **G3 reads a `.docx` or `.pdf` only structurally** — the container marker, the body part,
-  the header and trailer — so a valid but empty document still passes.
+- **G3 reads a `.docx` by its body text and a `.pdf` by its header and trailer**, not by
+  layout: a document whose text is there but whose formatting is broken still passes.
 - **Two of 29 contracts carry only a directory.** For `fire-test-validation-memo` and `landscape-sheet-revision` the card declares `/app/files` and the statement says to save the answer under `output/`; G0 keeps a non-required directory entry, so the gates can note it but not check inside.
 - **The re-feed is untested against a real model**: 14 stub assertions pass, but no run has shown a model repairing a deliverable from the text.
 
