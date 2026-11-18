@@ -181,6 +181,30 @@ def kind_of(path: str) -> str:
   return KINDS.get(posixpath.splitext(str(path or "").strip())[1].lower(), "")
 
 
+
+def _drop_duplicate_paths(deliverables):
+  """Drops a path that repeats the one before it under a doubled first segment.
+
+  One dev card lists the same file twice, once as `/filesystem/<task>/output/x.zip`
+  and once as `/filesystem/filesystem/<task>/output/x.zip`. Keeping both would make
+  G1 demand a path the container never creates, which is a false defect, so the
+  collapsible duplicate goes.
+  """
+  kept = []
+  seen = set()
+  for item in deliverables or []:
+    path = str(item.get("path") or "")
+    parts = [p for p in path.split("/") if p]
+    while len(parts) > 1 and parts[0] == parts[1]:
+      parts.pop(0)
+    key = "/" + "/".join(parts)
+    if key in seen:
+      continue
+    seen.add(key)
+    kept.append(item)
+  return kept
+
+
 def extract(instruction: str, task_card: dict | None = None) -> dict:
   """Derives a `contract.json` body from a task instruction and its card.
 
@@ -207,7 +231,7 @@ def extract(instruction: str, task_card: dict | None = None) -> dict:
     contract["task_id"] = str(card["task_id"])
   if workdir:
     contract["workdir"] = workdir
-  contract["deliverables"] = deliverables
+  contract["deliverables"] = _drop_duplicate_paths(deliverables)
 
   archives = _archives(text, deliverables)
   if archives:

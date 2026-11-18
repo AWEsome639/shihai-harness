@@ -57,7 +57,7 @@ Two rules shaped this loop. Deliverables dominate every score, and constraint-pl
 
 ### 4.1 G0: a contract read out of the statement
 
-`contract.py` builds a contract before work starts: deliverables, archive members, closed value sets (`one of …`, `A|B|C`), named numeric columns. The task card's list is authoritative; prose adds the paths it lacks. Over the 29 dev statements it yields 73 deliverable entries, keeps every card entry, adds 16 from prose, and gives a concrete file path for every one of the 29 tasks. Nothing is guessed: an ambiguous path or vocabulary is omitted, since a wrong one would manufacture a false defect.
+`contract.py` builds a contract before work starts: deliverables, archive members, closed value sets (`one of …`, `A|B|C`), named numeric columns. The task card's list is authoritative; prose adds the paths it lacks. Over the 29 dev statements it yields 69 deliverable entries, keeps every card entry, adds 16 from prose, and gives a concrete file path for every one of the 29 tasks. Nothing is guessed: an ambiguous path or vocabulary is omitted, since a wrong one would manufacture a false defect.
 
 ### 4.2 Five gates, one probe
 
