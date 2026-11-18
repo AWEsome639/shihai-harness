@@ -28,9 +28,16 @@ Why no filesystem of its own: the harness container has a read-only root, 1 GB e
 
 The 400 path uses that order: output tokens first, then read results, then unread ones.
 
-### 3.2 Learning the window from a 400
+### 3.2 The window comes from the catalog, with a floor
 
-The harness never calls `/models` and never guesses a window. On a context-full 400 it parses two numbers out of the error text — five wordings for the window, five for the prompt size. Three values follow: `room() = window − prompt − 1024`, `output_limit() = max(1024, min(ceiling, room))`, and `compact_at() = max(window/4, min(150000, window − room − 1024))`. On a 131,072-token window with a 32,000-token ceiling the threshold becomes 98,048 rather than the flat 150,000. The price is one wasted call per task; the benefit is that no threshold is hand-tuned per model.
+The harness does not probe the endpoint for its window. pi resolves the configured
+model out of its catalog and the limits travel with it; a model it does not know
+gets the conservative `UNKNOWN_MODEL` floor of 128,000 tokens of input and 16,384
+of output. Context is then managed inside pi, not here: it compacts the conversation
+when the window fills and reports `compaction_start` on the event stream, and the
+session config above allows six retries with a 60 s cap on backoff, so a transient
+400 costs a retry rather than the run. What this harness adds on top is the deadline
+clamp below, which guarantees one final answer fits whatever the window does.
 
 ### 3.3 Deadline clamping
 
