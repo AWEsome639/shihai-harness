@@ -143,6 +143,6 @@ tasks finished: the agent never issued a successful model call, because the mode
 selects the wire protocol. Once fixed, a run made 77 calls, a 54 kB memo, and still
 scored zero: no claim could be scored alone. One change - each conclusion as its
 own checkable sentence - scored 0.529 on the dev-proxy model once; four later runs scored
-0.0, so it is one sample, not a result, and its log is absent. Routing stayed
-at zero: our clash checker took its count from 36 to 0, the official scorer
-still found three, and connectivity failed. That is why the gates check shapes, not scores.
+0.0, so it is one sample, not a result, and its log is absent. Routing stayed at zero: the last run spent 4,460 s and 661,851 input tokens and
+delivered one of the three named files, so the prompt now says a multi-file
+instruction wants every file, minimally, first. That is why the gates check shapes, not scores.
