@@ -89,6 +89,7 @@ KINDS = {
     ".md": "md",
     ".txt": "txt",
     ".pdf": "pdf",
+    ".dxf": "dxf",
 }
 
 _EXT = "|".join(ext.lstrip(".") for ext in KINDS)
@@ -125,7 +126,7 @@ _VERBISH = re.compile(
 # A file the statement asks for but does not grade ("optional side file").
 _OPTIONAL = re.compile(
     r"(?i)\boptional\b|\bnot a gate\b|\bgate failure\b|\babsence of\b"
-    r"|\byou may\b|\bdefault\b"
+    r"|\byou may\b"
 )
 
 # Directories whose contents are inputs, not deliverables.
@@ -613,6 +614,50 @@ def _archives(text: str, deliverables: list[dict]) -> list[dict]:
   return archives
 
 
+# An instruction that lists the archive contents as numbered items instead of
+# stating a count: "containing at its root:\n### 1. `deck_design.xlsx`".
+_ROOT_INTRO = re.compile(
+    r"(?i)\bcontain(?:s|ing|ed)?\b|\bat its root\b|\bthese files\b"
+)
+_NUMBERED_ITEM = re.compile(
+    r"^[ \t]*(?:#{1,6}[ \t]*)?(?:\*\*)?\d{1,2}\.[ \t]*(?:\*\*)?`?"
+    r"([A-Za-z0-9_][A-Za-z0-9_.\-]*\.(?:%s))`?" % _EXT,
+    re.M,
+)
+
+
+def _numbered_members(text: str, archive: str) -> list[str]:
+  """Reads root members an instruction lists as numbered items.
+
+  Some instructions say what the archive holds with a numbered list instead of
+  a count ("containing at its root: 1. `deck_design.xlsx` ..."). The member
+  window is truncated at the next heading, which would drop exactly that list,
+  so the numbered items are read from the archive's own mention instead, and
+  only where the mention introduces contents.
+
+  Args:
+    text: The instruction.
+    archive: Basename of the zip, e.g. `submission.zip`.
+
+  Returns:
+    Member basenames in the order listed; empty when the instruction states
+    none (a list that is one short would fail a grader on a file that was
+    never asked for).
+  """
+  out: list[str] = []
+  for match in re.finditer(re.escape(archive), text):
+    window = text[match.start(): match.start() + 12000]
+    if not _ROOT_INTRO.search(window[:800]):
+      continue
+    for name in _NUMBERED_ITEM.findall(window):
+      if name == archive or name in out:
+        continue
+      if name.lower() in _NOT_DELIVERABLES:
+        continue
+      out.append(name)
+  return out
+
+
 def _members(text: str, archive: str) -> list[str]:
   """Reads the archive members the instruction requires, or nothing.
 
@@ -644,7 +689,8 @@ def _members(text: str, archive: str) -> list[str]:
 
   count = _MEMBER_COUNT.search(text)
   if not count:
-    return []
+    listed = _numbered_members(text, archive)
+    return listed if len(listed) >= 2 else []
   wanted = _NUMBER_WORDS.get(count.group(1).lower(), 0) or int(count.group(1))
   return names if len(names) == wanted else []
 

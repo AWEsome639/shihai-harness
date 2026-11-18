@@ -615,6 +615,39 @@ def validate(defects):
            "detail must be a non-empty string")
 
 
+@case
+def docx_without_a_body_is_fatal(work):
+    """G3 rejects a .docx that is a zip without word/document.xml."""
+    root = prepare(work)
+    with zipfile.ZipFile(os.path.join(root, "output", "report.docx"), "w") as zf:
+        zf.writestr("foo.txt", "not a body\n")
+    run = LocalContainer(root)
+    plan = contract(root, [deliverable("output/report.docx", "docx")])
+    defects = selfcheck.selfcheck(
+        run, plan, final_message="Wrote output/report.docx."
+    )
+    item = only(defects, "G3", "fatal", contains=("word/document.xml",))
+    expect("report.docx" in item["detail"], "detail should name the document")
+    return defects
+
+
+@case
+def pdf_without_a_trailer_is_fatal(work):
+    """G3 rejects a .pdf that has a header but no %%EOF trailer."""
+    root = prepare(work)
+    path = os.path.join(root, "output", "memo.pdf")
+    with open(path, "wb") as fh:
+        fh.write(b"%PDF-1.4\n1 0 obj\n<<>>\nendobj\n")
+    run = LocalContainer(root)
+    plan = contract(root, [deliverable("output/memo.pdf", "pdf")])
+    defects = selfcheck.selfcheck(
+        run, plan, final_message="Wrote output/memo.pdf."
+    )
+    item = only(defects, "G3", "fatal", contains=("%%EOF",))
+    expect("memo.pdf" in item["detail"], "detail should name the PDF")
+    return defects
+
+
 def main():
   failures = 0
   print("selfcheck.py: %d bytes, probe %d bytes; task data under %s"
