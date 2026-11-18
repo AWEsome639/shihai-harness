@@ -125,7 +125,7 @@ _VERBISH = re.compile(
 # A file the statement asks for but does not grade ("optional side file").
 _OPTIONAL = re.compile(
     r"(?i)\boptional\b|\bnot a gate\b|\bgate failure\b|\babsence of\b"
-    r"|\byou may\b|\bdefault\b"
+    r"|\byou may\b"
 )
 
 # Directories whose contents are inputs, not deliverables.
