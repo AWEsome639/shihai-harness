@@ -99,6 +99,11 @@ NOTE = (
     " you know the output format, write one complete file that satisfies it, confirm"
     " it exists, and only then iterate on quality. Every later pass overwrites a file"
     " that already exists, never a stub that does not."
+    "\n\nAn instruction that names several files wants all of them. Build every one to
+    " something real in your first passes - a minimal but valid model.ifc, a two-line
+    " reconciliation.json - and deepen them afterwards. One run spent seventy-four minutes
+    " on the drawing set and delivered one of three named files; the grader reads the file
+    " that is missing, not the work behind it."
     "\n\nDeliverables are FILES, not prose. If the instruction names a directory"
     " (for example `output/`), create that directory and write every deliverable"
     " into it as a real file, in the format the instruction asks for. Your final"
