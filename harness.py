@@ -708,6 +708,34 @@ def contract_paths(instruction: str) -> list[str]:
     return []
 
 
+def name_deliverables(final: str, paths: list[str]) -> str:
+  """Appends a factual `delivered:` line for every path the answer omits.
+
+  A run can spend its whole budget improving a file and stop mid-sentence, so
+  its closing answer never names what it wrote: roof did exactly that, three
+  runs in a row, and G7 read the answer rather than the workspace. The harness
+  knows which files exist, so it states them; nothing here invents a path or a
+  result.
+
+  Args:
+    final: The worker's (or repair session's) closing answer.
+    paths: Deliverable paths already confirmed to exist in the container.
+
+  Returns:
+    The answer, with a `Delivered files:` block when any path was missing.
+  """
+  text = (final or "").casefold()
+  missing = []
+  for path in paths:
+    names = (path.casefold(), posixpath.basename(path).casefold())
+    if not any(name and name in text for name in names):
+      missing.append(path)
+  if not missing:
+    return final
+  block = "\n".join(f"delivered: {path}" for path in missing)
+  return (final or "").rstrip() + "\n\nDelivered files:\n" + block
+
+
 def plan_target(path: str, workdir: str) -> str:
   """Resolves a planned deliverable path to an absolute path inside `workdir`.
 
@@ -1116,6 +1144,7 @@ async def solve(session: taskbridge.Session) -> str:
       # same as one that never answered, so fill what is still missing.
       files = plan_paths(plan_text) if plan_text else contract_paths(
           session.instruction)
+      here: list[str] = []
       if files:
         left = session.time_left()
         if left is None or left > STOP_BEFORE_SEC + SKELETON_MIN_SEC:
@@ -1129,11 +1158,19 @@ async def solve(session: taskbridge.Session) -> str:
         )
         print(f"plan: delivered {str(present.get('output', '')).strip()!r}",
               flush=True)
+        here = [
+            line.rsplit(" +", 1)[0].strip()
+            for line in str(present.get("output", "")).splitlines()
+            if line.strip().endswith("+")
+        ]
       if REVIEW:
         try:
           final = await verify_and_repair(session, run_pi, final)
         except Exception as exc:  # a broken review must never lose the answer
           print(f"review: skipped ({exc!r})", flush=True)
+      if here:
+        # The answer must name what is on disk, whatever produced it.
+        final = name_deliverables(final, here)
   # Post-run audit: the four gates the narrative names. Costs one container
   # round trip of shell and cannot fail the task - a missing deliverable is
   # reported in the log, never raised, so the answer is always returned.

@@ -184,6 +184,22 @@ Write one file, `output/submission.zip`, containing at its root:
 
 
 @case
+def case_name_deliverables_appends_only_what_is_missing():
+  """A terse answer gets a factual delivered line; a complete one is untouched."""
+  path = "/app/output/submission.zip"
+  out = H.name_deliverables("The design is complete.", [path])
+  expect("delivered: " + path in out, "the path is named: %r" % (out,))
+  expect("Delivered files:" in out, "under one heading")
+  same = "Wrote " + path + " after the third pass."
+  expect(H.name_deliverables(same, [path]) == same, "already named: untouched")
+  base = "Saved submission.zip."
+  expect(H.name_deliverables(base, [path]) == base, "a basename counts")
+  expect(H.name_deliverables("", [path]).count("delivered:") == 1,
+         "an empty answer still gets the line")
+  return "append / untouched / basename / empty"
+
+
+@case
 def case_plan_target_stays_inside_workdir():
   """A plan path with the workdir spelled in front resolves to one level."""
   expect(H.plan_target("output/a.md", "/app/files") == "/app/files/output/a.md",
