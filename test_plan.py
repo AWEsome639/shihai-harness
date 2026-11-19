@@ -123,6 +123,19 @@ Random prose mentioning a sentence.
 
 
 @case
+def case_contract_paths_fallback():
+  """A checks task's path comes from the contract when the plan never lands."""
+  text = ("Save your answer to `output/submission.zip`. It must contain "
+          "`deck_design.xlsx`.")
+  got = H.contract_paths(text)
+  expect(any(path.endswith("output/submission.zip") for path in got),
+         "the named archive is found: %r" % (got,))
+  expect(H.contract_paths("Write a memo for the file.") == [],
+         "prose with no path invents nothing")
+  return "%d path(s) from the instruction alone" % len(got)
+
+
+@case
 def case_skeleton_kinds():
   """Structured deliverables get a stub; prose ones must not."""
   expect(H.skeleton_for("output/a.json")[0] == "text", "json is text")

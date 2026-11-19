@@ -79,7 +79,7 @@ PLAN_SHARE = 0.10
 # A plan that has not produced its file by now is not coming: on a six-hour
 # allowance the share alone would spend 1,200 s, and one run spent exactly that
 # on a planner that never wrote a line. The work phase starts either way.
-PLAN_MAX_SEC = 300
+PLAN_MAX_SEC = 90
 PLAN_MIN_SEC = 60
 PLAN_MAX_FILES = 12
 SKELETON_MIN_SEC = 60
@@ -88,7 +88,7 @@ PROSE_EXTS = ("md", "docx", "pdf", "txt", "rtf", "tex", "pptx")
 # Hard stop for one task, whatever budget the evaluator hands out. A dev run
 # once inherited a six-hour allowance and a single task sat for two hours; the
 # skeletons are on disk long before this, so the cap only costs polish.
-MAX_RUN_SEC = float(os.environ.get("MAX_RUN_SEC", "2700"))
+MAX_RUN_SEC = float(os.environ.get("MAX_RUN_SEC", "3600"))
 # Request features the Google Cloud route for Claude refuses. pi leaves them
 # out, and the Anthropic API works without them too.
 PLANNER_NOTE = """You are the planning engineer on this task. Do NOT create or \
@@ -624,6 +624,29 @@ def skeleton_for(path: str) -> tuple[str, str] | None:
   return None
 
 
+def contract_paths(instruction: str) -> list[str]:
+  """Returns the deliverable paths the task card and instruction name.
+
+  The plan session is the first source, but it costs model time and may not
+  finish; a checks task already says where its deliverable goes, so the
+  contract can supply the list without a model call.
+
+  Args:
+    instruction: The task instruction.
+
+  Returns:
+    The required deliverable paths, or an empty list when the extraction fails.
+  """
+  try:
+    import contract  # pylint: disable=import-outside-toplevel
+
+    spec = contract.extract(instruction)
+    return [item["path"] for item in spec.get("deliverables") or []
+            if item.get("required")][:PLAN_MAX_FILES]
+  except Exception:  # a convenience, never a failure
+    return []
+
+
 def plan_target(path: str, workdir: str) -> str:
   """Resolves a planned deliverable path to an absolute path inside `workdir`.
 
@@ -914,6 +937,27 @@ async def solve(session: taskbridge.Session) -> str:
       ]
 
       started = time.monotonic()
+      phases = [0]
+
+      def phase_env() -> dict[str, str]:
+        """Returns the environment for one Pi session, on its own agent home.
+
+        Each stage gets a fresh copy of the configuration instead of sharing
+        one `PI_CODING_AGENT_DIR`: a single big Pi run was the only shape this
+        harness had, and a second session sharing the first one's state is the
+        one thing every stage after the plan had in common when they stalled
+        without a single tool call.
+
+        Returns:
+          The subprocess environment with `PI_CODING_AGENT_DIR` pointed at a
+          new directory holding the same three configuration files.
+        """
+        phases[0] += 1
+        home = agent_dir / f"phase-{phases[0]}"
+        home.mkdir()
+        for name in ("models.json", "settings.json", "mcp.json"):
+          shutil.copyfile(agent_dir / name, home / name)
+        return dict(env, PI_CODING_AGENT_DIR=str(home))
 
       async def run_pi(
           task_text: str,
@@ -945,7 +989,7 @@ async def solve(session: taskbridge.Session) -> str:
         call = taskbridge.run_process(
             base + ["--append-system-prompt", note],
             session,
-            env=env,
+            env=phase_env(),
             cwd=str(work),
             on_line=run.on_line,
             stdin=task_text.encode(),
@@ -983,7 +1027,8 @@ async def solve(session: taskbridge.Session) -> str:
               "utf-8", "replace")
         except Exception as exc:  # no plan is a reason to work, not to stop
           print(f"plan: unreadable ({exc!r})", flush=True)
-        files = plan_paths(plan_text)
+        files = plan_paths(plan_text) if plan_text else contract_paths(
+            session.instruction)
         print(f"plan: {len(files)} deliverable(s) listed: {files}", flush=True)
         # The worker gets files to improve, never an empty output directory.
         await ensure_deliverables(session, files)
@@ -1005,7 +1050,8 @@ async def solve(session: taskbridge.Session) -> str:
       # Hard assertion: every listed deliverable exists and is non-empty when
       # the worker stops. A run that answered but left a path empty scores the
       # same as one that never answered, so fill what is still missing.
-      files = plan_paths(plan_text) if plan_text else []
+      files = plan_paths(plan_text) if plan_text else contract_paths(
+          session.instruction)
       if files:
         left = session.time_left()
         if left is None or left > STOP_BEFORE_SEC + SKELETON_MIN_SEC:
