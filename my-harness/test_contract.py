@@ -133,6 +133,14 @@ def case_real_cards() -> str:
     validate(body)
     paths = [item["path"] for item in body["deliverables"]]
     for path in row["deliverables"]:
+      # A card may list one file twice, the second time under a doubled leading
+      # segment (`/filesystem/filesystem/...`). `contract.py` collapses that
+      # duplicate on purpose (commit 6e354a7): keeping it would make G1 demand a
+      # path the container never creates. The copy that survives is the path
+      # that must not be dropped; the doubled twin is expected to be gone.
+      twin = path.replace("/filesystem/filesystem/", "/filesystem/", 1)
+      if twin != path and twin in row["deliverables"]:
+        continue
       if path not in paths:
         missing.append("%s: %s" % (row["task_id"], path))
     extras += len([path for path in paths if path not in row["deliverables"]])

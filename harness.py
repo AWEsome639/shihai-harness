@@ -36,6 +36,7 @@ import asyncio
 import json
 import os
 import pathlib
+import re
 import shutil
 import subprocess
 import tempfile
@@ -52,8 +53,61 @@ THINKING = "max"
 # arrives
 STOP_BEFORE_SEC = 90
 CATALOG_TIMEOUT_SEC = 30
+# The independent review stage (AURA's Verify -> Repair). A second Pi session
+# with none of the worker's history opens the deliverables against the task and
+# answers PASS or one line per gap; a non-PASS verdict buys one repair session.
+# It is opportunistic: it runs only on the time the worker did not use, so a
+# task that needs every second is never cut short for it. `REVIEW=0` turns it
+# off.
+REVIEW = os.environ.get("REVIEW", "1").strip().lower() not in (
+    "0", "off", "false", "no", "")
+REVIEW_MAX_SEC = 240
+REVIEW_MIN_SEC = 60
+REVIEW_MAX_GAPS = 20
+REPAIR_MIN_SEC = 120
 # Request features the Google Cloud route for Claude refuses. pi leaves them
 # out, and the Anthropic API works without them too.
+REVIEWER_NOTE = """You are the independent reviewer on this task. You did \
+not do the work, and you must not create, edit or delete any file: read only.
+
+The task text you were given is followed by the worker's closing summary. Open \
+the task again, then open every deliverable it names with bash and the read \
+tool. For each one check that
+- it exists at the exact path the task names and opens in the stated format,
+- every required section, table, value, unit, date and name the task asks for \
+is present, not paraphrased away or left only in the chat answer,
+- nothing the task asked for is missing and no hard constraint is broken.
+
+The final message is read as part of the answer, so a point that exists only \
+in a file and nowhere in the task's own vocabulary still counts as missing.
+
+Answer with exactly PASS if nothing is missing. Otherwise write one line per \
+gap, in this shape:
+<path> | <what is wrong or missing> | <the concrete fix>
+List only gaps that would cost score, not style preferences. Do not fix \
+anything yourself and do not rewrite the work."""
+
+REVIEWER_PROMPT = """
+
+---
+
+## The worker's closing summary
+
+{summary}
+
+Open the deliverables now and review them against the task above."""
+
+REPAIR_PROMPT = """
+
+---
+
+## An independent reviewer opened your deliverables and found these gaps
+
+{gaps}
+
+Fix each gap in the files, reopen them to confirm the fix, then answer with \
+your updated summary of what you delivered and where it is."""
+
 COMPAT = {
     "supportsStrictTools": False,
     "supportsMidConvoEffort": False,
@@ -313,6 +367,7 @@ class Run:
 
   def __init__(self, session: taskbridge.Session, model: str):
     self.session, self.model, self.replies = session, model, 0
+    self.last = ""
 
   async def on_event(self, event: dict[str, Any]) -> None:
     """Processes a parsed JSON event from Pi, updating final message and usage.
@@ -329,6 +384,9 @@ class Run:
           if b.get("type") == "text"
       )
       if text.strip():
+        # `last` is this run's own final text; `session.final_message` is the
+        # task's answer, which a review run must not take over.
+        self.last = text.strip()
         self.session.final_message = text.strip()
       if message.get("stopReason") == "error":
         await self.session.log(
@@ -436,6 +494,143 @@ def _log_audit(spec, defects):
     )
 
 
+def review_budget(session: taskbridge.Session) -> float:
+  """Returns the seconds a review session may spend, 0 when it must not run.
+
+  The budget is what the worker left over, minus the wrap-up reserve, so the
+  review never shortens the work: on a task that uses every second it is 0 and
+  the stage is skipped.
+
+  Args:
+    session: Active task session.
+
+  Returns:
+    The spare seconds, capped at `REVIEW_MAX_SEC`.
+  """
+  left = session.time_left()
+  if left is None:
+    return float(REVIEW_MAX_SEC)
+  return max(0.0, min(float(REVIEW_MAX_SEC), left - STOP_BEFORE_SEC - 30))
+
+
+def review_gaps(verdict: str) -> list[str]:
+  """Parses a reviewer verdict into concrete gap lines.
+
+  Args:
+    verdict: The reviewer session's final text.
+
+  Returns:
+    One string per gap, empty when the reviewer answered PASS or wrote nothing,
+    capped at `REVIEW_MAX_GAPS`. Bullet and numbering markers are stripped so
+    the repair prompt reads as a plain list.
+  """
+  text = (verdict or "").strip()
+  if text.strip("*_. \r\n\t").upper() in ("", "PASS"):
+    return []
+  gaps: list[str] = []
+  for line in text.splitlines():
+    line = line.strip().lstrip("-*•").strip()
+    line = re.sub(r"^\d+[.)]\s*", "", line).strip()
+    if line and line.upper() != "PASS":
+      gaps.append(line[:400])
+  gaps = gaps[:REVIEW_MAX_GAPS]
+  if gaps and not any(" | " in gap for gap in gaps):
+    # A reviewer that answered in prose rather than in the asked-for
+    # `<path> | <gap> | <fix>` shape still read the files, and its prose is
+    # often the actionable part ("there is no submission.zip anywhere"): keep
+    # it as one brief rather than dropping the only signal the stage produced.
+    gaps = [" ".join(gaps)[:1200]]
+  return gaps
+
+
+def reviewer_stdin(instruction: str, summary: str) -> str:
+  """Builds the reviewer's task text: the task plus what the worker claims.
+
+  Args:
+    instruction: The task instruction, verbatim.
+    summary: The worker's closing summary.
+
+  Returns:
+    The reviewer's standard input.
+  """
+  return instruction + REVIEWER_PROMPT.format(
+      summary=summary or "(the worker gave no summary)")
+
+
+def repair_stdin(instruction: str, gaps: list[str]) -> str:
+  """Builds the repair session's task text: the task plus the gap list.
+
+  Args:
+    instruction: The task instruction, verbatim.
+    gaps: The reviewer's gap lines.
+
+  Returns:
+    The repair session's standard input.
+  """
+  return instruction + REPAIR_PROMPT.format(
+      gaps="\n".join(f"- {gap}" for gap in gaps))
+
+
+async def verify_and_repair(
+    session: taskbridge.Session,
+    run_pi: Any,
+    final: str,
+) -> str:
+  """Runs Verify, then at most one Repair, on the answer the worker returned.
+
+  The reviewer is a fresh session: it carries none of the worker's history, so
+  it opens the deliverables instead of trusting a summary that says they are
+  done. Its verdict is `PASS` or one line per gap; gaps buy one repair session
+  whose final message becomes the answer. Both stages spend only the time the
+  worker left over, so this never shortens a task that needs every second.
+
+  Args:
+    session: Active task session.
+    run_pi: The stage runner built by `solve`, `(text, note, stop_before) -> (Run,
+      Finished)`.
+    final: The worker's closing summary, which is also the answer if no repair
+      runs.
+
+  Returns:
+    The final answer: the repaired summary when a repair session ran and
+    produced one, otherwise `final`.
+  """
+  budget = review_budget(session)
+  if budget < REVIEW_MIN_SEC:
+    print(f"review: {int(budget)} s spare; skipped", flush=True)
+    return final
+  print(f"review: budget {int(budget)} s", flush=True)
+  worker_final = session.final_message
+  reviewer, _ = await run_pi(
+      reviewer_stdin(session.instruction, final),
+      REVIEWER_NOTE,
+      STOP_BEFORE_SEC + 20,
+  )
+  # The reviewer's text is a verdict, not the task's answer.
+  session.final_message = worker_final
+  if not reviewer.replies:
+    print("review: no verdict; skipped", flush=True)
+    return final
+  gaps = review_gaps(reviewer.last)
+  if not gaps:
+    print("review: PASS", flush=True)
+    return final
+  print(f"review: {len(gaps)} gap(s)", flush=True)
+  for gap in gaps:
+    print(f"review: {gap}", flush=True)
+  left = session.time_left()
+  if left is not None and left < REPAIR_MIN_SEC + STOP_BEFORE_SEC:
+    print("review: no time to repair", flush=True)
+    return final
+  print("review: repair session", flush=True)
+  repaired, _ = await run_pi(
+      repair_stdin(session.instruction, gaps),
+      NOTE.format(workdir=session.workdir),
+      STOP_BEFORE_SEC,
+  )
+  return repaired.last or session.final_message or final
+
+
 async def solve(session: taskbridge.Session) -> str:
   """Runs Pi on a single task and returns the final response.
 
@@ -485,7 +680,7 @@ async def solve(session: taskbridge.Session) -> str:
       name, model = await asyncio.to_thread(
           configure, agent_dir, relay, session, env
       )
-      argv = [
+      base = [
           PI,
           "--print",
           "--mode",
@@ -503,26 +698,51 @@ async def solve(session: taskbridge.Session) -> str:
           model,
           "--thinking",
           THINKING,
-          "--append-system-prompt",
-          NOTE.format(workdir=session.workdir),
       ]
-      run = Run(session, model)
-      done = await taskbridge.run_process(
-          argv,
-          session,
-          env=env,
-          cwd=str(work),
-          on_line=run.on_line,
-          stdin=session.instruction.encode(),
-          stop_before_sec=STOP_BEFORE_SEC,
-          log_prefix="pi: ",
+
+      async def run_pi(
+          task_text: str, note: str, stop_before: float
+      ) -> tuple[Run, taskbridge.Finished]:
+        """Runs one Pi session with `note` appended to its system prompt.
+
+        Args:
+          task_text: The session's standard input (the task, plus any role
+            text the stage adds).
+          note: The stage's system prompt addition.
+          stop_before: Seconds to reserve before the task deadline.
+
+        Returns:
+          The stream tracker and the finished process.
+        """
+        run = Run(session, model)
+        done = await taskbridge.run_process(
+            base + ["--append-system-prompt", note],
+            session,
+            env=env,
+            cwd=str(work),
+            on_line=run.on_line,
+            stdin=task_text.encode(),
+            stop_before_sec=stop_before,
+            log_prefix="pi: ",
+        )
+        return run, done
+
+      worked, done = await run_pi(
+          session.instruction,
+          NOTE.format(workdir=session.workdir),
+          STOP_BEFORE_SEC,
       )
-  if not run.replies:
-    raise RuntimeError(
-        f"pi exited with {done.code} before the model answered:"
-        f" {done.stderr[-2000:]}"
-    )
-  final = session.final_message or "(pi stopped without a final message)"
+      if not worked.replies:
+        raise RuntimeError(
+            f"pi exited with {done.code} before the model answered:"
+            f" {done.stderr[-2000:]}"
+        )
+      final = session.final_message or "(pi stopped without a final message)"
+      if REVIEW:
+        try:
+          final = await verify_and_repair(session, run_pi, final)
+        except Exception as exc:  # a broken review must never lose the answer
+          print(f"review: skipped ({exc!r})", flush=True)
   # Post-run audit: the four gates the narrative names. Costs one container
   # round trip of shell and cannot fail the task - a missing deliverable is
   # reported in the log, never raised, so the answer is always returned.
