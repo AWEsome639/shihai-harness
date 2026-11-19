@@ -79,6 +79,19 @@ def case(fn):
 
 
 @case
+def case_module_names_are_imported():
+  """Every module the stage calls at run time is imported at module level.
+
+  A missing `import time` is invisible to a unit test that never enters
+  `solve()`, and it cost two CI runs: the harness raised NameError two seconds
+  in. This pins the module objects instead.
+  """
+  for name in ("time", "posixpath", "re", "asyncio", "os"):
+    expect(hasattr(H, name), f"harness.{name} is not imported")
+  return "time / posixpath / re / asyncio / os"
+
+
+@case
 def case_plan_budget():
   """The plan gets 10% of the time, clamped, and none when time is short."""
   expect(H.plan_seconds(FakeSession(None)) == float(H.PLAN_MIN_SEC),
