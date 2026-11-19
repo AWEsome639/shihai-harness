@@ -137,6 +137,24 @@ def case_ensures_missing_only():
 
 
 @case
+def case_plan_target_stays_inside_workdir():
+  """A plan path with the workdir spelled in front resolves to one level."""
+  expect(H.plan_target("output/a.md", "/app/files") == "/app/files/output/a.md",
+         "a relative path joins the workdir")
+  expect(H.plan_target("app/files/output/a.md", "/app/files")
+         == "/app/files/output/a.md",
+         "the workdir spelled in front is stripped once, not doubled")
+  expect(H.plan_target("/app/files/output/a.md", "/app/files")
+         == "/app/files/output/a.md", "an absolute path is kept")
+  expect(H.plan_target("../../etc/passwd", "/app/files")
+         == "/app/files/passwd",
+         "an escaping path falls back to its basename")
+  expect(H.plan_target("app/files", "/app/files") == "/app/files",
+         "the workdir itself is not nested")
+  return "relative / prefixed / absolute / escaping / self"
+
+
+@case
 def case_zip_skeleton_is_packed():
   """A .zip deliverable is built with the zip binary, not written as text."""
   session = FakeSession(900, workdir="/app")

@@ -36,6 +36,7 @@ import asyncio
 import json
 import os
 import pathlib
+import posixpath
 import re
 import shutil
 import subprocess
@@ -78,6 +79,10 @@ PLAN_MAX_SEC = 1200
 PLAN_MIN_SEC = 60
 PLAN_MAX_FILES = 12
 SKELETON_MIN_SEC = 60
+# Hard stop for one task, whatever budget the evaluator hands out. A dev run
+# once inherited a six-hour allowance and a single task sat for two hours; the
+# skeletons are on disk long before this, so the cap only costs polish.
+MAX_RUN_SEC = float(os.environ.get("MAX_RUN_SEC", "2700"))
 # Request features the Google Cloud route for Claude refuses. pi leaves them
 # out, and the Anthropic API works without them too.
 PLANNER_NOTE = """You are the planning engineer on this task. Do NOT create or \
@@ -615,6 +620,36 @@ def skeleton_for(path: str) -> tuple[str, str] | None:
   return None
 
 
+def plan_target(path: str, workdir: str) -> str:
+  """Resolves a planned deliverable path to an absolute path inside `workdir`.
+
+  Plans sometimes spell the deliverable as a container path without its leading
+  slash (`app/files/output/memo.md` for a workdir of `/app/files`). Joining that
+  blindly nests the file twice (`/app/files/app/files/output/...`), so a leading
+  copy of the workdir is stripped, and a target that still lands outside the
+  workdir falls back to the file's basename.
+
+  Args:
+    path: The path the plan listed.
+    workdir: The task container's working directory.
+
+  Returns:
+    An absolute path that starts with `workdir`.
+  """
+  wd = posixpath.normpath(workdir)
+  root = wd.lstrip("/")
+  rel = str(path or "").strip().lstrip("/")
+  if rel == root:
+    return wd
+  if rel.startswith(root + "/"):
+    rel = rel[len(root) + 1:]
+  target = posixpath.normpath(posixpath.join(wd, rel)) if rel else wd
+  if target != wd and not target.startswith(wd + "/"):
+    print(f"plan: {path} escapes {wd}; using its basename", flush=True)
+    target = posixpath.join(wd, posixpath.basename(rel))
+  return target
+
+
 async def ensure_deliverables(
     session: taskbridge.Session, paths: list[str]
 ) -> list[str]:
@@ -633,7 +668,7 @@ async def ensure_deliverables(
   """
   written: list[str] = []
   for path in paths:
-    target = path if path.startswith("/") else f"{session.workdir}/{path}"
+    target = plan_target(path, session.workdir)
     try:
       result = await session.exec(f"test -s '{target}' && echo yes || echo no")
       if str(result.get("output", "")).strip().endswith("yes"):
@@ -874,6 +909,8 @@ async def solve(session: taskbridge.Session) -> str:
           THINKING,
       ]
 
+      started = time.monotonic()
+
       async def run_pi(
           task_text: str,
           note: str,
@@ -911,12 +948,17 @@ async def solve(session: taskbridge.Session) -> str:
             stop_before_sec=stop_before,
             log_prefix="pi: ",
         )
-        if max_sec is None:
-          return run, await call
+        # Every phase is capped twice: by its own budget and by the task's hard
+        # stop, so an evaluator that hands out six hours cannot hold the run.
+        cap = MAX_RUN_SEC - (time.monotonic() - started)
+        budget = max(0.0, cap if max_sec is None else min(max_sec, cap))
+        if budget <= 0:
+          print("phase: task cap reached", flush=True)
+          return run, taskbridge.Finished(-1, "task cap reached", True)
         try:
-          return run, await asyncio.wait_for(call, max_sec)
+          return run, await asyncio.wait_for(call, budget)
         except asyncio.TimeoutError:
-          print(f"phase: {int(max_sec)} s budget spent", flush=True)
+          print(f"phase: {int(budget)} s budget spent", flush=True)
           return run, taskbridge.Finished(-1, "phase budget spent", True)
 
       # PLAN: name every deliverable and its least acceptable content.
@@ -967,7 +1009,7 @@ async def solve(session: taskbridge.Session) -> str:
         present = await session.exec(
             " ; ".join(
                 "test -s '%s' && echo '%s +'" % (
-                    f if f.startswith("/") else f"{session.workdir}/{f}", f)
+                    plan_target(f, session.workdir), f)
                 for f in files
             ) + " ; true"
         )
