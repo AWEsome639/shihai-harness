@@ -758,8 +758,8 @@ async def verify_and_repair(
 
   Args:
     session: Active task session.
-    run_pi: The stage runner built by `solve`, `(text, note, stop_before) -> (Run,
-      Finished)`.
+    run_pi: The stage runner built by `solve`, `(text, note, stop_before,
+      max_sec) -> (Run, Finished)`.
     final: The worker's closing summary, which is also the answer if no repair
       runs.
 
@@ -777,6 +777,7 @@ async def verify_and_repair(
       reviewer_stdin(session.instruction, final),
       REVIEWER_NOTE,
       STOP_BEFORE_SEC + 20,
+      max_sec=budget,
   )
   # The reviewer's text is a verdict, not the task's answer.
   session.final_message = worker_final
@@ -799,6 +800,7 @@ async def verify_and_repair(
       repair_stdin(session.instruction, gaps),
       NOTE.format(workdir=session.workdir),
       STOP_BEFORE_SEC,
+      max_sec=None if left is None else max(0.0, left - STOP_BEFORE_SEC),
   )
   return repaired.last or session.final_message or final
 
@@ -873,21 +875,33 @@ async def solve(session: taskbridge.Session) -> str:
       ]
 
       async def run_pi(
-          task_text: str, note: str, stop_before: float
+          task_text: str,
+          note: str,
+          stop_before: float,
+          max_sec: float | None = None,
       ) -> tuple[Run, taskbridge.Finished]:
         """Runs one Pi session with `note` appended to its system prompt.
+
+        `stop_before` protects the task deadline, which is the only bound a
+        stage should need. A stage with its own budget also passes `max_sec`:
+        `taskbridge.time_share` shrinks a large reserve to a quarter of the
+        time left, so a phase deadline cannot be expressed through
+        `stop_before` alone - without this the plan could take three quarters
+        of the task.
 
         Args:
           task_text: The session's standard input (the task, plus any role
             text the stage adds).
           note: The stage's system prompt addition.
           stop_before: Seconds to reserve before the task deadline.
+          max_sec: Wall-clock cap for this phase, if it has one.
 
         Returns:
-          The stream tracker and the finished process.
+          The stream tracker and the finished process; `done.code` is -1 when
+          the phase cap stopped it.
         """
         run = Run(session, model)
-        done = await taskbridge.run_process(
+        call = taskbridge.run_process(
             base + ["--append-system-prompt", note],
             session,
             env=env,
@@ -897,7 +911,13 @@ async def solve(session: taskbridge.Session) -> str:
             stop_before_sec=stop_before,
             log_prefix="pi: ",
         )
-        return run, done
+        if max_sec is None:
+          return run, await call
+        try:
+          return run, await asyncio.wait_for(call, max_sec)
+        except asyncio.TimeoutError:
+          print(f"phase: {int(max_sec)} s budget spent", flush=True)
+          return run, taskbridge.Finished(-1, "phase budget spent", True)
 
       # PLAN: name every deliverable and its least acceptable content.
       plan_path = f"{session.workdir}/{PLAN_NAME}"
@@ -909,8 +929,8 @@ async def solve(session: taskbridge.Session) -> str:
         await run_pi(
             session.instruction,
             PLANNER_NOTE.format(plan=plan_path),
-            max(STOP_BEFORE_SEC,
-                (left if left is not None else STOP_BEFORE_SEC) - budget),
+            STOP_BEFORE_SEC,
+            max_sec=budget,
         )
         try:
           plan_text = (await session.read_file(plan_path)).decode(

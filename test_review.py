@@ -63,8 +63,9 @@ def runner(replies):
   """Builds a `run_pi` that replays `replies` and records its calls."""
   calls = []
 
-  async def run_pi(text, note, stop_before):
-    calls.append({"text": text, "note": note, "stop_before": stop_before})
+  async def run_pi(text, note, stop_before, max_sec=None):
+    calls.append({"text": text, "note": note, "stop_before": stop_before,
+                  "max_sec": max_sec})
     return FakeRun(replies[len(calls) - 1]), None
 
   return run_pi, calls
@@ -173,7 +174,7 @@ def case_no_repair_without_time():
   run_pi, calls = runner(["out/a.docx | missing | fix"])
   session = FakeSession(900, final="ANSWER")
   # the reviewer spends the budget: only the wrap-up margin is left
-  async def spend_and_run(text, note, stop_before):
+  async def spend_and_run(text, note, stop_before, max_sec=None):
     session.left = H.STOP_BEFORE_SEC + 10
     calls.append({"text": text, "note": note, "stop_before": stop_before})
     return FakeRun("out/a.docx | missing | fix"), None
@@ -190,7 +191,7 @@ def case_crashed_reviewer_changes_nothing():
   run_pi, calls = runner(["", ""])
   session = FakeSession(900, final="ANSWER")
 
-  async def broken(text, note, stop_before):
+  async def broken(text, note, stop_before, max_sec=None):
     calls.append({"text": text, "note": note})
     return FakeRun("", replies=0), None
 
@@ -203,7 +204,7 @@ def case_crashed_reviewer_changes_nothing():
 @case
 def case_stage_errors_are_catchable():
   """The stage raises, so `solve()` can keep the worker's answer."""
-  async def boom(text, note, stop_before):
+  async def boom(text, note, stop_before, max_sec=None):
     raise RuntimeError("relay died")
 
   session = FakeSession(900, final="ANSWER")
