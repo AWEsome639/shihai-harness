@@ -36,9 +36,12 @@ import asyncio
 import json
 import os
 import pathlib
+import posixpath
+import re
 import shutil
 import subprocess
 import tempfile
+import time
 from typing import Any
 
 import taskbridge
@@ -52,8 +55,117 @@ THINKING = "max"
 # arrives
 STOP_BEFORE_SEC = 90
 CATALOG_TIMEOUT_SEC = 30
+# The independent review stage (AURA's Verify -> Repair). A second Pi session
+# with none of the worker's history opens the deliverables against the task and
+# answers PASS or one line per gap; a non-PASS verdict buys one repair session.
+# It is opportunistic: it runs only on the time the worker did not use, so a
+# task that needs every second is never cut short for it. `REVIEW=0` turns it
+# off.
+REVIEW = os.environ.get("REVIEW", "1").strip().lower() not in (
+    "0", "off", "false", "no", "")
+REVIEW_MAX_SEC = 240
+REVIEW_MIN_SEC = 60
+REVIEW_MAX_GAPS = 20
+REPAIR_MIN_SEC = 120
+# Deliverable-first (AURA's Plan stage, made load-bearing). The plan session
+# spends a fixed slice of the budget naming every file the task wants and the
+# least it may contain; the harness then puts a skeleton at every one of those
+# paths before the worker writes a line, so a run that dies mid-thought still
+# leaves a gradable file behind. `PLAN=0` turns the whole stage off.
+PLAN = os.environ.get("PLAN", "1").strip().lower() not in (
+    "0", "off", "false", "no", "")
+PLAN_NAME = ".plan.md"
+PLAN_SHARE = 0.10
+# A plan that has not produced its file by now is not coming: on a six-hour
+# allowance the share alone would spend 1,200 s, and one run spent exactly that
+# on a planner that never wrote a line. The work phase starts either way.
+PLAN_MAX_SEC = 300
+PLAN_MIN_SEC = 60
+PLAN_MAX_FILES = 12
+SKELETON_MIN_SEC = 60
+# Deliverables graded on their wording, not their existence: a stub is a miss.
+PROSE_EXTS = ("md", "docx", "pdf", "txt", "rtf", "tex", "pptx")
+# Hard stop for one task, whatever budget the evaluator hands out. A dev run
+# once inherited a six-hour allowance and a single task sat for two hours; the
+# skeletons are on disk long before this, so the cap only costs polish.
+MAX_RUN_SEC = float(os.environ.get("MAX_RUN_SEC", "2700"))
 # Request features the Google Cloud route for Claude refuses. pi leaves them
 # out, and the Anthropic API works without them too.
+PLANNER_NOTE = """You are the planning engineer on this task. Do NOT create or \
+modify any deliverable and do not start the work: plan only.
+
+Read the task, then every file it points to. Then write the plan to {plan} \
+with the write tool. Keep it short and concrete:
+- the deliverables the task names, with their exact paths,
+- what a reviewer checks in each one (sections, values, units, dates, names),
+- the hard constraints that must not be broken.
+
+The LAST section of the file must be exactly this heading and one line per \
+file, because a program reads it:
+
+## 交付物清单
+- <path> | <the minimal acceptable content, in one line>
+
+List every file the task asks for, even the ones you are unsure about. Nothing \
+after that section.
+
+Then answer with one short paragraph naming the files you listed."""
+
+WORK_PLAN_HEAD = """
+
+---
+
+## The plan
+
+A planning pass wrote the plan to {plan}. Read it first with the read tool.
+
+The files in its 交付物清单 already exist as skeletons at their exact paths. \
+Your FIRST action, before any further reading or analysis, is to open each one \
+and replace it with real content - even a short but correct version. A skeleton \
+left in place scores zero, and so does a deliverable that is still only in your \
+head when the time runs out. Improve them from there."""
+
+REVIEWER_NOTE = """You are the independent reviewer on this task. You did \
+not do the work, and you must not create, edit or delete any file: read only.
+
+The task text you were given is followed by the worker's closing summary. Open \
+the task again, then open every deliverable it names with bash and the read \
+tool. For each one check that
+- it exists at the exact path the task names and opens in the stated format,
+- every required section, table, value, unit, date and name the task asks for \
+is present, not paraphrased away or left only in the chat answer,
+- nothing the task asked for is missing and no hard constraint is broken.
+
+The final message is read as part of the answer, so a point that exists only \
+in a file and nowhere in the task's own vocabulary still counts as missing.
+
+Answer with exactly PASS if nothing is missing. Otherwise write one line per \
+gap, in this shape:
+<path> | <what is wrong or missing> | <the concrete fix>
+List only gaps that would cost score, not style preferences. Do not fix \
+anything yourself and do not rewrite the work."""
+
+REVIEWER_PROMPT = """
+
+---
+
+## The worker's closing summary
+
+{summary}
+
+Open the deliverables now and review them against the task above."""
+
+REPAIR_PROMPT = """
+
+---
+
+## An independent reviewer opened your deliverables and found these gaps
+
+{gaps}
+
+Fix each gap in the files, reopen them to confirm the fix, then answer with \
+your updated summary of what you delivered and where it is."""
+
 COMPAT = {
     "supportsStrictTools": False,
     "supportsMidConvoEffort": False,
@@ -313,6 +425,7 @@ class Run:
 
   def __init__(self, session: taskbridge.Session, model: str):
     self.session, self.model, self.replies = session, model, 0
+    self.last = ""
 
   async def on_event(self, event: dict[str, Any]) -> None:
     """Processes a parsed JSON event from Pi, updating final message and usage.
@@ -329,6 +442,9 @@ class Run:
           if b.get("type") == "text"
       )
       if text.strip():
+        # `last` is this run's own final text; `session.final_message` is the
+        # task's answer, which a review run must not take over.
+        self.last = text.strip()
         self.session.final_message = text.strip()
       if message.get("stopReason") == "error":
         await self.session.log(
@@ -436,6 +552,298 @@ def _log_audit(spec, defects):
     )
 
 
+def plan_seconds(session: taskbridge.Session) -> float:
+  """Returns the seconds the planning session may spend, 0 to skip it.
+
+  Args:
+    session: Active task session.
+
+  Returns:
+    `PLAN_SHARE` of the time left, clamped to `PLAN_MIN_SEC..PLAN_MAX_SEC`, and
+    never so much that the work phase and the wrap-up cannot fit.
+  """
+  left = session.time_left()
+  if left is None:
+    return float(PLAN_MIN_SEC)
+  room = left - STOP_BEFORE_SEC - 300
+  if room < PLAN_MIN_SEC:
+    return 0.0
+  return max(float(PLAN_MIN_SEC),
+             min(float(PLAN_MAX_SEC), PLAN_SHARE * left, room))
+
+
+DELIVERABLE_RE = re.compile(
+    r"([A-Za-z0-9_.\-]+(?:/[A-Za-z0-9_.\-]+)*"
+    r"\.(?:zip|docx|pdf|md|json|csv|xlsx|py|ifc|txt|dxf|dwg|xlsm|pptx))")
+
+
+def plan_paths(text: str) -> list[str]:
+  """Extracts the deliverable paths a plan lists.
+
+  Args:
+    text: The plan file's contents.
+
+  Returns:
+    The distinct paths, in plan order, capped at `PLAN_MAX_FILES`. A token
+    without a directory separator is kept only when it is a deliverable-looking
+    name at the start of a bullet, so prose does not become a file list.
+  """
+  paths: list[str] = []
+  for match in DELIVERABLE_RE.finditer(text or ""):
+    path = match.group(1).strip(".-")
+    if "/" not in path:
+      continue
+    if path not in paths:
+      paths.append(path)
+  return paths[:PLAN_MAX_FILES]
+
+
+def skeleton_for(path: str) -> tuple[str, str] | None:
+  """Returns how to stub `path`, or None when its extension has no stub.
+
+  Args:
+    path: A deliverable path from the plan.
+
+  Returns:
+    `(kind, payload)`: kind `text` writes the payload as the file, `zip` packs
+    a README into the named archive, `docx`/`pdf` build a one-page document.
+  """
+  ext = path.rsplit(".", 1)[-1].lower() if "." in path else ""
+  if ext in PROSE_EXTS:
+    # A memo is graded on what it says, so a placeholder in its place is a
+    # miss on every rubric line and can only cost score: never stub one.
+    return None
+  if ext in ("json",):
+    return "text", "{}\n"
+  if ext in ("csv",):
+    return "text", "item,value\n"
+  if ext in ("py",):
+    return "text", "\"\"\"Placeholder written by the harness; the worker replaces it.\"\"\"\n"
+  if ext in ("zip",):
+    return "zip", "README.md"
+  return None
+
+
+def plan_target(path: str, workdir: str) -> str:
+  """Resolves a planned deliverable path to an absolute path inside `workdir`.
+
+  Plans sometimes spell the deliverable as a container path without its leading
+  slash (`app/files/output/memo.md` for a workdir of `/app/files`). Joining that
+  blindly nests the file twice (`/app/files/app/files/output/...`), so a leading
+  copy of the workdir is stripped, and a target that still lands outside the
+  workdir falls back to the file's basename.
+
+  Args:
+    path: The path the plan listed.
+    workdir: The task container's working directory.
+
+  Returns:
+    An absolute path that starts with `workdir`.
+  """
+  wd = posixpath.normpath(workdir)
+  root = wd.lstrip("/")
+  rel = str(path or "").strip().lstrip("/")
+  if rel == root:
+    return wd
+  if rel.startswith(root + "/"):
+    rel = rel[len(root) + 1:]
+  target = posixpath.normpath(posixpath.join(wd, rel)) if rel else wd
+  if target != wd and not target.startswith(wd + "/"):
+    print(f"plan: {path} escapes {wd}; using its basename", flush=True)
+    target = posixpath.join(wd, posixpath.basename(rel))
+  return target
+
+
+async def ensure_deliverables(
+    session: taskbridge.Session, paths: list[str]
+) -> list[str]:
+  """Writes a skeleton at every listed path that is missing or empty.
+
+  Used twice: right after the plan, so the run always has files on disk, and
+  again after the work session, for anything the worker still did not deliver.
+
+  Args:
+    session: Active task session.
+    paths: Deliverable paths from the plan, relative to the workdir or absolute.
+
+  Returns:
+    The paths a skeleton was written at. Any failure is logged and skipped: a
+    stub that cannot be written must not end the run.
+  """
+  written: list[str] = []
+  for path in paths:
+    target = plan_target(path, session.workdir)
+    try:
+      result = await session.exec(f"test -s '{target}' && echo yes || echo no")
+      if str(result.get("output", "")).strip().endswith("yes"):
+        continue
+      stub = skeleton_for(target)
+      if stub is None:
+        continue
+      kind, payload = stub
+      parent = target.rsplit("/", 1)[0] or session.workdir
+      if kind == "text":
+        await session.write_file(target, payload)
+      elif kind == "zip":
+        await session.exec(
+            f"mkdir -p '{parent}/.skeleton' && printf '%s\\n' 'Placeholder written by the harness; the worker replaces it.' > '{parent}/.skeleton/{payload}'"
+            f" && cd '{parent}/.skeleton' && zip -q -r '{target}' {payload}"
+        )
+      elif kind in ("docx", "pdf"):
+        script = (
+            "import docx\nd=docx.Document()\nd.add_paragraph(%r)\nd.save(%r)"
+            % (payload, target)
+            if kind == "docx"
+            else "from reportlab.pdfgen import canvas\nc=canvas.Canvas(%r)\nc.drawString(72,720,%r)\nc.save()"
+            % (target, payload)
+        )
+        await session.exec(f"python3 -c {script!r}")
+      written.append(path)
+      print(f"plan: skeleton {path}", flush=True)
+    except Exception as exc:  # a stub is a bonus, never a failure
+      print(f"plan: skeleton skipped for {path} ({exc!r})", flush=True)
+  return written
+
+
+def review_budget(session: taskbridge.Session) -> float:
+  """Returns the seconds a review session may spend, 0 when it must not run.
+
+  The budget is what the worker left over, minus the wrap-up reserve, so the
+  review never shortens the work: on a task that uses every second it is 0 and
+  the stage is skipped.
+
+  Args:
+    session: Active task session.
+
+  Returns:
+    The spare seconds, capped at `REVIEW_MAX_SEC`.
+  """
+  left = session.time_left()
+  if left is None:
+    return float(REVIEW_MAX_SEC)
+  return max(0.0, min(float(REVIEW_MAX_SEC), left - STOP_BEFORE_SEC - 30))
+
+
+def review_gaps(verdict: str) -> list[str]:
+  """Parses a reviewer verdict into concrete gap lines.
+
+  Args:
+    verdict: The reviewer session's final text.
+
+  Returns:
+    One string per gap, empty when the reviewer answered PASS or wrote nothing,
+    capped at `REVIEW_MAX_GAPS`. Bullet and numbering markers are stripped so
+    the repair prompt reads as a plain list.
+  """
+  text = (verdict or "").strip()
+  if text.strip("*_. \r\n\t").upper() in ("", "PASS"):
+    return []
+  gaps: list[str] = []
+  for line in text.splitlines():
+    line = line.strip().lstrip("-*•").strip()
+    line = re.sub(r"^\d+[.)]\s*", "", line).strip()
+    if line and line.upper() != "PASS":
+      gaps.append(line[:400])
+  gaps = gaps[:REVIEW_MAX_GAPS]
+  if gaps and not any(" | " in gap for gap in gaps):
+    # A reviewer that answered in prose rather than in the asked-for
+    # `<path> | <gap> | <fix>` shape still read the files, and its prose is
+    # often the actionable part ("there is no submission.zip anywhere"): keep
+    # it as one brief rather than dropping the only signal the stage produced.
+    gaps = [" ".join(gaps)[:1200]]
+  return gaps
+
+
+def reviewer_stdin(instruction: str, summary: str) -> str:
+  """Builds the reviewer's task text: the task plus what the worker claims.
+
+  Args:
+    instruction: The task instruction, verbatim.
+    summary: The worker's closing summary.
+
+  Returns:
+    The reviewer's standard input.
+  """
+  return instruction + REVIEWER_PROMPT.format(
+      summary=summary or "(the worker gave no summary)")
+
+
+def repair_stdin(instruction: str, gaps: list[str]) -> str:
+  """Builds the repair session's task text: the task plus the gap list.
+
+  Args:
+    instruction: The task instruction, verbatim.
+    gaps: The reviewer's gap lines.
+
+  Returns:
+    The repair session's standard input.
+  """
+  return instruction + REPAIR_PROMPT.format(
+      gaps="\n".join(f"- {gap}" for gap in gaps))
+
+
+async def verify_and_repair(
+    session: taskbridge.Session,
+    run_pi: Any,
+    final: str,
+) -> str:
+  """Runs Verify, then at most one Repair, on the answer the worker returned.
+
+  The reviewer is a fresh session: it carries none of the worker's history, so
+  it opens the deliverables instead of trusting a summary that says they are
+  done. Its verdict is `PASS` or one line per gap; gaps buy one repair session
+  whose final message becomes the answer. Both stages spend only the time the
+  worker left over, so this never shortens a task that needs every second.
+
+  Args:
+    session: Active task session.
+    run_pi: The stage runner built by `solve`, `(text, note, stop_before,
+      max_sec) -> (Run, Finished)`.
+    final: The worker's closing summary, which is also the answer if no repair
+      runs.
+
+  Returns:
+    The final answer: the repaired summary when a repair session ran and
+    produced one, otherwise `final`.
+  """
+  budget = review_budget(session)
+  if budget < REVIEW_MIN_SEC:
+    print(f"review: {int(budget)} s spare; skipped", flush=True)
+    return final
+  print(f"review: budget {int(budget)} s", flush=True)
+  worker_final = session.final_message
+  reviewer, _ = await run_pi(
+      reviewer_stdin(session.instruction, final),
+      REVIEWER_NOTE,
+      STOP_BEFORE_SEC + 20,
+      max_sec=budget,
+  )
+  # The reviewer's text is a verdict, not the task's answer.
+  session.final_message = worker_final
+  if not reviewer.replies:
+    print("review: no verdict; skipped", flush=True)
+    return final
+  gaps = review_gaps(reviewer.last)
+  if not gaps:
+    print("review: PASS", flush=True)
+    return final
+  print(f"review: {len(gaps)} gap(s)", flush=True)
+  for gap in gaps:
+    print(f"review: {gap}", flush=True)
+  left = session.time_left()
+  if left is not None and left < REPAIR_MIN_SEC + STOP_BEFORE_SEC:
+    print("review: no time to repair", flush=True)
+    return final
+  print("review: repair session", flush=True)
+  repaired, _ = await run_pi(
+      repair_stdin(session.instruction, gaps),
+      NOTE.format(workdir=session.workdir),
+      STOP_BEFORE_SEC,
+      max_sec=None if left is None else max(0.0, left - STOP_BEFORE_SEC),
+  )
+  return repaired.last or session.final_message or final
+
+
 async def solve(session: taskbridge.Session) -> str:
   """Runs Pi on a single task and returns the final response.
 
@@ -485,7 +893,7 @@ async def solve(session: taskbridge.Session) -> str:
       name, model = await asyncio.to_thread(
           configure, agent_dir, relay, session, env
       )
-      argv = [
+      base = [
           PI,
           "--print",
           "--mode",
@@ -503,26 +911,119 @@ async def solve(session: taskbridge.Session) -> str:
           model,
           "--thinking",
           THINKING,
-          "--append-system-prompt",
-          NOTE.format(workdir=session.workdir),
       ]
-      run = Run(session, model)
-      done = await taskbridge.run_process(
-          argv,
-          session,
-          env=env,
-          cwd=str(work),
-          on_line=run.on_line,
-          stdin=session.instruction.encode(),
-          stop_before_sec=STOP_BEFORE_SEC,
-          log_prefix="pi: ",
+
+      started = time.monotonic()
+
+      async def run_pi(
+          task_text: str,
+          note: str,
+          stop_before: float,
+          max_sec: float | None = None,
+      ) -> tuple[Run, taskbridge.Finished]:
+        """Runs one Pi session with `note` appended to its system prompt.
+
+        `stop_before` protects the task deadline, which is the only bound a
+        stage should need. A stage with its own budget also passes `max_sec`:
+        `taskbridge.time_share` shrinks a large reserve to a quarter of the
+        time left, so a phase deadline cannot be expressed through
+        `stop_before` alone - without this the plan could take three quarters
+        of the task.
+
+        Args:
+          task_text: The session's standard input (the task, plus any role
+            text the stage adds).
+          note: The stage's system prompt addition.
+          stop_before: Seconds to reserve before the task deadline.
+          max_sec: Wall-clock cap for this phase, if it has one.
+
+        Returns:
+          The stream tracker and the finished process; `done.code` is -1 when
+          the phase cap stopped it.
+        """
+        run = Run(session, model)
+        call = taskbridge.run_process(
+            base + ["--append-system-prompt", note],
+            session,
+            env=env,
+            cwd=str(work),
+            on_line=run.on_line,
+            stdin=task_text.encode(),
+            stop_before_sec=stop_before,
+            log_prefix="pi: ",
+        )
+        # Every phase is capped twice: by its own budget and by the task's hard
+        # stop, so an evaluator that hands out six hours cannot hold the run.
+        cap = MAX_RUN_SEC - (time.monotonic() - started)
+        budget = max(0.0, cap if max_sec is None else min(max_sec, cap))
+        if budget <= 0:
+          print("phase: task cap reached", flush=True)
+          return run, taskbridge.Finished(-1, "task cap reached", True)
+        try:
+          return run, await asyncio.wait_for(call, budget)
+        except asyncio.TimeoutError:
+          print(f"phase: {int(budget)} s budget spent", flush=True)
+          return run, taskbridge.Finished(-1, "phase budget spent", True)
+
+      # PLAN: name every deliverable and its least acceptable content.
+      plan_path = f"{session.workdir}/{PLAN_NAME}"
+      plan_text = ""
+      budget = plan_seconds(session) if PLAN else 0.0
+      if budget >= PLAN_MIN_SEC:
+        left = session.time_left()
+        print(f"plan: budget {int(budget)} s", flush=True)
+        await run_pi(
+            session.instruction,
+            PLANNER_NOTE.format(plan=plan_path),
+            STOP_BEFORE_SEC,
+            max_sec=budget,
+        )
+        try:
+          plan_text = (await session.read_file(plan_path)).decode(
+              "utf-8", "replace")
+        except Exception as exc:  # no plan is a reason to work, not to stop
+          print(f"plan: unreadable ({exc!r})", flush=True)
+        files = plan_paths(plan_text)
+        print(f"plan: {len(files)} deliverable(s) listed: {files}", flush=True)
+        # The worker gets files to improve, never an empty output directory.
+        await ensure_deliverables(session, files)
+
+      work_text = session.instruction
+      if plan_text:
+        work_text += WORK_PLAN_HEAD.format(plan=plan_path)
+      worked, done = await run_pi(
+          work_text,
+          NOTE.format(workdir=session.workdir),
+          STOP_BEFORE_SEC,
       )
-  if not run.replies:
-    raise RuntimeError(
-        f"pi exited with {done.code} before the model answered:"
-        f" {done.stderr[-2000:]}"
-    )
-  final = session.final_message or "(pi stopped without a final message)"
+      if not worked.replies:
+        raise RuntimeError(
+            f"pi exited with {done.code} before the model answered:"
+            f" {done.stderr[-2000:]}"
+        )
+      final = session.final_message or "(pi stopped without a final message)"
+      # Hard assertion: every listed deliverable exists and is non-empty when
+      # the worker stops. A run that answered but left a path empty scores the
+      # same as one that never answered, so fill what is still missing.
+      files = plan_paths(plan_text) if plan_text else []
+      if files:
+        left = session.time_left()
+        if left is None or left > STOP_BEFORE_SEC + SKELETON_MIN_SEC:
+          await ensure_deliverables(session, files)
+        present = await session.exec(
+            " ; ".join(
+                "test -s '%s' && echo '%s +'" % (
+                    plan_target(f, session.workdir), f)
+                for f in files
+            ) + " ; true"
+        )
+        print(f"plan: delivered {str(present.get('output', '')).strip()!r}",
+              flush=True)
+      if REVIEW:
+        try:
+          final = await verify_and_repair(session, run_pi, final)
+        except Exception as exc:  # a broken review must never lose the answer
+          print(f"review: skipped ({exc!r})", flush=True)
   # Post-run audit: the four gates the narrative names. Costs one container
   # round trip of shell and cannot fail the task - a missing deliverable is
   # reported in the log, never raised, so the answer is always returned.
