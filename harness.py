@@ -65,8 +65,55 @@ REVIEW_MAX_SEC = 240
 REVIEW_MIN_SEC = 60
 REVIEW_MAX_GAPS = 20
 REPAIR_MIN_SEC = 120
+# Deliverable-first (AURA's Plan stage, made load-bearing). The plan session
+# spends a fixed slice of the budget naming every file the task wants and the
+# least it may contain; the harness then puts a skeleton at every one of those
+# paths before the worker writes a line, so a run that dies mid-thought still
+# leaves a gradable file behind. `PLAN=0` turns the whole stage off.
+PLAN = os.environ.get("PLAN", "1").strip().lower() not in (
+    "0", "off", "false", "no", "")
+PLAN_NAME = ".plan.md"
+PLAN_SHARE = 0.10
+PLAN_MAX_SEC = 1200
+PLAN_MIN_SEC = 60
+PLAN_MAX_FILES = 12
+SKELETON_MIN_SEC = 60
 # Request features the Google Cloud route for Claude refuses. pi leaves them
 # out, and the Anthropic API works without them too.
+PLANNER_NOTE = """You are the planning engineer on this task. Do NOT create or \
+modify any deliverable and do not start the work: plan only.
+
+Read the task, then every file it points to. Then write the plan to {plan} \
+with the write tool. Keep it short and concrete:
+- the deliverables the task names, with their exact paths,
+- what a reviewer checks in each one (sections, values, units, dates, names),
+- the hard constraints that must not be broken.
+
+The LAST section of the file must be exactly this heading and one line per \
+file, because a program reads it:
+
+## 交付物清单
+- <path> | <the minimal acceptable content, in one line>
+
+List every file the task asks for, even the ones you are unsure about. Nothing \
+after that section.
+
+Then answer with one short paragraph naming the files you listed."""
+
+WORK_PLAN_HEAD = """
+
+---
+
+## The plan
+
+A planning pass wrote the plan to {plan}. Read it first with the read tool.
+
+The files in its 交付物清单 already exist as skeletons at their exact paths. \
+Your FIRST action, before any further reading or analysis, is to open each one \
+and replace it with real content - even a short but correct version. A skeleton \
+left in place scores zero, and so does a deliverable that is still only in your \
+head when the time runs out. Improve them from there."""
+
 REVIEWER_NOTE = """You are the independent reviewer on this task. You did \
 not do the work, and you must not create, edit or delete any file: read only.
 
@@ -494,6 +541,131 @@ def _log_audit(spec, defects):
     )
 
 
+def plan_seconds(session: taskbridge.Session) -> float:
+  """Returns the seconds the planning session may spend, 0 to skip it.
+
+  Args:
+    session: Active task session.
+
+  Returns:
+    `PLAN_SHARE` of the time left, clamped to `PLAN_MIN_SEC..PLAN_MAX_SEC`, and
+    never so much that the work phase and the wrap-up cannot fit.
+  """
+  left = session.time_left()
+  if left is None:
+    return float(PLAN_MIN_SEC)
+  room = left - STOP_BEFORE_SEC - 300
+  if room < PLAN_MIN_SEC:
+    return 0.0
+  return max(float(PLAN_MIN_SEC),
+             min(float(PLAN_MAX_SEC), PLAN_SHARE * left, room))
+
+
+DELIVERABLE_RE = re.compile(
+    r"([A-Za-z0-9_.\-]+(?:/[A-Za-z0-9_.\-]+)*"
+    r"\.(?:zip|docx|pdf|md|json|csv|xlsx|py|ifc|txt|dxf|dwg|xlsm|pptx))")
+
+
+def plan_paths(text: str) -> list[str]:
+  """Extracts the deliverable paths a plan lists.
+
+  Args:
+    text: The plan file's contents.
+
+  Returns:
+    The distinct paths, in plan order, capped at `PLAN_MAX_FILES`. A token
+    without a directory separator is kept only when it is a deliverable-looking
+    name at the start of a bullet, so prose does not become a file list.
+  """
+  paths: list[str] = []
+  for match in DELIVERABLE_RE.finditer(text or ""):
+    path = match.group(1).strip(".-")
+    if "/" not in path:
+      continue
+    if path not in paths:
+      paths.append(path)
+  return paths[:PLAN_MAX_FILES]
+
+
+def skeleton_for(path: str) -> tuple[str, str] | None:
+  """Returns how to stub `path`, or None when its extension has no stub.
+
+  Args:
+    path: A deliverable path from the plan.
+
+  Returns:
+    `(kind, payload)`: kind `text` writes the payload as the file, `zip` packs
+    a README into the named archive, `docx`/`pdf` build a one-page document.
+  """
+  ext = path.rsplit(".", 1)[-1].lower() if "." in path else ""
+  if ext in ("md", "txt"):
+    return "text", f"# {path.rsplit('/', 1)[-1]}\n\nPlaceholder written by the harness; the worker replaces it.\n"
+  if ext in ("json",):
+    return "text", "{}\n"
+  if ext in ("csv",):
+    return "text", "item,value\n"
+  if ext in ("py",):
+    return "text", "\"\"\"Placeholder written by the harness; the worker replaces it.\"\"\"\n"
+  if ext in ("zip",):
+    return "zip", "README.md"
+  if ext in ("docx",):
+    return "docx", "Placeholder written by the harness; the worker replaces it."
+  if ext in ("pdf",):
+    return "pdf", "Placeholder written by the harness; the worker replaces it."
+  return None
+
+
+async def ensure_deliverables(
+    session: taskbridge.Session, paths: list[str]
+) -> list[str]:
+  """Writes a skeleton at every listed path that is missing or empty.
+
+  Used twice: right after the plan, so the run always has files on disk, and
+  again after the work session, for anything the worker still did not deliver.
+
+  Args:
+    session: Active task session.
+    paths: Deliverable paths from the plan, relative to the workdir or absolute.
+
+  Returns:
+    The paths a skeleton was written at. Any failure is logged and skipped: a
+    stub that cannot be written must not end the run.
+  """
+  written: list[str] = []
+  for path in paths:
+    target = path if path.startswith("/") else f"{session.workdir}/{path}"
+    try:
+      result = await session.exec(f"test -s '{target}' && echo yes || echo no")
+      if str(result.get("output", "")).strip().endswith("yes"):
+        continue
+      stub = skeleton_for(target)
+      if stub is None:
+        continue
+      kind, payload = stub
+      parent = target.rsplit("/", 1)[0] or session.workdir
+      if kind == "text":
+        await session.write_file(target, payload)
+      elif kind == "zip":
+        await session.exec(
+            f"mkdir -p '{parent}/.skeleton' && printf '%s\\n' 'Placeholder written by the harness; the worker replaces it.' > '{parent}/.skeleton/{payload}'"
+            f" && cd '{parent}/.skeleton' && zip -q -r '{target}' {payload}"
+        )
+      elif kind in ("docx", "pdf"):
+        script = (
+            "import docx\nd=docx.Document()\nd.add_paragraph(%r)\nd.save(%r)"
+            % (payload, target)
+            if kind == "docx"
+            else "from reportlab.pdfgen import canvas\nc=canvas.Canvas(%r)\nc.drawString(72,720,%r)\nc.save()"
+            % (target, payload)
+        )
+        await session.exec(f"python3 -c {script!r}")
+      written.append(path)
+      print(f"plan: skeleton {path}", flush=True)
+    except Exception as exc:  # a stub is a bonus, never a failure
+      print(f"plan: skeleton skipped for {path} ({exc!r})", flush=True)
+  return written
+
+
 def review_budget(session: taskbridge.Session) -> float:
   """Returns the seconds a review session may spend, 0 when it must not run.
 
@@ -727,8 +899,34 @@ async def solve(session: taskbridge.Session) -> str:
         )
         return run, done
 
+      # PLAN: name every deliverable and its least acceptable content.
+      plan_path = f"{session.workdir}/{PLAN_NAME}"
+      plan_text = ""
+      budget = plan_seconds(session) if PLAN else 0.0
+      if budget >= PLAN_MIN_SEC:
+        left = session.time_left()
+        print(f"plan: budget {int(budget)} s", flush=True)
+        await run_pi(
+            session.instruction,
+            PLANNER_NOTE.format(plan=plan_path),
+            max(STOP_BEFORE_SEC,
+                (left if left is not None else STOP_BEFORE_SEC) - budget),
+        )
+        try:
+          plan_text = (await session.read_file(plan_path)).decode(
+              "utf-8", "replace")
+        except Exception as exc:  # no plan is a reason to work, not to stop
+          print(f"plan: unreadable ({exc!r})", flush=True)
+        files = plan_paths(plan_text)
+        print(f"plan: {len(files)} deliverable(s) listed: {files}", flush=True)
+        # The worker gets files to improve, never an empty output directory.
+        await ensure_deliverables(session, files)
+
+      work_text = session.instruction
+      if plan_text:
+        work_text += WORK_PLAN_HEAD.format(plan=plan_path)
       worked, done = await run_pi(
-          session.instruction,
+          work_text,
           NOTE.format(workdir=session.workdir),
           STOP_BEFORE_SEC,
       )
@@ -738,6 +936,23 @@ async def solve(session: taskbridge.Session) -> str:
             f" {done.stderr[-2000:]}"
         )
       final = session.final_message or "(pi stopped without a final message)"
+      # Hard assertion: every listed deliverable exists and is non-empty when
+      # the worker stops. A run that answered but left a path empty scores the
+      # same as one that never answered, so fill what is still missing.
+      files = plan_paths(plan_text) if plan_text else []
+      if files:
+        left = session.time_left()
+        if left is None or left > STOP_BEFORE_SEC + SKELETON_MIN_SEC:
+          await ensure_deliverables(session, files)
+        present = await session.exec(
+            " ; ".join(
+                "test -s '%s' && echo '%s +'" % (
+                    f if f.startswith("/") else f"{session.workdir}/{f}", f)
+                for f in files
+            ) + " ; true"
+        )
+        print(f"plan: delivered {str(present.get('output', '')).strip()!r}",
+              flush=True)
       if REVIEW:
         try:
           final = await verify_and_repair(session, run_pi, final)
