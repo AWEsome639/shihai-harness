@@ -141,12 +141,14 @@ agent timeout 被 workflow 统一砍到 900 s）。"前" = `main` @ `3dd55d9`，
 | 题 | 前（main `3dd55d9`） | 后（`aura-verify`） | 证据 |
 |---|---|---|---|
 | fire-test-validation-memo | **1.0** | 跑完即补 | 前：run `44393241297`，673 s |
-| landscape-sheet-revision | **0.104** | **0.026**（更差） | 前 `44475151129`（2410 s）/ 后 `44476502292`（3146 s） |
+| landscape-sheet-revision | **0.104** | **0.961** | 前 `44475151129`（2410 s）/ 交付物优先 `44501387225`（2640 s） |
 | roof-deck-design | **0.0** | v1 **0.0**（诊断有效）；v2 跑完即补 | 前 `44475156143`（983 s）→ v1 `44476508108`（1298 s） |
 | wind-diaphragm-shear | **0.0** | **0.0** | 前 `44475161459`（1837 s）/ 后 v1 `44476514402`（1188 s，review PASS） |
 | data-hall-mep-routing | **0.0** | 跑完即补 | 前：run `44475166446`，2047 s |
 
-landscape 的后测是**负结果**，而且原因不在 review：这一次 worker 自己在 900 s 里
+（上面 table 里的 0.026 是只加 Review 的那一版；交付物优先那版是 0.961，见 §4.3。）
+
+landscape 的第一次后测是**负结果**，而且原因不在 review：这一次 worker 自己在 900 s 里
 **什么都没交**（`output/` 目录不存在），review 用 7 条缺口准确描述了这个事实
 （"The sole required deliverable is entirely absent"），repair 也跑了一轮，
 但 240 s 的 repair 补不出一份本来就不存在的 memo。基线那次 worker 交了一份（0.104），
@@ -203,6 +205,67 @@ AURA 的 Verify 修的是"交了但缺件/格式错"，修不了"没交"。
 （本次没抄 Plan：时间只够落地一条，而 Verify 是它最有辨识度的那条。）
 
 ---
+
+### 4.3 交付物优先（Plan + 骨架落盘）实测
+
+**结论先行**：`landscape-sheet-revision` 从 **0.104 涨到 0.961**，这是这条线第一个
+0.9 级的 checks/rubric 混合题；但同一版代码在 fire-test 上拿了 0.0，而那一轮的
+serve.log 证明**不是骨架的锅**（见 4.4）。后来查明是**模型端点当晚退化**：
+main 分支（基线代码、无 plan/无骨架）重跑 fire-test，17–35 min 的基线变成 97 min
+仍未完成。
+
+
+`landscape-sheet-revision`：**0.104 → 0.961**（run `44501387225`）。
+
+日志给出的因果链是清楚的：
+
+```
+plan: budget 1200 s
+plan: 1 deliverable(s) listed: ['app/files/output/DSR_Ph3_L4_Street_Tree_Memo_Callaway_10312026.md']
+plan: skeleton app/files/output/DSR_Ph3_L4_Street_Tree_Memo_Callaway_10312026.md
+plan: delivered 'app/files/output/DSR_Ph3_L4_Street_Tree_Memo_Callaway_10312026.md +'
+review: budget 240 s
+review: 1 gap(s)
+review: repair session
+```
+
+plan 把"要交什么"钉死成一个路径，骨架先落盘，worker 拿到的是"改这份文件"
+而不是"从零写一份"。产出的 memo 覆盖了 Condition 14、208 vs 58 棵树、11/30
+能不能承诺这些 rubric 点（`artifacts/.../output/` 里 1 个文件，正文见 run）。
+
+已知缺陷（下一刀）：plan 写的是 `app/files/output/...`（带 `app/files/` 前缀），
+我们又拼了一次 workdir，骨架被写到 `/app/app/files/output/...` 这个嵌套路径。
+本题无害（worker 按正确路径写了），但应剥掉前缀。
+
+### 4.4 fire-test 0.0 的取证（run `44539486704`）
+
+```
+plan: budget 1200 s
+phase: 1200 s budget spent
+plan: unreadable (could not read /app/files/.plan.md: no such file or directory)
+plan: 0 deliverable(s) listed: []
+phase: 1499 s budget spent
+review: budget 240 s
+phase: task cap reached
+review: no verdict; skipped
+selfcheck: 0 deliverable(s), 2 defect(s)
+  gate G1 output/ fail: output/ holds 0 entr(y|ies)
+```
+
+- `deliverables/` 只有 `final_message.md`(3734 字符) / `capture.json` / harness 自带的
+  `tools/clash_check.py`；**`output/` 目录不存在，0 个产出文件**。
+- `pi:` 工具调用计数 **0**：模型 2700 s 内一次工具都没调，最终回复断在
+  "Let me analyze the CSV more carefully with pandas."
+- 因为 plan 文件从未写出，`plan_text` 为空 ⇒ **WORK_PLAN_HEAD 不会注入**，
+  worker 拿到的 prompt 与 1.0 基线一字不差；**骨架也一条都没写**（清单为空）。
+
+⇒ 这一轮是"模型没动手"，不是"骨架占位污染 rubric"。同一晚 main 分支的对照跑
+97 min 未完成（基线 17–35 min），指向端点退化。
+
+为防再犯，已落两条（commit `bfc1736`）：
+1. `PLAN_MAX_SEC` 1200 → **300 s**，且 plan 文件缺失时直接进 work；
+2. **memo 类不写骨架**（`.md/.docx/.pdf/.txt/.rtf/.tex/.pptx` 返回 None），
+   只给 `.zip/.py/.json/.csv` 这类"存在即判据"的交付物落骨架。
 
 ## 5. 结论：AURA 里哪一条值得抄
 
