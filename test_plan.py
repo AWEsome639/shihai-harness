@@ -165,6 +165,25 @@ def case_ensures_missing_only():
 
 
 @case
+def case_zip_members_from_statement():
+  """The archive members come from the task's own deliverable section."""
+  text = """## Deliverable
+
+Write one file, `output/submission.zip`, containing at its root:
+
+### 1. `deck_design.xlsx` - the design
+### 2. `roof_deck_plan.dxf` - the plan
+### 3. `constraint_register.xlsx` - the register
+### 4. `design_basis.md`
+"""
+  expect(H.zip_members(text) == ["deck_design.xlsx", "roof_deck_plan.dxf",
+                                 "constraint_register.xlsx", "design_basis.md"],
+         "all four root members, in order: %r" % (H.zip_members(text),))
+  expect(H.zip_members("just prose") == [], "no paths, no members")
+  return "4 members in statement order"
+
+
+@case
 def case_plan_target_stays_inside_workdir():
   """A plan path with the workdir spelled in front resolves to one level."""
   expect(H.plan_target("output/a.md", "/app/files") == "/app/files/output/a.md",
@@ -188,9 +207,25 @@ def case_zip_skeleton_is_packed():
   session = FakeSession(900, workdir="/app")
   asyncio.run(H.ensure_deliverables(session, ["output/submission.zip"]))
   commands = " ".join(session.commands)
-  expect("zip -q -r" in commands, "the archive is packed: %s" % commands)
-  expect(not session.written, "no text file is written for a zip")
-  return "zip -q -r"
+  expect("skeleton_zip.py" in commands, "the builder runs: %s" % commands)
+  expect("'README.md'" in commands, "with no named members, a README")
+  expect(any(path.endswith(".skeleton_zip.py") for path, _ in session.written),
+         "the builder script is written into the container")
+  return "python builder + README fallback"
+
+
+@case
+def case_zip_skeleton_uses_named_members():
+  """When the statement names archive members, the skeleton contains them."""
+  session = FakeSession(900, workdir="/app")
+  instruction = "## Deliverable\n- `deck_design.xlsx`\n- `design_basis.md`\n"
+  asyncio.run(H.ensure_deliverables(
+      session, ["output/submission.zip"], instruction))
+  commands = " ".join(session.commands)
+  expect("'deck_design.xlsx'" in commands, "the xlsx member is named")
+  expect("'design_basis.md'" in commands, "the memo member is named")
+  expect("README.md" not in commands, "no fallback when members exist")
+  return "named members packed"
 
 
 @case

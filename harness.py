@@ -598,6 +598,63 @@ def plan_paths(text: str) -> list[str]:
   return paths[:PLAN_MAX_FILES]
 
 
+MEMBER_RE = re.compile(
+    r"`([A-Za-z0-9_.-]+\.(?:xlsx|xlsm|dxf|dwg|md|csv|json|py|txt|docx|pdf))`")
+ZIP_BUILD = """import io, sys, zipfile
+target, names = sys.argv[1], sys.argv[2:]
+with zipfile.ZipFile(target, "w") as bundle:
+  for name in names:
+    ext = name.rsplit(".", 1)[-1].lower()
+    if ext in ("xlsx", "xlsm"):
+      import openpyxl
+      book = openpyxl.Workbook()
+      book.active.append(["placeholder"])
+      book.active.append(["value"])
+      buffer = io.BytesIO()
+      book.save(buffer)
+      bundle.writestr(name, buffer.getvalue())
+    elif ext == "docx":
+      import docx
+      document = docx.Document()
+      document.add_paragraph("Placeholder written by the harness.")
+      buffer = io.BytesIO()
+      document.save(buffer)
+      bundle.writestr(name, buffer.getvalue())
+    elif ext == "dxf":
+      bundle.writestr(name, "0\\nSECTION\\n2\\nENTITIES\\n0\\nENDSEC\\n0\\nEOF\\n")
+    elif ext == "json":
+      bundle.writestr(name, "{}")
+    elif ext == "csv":
+      bundle.writestr(name, "item,value\\n")
+    else:
+      bundle.writestr(
+          name, "Placeholder written by the harness; the worker replaces it.\\n")
+"""
+
+
+def zip_members(instruction: str) -> list[str]:
+  """Returns the file names the task says the deliverable archive contains.
+
+  The members come from the task statement's own deliverable section, never
+  from the grader: a checks task names each file it wants in the archive, and a
+  skeleton that lacks them fails the first check before any content is read.
+
+  Args:
+    instruction: The task instruction.
+
+  Returns:
+    Root-level member names, in statement order, capped at eight.
+  """
+  start = instruction.lower().find("## deliverable")
+  text = instruction[start:] if start >= 0 else instruction
+  members: list[str] = []
+  for match in MEMBER_RE.finditer(text):
+    name = match.group(1)
+    if "/" not in name and name not in members:
+      members.append(name)
+  return members[:8]
+
+
 def skeleton_for(path: str) -> tuple[str, str] | None:
   """Returns how to stub `path`, or None when its extension has no stub.
 
@@ -678,7 +735,7 @@ def plan_target(path: str, workdir: str) -> str:
 
 
 async def ensure_deliverables(
-    session: taskbridge.Session, paths: list[str]
+    session: taskbridge.Session, paths: list[str], instruction: str = ""
 ) -> list[str]:
   """Writes a skeleton at every listed path that is missing or empty.
 
@@ -708,9 +765,12 @@ async def ensure_deliverables(
       if kind == "text":
         await session.write_file(target, payload)
       elif kind == "zip":
+        members = zip_members(instruction) or [payload]
+        script = f"{session.workdir}/.skeleton_zip.py"
+        await session.write_file(script, ZIP_BUILD)
         await session.exec(
-            f"mkdir -p '{parent}/.skeleton' && printf '%s\\n' 'Placeholder written by the harness; the worker replaces it.' > '{parent}/.skeleton/{payload}'"
-            f" && cd '{parent}/.skeleton' && zip -q -r '{target}' {payload}"
+            "python3 " + script + " '" + target + "' "
+            + " ".join("'" + m + "'" for m in members)
         )
       elif kind in ("docx", "pdf"):
         script = (
@@ -1031,7 +1091,7 @@ async def solve(session: taskbridge.Session) -> str:
             session.instruction)
         print(f"plan: {len(files)} deliverable(s) listed: {files}", flush=True)
         # The worker gets files to improve, never an empty output directory.
-        await ensure_deliverables(session, files)
+        await ensure_deliverables(session, files, session.instruction)
 
       work_text = session.instruction
       if plan_text:
@@ -1055,7 +1115,7 @@ async def solve(session: taskbridge.Session) -> str:
       if files:
         left = session.time_left()
         if left is None or left > STOP_BEFORE_SEC + SKELETON_MIN_SEC:
-          await ensure_deliverables(session, files)
+          await ensure_deliverables(session, files, session.instruction)
         present = await session.exec(
             " ; ".join(
                 "test -s '%s' && echo '%s +'" % (
