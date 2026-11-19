@@ -76,10 +76,15 @@ PLAN = os.environ.get("PLAN", "1").strip().lower() not in (
     "0", "off", "false", "no", "")
 PLAN_NAME = ".plan.md"
 PLAN_SHARE = 0.10
-PLAN_MAX_SEC = 1200
+# A plan that has not produced its file by now is not coming: on a six-hour
+# allowance the share alone would spend 1,200 s, and one run spent exactly that
+# on a planner that never wrote a line. The work phase starts either way.
+PLAN_MAX_SEC = 300
 PLAN_MIN_SEC = 60
 PLAN_MAX_FILES = 12
 SKELETON_MIN_SEC = 60
+# Deliverables graded on their wording, not their existence: a stub is a miss.
+PROSE_EXTS = ("md", "docx", "pdf", "txt", "rtf", "tex", "pptx")
 # Hard stop for one task, whatever budget the evaluator hands out. A dev run
 # once inherited a six-hour allowance and a single task sat for two hours; the
 # skeletons are on disk long before this, so the cap only costs polish.
@@ -604,8 +609,10 @@ def skeleton_for(path: str) -> tuple[str, str] | None:
     a README into the named archive, `docx`/`pdf` build a one-page document.
   """
   ext = path.rsplit(".", 1)[-1].lower() if "." in path else ""
-  if ext in ("md", "txt"):
-    return "text", f"# {path.rsplit('/', 1)[-1]}\n\nPlaceholder written by the harness; the worker replaces it.\n"
+  if ext in PROSE_EXTS:
+    # A memo is graded on what it says, so a placeholder in its place is a
+    # miss on every rubric line and can only cost score: never stub one.
+    return None
   if ext in ("json",):
     return "text", "{}\n"
   if ext in ("csv",):
@@ -614,10 +621,6 @@ def skeleton_for(path: str) -> tuple[str, str] | None:
     return "text", "\"\"\"Placeholder written by the harness; the worker replaces it.\"\"\"\n"
   if ext in ("zip",):
     return "zip", "README.md"
-  if ext in ("docx",):
-    return "docx", "Placeholder written by the harness; the worker replaces it."
-  if ext in ("pdf",):
-    return "pdf", "Placeholder written by the harness; the worker replaces it."
   return None
 
 

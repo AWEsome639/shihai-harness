@@ -124,26 +124,28 @@ Random prose mentioning a sentence.
 
 @case
 def case_skeleton_kinds():
-  """Each extension maps to a stub kind the stage can actually write."""
-  expect(H.skeleton_for("output/a.md")[0] == "text", "markdown is text")
+  """Structured deliverables get a stub; prose ones must not."""
   expect(H.skeleton_for("output/a.json")[0] == "text", "json is text")
   expect(H.skeleton_for("output/a.zip")[0] == "zip", "zip is packed")
-  expect(H.skeleton_for("output/a.docx")[0] == "docx", "docx is built")
-  expect(H.skeleton_for("output/a.pdf")[0] == "pdf", "pdf is built")
+  expect(H.skeleton_for("output/a.py")[0] == "text", "a script is text")
   expect(H.skeleton_for("output/a.xyz") is None, "unknown has no stub")
-  return "text / zip / docx / pdf / none"
+  for prose in ("output/memo.md", "output/memo.docx", "output/memo.pdf",
+                "output/notes.txt"):
+    expect(H.skeleton_for(prose) is None,
+           "%s is graded on wording; no placeholder" % prose)
+  return "json / zip / py / none / prose refused"
 
 
 @case
 def case_ensures_missing_only():
   """A missing path gets a skeleton; an existing one is left alone."""
-  session = FakeSession(900, existing={"/app/output/keep.md"},
+  session = FakeSession(900, existing={"/app/output/keep.json"},
                         workdir="/app")
   written = asyncio.run(H.ensure_deliverables(
-      session, ["output/keep.md", "output/new.md"]))
-  expect(written == ["output/new.md"], "only the missing one: %r" % (written,))
+      session, ["output/keep.json", "output/new.json"]))
+  expect(written == ["output/new.json"], "only the missing one: %r" % (written,))
   expect(len(session.written) == 1, "one write")
-  expect(session.written[0][0] == "/app/output/new.md",
+  expect(session.written[0][0] == "/app/output/new.json",
          "relative paths resolve under the workdir")
   expect(session.written[0][1].strip(), "the skeleton is non-empty")
   return "existing kept, missing written"
@@ -181,10 +183,10 @@ def case_zip_skeleton_is_packed():
 @case
 def case_skeleton_failure_does_not_raise():
   """A container that refuses a stub is logged, not fatal."""
-  session = FakeSession(900, workdir="/app", fail={"output/bad.md"})
+  session = FakeSession(900, workdir="/app", fail={"output/bad.json"})
   written = asyncio.run(H.ensure_deliverables(
-      session, ["output/bad.md", "output/good.md"]))
-  expect(written == ["output/good.md"],
+      session, ["output/bad.json", "output/good.json"]))
+  expect(written == ["output/good.json"],
          "the good path still gets a stub: %r" % (written,))
   return "one refused, one written"
 
