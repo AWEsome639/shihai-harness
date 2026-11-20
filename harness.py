@@ -89,6 +89,29 @@ PROSE_EXTS = ("md", "docx", "pdf", "txt", "rtf", "tex", "pptx")
 # once inherited a six-hour allowance and a single task sat for two hours; the
 # skeletons are on disk long before this, so the cap only costs polish.
 MAX_RUN_SEC = float(os.environ.get("MAX_RUN_SEC", "3600"))
+# A task whose deliverable is a computed design rather than prose gets longer.
+# roof-deck-design asks for four files that carry numbers (loads, a diaphragm
+# run, member checks): at 3,600 s the worker had spent 3,509 s computing and the
+# zip still held only the skeleton (run 44633765518, reward 0.0), while the
+# evaluator had handed out 21,599 s. The cap is the only thing changed here.
+TASK_MAX_RUN_SEC = {"roof_deck_design": 7200.0}
+
+
+def run_sec_for(instruction: str) -> float:
+  """Returns this task's wall-clock cap.
+
+  Args:
+    instruction: The task instruction, which names the task's workdir.
+
+  Returns:
+    `MAX_RUN_SEC`, or the longer entry `TASK_MAX_RUN_SEC` lists for the task.
+  """
+  for key, sec in TASK_MAX_RUN_SEC.items():
+    if key in instruction:
+      return max(MAX_RUN_SEC, sec)
+  return MAX_RUN_SEC
+
+
 # Request features the Google Cloud route for Claude refuses. pi leaves them
 # out, and the Anthropic API works without them too.
 PLANNER_NOTE = """You are the planning engineer on this task. Do NOT create or \
@@ -1090,7 +1113,7 @@ async def solve(session: taskbridge.Session) -> str:
         )
         # Every phase is capped twice: by its own budget and by the task's hard
         # stop, so an evaluator that hands out six hours cannot hold the run.
-        cap = MAX_RUN_SEC - (time.monotonic() - started)
+        cap = run_sec_for(session.instruction) - (time.monotonic() - started)
         budget = max(0.0, cap if max_sec is None else min(max_sec, cap))
         if budget <= 0:
           print("phase: task cap reached", flush=True)
