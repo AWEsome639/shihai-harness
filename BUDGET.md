@@ -210,3 +210,11 @@ gh run download <run-id> -n results -D /tmp/x && head -1 /tmp/x/attempt1/jobs/de
 # 分数与解析错误
 cat /tmp/x/attempt1/jobs/dev/*/verifier/metrics.json
 ```
+
+---
+
+## 6. 给下一个人
+
+- **3,600 s 是我们自己拍的**（`harness.py:91` `MAX_RUN_SEC`），平台给每题 **6 小时**（`README.md:48` / `README.md:99`）。
+- **计算类 0.0 的原因是模型不写交付物**，加秒无效：7,200 s 那发 `output/` 零写入、zip 仍是骨架，而且 cap 根本没触发。
+- **若要再试，唯一值得做的是「端点健康时补第二发」**，下注前先看 `model error` / `auto_retry_start` 计数（这一发 20 / 19，后段每次连接下行 0 B）。
