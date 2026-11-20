@@ -267,6 +267,22 @@ selfcheck: 0 deliverable(s), 2 defect(s)
 2. **memo 类不写骨架**（`.md/.docx/.pdf/.txt/.rtf/.tex/.pptx` 返回 None），
    只给 `.zip/.py/.json/.csv` 这类"存在即判据"的交付物落骨架。
 
+### 4.5 骨架之后：G1/G3/G7 全过、分数仍 0 的那道题
+
+roof-deck-design 的交付物是 `output/submission.zip`（**结构型**，内含
+`deck_design.xlsx`、`roof_deck_plan.dxf`、`constraint_register.xlsx`、
+`design_basis.md`）。四轮演进：
+
+| 轮 | run | output | 闸门 | 分数 |
+|---|---|---|---|---|
+| 无骨架（plan 空转） | `44599053335` | 1 文件（README zip） | G3 fail: 4/4 members absent；G7 fail | 0.0 |
+| 成员骨架 | `44611561234` | 1 文件（4 成员骨架） | **G3 过**；G7 fail | 0.0 |
+| G7 只改指令 | `44622608673` | 1 文件 | G7 仍 fail（worker 到 60 min 仍在设计，没写收尾） | 0.0 |
+| 指令 + harness 补 `delivered:` | `44633765518` | 1 文件 | **G1/G3/G7 全过（无 defect）** | 0.0 |
+
+⇒ 结论：**模板骨架能让"文件存在/成员齐全/总结点到路径"三条全过；分数 0 是内容问题**——
+checks 类判的是每行数字（zone 的 gage/pattern、容量对需求、成本），占位内容过不了。
+
 ## 5. 结论：AURA 里哪一条值得抄
 
 **值得抄的只有 Verify→Repair 这一条，而且是它的"新会话 + 只给缺口"形态，不是它的阶段划分。**
